@@ -20,7 +20,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               className="mr-2"
             />
             <span className="font-bold text-lg ml-3">
-              Kevin Kwan's Portfolio
+              Kevin Kwan&apos;s Portfolio
             </span>
           </a>
         </Link>
