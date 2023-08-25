@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 type NavbarProps = {
   isMenuOpen: boolean;
@@ -8,7 +9,7 @@ type NavbarProps = {
 
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
   return (
-    <nav className="flex items-center justify-between bg-gray-800 text-white p-4">
+    <nav className="flex bg-gray-800 text-white p-4">
       <div className="flex items-center justify-center">
         <Link legacyBehavior href="/">
           <a className="flex items-center justify-center">
@@ -19,10 +20,49 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               height={40}
               className="mr-2"
             />
-            <span className="font-bold text-lg ml-3">
-              Kevin Kwan&apos;s Portfolio
-            </span>
+            <span className="font-bold text-lg ml-3">Kevin Kwan</span>
           </a>
+        </Link>
+      </div>
+      <div className="hidden md:flex items-center justify-center flex-1">
+        <div className="flex justify-center">
+          <Link legacyBehavior href="/">
+            <a className="mx-4 hover:text-gray-300">Home</a>
+          </Link>
+          <Link legacyBehavior href="/about">
+            <a className="mx-4 hover:text-gray-300">About Me</a>
+          </Link>
+          <Link legacyBehavior href="/experience">
+            <a className="mx-4 hover:text-gray-300">My Experience</a>
+          </Link>
+          <Link legacyBehavior href="/projects">
+            <a className="mx-4 hover:text-gray-300">My Projects</a>
+          </Link>
+        </div>
+      </div>
+      <div className="flex items-center ml-auto">
+        <a
+          href="https://github.com/Kevin-Kwan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-300 hover:text-gray-400"
+        >
+          <FaGithub className="h-6 w-6" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/kevinkwan3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-300 hover:text-gray-400 ml-4 mr-4"
+        >
+          <FaLinkedin className="h-6 w-6" />
+        </a>
+      </div>
+      <div className="hidden md:block">
+        <Link legacyBehavior href="/contact">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
+            Contact Me
+          </button>
         </Link>
       </div>
       <div className="flex items-center justify-center md:hidden">
@@ -50,27 +90,6 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
             )}
           </svg>
         </button>
-      </div>
-      <div className="hidden md:flex items-center justify-center">
-        {' '}
-        {/* Added justify-center class */}
-        <Link legacyBehavior href="/">
-          <a className="mx-4 hover:text-gray-300">Home</a>
-        </Link>
-        <Link legacyBehavior href="/about">
-          <a className="mx-4 hover:text-gray-300">About Me</a>
-        </Link>
-        <Link legacyBehavior href="/experience">
-          <a className="mx-4 hover:text-gray-300">My Experience</a>
-        </Link>
-        <Link legacyBehavior href="/projects">
-          <a className="mx-4 hover:text-gray-300">My Projects</a>
-        </Link>
-        <Link legacyBehavior href="/contact">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Contact Me
-          </button>
-        </Link>
       </div>
     </nav>
   );
