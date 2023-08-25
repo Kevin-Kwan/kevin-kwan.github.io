@@ -21,9 +21,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <p className="text-2xl font-bold mb-4">Welcome to my portfolio!</p>
           <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            tincidunt, lorem vel bibendum bibendum, elit sapien bibendum sapien,
-            vel bibendum sapien sapien vel sapien.
+            Here's some sample text since my website is still under development.
           </p>
         </div>
       </main>
