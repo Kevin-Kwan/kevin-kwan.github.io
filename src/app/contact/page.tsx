@@ -16,11 +16,8 @@ export default function About() {
       <NavbarMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">
-          <p className="text-2xl font-bold mb-4">About Me</p>
-          <p className="text-lg">
-            Here's some sample text since my website is still under development.
-            talk about education, hobbies, etc.
-          </p>
+          <p className="text-2xl font-bold mb-4">Contact Me</p>
+          <p className="text-lg">A unique contact form should be here.</p>
         </div>
       </main>
       <Footer />
