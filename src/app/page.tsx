@@ -19,7 +19,8 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <p className="text-2xl font-bold mb-4">Welcome to my portfolio!</p>
           <p className="text-lg">
-            Here's some sample text since my website is still under development.
+            Here&apos;s some sample text since my website is still under
+            development.
           </p>
         </div>
       </main>
