@@ -20,7 +20,8 @@ export default function Home() {
           <p className="text-2xl font-bold mb-4">Welcome to my portfolio!</p>
           <p className="text-lg">
             Here&apos;s some sample text since my website is still under
-            development.
+            development. This site is built with Next.js and Tailwind CSS by me
+            with love.
           </p>
         </div>
       </main>
