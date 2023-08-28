@@ -27,16 +27,18 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       <div className="hidden md:flex items-center justify-center flex-1">
         <div className="flex justify-center">
           <Link legacyBehavior href="/">
-            <a className="mx-4 hover:text-gray-300">Home</a>
+            <a className="mx-4 hover:text-gray-300 text-center">Home</a>
           </Link>
           <Link legacyBehavior href="/about">
-            <a className="mx-4 hover:text-gray-300">About Me</a>
+            <a className="mx-4 hover:text-gray-300 text-center">About Me</a>
           </Link>
           <Link legacyBehavior href="/experience">
-            <a className="mx-4 hover:text-gray-300">My Experience</a>
+            <a className="mx-4 hover:text-gray-300 text-center">
+              My Experience
+            </a>
           </Link>
           <Link legacyBehavior href="/projects">
-            <a className="mx-4 hover:text-gray-300">My Projects</a>
+            <a className="mx-4 hover:text-gray-300 text-center">My Projects</a>
           </Link>
         </div>
       </div>
