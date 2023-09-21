@@ -23,6 +23,11 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
             About Me
           </a>
         </Link>
+        <Link legacyBehavior href="/skills">
+          <a className="block py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+            My Skills
+          </a>
+        </Link>
         <Link legacyBehavior href="/experience">
           <a className="block py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
             My Experience
