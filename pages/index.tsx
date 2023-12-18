@@ -556,7 +556,7 @@ export default function Home() {
               />
             )}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div
+              {/* <div
                 style={{ width: '20vw', height: '20vw' }}
                 className="mx-auto rounded-full overflow-hidden"
               >
@@ -565,8 +565,8 @@ export default function Home() {
                   alt="Kevin Kwan"
                   className="w-full h-full object-cover"
                 />
-              </div>
-              <p className="text-2xl font-bold mt-4 text-center">Kevin Kwan</p>
+              </div> */}
+              <p className="text-8xl font-bold mt-4 text-center">Kevin Kwan</p>
               <p className="text-lg mt-2 text-center">
                 Python, Java, C#, JavaScript, and TypeScript Full-Stack
                 Entry-Level Software Developer

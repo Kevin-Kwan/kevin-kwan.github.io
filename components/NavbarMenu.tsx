@@ -8,6 +8,7 @@ type MenuProps = {
 const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
   return (
     <div
+      style={{ zIndex: 1000 }}
       className={`${
         isMenuOpen ? 'block' : 'hidden'
       } fixed bg-gray-800 text-white w-full flex justify-center text-center md:hidden mt-16`}

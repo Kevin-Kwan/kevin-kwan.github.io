@@ -9,7 +9,7 @@ type NavbarProps = {
 
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
   return (
-    <nav className="flex bg-gray-800 text-white p-4">
+    <nav className="flex bg-gray-800 text-white p-4 items-center h-16">
       <div className="flex items-center justify-center">
         <Link legacyBehavior href="/">
           <a className="flex items-center justify-center">
@@ -20,28 +20,34 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               height={40}
               className="mr-2"
             />
-            <span className="font-bold text-lg ml-3">Kevin Kwan</span>
+            <span className="font-bold text-lg ml-3">Home</span>
           </a>
         </Link>
       </div>
       <div className="hidden md:flex items-center justify-center flex-1">
         <div className="flex justify-center">
-          <Link legacyBehavior href="/">
+          {/* <Link legacyBehavior href="/">
             <a className="mx-4 hover:text-gray-300 text-center">Home</a>
-          </Link>
+          </Link> */}
           <Link legacyBehavior href="/about">
-            <a className="mx-4 hover:text-gray-300 text-center">About Me</a>
+            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+              About Me
+            </a>
           </Link>
           <Link legacyBehavior href="/skills">
-            <a className="mx-4 hover:text-gray-300 text-center">My Skills</a>
+            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+              My Skills
+            </a>
           </Link>
           <Link legacyBehavior href="/experience">
-            <a className="mx-4 hover:text-gray-300 text-center">
+            <a className="mx-4 hover:text-gray-300 text-center text-lg">
               My Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
-            <a className="mx-4 hover:text-gray-300 text-center">My Projects</a>
+            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+              My Projects
+            </a>
           </Link>
         </div>
       </div>
@@ -63,7 +69,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           <FaLinkedin className="h-6 w-6" />
         </a>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block items-center">
         <Link legacyBehavior href="/contact">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
             Contact Me
@@ -73,7 +79,11 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       <div className="flex items-center justify-center md:hidden">
         <button
           className="text-white hover:text-gray-300 focus:outline-none"
-          onClick={toggleMenu}
+          onClick={() => {
+            // console.log('Button clicked');
+            // Add your toggle function here
+            toggleMenu();
+          }}
         >
           <svg
             className="h-6 w-6 fill-current"
