@@ -1,6 +1,11 @@
 import { use, useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
-import type { Container } from '@tsparticles/engine';
+import {
+  type Container,
+  type ISourceOptions,
+  MoveDirection,
+  OutMode,
+} from '@tsparticles/engine';
 import { loadFull } from 'tsparticles';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
@@ -22,11 +27,11 @@ export default function Home() {
     });
   }, []);
 
-  const particlesLoaded = (container: Container) => {
+  let particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container);
   };
 
-  const options = useMemo(
+  const options: ISourceOptions = useMemo(
     () => ({
       autoPlay: true,
       background: {
@@ -551,8 +556,8 @@ export default function Home() {
             {init && (
               <Particles
                 id="tsparticles"
-                particlesLoaded={particlesLoaded}
                 options={options}
+                particlesLoaded={particlesLoaded}
               />
             )}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
