@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
 
-export default function Home() {
+export default function Contact() {
   return (
     <Layout>
       <Head>

@@ -2,12 +2,10 @@ import './globals.scss';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import { AnimatePresence } from 'framer-motion';
-import { useRouter, NextRouter } from 'next/router'; // Import the NextRouter type
-
-const inter = Inter({ subsets: ['latin'] });
+import { useRouter, NextRouter } from 'next/router';
 
 function App({ Component, pageProps }: AppProps) {
-  const router: NextRouter = useRouter(); // Specify the type for the router object
+  const router: NextRouter = useRouter();
 
   return (
     <AnimatePresence mode="wait">
