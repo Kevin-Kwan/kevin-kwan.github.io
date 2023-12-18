@@ -62,7 +62,8 @@ export default function Contact() {
             )}
             <a>.</a>
             <br />
-            I'll get back to you as soon as possible!
+            <br />
+            I&lsquo;ll get back to you as soon as possible!
           </p>
           <form
             ref={form}
