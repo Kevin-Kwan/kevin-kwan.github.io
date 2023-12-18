@@ -1,7 +1,7 @@
 import './globals.scss';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useRouter, NextRouter } from 'next/router'; // Import the NextRouter type
 
 const inter = Inter({ subsets: ['latin'] });

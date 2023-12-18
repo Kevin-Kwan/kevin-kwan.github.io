@@ -17,38 +17,42 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
       animate={{ y: isMenuOpen ? '0' : '-100vh' }}
       transition={{ duration: 0.3 }}
     >
-      <div className="text-xl">
+      <div className="text-xl flex flex-col items-center justify-center">
         <Link legacyBehavior href="/about">
-          <a
+          <button
+            type="button"
             className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             About Me
-          </a>
+          </button>
         </Link>
         <Link legacyBehavior href="/skills">
-          <a
+          <button
+            type="button"
             className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Skills
-          </a>
+          </button>
         </Link>
         <Link legacyBehavior href="/experience">
-          <a
+          <button
+            type="button"
             className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Experience
-          </a>
+          </button>
         </Link>
         <Link legacyBehavior href="/projects">
-          <a
+          <button
+            type="button"
             className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Projects
-          </a>
+          </button>
         </Link>
         <Link legacyBehavior href="/contact">
           <div className="pb-3">
