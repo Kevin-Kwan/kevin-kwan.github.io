@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, FieldValues } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
@@ -10,8 +10,10 @@ import {
 } from 'react-icons/ai';
 
 export default function Contact() {
-  const form = useRef();
-  const [submitResult, setSubmitResult] = useState(null);
+  const form = useRef<HTMLFormElement>(null);
+  const [submitResult, setSubmitResult] = useState<
+    'success' | 'failure' | null
+  >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     register,
@@ -20,14 +22,21 @@ export default function Contact() {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  const onSubmit = async (data: FieldValues) => {
+    const formData = data as FormData;
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey || !form.current) {
+      console.error(
+        'EmailJS environment variables or form reference are not defined'
       );
+      return;
+    }
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
       setSubmitResult('success');
       setIsModalOpen(true);
       reset();
@@ -91,7 +100,7 @@ export default function Contact() {
               placeholder="Your Email Address"
               className="w-full p-2 border border-gray-300 rounded text-black"
             />
-            {errors.email && (
+            {errors.email && typeof errors.email.message === 'string' && (
               <span className="text-red-500">{errors.email.message}</span>
             )}
 
@@ -106,7 +115,7 @@ export default function Contact() {
               placeholder="Your Message"
               className="w-full p-2 border border-gray-300 rounded text-black"
             />
-            {errors.message && (
+            {errors.message && typeof errors.message.message === 'string' && (
               <span className="text-red-500">{errors.message.message}</span>
             )}
 
