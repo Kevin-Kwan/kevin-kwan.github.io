@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
 
-export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+export default function About() {
   return (
     <Layout>
       <Head>

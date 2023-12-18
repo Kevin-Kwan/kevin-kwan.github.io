@@ -3,12 +3,6 @@ import Head from 'next/head';
 import Layout from '../components/RootLayout';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <Layout>
       <Head>

@@ -1,23 +1,13 @@
 import { use, useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
-import {
-  type Container,
-  type ISourceOptions,
-  MoveDirection,
-  OutMode,
-} from '@tsparticles/engine';
+import { type Container, type ISourceOptions } from '@tsparticles/engine';
 import { loadFull } from 'tsparticles';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [init, setInit] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -550,7 +540,7 @@ export default function Home() {
         <main className="flex-1">
           <div
             id="tsparticles"
-            style={{ height: 'calc(100vh - 64px)' }}
+            style={{ height: 'calc(100vh - 6vh)' }}
             className="w-full relative"
           >
             {init && (

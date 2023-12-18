@@ -1,4 +1,4 @@
-import './globals.css';
+import './globals.scss';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import { motion, AnimatePresence } from 'framer-motion';
