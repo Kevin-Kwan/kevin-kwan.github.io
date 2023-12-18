@@ -561,15 +561,36 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div> */}
-              <p className="text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200">
+              <p
+                style={{
+                  background: 'linear-gradient(white, #8ba1b7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontFamily: 'Lato, sans-serif',
+                  fontWeight: 900,
+                }}
+                className="text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200"
+              >
                 Kevin Kwan
               </p>
               {/* hover:text-md sm:hover:text-lg md:hover:text-xl */}
-              <p className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200">
+              <p
+                className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
+                style={{
+                  textShadow:
+                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                }}
+              >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
                 Software Developer.
               </p>
-              <p className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200">
+              <p
+                className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
+                style={{
+                  textShadow:
+                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                }}
+              >
                 Interests/Passions include AI, Machine Learning, Game
                 Development, and Web/Application Development.{' '}
               </p>

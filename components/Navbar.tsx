@@ -10,7 +10,10 @@ type NavbarProps = {
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
   return (
     <nav
-      style={{ zIndex: 10, backgroundColor: '#171F29' }}
+      style={{
+        zIndex: 10,
+        backgroundColor: '#171F29',
+      }}
       className="flex text-white p-4 items-center h-16"
     >
       <div className="flex items-center justify-center">
