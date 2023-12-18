@@ -326,7 +326,7 @@ export default function Home() {
             mode: 'delete',
             value: 0,
           },
-          value: 100,
+          value: 80,
         },
         opacity: {
           value: {
