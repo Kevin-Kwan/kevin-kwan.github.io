@@ -15,7 +15,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
       } fixed text-white w-full flex justify-center text-center md:hidden mt-16`}
       initial={{ y: '-100vh' }}
       animate={{ y: isMenuOpen ? '0' : '-100vh' }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="text-xl">
         <Link legacyBehavior href="/about">

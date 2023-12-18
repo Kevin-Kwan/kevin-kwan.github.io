@@ -545,7 +545,7 @@ export default function Home() {
         <main className="flex-1">
           <div
             id="tsparticles"
-            style={{ height: 'calc(100vh - 8vh)' }}
+            style={{ height: 'calc(100vh - 64px)' }}
             className="w-full relative"
           >
             {init && (
@@ -555,7 +555,7 @@ export default function Home() {
                 options={options}
               />
             )}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
               {/* <div
                 style={{ width: '20vw', height: '20vw' }}
                 className="mx-auto rounded-full overflow-hidden"
@@ -566,20 +566,24 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div> */}
-              <p className="text-8xl font-bold mt-4 text-center hover:text-9xl transition-fontSize duration-200">
+              <p className="text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200">
                 Kevin Kwan
               </p>
-              <p className="text-lg mt-2 text-center">
-                Python, Java, C#, JavaScript, and TypeScript Full-Stack
-                Entry-Level Software Developer
+              {/* hover:text-md sm:hover:text-lg md:hover:text-xl */}
+              <p className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200">
+                Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
+                Software Developer.
               </p>
-              <p className="text-lg mt-2 text-center">Interests: </p>
-              <div className="flex justify-center mt-4 space-x-4">
+              <p className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200">
+                Interests/Passions include AI, Machine Learning, Game
+                Development, and Web/Application Development.{' '}
+              </p>
+              <div className="flex justify-center mt-4 space-x-2 sm:space-x-4 md:space-x-4">
                 <a
                   href="https://github.com/Kevin-Kwan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-transform duration-200 hover:scale-125 hover:text-blue-500"
+                  className="transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -587,17 +591,17 @@ export default function Home() {
                   href="https://linkedin.com/in/kevinkwan3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-transform duration-200 hover:scale-125 hover:text-blue-500"
+                  className="transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaLinkedin size={24} />
                 </a>
               </div>
             </div>
           </div>
-          <div className="max-w-2xl mx-auto h-screen">
+          {/* <div className="max-w-2xl mx-auto h-screen">
             <p className="text-2xl font-bold mt-4 text-center">About Me</p>
             <p className="text-lg mt-2 text-center">Blurb</p>
-          </div>
+          </div> */}
         </main>
       </div>
     </Layout>
