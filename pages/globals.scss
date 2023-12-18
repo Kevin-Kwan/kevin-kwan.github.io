@@ -26,6 +26,14 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.custom-title {
+  background: linear-gradient(white, #8ba1b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+}
+
 @function multiple-box-shadow($n) {
   $value: '#{random(100)}vw #{random(100)}vh #FFF';
 
@@ -91,27 +99,6 @@ $shadows-big: multiple-box-shadow(50);
     height: 0.3vh;
     background: transparent;
     box-shadow: $shadows-big;
-  }
-}
-
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #fff;
-  text-align: center;
-  font-family: 'lato', sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-
-  span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }
 
