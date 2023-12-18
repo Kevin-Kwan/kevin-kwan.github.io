@@ -4,6 +4,7 @@ import type { Container } from '@tsparticles/engine';
 import { loadFull } from 'tsparticles';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -541,8 +542,12 @@ export default function Home() {
         <title>Kevin Kwan | Home</title>
       </Head>
       <div id="container">
-        <main className="flex-1 p-4">
-          <div id="tsparticles" className="w-full h-screen relative">
+        <main className="flex-1">
+          <div
+            id="tsparticles"
+            style={{ height: 'calc(100vh - 8vh)' }}
+            className="w-full relative"
+          >
             {init && (
               <Particles
                 id="tsparticles"
@@ -550,24 +555,44 @@ export default function Home() {
                 options={options}
               />
             )}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 max-w-2xl mx-auto">
-              <p className="text-2xl font-bold mb-4">
-                Welcome to my portfolio!
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div
+                style={{ width: '20vw', height: '20vw' }}
+                className="mx-auto rounded-full overflow-hidden"
+              >
+                <img
+                  src="https://media.licdn.com/dms/image/D5603AQFJHsp7k3lE5g/profile-displayphoto-shrink_800_800/0/1690062986221?e=1708560000&v=beta&t=zxWNvDHLTmQQPPKctNEKAUeFohd1AunVBSIpRABI0Sc"
+                  alt="Kevin Kwan"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-2xl font-bold mt-4 text-center">Kevin Kwan</p>
+              <p className="text-lg mt-2 text-center">
+                Python, Java, C#, JavaScript, and TypeScript Full-Stack
+                Entry-Level Software Developer
               </p>
-              <p className="text-lg">
-                Here&apos;s some sample text since my website is still under
-                development. This site is built with Next.js and Tailwind CSS by
-                me with love.
-              </p>
+              <p className="text-lg mt-2 text-center">Interests: </p>
+              <div className="flex justify-center mt-4 space-x-4">
+                <a
+                  href="https://github.com/Kevin-Kwan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub size={24} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/kevinkwan3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin size={24} />
+                </a>
+              </div>
             </div>
           </div>
           <div className="max-w-2xl mx-auto h-screen">
-            <p className="text-2xl font-bold mb-4">About Me</p>
-            <p className="text-lg">
-              This is the about me section. You can put more information about
-              yourself here.
-              {/* image of hills or something here? maybe an emoji at the bottom? */}
-            </p>
+            <p className="text-2xl font-bold mt-4 text-center">About Me</p>
+            <p className="text-lg mt-2 text-center">Blurb</p>
           </div>
         </main>
       </div>
