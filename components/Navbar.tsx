@@ -9,7 +9,10 @@ type NavbarProps = {
 
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
   return (
-    <nav className="flex bg-gray-800 text-white p-4 items-center h-16">
+    <nav
+      style={{ zIndex: 10, backgroundColor: '#171F29' }}
+      className="flex text-white p-4 items-center h-16"
+    >
       <div className="flex items-center justify-center">
         <Link legacyBehavior href="/">
           <a className="flex items-center justify-center">
@@ -20,32 +23,34 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               height={40}
               className="mr-2"
             />
-            <span className="font-bold text-lg ml-3">Home</span>
+            <span className="font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
+              Home
+            </span>
           </a>
         </Link>
       </div>
       <div className="hidden md:flex items-center justify-center flex-1">
         <div className="flex justify-center">
           {/* <Link legacyBehavior href="/">
-            <a className="mx-4 hover:text-gray-300 text-center">Home</a>
+            <a className="mx-4 hover:text-gray-500 text-center">Home</a>
           </Link> */}
           <Link legacyBehavior href="/about">
-            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               About Me
             </a>
           </Link>
           <Link legacyBehavior href="/skills">
-            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               My Skills
             </a>
           </Link>
           <Link legacyBehavior href="/experience">
-            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               My Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
-            <a className="mx-4 hover:text-gray-300 text-center text-lg">
+            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               My Projects
             </a>
           </Link>
@@ -56,7 +61,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           href="https://github.com/Kevin-Kwan"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-300 hover:text-gray-400"
+          className="text-gray-300 transition-transform duration-200 duration-200 hover:scale-150 hover:text-blue-500"
         >
           <FaGithub className="h-6 w-6" />
         </a>
@@ -64,14 +69,14 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           href="https://www.linkedin.com/in/kevinkwan3"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-300 hover:text-gray-400 ml-4 mr-4"
+          className="text-gray-300 transition-transform duration-200 hover:scale-150 hover:text-blue-500 ml-4 mr-4"
         >
           <FaLinkedin className="h-6 w-6" />
         </a>
       </div>
       <div className="hidden md:block items-center">
         <Link legacyBehavior href="/contact">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto hover:text-xl transition-fontSize duration-200">
             Contact Me
           </button>
         </Link>

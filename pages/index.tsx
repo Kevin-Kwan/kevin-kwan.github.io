@@ -566,7 +566,9 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div> */}
-              <p className="text-8xl font-bold mt-4 text-center">Kevin Kwan</p>
+              <p className="text-8xl font-bold mt-4 text-center hover:text-9xl transition-fontSize duration-200">
+                Kevin Kwan
+              </p>
               <p className="text-lg mt-2 text-center">
                 Python, Java, C#, JavaScript, and TypeScript Full-Stack
                 Entry-Level Software Developer
@@ -577,6 +579,7 @@ export default function Home() {
                   href="https://github.com/Kevin-Kwan"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="transition-transform duration-200 hover:scale-125 hover:text-blue-500"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -584,6 +587,7 @@ export default function Home() {
                   href="https://linkedin.com/in/kevinkwan3"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="transition-transform duration-200 hover:scale-125 hover:text-blue-500"
                 >
                   <FaLinkedin size={24} />
                 </a>

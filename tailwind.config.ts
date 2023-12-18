@@ -15,6 +15,11 @@ const config: Config = {
       screens: {
         md: '846px',
       },
+      transitionProperty: {
+        height: 'height',
+        spacing: 'margin, padding',
+        fontSize: 'font-size',
+      },
     },
   },
   plugins: [],

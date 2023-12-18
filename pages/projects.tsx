@@ -9,7 +9,7 @@ export default function Projects() {
         <title>Kevin Kwan | Projects</title>
       </Head>
       <main className="flex-1 p-4">
-        <p className="text-2xl font-bold mb-4 text-center">My Projects</p>
+        <p className="text-2xl font-bold mb-4 text-center ">My Projects</p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Project 1"
