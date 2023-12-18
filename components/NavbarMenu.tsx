@@ -27,6 +27,15 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
             About Me
           </button>
         </Link>
+        <Link legacyBehavior href="/resume">
+          <button
+            type="button"
+            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            onClick={toggleMenu}
+          >
+            My Résumé
+          </button>
+        </Link>
         <Link legacyBehavior href="/skills">
           <button
             type="button"
