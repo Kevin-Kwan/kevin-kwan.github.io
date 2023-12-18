@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import Layout from '../components/RootLayout';
+import Head from "next/head";
+import Layout from "../components/RootLayout";
 
 export default function About() {
   return (

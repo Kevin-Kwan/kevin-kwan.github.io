@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Inter } from 'next/font/google';
-import Navbar from './Navbar';
-import NavbarMenu from './NavbarMenu';
-import Footer from './Footer';
-import StarBackground from './StarBackground';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import { Inter } from "next/font/google";
+import Navbar from "./Navbar";
+import NavbarMenu from "./NavbarMenu";
+import Footer from "./Footer";
+import StarBackground from "./StarBackground";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,

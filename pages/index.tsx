@@ -1,10 +1,10 @@
-import { use, useEffect, useMemo, useState } from 'react';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { type Container, type ISourceOptions } from '@tsparticles/engine';
-import { loadFull } from 'tsparticles';
-import Head from 'next/head';
-import Layout from '../components/RootLayout';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { use, useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { loadFull } from "tsparticles";
+import Head from "next/head";
+import Layout from "../components/RootLayout";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   const [init, setInit] = useState(false);
@@ -28,17 +28,17 @@ export default function Home() {
         // color: {
         //   value: '#0d47a1',
         // },
-        image: '',
-        position: '',
-        repeat: '',
-        size: '',
+        image: "",
+        position: "",
+        repeat: "",
+        size: "",
         opacity: 1,
       },
       backgroundMask: {
-        composite: 'destination-out',
+        composite: "destination-out",
         cover: {
           color: {
-            value: '#fff',
+            value: "#fff",
           },
           opacity: 1,
         },
@@ -55,21 +55,21 @@ export default function Home() {
       duration: 0,
       fpsLimit: 120,
       interactivity: {
-        detectsOn: 'window',
+        detectsOn: "window",
         events: {
           onClick: {
             enable: true,
-            mode: 'push',
+            mode: "push",
           },
           onDiv: {
             selectors: [],
             enable: false,
             mode: [],
-            type: 'circle',
+            type: "circle",
           },
           onHover: {
             enable: true,
-            mode: 'grab',
+            mode: "grab",
             parallax: {
               enable: true,
               force: 60,
@@ -90,7 +90,7 @@ export default function Home() {
           attract: {
             distance: 200,
             duration: 0.4,
-            easing: 'ease-out-quad',
+            easing: "ease-out-quad",
             factor: 1,
             maxSpeed: 50,
             speed: 1,
@@ -140,14 +140,14 @@ export default function Home() {
             factor: 100,
             speed: 1,
             maxSpeed: 50,
-            easing: 'ease-out-quad',
+            easing: "ease-out-quad",
             divs: {
               distance: 200,
               duration: 0.4,
               factor: 100,
               speed: 1,
               maxSpeed: 50,
-              easing: 'ease-out-quad',
+              easing: "ease-out-quad",
               selectors: [],
             },
           },
@@ -159,17 +159,17 @@ export default function Home() {
             area: {
               gradient: {
                 start: {
-                  value: '#ffffff',
+                  value: "#ffffff",
                 },
                 stop: {
-                  value: '#000000',
+                  value: "#000000",
                 },
               },
               radius: 1000,
             },
             shadow: {
               color: {
-                value: '#000000',
+                value: "#000000",
               },
               length: 2000,
             },
@@ -200,14 +200,14 @@ export default function Home() {
           },
           enable: false,
           maxSpeed: 50,
-          mode: 'bounce',
+          mode: "bounce",
           overlap: {
             enable: true,
             retries: 0,
           },
         },
         color: {
-          value: '#ffffff',
+          value: "#ffffff",
           animation: {
             h: {
               count: 0,
@@ -261,12 +261,12 @@ export default function Home() {
           center: {
             x: 50,
             y: 50,
-            mode: 'percent',
+            mode: "percent",
             radius: 0,
           },
           decay: 0,
           distance: {},
-          direction: 'none',
+          direction: "none",
           drift: 0,
           enable: true,
           gravity: {
@@ -284,11 +284,11 @@ export default function Home() {
             options: {},
           },
           outModes: {
-            default: 'out',
-            bottom: 'out',
-            left: 'out',
-            right: 'out',
-            top: 'out',
+            default: "out",
+            bottom: "out",
+            left: "out",
+            right: "out",
+            top: "out",
           },
           random: false,
           size: false,
@@ -313,7 +313,7 @@ export default function Home() {
             height: 1080,
           },
           limit: {
-            mode: 'delete',
+            mode: "delete",
             value: 0,
           },
           value: 80,
@@ -330,16 +330,16 @@ export default function Home() {
             decay: 0,
             delay: 0,
             sync: false,
-            mode: 'auto',
-            startValue: 'random',
-            destroy: 'none',
+            mode: "auto",
+            startValue: "random",
+            destroy: "none",
           },
         },
         reduceDuplicates: false,
         shadow: {
           blur: 0,
           color: {
-            value: '#000',
+            value: "#000",
           },
           enable: false,
           offset: {
@@ -351,7 +351,7 @@ export default function Home() {
           close: true,
           fill: true,
           options: {},
-          type: 'circle',
+          type: "circle",
         },
         size: {
           value: {
@@ -365,9 +365,9 @@ export default function Home() {
             decay: 0,
             delay: 0,
             sync: false,
-            mode: 'auto',
-            startValue: 'random',
-            destroy: 'none',
+            mode: "auto",
+            startValue: "random",
+            destroy: "none",
           },
         },
         stroke: {
@@ -381,7 +381,7 @@ export default function Home() {
         },
         destroy: {
           bounds: {},
-          mode: 'none',
+          mode: "none",
           split: {
             count: 1,
             factor: {
@@ -407,7 +407,7 @@ export default function Home() {
             enable: false,
             value: 0,
           },
-          mode: 'vertical',
+          mode: "vertical",
           speed: 25,
         },
         tilt: {
@@ -418,7 +418,7 @@ export default function Home() {
             decay: 0,
             sync: false,
           },
-          direction: 'clockwise',
+          direction: "clockwise",
           enable: false,
         },
         twinkle: {
@@ -460,7 +460,7 @@ export default function Home() {
             decay: 0,
             sync: false,
           },
-          direction: 'clockwise',
+          direction: "clockwise",
           path: false,
         },
         orbit: {
@@ -482,7 +482,7 @@ export default function Home() {
         links: {
           blink: false,
           color: {
-            value: '#ffffff',
+            value: "#ffffff",
           },
           consent: false,
           distance: 150,
@@ -492,7 +492,7 @@ export default function Home() {
           shadow: {
             blur: 5,
             color: {
-              value: '#000',
+              value: "#000",
             },
             enable: false,
           },
@@ -519,7 +519,7 @@ export default function Home() {
       style: {},
       themes: [],
       zLayers: 100,
-      name: 'Parallax',
+      name: "Parallax",
       motion: {
         disable: false,
         reduce: {
@@ -528,7 +528,7 @@ export default function Home() {
         },
       },
     }),
-    []
+    [],
   );
 
   return (
@@ -540,7 +540,7 @@ export default function Home() {
         <main className="flex-1">
           <div
             id="tsparticles"
-            style={{ height: 'calc(100vh - 6vh)' }}
+            style={{ height: "calc(100vh - 6vh)" }}
             className="w-full relative"
           >
             {init && (
@@ -563,10 +563,10 @@ export default function Home() {
               </div> */}
               <p
                 style={{
-                  background: 'linear-gradient(white, #8ba1b7)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontFamily: 'Lato, sans-serif',
+                  background: "linear-gradient(white, #8ba1b7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontFamily: "Lato, sans-serif",
                   fontWeight: 900,
                 }}
                 className="text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200"
@@ -578,7 +578,7 @@ export default function Home() {
                 className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
                 style={{
                   textShadow:
-                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                    "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                 }}
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
@@ -588,11 +588,11 @@ export default function Home() {
                 className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
                 style={{
                   textShadow:
-                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                    "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
                 }}
               >
                 Interests/Passions include AI, Machine Learning, Game
-                Development, and Web/Application Development.{' '}
+                Development, and Web/Application Development.{" "}
               </p>
               <div className="flex justify-center mt-4 space-x-2 sm:space-x-4 md:space-x-4">
                 <a

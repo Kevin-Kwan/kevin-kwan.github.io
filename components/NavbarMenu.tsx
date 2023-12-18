@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 type MenuProps = {
   isMenuOpen: boolean;
@@ -9,12 +9,12 @@ type MenuProps = {
 const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
   return (
     <motion.div
-      style={{ zIndex: 5, backgroundColor: '#171F29' }}
+      style={{ zIndex: 5, backgroundColor: "#171F29" }}
       className={`${
-        isMenuOpen ? 'block' : 'hidden'
+        isMenuOpen ? "block" : "hidden"
       } fixed text-white w-full flex justify-center text-center md:hidden mt-16`}
-      initial={{ y: '-100vh' }}
-      animate={{ y: isMenuOpen ? '0' : '-100vh' }}
+      initial={{ y: "-100vh" }}
+      animate={{ y: isMenuOpen ? "0" : "-100vh" }}
       transition={{ duration: 0.3 }}
     >
       <div className="text-xl">

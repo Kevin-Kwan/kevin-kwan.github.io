@@ -2,10 +2,10 @@ const StarBackground = () => {
   return (
     <div
       style={{
-        overflow: 'hidden',
-        position: 'absolute',
-        height: '100vh',
-        width: '100%',
+        overflow: "hidden",
+        position: "absolute",
+        height: "100vh",
+        width: "100%",
         zIndex: -1,
       }}
     >

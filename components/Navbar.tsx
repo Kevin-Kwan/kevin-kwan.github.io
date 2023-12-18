@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Link from "next/link";
+import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 type NavbarProps = {
   isMenuOpen: boolean;
@@ -12,7 +12,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
     <nav
       style={{
         zIndex: 10,
-        backgroundColor: '#171F29',
+        backgroundColor: "#171F29",
       }}
       className="flex text-white p-4 items-center h-16"
     >

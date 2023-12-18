@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import Layout from '../components/RootLayout';
-import ProjectCard from '../components/ProjectCard';
+import Head from "next/head";
+import Layout from "../components/RootLayout";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Projects() {
   return (
