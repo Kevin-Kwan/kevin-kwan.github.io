@@ -17,12 +17,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div className="w-full md:w-1/2 lg:w-1/4 p-2 md:p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:bg-blue-200 transform transition-transform hover:scale-110">
-        <Image
-          className="w-full h-48 object-cover object-center object-contain object-center"
-          src={imageSrc}
-          alt="Project Image"
-        />
-        <div className="p-4 md:p-4 flex justify-between items-center">
+        <div className="relative h-48">
+          <Image
+            layout="fill"
+            objectFit="cover"
+            className="absolute"
+            src={imageSrc}
+            alt="Project Image"
+          />
+        </div>
+        <div className="p-2.5 md:p-2.5 flex justify-between items-center">
           <h3 className="text-lg font-medium text-gray-900">{name}</h3>
           <p className="text-sm font-medium text-gray-500">{date}</p>
         </div>
