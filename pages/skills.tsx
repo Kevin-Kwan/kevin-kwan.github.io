@@ -5,7 +5,7 @@ export default function Skills() {
   return (
     <Layout>
       <Head>
-        <title>Kevin Kwan | Skills</title>
+        <title>Kevin Kwan | My Skills</title>
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">

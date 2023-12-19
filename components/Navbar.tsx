@@ -54,7 +54,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           </Link>
           <Link legacyBehavior href="/experience">
             <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
-              My Experience
+              Work Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">

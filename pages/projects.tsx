@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <Layout>
       <Head>
-        <title>Kevin Kwan | Projects</title>
+        <title>Kevin Kwan | My Projects</title>
       </Head>
       <main className="flex-1 p-4">
         <p className="text-2xl font-bold mb-4 text-center ">My Projects</p>

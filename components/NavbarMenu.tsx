@@ -56,7 +56,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
             className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
-            My Experience
+            Work Experience
           </button>
         </Link>
         <Link legacyBehavior href="/projects">

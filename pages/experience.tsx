@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <Layout>
       <Head>
-        <title>Kevin Kwan | Experience</title>
+        <title>Kevin Kwan | Work Experience</title>
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">

@@ -5,7 +5,7 @@ export default function About() {
   return (
     <Layout>
       <Head>
-        <title>Kevin Kwan | About</title>
+        <title>Kevin Kwan | About Me</title>
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">
