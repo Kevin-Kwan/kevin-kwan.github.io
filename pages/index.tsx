@@ -572,14 +572,14 @@ export default function Home() {
               </p>
 
               <p
-                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200`}
+                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white`}
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
                 Software Developer.
               </p>
 
               <p
-                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200`}
+                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white`}
               >
                 Interests/Passions include AI, Machine Learning, Game
                 Development, and Web/Application Development.
