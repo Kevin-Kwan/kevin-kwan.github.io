@@ -27,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         </div>
         <div className="p-2.5 md:p-2.5 flex justify-between items-center">
-          <h3 className="text-lg font-medium text-gray-900">{name}</h3>
+          <h3 className="text-md font-medium text-gray-900">{name}</h3>
           <p className="text-sm font-medium text-gray-500">{date}</p>
         </div>
       </div>

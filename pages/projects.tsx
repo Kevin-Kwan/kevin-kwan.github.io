@@ -35,6 +35,12 @@ export default function Projects() {
             imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
           />
+          {/* <ProjectCard
+            name="AI WhatsApp ChatBot for Travel/Hospitality (Internship)"
+            date="August 2023 - December 2023"
+            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
+            onClick={() => {}}
+          /> */}
         </div>
         <p className="text-lg text-white">
           Here&apos;s some sample text since my website is still under
