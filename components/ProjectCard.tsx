@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/4 p-2 md:p-4">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:bg-blue-200">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:bg-blue-200 transform transition-transform hover:scale-110">
         <img
           className="w-full h-48 object-cover object-center object-contain object-center"
           src={imageSrc}

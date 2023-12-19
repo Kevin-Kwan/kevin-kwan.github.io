@@ -24,7 +24,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               alt="Logo"
               width={40}
               height={40}
-              className="mr-2 transform transition-transform duration-200 hover:scale-110 hover:rotate-[15deg]"
+              className="mr-2 transform transition-transform duration-200 hover:scale-125 hover:rotate-[15deg]"
             />
             <span className="font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               Home
