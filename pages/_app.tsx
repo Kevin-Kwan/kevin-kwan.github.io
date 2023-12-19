@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
           />
           <meta
             property="og:description"
-            content="A portfolio website for Kevin Kwan, a talented, entry-level software engineer based in Atlanta, Georgia."
+            content="A custom-made portfolio website made by Kevin Kwan, a talented, entry-level software engineer based in Atlanta, Georgia to showcase his skills, experience, projects, and more."
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://kevin-kwan.tech" />
