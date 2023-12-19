@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
+declare global {
+  interface Window {
+    AdobeDC: any;
+    adobe_dc_sdk: any;
+    adobe_dc_view_sdk: any;
+  }
+}
 
 export default function Resume() {
   useEffect(() => {
     function initializeAdobeDCView() {
-      var adobeDCView = new AdobeDC.View({
+      var adobeDCView = new window.AdobeDC.View({
         clientId: process.env.NEXT_PUBLIC_ADOBE_CLIENT_ID,
         divId: 'adobe-dc-view',
       });
