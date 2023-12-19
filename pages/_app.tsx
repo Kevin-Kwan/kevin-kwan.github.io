@@ -10,7 +10,7 @@ function App({ Component, pageProps }: AppProps) {
   const router: NextRouter = useRouter();
 
   return (
-    <div className="white-text">
+    <>
       <StarBackground />
       <AnimatePresence mode="wait">
         <div key={router.pathname} className="font-inter">
@@ -41,7 +41,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 export default App;
