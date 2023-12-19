@@ -535,6 +535,7 @@ export default function Home() {
     <Layout>
       <Head>
         <title>Kevin Kwan | Home</title>
+        <meta name="description" content="Kevin Kwan | SWE Portfolio" />
       </Head>
       <div id="container">
         <main className="flex-1">

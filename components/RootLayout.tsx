@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Navbar from './Navbar';
 import NavbarMenu from './NavbarMenu';
