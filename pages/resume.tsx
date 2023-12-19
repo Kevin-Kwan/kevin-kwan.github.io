@@ -16,7 +16,9 @@ export default function Resume() {
         adobeDCView.previewFile(
           {
             content: {
-              location: { url: '/documents/Kevin_Kwan_Resume_2024.pdf' },
+              location: {
+                url: process.env.NEXT_PUBLIC_RESUME_LINK,
+              },
             },
             metaData: { fileName: 'Kevin_Kwan_Resume_2024.pdf' },
           },
