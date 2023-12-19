@@ -6,11 +6,13 @@ import { useRouter, NextRouter } from 'next/router';
 import Head from 'next/head';
 import StarBackground from '../components/StarBackground';
 
+const inter = Inter({ subsets: ['latin'] });
+
 function App({ Component, pageProps }: AppProps) {
   const router: NextRouter = useRouter();
 
   return (
-    <>
+    <main className={inter.className}>
       <StarBackground />
       <AnimatePresence mode="wait">
         <div key={router.pathname} className="font-inter">
@@ -41,7 +43,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
       </AnimatePresence>
-    </>
+    </main>
   );
 }
 export default App;
