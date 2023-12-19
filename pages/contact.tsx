@@ -114,6 +114,7 @@ export default function Contact() {
               })}
               placeholder="Your Message"
               className="w-full p-2 border border-gray-300 rounded text-black"
+              rows={4}
             />
             {errors.message && typeof errors.message.message === 'string' && (
               <span className="text-red-500">{errors.message.message}</span>
