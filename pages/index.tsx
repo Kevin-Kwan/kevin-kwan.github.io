@@ -562,7 +562,7 @@ export default function Home() {
                 />
               </div> */}
               <p
-                className={`gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200`}
+                className={"gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200"}
                 style={{
                   fontFamily: 'Lato, sans-serif',
                   fontWeight: 900,
@@ -572,14 +572,14 @@ export default function Home() {
               </p>
 
               <p
-                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white`}
+                className={"shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white"}
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
                 Software Developer.
               </p>
 
               <p
-                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white`}
+                className={"shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white"}
               >
                 Interests/Passions include AI, Machine Learning, Game
                 Development, and Web/Application Development.
