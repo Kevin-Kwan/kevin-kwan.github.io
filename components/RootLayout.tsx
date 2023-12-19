@@ -18,7 +18,7 @@ export default function RootLayout({
   };
 
   return (
-    <div className={inter.className}>
+    <div>
       {/* <motion.div
         initial="pageInitial"
         animate="pageAnimate"
