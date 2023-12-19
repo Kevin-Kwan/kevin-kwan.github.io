@@ -562,37 +562,27 @@ export default function Home() {
                 />
               </div> */}
               <p
+                className={`gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200`}
                 style={{
-                  background: 'linear-gradient(white, #8ba1b7)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
                   fontFamily: 'Lato, sans-serif',
                   fontWeight: 900,
                 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200"
               >
                 Kevin Kwan
               </p>
-              {/* hover:text-md sm:hover:text-lg md:hover:text-xl */}
+
               <p
-                className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
-                style={{
-                  textShadow:
-                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
-                }}
+                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200`}
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
                 Software Developer.
               </p>
+
               <p
-                className="text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200"
-                style={{
-                  textShadow:
-                    '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
-                }}
+                className={`shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200`}
               >
                 Interests/Passions include AI, Machine Learning, Game
-                Development, and Web/Application Development.{' '}
+                Development, and Web/Application Development.
               </p>
               <div className="flex justify-center mt-4 space-x-2 sm:space-x-4 md:space-x-4">
                 <a

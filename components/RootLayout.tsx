@@ -23,7 +23,7 @@ export default function RootLayout({
 
   return (
     <div className={inter.className}>
-      <motion.div
+      {/* <motion.div
         initial="pageInitial"
         animate="pageAnimate"
         variants={{
@@ -37,7 +37,7 @@ export default function RootLayout({
         transition={{ duration: 1 }}
       >
         <StarBackground />
-      </motion.div>
+      </motion.div> */}
       <div className="flex flex-col min-h-screen">
         <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <NavbarMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />

@@ -9,7 +9,7 @@ const Footer = () => {
       }}
     >
       <div className="max-w-2xl mx-auto">
-        <p className="text-center">
+        <p className="text-center ">
           Custom Made by{' '}
           <Link legacyBehavior href="/">
             <a className="text-blue-500 hover:underline">Kevin Kwan</a>
