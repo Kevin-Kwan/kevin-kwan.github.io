@@ -12,7 +12,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
     <nav
       style={{
         zIndex: 10,
-        backgroundColor: '#171F29',
+        background: 'linear-gradient(to right, #3F4C6B, #171F29, #3F4C6B)',
       }}
       className="flex text-white p-4 items-center h-16"
     >

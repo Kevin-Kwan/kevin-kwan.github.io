@@ -2,7 +2,12 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white p-4">
+    <footer
+      className="text-white p-4"
+      style={{
+        background: 'linear-gradient(to right, #171F29, #3F4C6B, #171F29)',
+      }}
+    >
       <div className="max-w-2xl mx-auto">
         <p className="text-center">
           Custom Made by{' '}
