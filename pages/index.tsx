@@ -589,7 +589,7 @@ export default function Home() {
                   href="https://github.com/Kevin-Kwan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
+                  className="text-white transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -597,7 +597,7 @@ export default function Home() {
                   href="https://linkedin.com/in/kevinkwan3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
+                  className="text-white transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaLinkedin size={24} />
                 </a>

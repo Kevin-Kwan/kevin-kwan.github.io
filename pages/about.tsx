@@ -9,8 +9,10 @@ export default function About() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">
-          <p className="text-2xl font-bold mb-4">A Little About Me!</p>
-          <p className="text-lg">
+          <p className="text-white text-2xl font-bold mb-4">
+            A Little About Me!
+          </p>
+          <p className="text-white text-lg">
             Here&apos;s some sample text since my website is still under
             development.
             {/* talk about education, hobbies, etc. */}

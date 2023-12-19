@@ -26,7 +26,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               height={40}
               className="mr-2 transform transition-transform duration-200 hover:scale-125 hover:rotate-[15deg]"
             />
-            <span className="font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
+            <span className="text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
               Home
             </span>
           </a>
@@ -38,27 +38,27 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
             <a className="mx-4 hover:text-gray-500 text-center">Home</a>
           </Link> */}
           <Link legacyBehavior href="/about">
-            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               About Me
             </a>
           </Link>
           <Link legacyBehavior href="/resume">
-            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               My Résumé
             </a>
           </Link>
           <Link legacyBehavior href="/skills">
-            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               My Skills
             </a>
           </Link>
           <Link legacyBehavior href="/experience">
-            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               Work Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
-            <a className="mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               My Projects
             </a>
           </Link>

@@ -53,10 +53,10 @@ export default function Contact() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-2xl mx-auto">
-          <p className="text-2xl font-bold mb-4 text-center">
+          <p className="text-white text-2xl font-bold mb-4 text-center">
             Feel Free to Contact Me!
           </p>
-          <p className="text-white-700 mb-4">
+          <p className="text-white mb-4">
             If you would like to reach out to me, please fill out the form below
             with your name, email, and a message.
             <br />

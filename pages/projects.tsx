@@ -36,7 +36,7 @@ export default function Projects() {
             onClick={() => {}}
           />
         </div>
-        <p className="text-lg">
+        <p className="text-lg text-white">
           Here&apos;s some sample text since my website is still under
           development.
         </p>

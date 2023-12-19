@@ -26,7 +26,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/about">
           <button
             type="button"
-            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             About Me
@@ -35,7 +35,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/resume">
           <button
             type="button"
-            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Résumé
@@ -44,7 +44,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/skills">
           <button
             type="button"
-            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Skills
@@ -53,7 +53,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/experience">
           <button
             type="button"
-            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Work Experience
@@ -62,7 +62,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/projects">
           <button
             type="button"
-            className="block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             My Projects
@@ -70,7 +70,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         </Link>
         <Link legacyBehavior href="/contact">
           <div className="pb-3">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 ">
               Contact Me
             </button>
           </div>

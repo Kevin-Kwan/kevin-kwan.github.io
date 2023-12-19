@@ -8,9 +8,11 @@ export default function Skills() {
         <title>Kevin Kwan | My Skills</title>
       </Head>
       <main className="flex-1 p-4">
-        <div className="max-w-2xl mx-auto">
-          <p className="text-2xl font-bold mb-4">Placeholder title!</p>
-          <p className="text-lg">
+        <div className="max-w-2xl mx-auto ">
+          <p className="text-2xl font-bold mb-4 text-white">
+            Placeholder title!
+          </p>
+          <p className="text-lg text-white ">
             Here&apos;s some sample text since my website is still under
             development.
           </p>
