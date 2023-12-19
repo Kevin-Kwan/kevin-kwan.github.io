@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
-require('dotenv').config();
+declare const AdobeDC: any;
 
 export default function Resume() {
   useEffect(() => {
