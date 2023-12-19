@@ -13,26 +13,26 @@ export default function Projects() {
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Project 1"
-            date="2021-01-01"
-            imageSrc="https://picsum.photos/seed/picsum/200/300"
+            date="2022-Present"
+            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
           />
           <ProjectCard
-            name="Project 1"
-            date="2021-01-01"
-            imageSrc="https://picsum.photos/seed/picsum/200/300"
+            name="Project 2"
+            date="2022-2023"
+            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
           />
           <ProjectCard
-            name="Project 1"
-            date="2021-01-01"
-            imageSrc="https://picsum.photos/seed/picsum/200/300"
+            name="Project 3"
+            date="June 2023 - August 2023"
+            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
           />
           <ProjectCard
-            name="Project 1"
-            date="2021-01-01"
-            imageSrc="https://picsum.photos/seed/picsum/200/300"
+            name="Project 4"
+            date="August 2023 - December 2023"
+            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
           />
         </div>
