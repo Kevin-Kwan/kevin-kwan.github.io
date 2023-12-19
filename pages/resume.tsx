@@ -78,7 +78,7 @@ export default function Resume() {
           </a>
           .
         </p>
-        <div id="adobe-dc-view"></div>
+        <div id="adobe-dc-view" />
       </main>
     </Layout>
   );
