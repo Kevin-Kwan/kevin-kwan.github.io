@@ -5,6 +5,15 @@ declare const AdobeDC: any;
 
 export default function Resume() {
   useEffect(() => {
+    // Check if the script has already been loaded
+    if (
+      document.querySelector(
+        'script[src="https://acrobatservices.adobe.com/view-sdk/viewer.js"]'
+      )
+    ) {
+      return;
+    }
+
     const script = document.createElement('script');
     script.src = 'https://acrobatservices.adobe.com/view-sdk/viewer.js';
     script.onload = () => {
