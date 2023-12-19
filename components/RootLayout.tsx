@@ -10,6 +10,24 @@ import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const metadata: Metadata = {
+  openGraph: {
+    title: 'example',
+    url: 'https://www.example.com',
+    description: 'example example example',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.example.com/path-to-your-image.jpg',
+        type: 'image/jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Example Image',
+      },
+    ],
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
