@@ -38,7 +38,7 @@ export default function Resume() {
     }
 
     function loadViewerScript() {
-      if (window.AdobeDC && window.AdobeDC.View) {
+      if (window.AdobeDC?.View) {
         setTimeout(initializeAdobeDCView, 100); // Delay the call to ensure the SDK is loaded
       } else {
         var viewerScript = document.createElement('script');
@@ -78,7 +78,7 @@ export default function Resume() {
           </a>
           .
         </p>
-        <div id="adobe-dc-view"></div>
+        <div id="adobe-dc-view" />
       </main>
     </Layout>
   );
