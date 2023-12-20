@@ -595,7 +595,7 @@ export default function Home() {
                   'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
                 }
               >
-                Always in pursuit of creating impactful and purposeful works.
+                Always in pursuit of creating impactful and purposeful works 🚀
               </p>
               <div className="flex justify-center mt-4 space-x-2 sm:space-x-4 md:space-x-4">
                 <a
