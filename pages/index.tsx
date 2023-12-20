@@ -578,7 +578,7 @@ export default function Home() {
                   'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
                 }
               >
-                Python, Java, C#, JavaScript/TypeScript\nFull-Stack Entry-Level
+                Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
                 Software Developer.
               </p>
 
