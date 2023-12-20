@@ -65,7 +65,7 @@ export default function Resume() {
       <Head>
         <title>Kevin Kwan | Résumé</title>
       </Head>
-      <main className="flex-1 p-4" style={{ height: '100vh' }}>
+      <main className="flex-1 p-4 pb-20 " style={{ height: '100vh' }}>
         <p className="text-white text-lg font-bold mb-4 text-center">
           If you have troubles viewing the PDF, you can{' '}
           <a
