@@ -72,7 +72,7 @@ export default function Resume() {
             href={process.env.NEXT_PUBLIC_RESUME_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 underline"
+            className="text-blue-400 underline"
           >
             click here to download it
           </a>

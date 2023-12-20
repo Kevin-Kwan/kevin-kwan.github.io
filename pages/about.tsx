@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
+import Link from 'next/link';
 
 export default function About() {
   return (
@@ -13,9 +14,13 @@ export default function About() {
             A Little About Me!
           </p>
           <p className="text-white text-lg">
-            Here&apos;s some sample text since my website is still under
-            development.
-            {/* talk about education, hobbies, etc. */}
+            Sorry! My website is still under active development.
+            <br />
+            In the meantime, please feel free to check out{' '}
+            <Link href="/resume" className="text-blue-400 underline font-bold">
+              my Résumé
+            </Link>
+            .{/* talk about education, hobbies, etc. */}
           </p>
         </div>
       </main>

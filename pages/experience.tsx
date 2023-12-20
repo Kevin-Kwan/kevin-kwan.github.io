@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
+import Link from 'next/link';
 
 export default function Experience() {
   return (
@@ -13,8 +14,13 @@ export default function Experience() {
             Placeholder title!
           </p>
           <p className="text-white text-lg">
-            Here&apos;s some sample text since my website is still under
-            development.
+            Sorry! My website is still under active development.
+            <br />
+            In the meantime, please feel free to check out{' '}
+            <Link href="/resume" className="text-blue-400 underline font-bold">
+              my Résumé
+            </Link>
+            .
           </p>
           {/* probably make sections for each experience, maybe flex? */}
         </div>
