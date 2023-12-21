@@ -69,10 +69,10 @@ export default function Resume() {
         <title>Kevin Kwan | Résumé</title>
       </Head>
       <main
-        className="flex-1 p-4 pb-20 flex flex-col items-center justify-center"
+        className="flex-1 p-4 flex flex-col items-center justify-center"
         style={{ height: '100vh' }}
       >
-        <p className="text-white text-lg font-bold mb-4 text-center">
+        <p className="text-white text-2xl font-bold mb-4 text-center">
           {isMobile
             ? 'It seems like you are on a mobile device! For a better experience, we recommend that you please '
             : 'If you have troubles viewing the PDF, you can '}

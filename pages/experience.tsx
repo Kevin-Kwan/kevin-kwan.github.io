@@ -10,7 +10,7 @@ export default function Experience() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-white text-2xl font-bold mb-4 text-center">
+          <p className="text-white text-4xl font-bold mb-4 text-center">
             My Work Experience
           </p>
           <p className="text-white text-lg mb-4">
