@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
+import { useMediaQuery } from 'react-responsive';
+
 declare global {
   interface Window {
     AdobeDC: any;
@@ -10,6 +12,7 @@ declare global {
 }
 
 export default function Resume() {
+  const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
       var adobeDCView = new window.AdobeDC.View({
@@ -27,7 +30,7 @@ export default function Resume() {
         },
         {
           embedMode: 'FULL_WINDOW',
-          defaultViewMode: 'FIT_WIDTH',
+          defaultViewMode: 'FIT_PAGE',
           showFullScreen: true,
           showAnnotationTools: false,
           showZoomControl: true,
@@ -65,20 +68,25 @@ export default function Resume() {
       <Head>
         <title>Kevin Kwan | Résumé</title>
       </Head>
-      <main className="flex-1 p-4 pb-20 " style={{ height: '100vh' }}>
+      <main
+        className="flex-1 p-4 pb-20 flex flex-col items-center justify-center"
+        style={{ height: '100vh' }}
+      >
         <p className="text-white text-lg font-bold mb-4 text-center">
-          If you have troubles viewing the PDF, you can{' '}
+          {isMobile
+            ? 'It seems like you are on a mobile device! For a better experience, we recommend that you please '
+            : 'If you have troubles viewing the PDF, you can '}
           <a
             href={process.env.NEXT_PUBLIC_RESUME_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 underline"
           >
-            click here to download it
+            click here to view/download it
           </a>
           .
         </p>
-        <div id="adobe-dc-view" />
+        {!isMobile && <div id="adobe-dc-view" className="max-w-5xl mx-auto" />}
       </main>
     </Layout>
   );
