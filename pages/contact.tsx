@@ -56,8 +56,8 @@ export default function Contact() {
             Feel Free to Contact Me!
           </p>
           <p className="text-white mb-4">
-            If you would like to reach out to me, please fill out the form below
-            with your name, email, and a message.
+            If you would like to reach out to me or report a bug on my website,
+            please fill out the form below with your name, email, and a message.
             <br />
             You can also directly email me at{' '}
             {process.env.NEXT_PUBLIC_CONTACT_EMAIL ? (
