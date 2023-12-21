@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
-import Link from 'next/link';
 import ExperienceCard from '../components/ExperienceCard';
 
 export default function Experience() {

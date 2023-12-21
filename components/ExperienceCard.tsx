@@ -49,12 +49,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         </h3>
         <p className="text-sm text-gray-700">{location}</p>{' '}
         <p className="text-sm text-gray-800">{dateRange}</p>
-        {links.map((link, index) => (
-          <React.Fragment key={index}>
+        {links.map((link) => (
+          <React.Fragment key={link.url}>
             <a href={link.url} className="text-sm text-blue-500 underline">
               {link.displayText}
             </a>
-            {index < links.length - 1 && <>&nbsp;&nbsp;&nbsp;</>}
           </React.Fragment>
         ))}
       </div>
