@@ -12,7 +12,7 @@ export default function Skills() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-4xl mx-auto ">
-          <p className="text-4xl font-bold mb-4 text-white text-center">
+          <p className="text-3xl font-bold mb-4 text-white text-center">
             My Skills
           </p>
           <p className="text-1xl text-white ">
