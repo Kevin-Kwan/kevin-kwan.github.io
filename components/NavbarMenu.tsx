@@ -23,7 +23,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
       transition={{ duration: 0.3 }}
     >
       <div className="text-xl flex flex-col items-center justify-center">
-        <Link legacyBehavior href="/about">
+        {/* <Link legacyBehavior href="/about">
           <button
             type="button"
             className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
@@ -31,7 +31,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
           >
             About Me
           </button>
-        </Link>
+        </Link> */}
         <Link legacyBehavior href="/resume">
           <button
             type="button"
