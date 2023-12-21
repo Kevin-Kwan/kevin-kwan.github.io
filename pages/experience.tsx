@@ -27,7 +27,7 @@ export default function Experience() {
             jobTitle="Software Engineer Intern"
             logoUrl="https://careers.publicissapient.com/content/dam/careers/events/Sapient_Event_green.png"
             jobDescription={
-              <>
+              <div>
                 <p style={{ marginBottom: '0.5rem' }}>
                   As part of a team, our project was to engineer an AI chatbot
                   application for the Travel & Hospitality Industry,
@@ -72,7 +72,7 @@ export default function Experience() {
                     thinking and their potential to create impactful solutions.
                   </strong>
                 </p>
-              </>
+              </div>
             }
             links={[
               {
@@ -87,7 +87,52 @@ export default function Experience() {
             dateRange="January 2022 - May 2023"
             jobTitle="Software Engineer (Connected and Automated Vehicles Team)"
             logoUrl="https://media.licdn.com/dms/image/C560BAQH6vov8-U6y8g/company-logo_200_200/0/1661008559177?e=2147483647&v=beta&t=9bFW6vwhYP7GaORz81Ti2ZYcrY94yyrmZUW4rftU_jo"
-            jobDescription="Job Description"
+            jobDescription={
+              <div>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  I served as a Connected Autonomous Vehicles (CAVs) Software
+                  Engineer for the Georgia Tech EcoCAR EV Challenge at the
+                  Georgia Institute of Technology. As part of the
+                  Vehicle-to-Everything (V2X) subteam, I utilized multiple data
+                  streams from cameras and sensors to develop a state machine.
+                  This machine was designed to enable the car to make
+                  intelligent decisions in various traffic light scenarios, with
+                  a focus on efficiency and user experience. For example, based
+                  on the distance to the traffic light, the state machine would
+                  determine whether the car should stop or continue driving,
+                  which in turn would improve the car’s fuel efficiency and the
+                  user’s experience.
+                </p>
+
+                <p style={{ marginBottom: '0.5rem' }}>
+                  The EcoCAR Mobility Challenge is a prestigious 4-year
+                  Collegiate Competition and a $1 million research program. It
+                  is sponsored by esteemed organizations such as Argonne
+                  National Labs, the U.S. Department of Energy, General Motors,
+                  MathWorks, Intel, and more.
+                </p>
+
+                <p>
+                  I am proud to have contributed to the{' '}
+                  <a
+                    href="https://coe.gatech.edu/news/2022/05/student-team-wins-department-energy-ecocar-mobility-challenge"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    Georgia Institute of Technology team’s victory in the 2022
+                    EcoCAR Mobility Challenge, where we secured 1st place
+                  </a>
+                  {'. '}
+                  <strong>
+                    This experience not only honed my technical skills but also
+                    reinforced my passion for software engineering and its
+                    potential to create impactful and innovate solutions in the
+                    field of autonomous vehicles.
+                  </strong>
+                </p>
+              </div>
+            }
             links={[
               {
                 url: 'https://www.vip.gatech.edu/teams/vpu',
@@ -110,7 +155,7 @@ export default function Experience() {
             jobTitle="Software Engineer Intern"
             logoUrl="https://media.licdn.com/dms/image/D560BAQEHLtG-f8uOUQ/company-logo_200_200/0/1697490837284/ncrvoyix_logo?e=1710979200&v=beta&t=XhgUKoF_-1w4tBihIcFRqZ8xkCOWu5X1zBM3OuAn2Xg"
             jobDescription={
-              <>
+              <div>
                 <p style={{ marginBottom: '0.5rem' }}>
                   My primary task was to develop a machine learning program
                   using MATLAB, a language and environment that was completely
@@ -139,7 +184,7 @@ export default function Experience() {
                     adapt to new technologies and deliver impressive results.
                   </strong>
                 </p>
-              </>
+              </div>
             }
             links={[
               {

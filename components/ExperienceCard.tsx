@@ -60,7 +60,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       </div>
     </div>
     <h4 className="text-lg font-bold mt-2 text-black">{jobTitle}</h4>
-    <p className="text-sm text-gray-700 mt-2">{jobDescription}</p>
+    <div className="text-sm text-gray-700 mt-2">{jobDescription}</div>
   </div>
 );
 
