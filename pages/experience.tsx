@@ -32,10 +32,10 @@ export default function Experience() {
                   As part of a team, our project was to engineer an AI chatbot
                   application for the Travel & Hospitality Industry,
                   specifically designed for WhatsApp. The application was built
-                  using Google VertexAI’s PaLM LLM, LangChain, MongoDB, and
-                  APIs, with the aim of enhancing tourists’ experiences by
+                  using Google VertexAI&aposs PaLM LLM, LangChain, MongoDB, and
+                  APIs, with the aim of enhancing tourists&apos experiences by
                   providing engaging conversations, accurate and up-to-date
-                  answers, live data, and recommendations for Atlanta’s
+                  answers, live data, and recommendations for Atlanta&aposs
                   attractions (World of Coca-Cola, Zoo Atlanta, Georgia
                   Aquarium), hotels (like Marriott®), and restaurants.
                 </p>
@@ -51,7 +51,7 @@ export default function Experience() {
                   applications on Google App Engine. This not only streamlined
                   the development process but also ensured seamless deployment
                   of our applications. I was able to improve the accuracy of the
-                  bot’s responses up to 91% through rigorous testing and
+                  bot&aposs responses up to 91% through rigorous testing and
                   validation.
                 </p>
 
@@ -100,8 +100,8 @@ export default function Experience() {
                   a focus on efficiency and user experience. For example, based
                   on the distance to the traffic light, the state machine would
                   determine whether the car should stop or continue driving,
-                  which in turn would improve the car’s fuel efficiency and the
-                  user’s experience.
+                  which in turn would improve the car&aposs fuel efficiency and
+                  the user&aposs experience.
                 </p>
 
                 <p style={{ marginBottom: '0.5rem' }}>
@@ -120,8 +120,8 @@ export default function Experience() {
                     rel="noopener noreferrer"
                     className="text-blue-500 underline"
                   >
-                    Georgia Institute of Technology team’s victory in the 2022
-                    EcoCAR Mobility Challenge, where we secured 1st place
+                    Georgia Institute of Technology team&aposs victory in the
+                    2022 EcoCAR Mobility Challenge, where we secured 1st place
                   </a>
                   {'. '}
                   <strong>
@@ -161,9 +161,9 @@ export default function Experience() {
                   using MATLAB, a language and environment that was completely
                   new to me. The project involved training and fine-tuning a
                   neural network using an architecture like AlexNet on a dataset
-                  of images where each image was associated with a person’s
+                  of images where each image was associated with a person&aposs
                   name. The goal was to use live footage from a computer webcam
-                  to correctly identify people's faces. This task was
+                  to correctly identify people&aposs faces. This task was
                   essentially a classification problem, and it involved elements
                   of facial recognition.
                 </p>

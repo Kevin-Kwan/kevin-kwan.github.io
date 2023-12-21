@@ -11,7 +11,7 @@ interface ExperienceCardProps {
   dateRange: string;
   jobTitle: string;
   logoUrl: string;
-  jobDescription: string;
+  jobDescription: React.ReactNode;
   links: Link[];
   subCompanyDescription: string;
   location?: string;
