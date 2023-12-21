@@ -27,7 +27,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   subCompanyDescription,
   location = 'Atlanta, GA',
 }) => (
-  <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-4xl mx-auto">
+  <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-5xl mx-auto">
     <div className="flex items-center">
       <Image
         src={logoUrl}

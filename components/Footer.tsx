@@ -10,16 +10,20 @@ const Footer = () => {
     >
       <div className="max-w-2xl mx-auto">
         <p className="text-center ">
-          Custom Made by{' '}
-          <Link legacyBehavior href="/">
-            <a className="text-blue-500 hover:underline">Kevin Kwan</a>
+          <Link
+            legacyBehavior
+            href="https://github.com/Kevin-Kwan/portfolio-next"
+          >
+            <a className="text-blue-300 hover:underline">
+              Custom Made by Kevin Kwan
+            </a>
           </Link>{' '}
           using{' '}
           <a
             href="https://nextjs.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
+            className="text-blue-300 hover:underline"
           >
             Next.js
           </a>{' '}
@@ -28,7 +32,7 @@ const Footer = () => {
             href="https://tailwindcss.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
+            className="text-blue-300 hover:underline"
           >
             Tailwind CSS
           </a>{' '}
