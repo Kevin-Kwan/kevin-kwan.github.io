@@ -20,12 +20,7 @@ export default function Skills() {
             work. My experience spans across various domains, whether it&apos;s
             front-end or back-end development, databases, or deployment.
           </p>
-          <div
-            className="grid grid-flow-row-dense gap-4 mt-4 bg-blue-100 rounded-lg p-4"
-            style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-            }}
-          >
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-8 bg-blue-100 rounded-lg p-4">
             <TechLogo
               href="https://git-scm.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png"
