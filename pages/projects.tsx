@@ -112,7 +112,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
             } Used Python, PyTorch, numpy, and OpenCV.`}
             githubLink="https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/"
             demoLink="https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb"
-            demoText="Colab Notebook Demo"
+            demoText="Colab Demo"
           />
 
           <ProjectCard
