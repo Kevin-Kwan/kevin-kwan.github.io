@@ -11,12 +11,12 @@ declare global {
   }
 }
 
-export default function Resume() {
+export default function Resume({ adobeClientId }) {
   const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
       var adobeDCView = new window.AdobeDC.View({
-        clientId: process.env.NEXT_PUBLIC_ADOBE_CLIENT_ID,
+        clientId: adobeClientId,
         divId: 'adobe-dc-view',
       });
       adobeDCView.previewFile(
@@ -90,4 +90,14 @@ export default function Resume() {
       </main>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const adobeClientId = process.env.ADOBE_CLIENT_ID;
+
+  return {
+    props: {
+      adobeClientId,
+    },
+  };
 }

@@ -86,7 +86,6 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           className="text-white hover:text-gray-300 focus:outline-none"
           onClick={() => {
             // console.log('Button clicked');
-            // Add your toggle function here
             toggleMenu();
           }}
         >
