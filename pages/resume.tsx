@@ -10,13 +10,16 @@ declare global {
     adobe_dc_view_sdk: any;
   }
 }
+interface ResumeProps {
+  adobeClientId: string;
+}
 
-export default function Resume() {
+export default function Resume({ adobeClientId }: ResumeProps) {
   const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
       var adobeDCView = new window.AdobeDC.View({
-        clientId: process.env.NEXT_PUBLIC_ADOBE_CLIENT_ID,
+        clientId: adobeClientId,
         divId: 'adobe-dc-view',
       });
       adobeDCView.previewFile(
@@ -61,7 +64,7 @@ export default function Resume() {
       window.adobe_dc_sdk = undefined;
       window.adobe_dc_view_sdk = undefined;
     };
-  }, []);
+  }, [adobeClientId]);
 
   return (
     <Layout>
@@ -69,10 +72,10 @@ export default function Resume() {
         <title>Kevin Kwan | Résumé</title>
       </Head>
       <main
-        className="flex-1 p-4 pb-20 flex flex-col items-center justify-center"
+        className="flex-1 p-4 flex flex-col items-center justify-center"
         style={{ height: '100vh' }}
       >
-        <p className="text-white text-lg font-bold mb-4 text-center">
+        <p className="text-white text-2xl font-bold mb-4 text-center">
           {isMobile
             ? 'It seems like you are on a mobile device! For a better experience, we recommend that you please '
             : 'If you have troubles viewing the PDF, you can '}
@@ -91,3 +94,14 @@ export default function Resume() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  const adobeClientId = process.env.ADOBE_CLIENT_ID;
+
+  return {
+    props: {
+      adobeClientId,
+    },
+  };
+}
+export const runtime = 'experimental-edge';

@@ -9,7 +9,17 @@ import {
   AiOutlineClose,
 } from 'react-icons/ai';
 
-export default function Contact() {
+interface ContactProps {
+  serviceId: string;
+  templateId: string;
+  publicKey: string;
+}
+
+export default function Contact({
+  serviceId,
+  templateId,
+  publicKey,
+}: ContactProps) {
   const form = useRef<HTMLFormElement>(null);
   const [submitResult, setSubmitResult] = useState<
     'success' | 'failure' | null
@@ -23,10 +33,6 @@ export default function Contact() {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
     if (!serviceId || !templateId || !publicKey || !form.current) {
       console.error(
         'EmailJS environment variables or form reference are not defined'
@@ -56,8 +62,8 @@ export default function Contact() {
             Feel Free to Contact Me!
           </p>
           <p className="text-white mb-4">
-            If you would like to reach out to me, please fill out the form below
-            with your name, email, and a message.
+            If you would like to reach out to me or report a bug on my website,
+            please fill out the form below with your name, email, and a message.
             <br />
             You can also directly email me at{' '}
             {process.env.NEXT_PUBLIC_CONTACT_EMAIL ? (
@@ -172,3 +178,19 @@ export default function Contact() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  const serviceId = process.env.EMAILJS_SERVICE_ID;
+  const templateId = process.env.EMAILJS_TEMPLATE_ID;
+  const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+
+  return {
+    props: {
+      serviceId,
+      templateId,
+      publicKey,
+    },
+  };
+}
+
+export const runtime = 'experimental-edge';
