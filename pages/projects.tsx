@@ -2,23 +2,22 @@ import Head from 'next/head';
 import Layout from '../components/RootLayout';
 import ProjectCard from '../components/ProjectCard';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const github_pat = process.env.GITHUB_PAT;
 
 async function getRepoDescription(githubRepoUrl: string) {
   const [, owner, repo] = new URL(githubRepoUrl).pathname.split('/');
   try {
-    const response = await axios.get(
+    const response = await fetch(
       `https://api.github.com/repos/${owner}/${repo}`,
       {
         headers: {
-          Authorization: `token ${github_pat}`,
+          Authorization: `Bearer ${github_pat}`,
         },
       }
     );
-    return response.data.description;
+    const data = await response.json();
+    return data.description;
   } catch (error) {
     console.error(`Error: ${error}`);
     return 'Error: Could not fetch GitHub Repository description. Please try again later.';
@@ -140,4 +139,4 @@ export async function getServerSideProps() {
     },
   };
 }
-export const runtime = 'server';
+export const runtime = 'experimental-edge';
