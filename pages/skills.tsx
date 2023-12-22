@@ -71,6 +71,18 @@ export default function Skills() {
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/600px-CSS3_logo_and_wordmark.svg.png"
               alt="CSS"
             />
+            {/* GitHub */}
+            <TechLogo
+              href="https://www.github.com/"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png"
+              alt="GitHub"
+            />
+            {/* GitLab */}
+            <TechLogo
+              href="https://www.gitlab.com/"
+              src="https://assets.stickpng.com/images/5847f997cef1014c0b5e48c1.png"
+              alt="GitLab"
+            />
             <TechLogo
               href="https://www.mongodb.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/1280px-MongoDB_Logo.svg.png"

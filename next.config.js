@@ -10,6 +10,7 @@ const nextConfig = {
       'upload.wikimedia.org',
       'www.cdnlogo.com',
       'seeklogo.com',
+      'assets.stickpng.com',
     ],
   },
 };
