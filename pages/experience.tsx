@@ -10,10 +10,10 @@ export default function Experience() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-white text-3xl font-bold mb-4 text-center">
+          <p className="text-white text-3xl font-bold mb-2 text-center">
             My Work Experience
           </p>
-          <p className="text-white text-lg mb-4">
+          <p className="text-white text-lg mb-2">
             Here, you&apos;ll find a list of software engineering positions
             I&apos;ve held, the companies I&apos;ve worked for, the projects
             that I worked on, some of the responsibilities I had, and what I

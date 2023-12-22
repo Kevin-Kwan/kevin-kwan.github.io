@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
-import Link from 'next/link';
-import Image from 'next/image';
 import TechLogo from '../components/TechLogo';
 
 export default function Skills() {
@@ -12,7 +10,7 @@ export default function Skills() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-4xl mx-auto ">
-          <p className="text-3xl font-bold mb-4 text-white text-center">
+          <p className="text-3xl font-bold mb-2 text-white text-center">
             My Skills
           </p>
           <p className="text-1xl text-white ">
@@ -22,7 +20,12 @@ export default function Skills() {
             work. My experience spans across various domains, whether it&apos;s
             front-end or back-end development, databases, or deployment.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-8 bg-blue-100 rounded-lg p-4">
+          <div
+            className="grid grid-flow-row-dense gap-4 mt-4 bg-blue-100 rounded-lg p-4"
+            style={{
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            }}
+          >
             <TechLogo
               href="https://git-scm.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png"
@@ -49,6 +52,11 @@ export default function Skills() {
               alt="Unity"
             />
             <TechLogo
+              href="https://nodejs.org/"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png"
+              alt="Node.js"
+            />
+            <TechLogo
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png"
               alt="JavaScript"
@@ -59,9 +67,14 @@ export default function Skills() {
               alt="TypeScript"
             />
             <TechLogo
-              href="https://nodejs.org/"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png"
-              alt="Node.js"
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+              src="/images/HTML5.png"
+              alt="HTML"
+            />
+            <TechLogo
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/600px-CSS3_logo_and_wordmark.svg.png"
+              alt="CSS"
             />
             <TechLogo
               href="https://www.mongodb.com/"
