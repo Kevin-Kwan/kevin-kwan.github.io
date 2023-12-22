@@ -36,6 +36,7 @@ const projectsWithDescriptions = [
   'WindowsXPWebsite',
   'gsmst-EvadeAndDeceive',
   'fixed_pytorch_mpiigaze_demo',
+  'Dark-Ascent',
 ];
 
 const loadingMessage =
@@ -111,7 +112,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
               <ProjectCard
                 name="Dark Ascent (3D Platformer Game)"
                 description={`${
-                  descriptions['gsmst-Dark-Ascent'] || loadingMessage
+                  descriptions['Dark-Ascent'] || loadingMessage
                 } Written in C#.`}
                 githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
                 demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
