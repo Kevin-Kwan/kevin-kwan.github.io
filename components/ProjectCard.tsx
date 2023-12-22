@@ -24,14 +24,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <div className="p-4 text-zinc-200 text-sm">{description}</div>
         </div>
         <div className="p-4 flex justify-between">
-          <Link href={githubLink}>
+          <Link href={githubLink} rel="noopener noreferrer" target="_blank">
             <div className="bg-slate-400 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded inline-flex items-center">
               <FaGithub className="mr-2" />
               <span>GitHub</span>
             </div>
           </Link>
           {demoLink && (
-            <Link href={demoLink}>
+            <Link href={demoLink} rel="noopener noreferrer" target="_blank">
               <div className="bg-slate-400 hover:bg-green-700 text-black font-bold py-2 px-4 rounded inline-flex items-center">
                 <FaGlobe className="mr-2" />
                 <span>Demo</span>

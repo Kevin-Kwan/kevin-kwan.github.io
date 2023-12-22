@@ -14,25 +14,25 @@ export default function Projects() {
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Project 1"
-            description="Description Here"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here Description HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription Here"
+            name="Project 2"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here"
+            name="Project 3"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here"
+            name="Project 4"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
@@ -44,28 +44,31 @@ export default function Projects() {
             onClick={() => {}}
           /> */}
         </div>
+        <p className="text-3xl font-bold mb-2 text-center ">
+          Completed Projects
+        </p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Project 1"
-            description="Description Here"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here Description HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription Here"
+            name="Project 2"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here"
+            name="Project 3"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 1"
-            description="Description Here"
+            name="Project 4"
+            description="Description"
             githubLink="https://github.com"
             demoLink="https://github.com"
           />
@@ -77,7 +80,7 @@ export default function Projects() {
             onClick={() => {}}
           /> */}
         </div>
-        <p className="text-lg text-white">
+        <p className="text-lg text-white text-center">
           Sorry! My website is still under active development.
           <br />
           In the meantime, please feel free to check out{' '}

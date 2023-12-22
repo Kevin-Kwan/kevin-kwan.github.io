@@ -49,9 +49,16 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         </h3>
         <p className="text-sm text-gray-700">{location}</p>{' '}
         <p className="text-sm text-gray-800">{dateRange}</p>
-        {links.map((link) => (
+        {links.map((link, index) => (
           <React.Fragment key={link.url}>
-            <a href={link.url} className="text-sm text-blue-500 underline">
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-sm text-blue-500 underline ${
+                index !== 0 ? 'ml-3' : ''
+              }`}
+            >
               {link.displayText}
             </a>
           </React.Fragment>
