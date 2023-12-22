@@ -17,7 +17,7 @@ export default function Home() {
     });
   }, []);
 
-  let particlesLoaded = async (container?: Container): Promise<void> => {
+  const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container);
   };
 
@@ -587,7 +587,9 @@ export default function Home() {
                   'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
                 }
               >
-                Interests/Passions include AI/ML, Game Development, Cybersecurity, Reverse Engineering, and Web/Application Development.
+                Interests/Passions include AI/ML, Game Development,
+                Cybersecurity, Reverse Engineering, and Web/Application
+                Development.
               </p>
               <p
                 className={
