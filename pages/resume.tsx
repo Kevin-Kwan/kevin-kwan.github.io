@@ -104,4 +104,4 @@ export async function getServerSideProps() {
     },
   };
 }
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
