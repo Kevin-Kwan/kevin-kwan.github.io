@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const github_pat = process.env.GITHUB_PAT;
 
-async function getRepoDescription(githubRepoUrl) {
+async function getRepoDescription(githubRepoUrl: string) {
   const [, owner, repo] = new URL(githubRepoUrl).pathname.split('/');
   try {
     const response = await axios.get(
@@ -36,8 +36,10 @@ const projectsWithDescriptions = [
 const loadingMessage =
   'Fetching GitHub Repository Description... Please wait...';
 // const projectsWithDescriptions = [''];
-
-export default function Projects({ descriptions }) {
+interface ProjectsProps {
+  descriptions: { [key: string]: string };
+}
+export default function Projects({ descriptions }: ProjectsProps) {
   return (
     <Layout>
       <Head>
@@ -107,7 +109,7 @@ export default function Projects({ descriptions }) {
 }
 
 export async function getServerSideProps() {
-  const descriptions = {};
+  const descriptions: { [key: string]: string } = {};
 
   try {
     for (const project of projectsWithDescriptions) {

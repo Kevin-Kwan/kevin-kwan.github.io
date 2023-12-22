@@ -9,7 +9,17 @@ import {
   AiOutlineClose,
 } from 'react-icons/ai';
 
-export default function Contact({ serviceId, templateId, publicKey }) {
+interface ContactProps {
+  serviceId: string;
+  templateId: string;
+  publicKey: string;
+}
+
+export default function Contact({
+  serviceId,
+  templateId,
+  publicKey,
+}: ContactProps) {
   const form = useRef<HTMLFormElement>(null);
   const [submitResult, setSubmitResult] = useState<
     'success' | 'failure' | null

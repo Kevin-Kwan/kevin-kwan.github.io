@@ -10,8 +10,11 @@ declare global {
     adobe_dc_view_sdk: any;
   }
 }
+interface ResumeProps {
+  adobeClientId: string;
+}
 
-export default function Resume({ adobeClientId }) {
+export default function Resume({ adobeClientId }: ResumeProps) {
   const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
