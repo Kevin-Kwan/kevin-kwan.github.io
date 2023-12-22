@@ -68,14 +68,15 @@ export default function Projects({ descriptions }: ProjectsProps) {
               'This website I made with TypeScript! ' +
               (descriptions['portfolio-nextjs'] || loadingMessage)
             }
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
+            demoLink="/"
           />
           <ProjectCard
             name="My Personal LeetCode Solutions"
             description={descriptions['leetcode'] || loadingMessage}
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            githubLink="https://github.com/Kevin-Kwan/leetcode"
+            demoLink="https://leetcode.com/kevinkwan/"
+            demoText="LeetCode Profile"
           />
         </div>
         <p className="text-3xl font-bold mb-2 text-center ">
@@ -83,13 +84,24 @@ export default function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
+            name="Dark Ascent (3D Platformer Game)"
+            description={
+              (descriptions['gsmst-LetsSurf'] || loadingMessage) +
+              ' ' +
+              'Written in C#.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
+            demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
             name="Let's Surf (3D Movement Game)"
             description={
               (descriptions['gsmst-LetsSurf'] || loadingMessage) +
               ' ' +
               'Written in C#.'
             }
-            githubLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/releases"
+            githubLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/"
             demoLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/releases"
             demoText="Releases"
           />
