@@ -36,22 +36,22 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
         <div className="flex justify-end">
           <Link legacyBehavior href="/resume">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
-              My Résumé
+              Résumé
             </a>
           </Link>
           <Link legacyBehavior href="/skills">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
-              My Skills
+              Skills
             </a>
           </Link>
           <Link legacyBehavior href="/experience">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
-              Work Experience
+              Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
-              My Projects
+              Projects
             </a>
           </Link>
         </div>

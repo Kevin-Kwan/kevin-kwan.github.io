@@ -35,37 +35,37 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/resume">
           <button
             type="button"
-            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
-            My Résumé
+            Résumé
           </button>
         </Link>
         <Link legacyBehavior href="/skills">
           <button
             type="button"
-            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
-            My Skills
+            Skills
           </button>
         </Link>
         <Link legacyBehavior href="/experience">
           <button
             type="button"
-            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
-            Work Experience
+            Experience
           </button>
         </Link>
         <Link legacyBehavior href="/projects">
           <button
             type="button"
-            className="text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
-            My Projects
+            Projects
           </button>
         </Link>
         <Link legacyBehavior href="/contact">
