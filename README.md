@@ -1,4 +1,6 @@
 My first, custom NextJS project using Tailwind CSS featuring a custom-made, easy-to-set-up, customizable website portfolio to showcase your programming skills, experience, and projects. Includes a one-of-a-kind home page and working contact form.
+<br/>
+Take a look at what the site looks like when deployed: [https://kevin-kwan.tech](https://kevin-kwan.tech)
 
 ## Getting Started
 
