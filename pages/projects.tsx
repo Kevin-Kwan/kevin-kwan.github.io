@@ -3,7 +3,42 @@ import Layout from '../components/RootLayout';
 import ProjectCard from '../components/ProjectCard';
 import Link from 'next/link';
 
-export default function Projects() {
+const github_pat = process.env.GITHUB_PAT;
+
+async function getRepoDescription(githubRepoUrl: string) {
+  const [, owner, repo] = new URL(githubRepoUrl).pathname.split('/');
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}`,
+      {
+        headers: {
+          Authorization: `Bearer ${github_pat}`,
+        },
+      }
+    );
+    const data = await response.json();
+    return data.description;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+    return 'Error: Could not fetch GitHub Repository description. Please try again later.';
+  }
+}
+
+const projectsWithDescriptions = [
+  'CutieBot',
+  'DarkCloud2Fishing',
+  'portfolio-nextjs',
+  'leetcode',
+  'gsmst-LetsSurf',
+];
+
+const loadingMessage =
+  'Fetching GitHub Repository Description... Please wait...';
+// const projectsWithDescriptions = [''];
+interface ProjectsProps {
+  descriptions: { [key: string]: string };
+}
+export default function Projects({ descriptions }: ProjectsProps) {
   return (
     <Layout>
       <Head>
@@ -13,72 +48,62 @@ export default function Projects() {
         <p className="text-3xl font-bold mb-2 text-center ">Ongoing Projects</p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
-            name="Project 1"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="Dark Cloud 2 Fishing Implementation"
+            description={
+              (descriptions['DarkCloud2Fishing'] || loadingMessage) +
+              ' ' +
+              'Written in C#.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/DarkCloud2Fishing"
           />
           <ProjectCard
-            name="Project 2"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="CutieBot (Discord Bot Application)"
+            description={descriptions['CutieBot'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/CutieBot"
           />
           <ProjectCard
-            name="Project 3"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="Software Engineer Portfolio Website"
+            description={
+              'This website I made with TypeScript! ' +
+              (descriptions['portfolio-nextjs'] || loadingMessage)
+            }
+            githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
+            demoLink="/"
           />
           <ProjectCard
-            name="Project 4"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="My Personal LeetCode Solutions"
+            description={descriptions['leetcode'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/leetcode"
+            demoLink="https://leetcode.com/kevinkwan/"
+            demoText="LeetCode Profile"
           />
-
-          {/* <ProjectCard
-            name="AI WhatsApp ChatBot for Travel/Hospitality (Internship)"
-            date="August 2023 - December 2023"
-            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
-            onClick={() => {}}
-          /> */}
         </div>
         <p className="text-3xl font-bold mb-2 text-center ">
           Completed Projects
         </p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
-            name="Project 1"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="Dark Ascent (3D Platformer Game)"
+            description={
+              (descriptions['gsmst-LetsSurf'] || loadingMessage) +
+              ' ' +
+              'Written in C#.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
+            demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
+            demoText="Releases"
           />
           <ProjectCard
-            name="Project 2"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
+            name="Let's Surf (3D Movement Game)"
+            description={
+              (descriptions['gsmst-LetsSurf'] || loadingMessage) +
+              ' ' +
+              'Written in C#.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/"
+            demoLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/releases"
+            demoText="Releases"
           />
-          <ProjectCard
-            name="Project 3"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
-          />
-          <ProjectCard
-            name="Project 4"
-            description="Description"
-            githubLink="https://github.com"
-            demoLink="https://github.com"
-          />
-
-          {/* <ProjectCard
-            name="AI WhatsApp ChatBot for Travel/Hospitality (Internship)"
-            date="August 2023 - December 2023"
-            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
-            onClick={() => {}}
-          /> */}
         </div>
         <p className="text-lg text-white text-center">
           Sorry! My website is still under active development.
@@ -93,3 +118,25 @@ export default function Projects() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  const descriptions: { [key: string]: string } = {};
+
+  try {
+    for (const project of projectsWithDescriptions) {
+      const description = await getRepoDescription(
+        `https://github.com/Kevin-Kwan/${project}`
+      );
+      descriptions[project] = description;
+    }
+  } catch (error) {
+    console.error(`Error fetching descriptions: ${error}`);
+  }
+
+  return {
+    props: {
+      descriptions,
+    },
+  };
+}
+export const runtime = 'experimental-edge';

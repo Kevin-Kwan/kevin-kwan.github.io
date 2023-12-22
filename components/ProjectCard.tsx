@@ -7,6 +7,7 @@ interface ProjectCardProps {
   description: string;
   githubLink: string;
   demoLink?: string;
+  demoText?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -14,6 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   githubLink,
   demoLink,
+  demoText = 'Demo',
 }) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/4 p-2 md:p-4">
@@ -21,9 +23,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div>
           <h2 className="text-lg font-bold p-4 text-zinc-200">{name}</h2>
           <hr />
-          <div className="p-4 text-zinc-200 text-sm">{description}</div>
+          <div className="p-3 text-zinc-200 text-sm">{description}</div>
         </div>
-        <div className="p-4 flex justify-between">
+        <div className="p-3 flex justify-between">
           <Link href={githubLink} rel="noopener noreferrer" target="_blank">
             <div className="bg-slate-400 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded inline-flex items-center">
               <FaGithub className="mr-2" />
@@ -34,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <Link href={demoLink} rel="noopener noreferrer" target="_blank">
               <div className="bg-slate-400 hover:bg-green-700 text-black font-bold py-2 px-4 rounded inline-flex items-center">
                 <FaGlobe className="mr-2" />
-                <span>Demo</span>
+                <span>{demoText}</span>
               </div>
             </Link>
           )}

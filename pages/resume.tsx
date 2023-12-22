@@ -10,13 +10,16 @@ declare global {
     adobe_dc_view_sdk: any;
   }
 }
+interface ResumeProps {
+  adobeClientId: string;
+}
 
-export default function Resume() {
+export default function Resume({ adobeClientId }: ResumeProps) {
   const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
       var adobeDCView = new window.AdobeDC.View({
-        clientId: process.env.NEXT_PUBLIC_ADOBE_CLIENT_ID,
+        clientId: adobeClientId,
         divId: 'adobe-dc-view',
       });
       adobeDCView.previewFile(
@@ -91,3 +94,14 @@ export default function Resume() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  const adobeClientId = process.env.ADOBE_CLIENT_ID;
+
+  return {
+    props: {
+      adobeClientId,
+    },
+  };
+}
+export const runtime = 'experimental-edge';
