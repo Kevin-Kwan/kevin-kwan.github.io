@@ -181,6 +181,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
             } Written in Java.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame"
             demoLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame/releases"
+            demoText="Releases"
           />
         </div>
       </main>
