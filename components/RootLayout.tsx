@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Navbar from './Navbar';
 import NavbarMenu from './NavbarMenu';
 import Footer from './Footer';
@@ -13,9 +13,9 @@ export default function RootLayout({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+  }, []);
 
   return (
     <div>

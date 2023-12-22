@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { type Container, type ISourceOptions } from '@tsparticles/engine';
 import { loadFull } from 'tsparticles';
@@ -17,9 +17,12 @@ export default function Home() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
+  const particlesLoaded = useCallback(
+    async (container?: Container): Promise<void> => {
+      console.log(container);
+    },
+    []
+  );
 
   const options: ISourceOptions = useMemo(
     () => ({

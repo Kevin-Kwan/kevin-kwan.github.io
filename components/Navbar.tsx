@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -8,6 +9,9 @@ type NavbarProps = {
 };
 
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
+  const memoizedToggleMenu = useCallback(() => {
+    toggleMenu();
+  }, [toggleMenu]);
   return (
     <nav
       style={{
@@ -84,10 +88,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       <div className="flex items-center justify-center md:hidden">
         <button
           className="text-white hover:text-gray-300 focus:outline-none"
-          onClick={() => {
-            // console.log('Button clicked');
-            toggleMenu();
-          }}
+          onClick={memoizedToggleMenu}
         >
           <svg
             className="h-6 w-6 fill-current"

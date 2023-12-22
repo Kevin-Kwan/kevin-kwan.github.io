@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Head from 'next/head';
@@ -25,6 +25,9 @@ export default function Contact({
     'success' | 'failure' | null
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
   const {
     register,
     handleSubmit,
@@ -143,7 +146,7 @@ export default function Contact({
           >
             {' '}
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={closeModal}
               className="absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700"
             >
               <AiOutlineClose size={24} />

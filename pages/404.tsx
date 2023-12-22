@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useRouter } from 'next/router';
 
 const NotFoundPage = () => {
   const router = useRouter();
 
-  const handleBackClick = () => {
+  const handleBackClick = useCallback(() => {
     router.push('/');
-  };
+  }, [router]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center">
