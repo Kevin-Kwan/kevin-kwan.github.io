@@ -111,7 +111,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
               <ProjectCard
                 name="Dark Ascent (3D Platformer Game)"
                 description={`${
-                  descriptions['gsmst-LetsSurf'] || loadingMessage
+                  descriptions['gsmst-Dark-Ascent'] || loadingMessage
                 } Written in C#.`}
                 githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
                 demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
