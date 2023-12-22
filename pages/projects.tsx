@@ -55,24 +55,23 @@ export default function Projects({ descriptions }: ProjectsProps) {
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Dark Cloud 2 Fishing Implementation"
-            description={
-              (descriptions['DarkCloud2Fishing'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['DarkCloud2Fishing'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/DarkCloud2Fishing"
           />
           <ProjectCard
             name="CutieBot (Discord Bot Application)"
-            description={descriptions['CutieBot'] || loadingMessage}
+            description={`${
+              descriptions['CutieBot'] || loadingMessage
+            } Written in JavaScript.`}
             githubLink="https://github.com/Kevin-Kwan/CutieBot"
           />
           <ProjectCard
             name="Software Engineer Portfolio Website"
-            description={
-              'This website I made with TypeScript! ' +
-              (descriptions['portfolio-nextjs'] || loadingMessage)
-            }
+            description={`This website I made with TypeScript! ${
+              descriptions['portfolio-nextjs'] || loadingMessage
+            } Made with Next.js and TailwindCSS.`}
             githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
             demoLink="/"
           />
@@ -90,22 +89,18 @@ export default function Projects({ descriptions }: ProjectsProps) {
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Dark Ascent (3D Platformer Game)"
-            description={
-              (descriptions['gsmst-LetsSurf'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['gsmst-LetsSurf'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
             demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
             demoText="Releases"
           />
           <ProjectCard
             name='"Eyetracking-Driven Human Computer Interaction" Software'
-            description={
-              (descriptions['fixed_pytorch_mpiigaze_demo'] || loadingMessage) +
-              ' ' +
-              'Used Python, PyTorch, numpy, and OpenCV.'
-            }
+            description={`${
+              descriptions['fixed_pytorch_mpiigaze_demo'] || loadingMessage
+            } Used Python, PyTorch, numpy, and OpenCV.`}
             githubLink="https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/"
             demoLink="https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb"
             demoText="Colab Notebook Demo"
@@ -136,59 +131,47 @@ export default function Projects({ descriptions }: ProjectsProps) {
           />
           <ProjectCard
             name="Evade and Deceive (Unity 3D Online Multiplayer Racing Game)"
-            description={
-              (descriptions['gsmst-EvadeAndDeceive'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['gsmst-EvadeAndDeceive'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-EvadeAndDeceive/"
             demoLink="https://github.com/Kevin-Kwan/gsmst-EvadeAndDeceive/releases"
             demoText="Releases"
           />
           <ProjectCard
             name="Let's Surf (Unity 3D Movement Game)"
-            description={
-              (descriptions['gsmst-LetsSurf'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['gsmst-LetsSurf'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/"
             demoLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/releases"
             demoText="Releases"
           />
-
           <ProjectCard
             name="Non-Euclidean Geometry Implementation (Unity 3D)"
-            description={
-              (descriptions['gsmst-Noneuclidean-World'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['gsmst-Noneuclidean-World'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-Noneuclidean-World"
             demoLink="https://github.com/Kevin-Kwan/gsmst-Noneuclidean-World/releases"
             demoText="Releases"
           />
           <ProjectCard
             name="Arkanoid Game (Unity 2D)"
-            description={
-              (descriptions['gsmst-ArkanoidGame'] || loadingMessage) +
-              ' ' +
-              'Written in C#.'
-            }
+            description={`${
+              descriptions['gsmst-ArkanoidGame'] || loadingMessage
+            } Written in C#.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-ArkanoidGame"
             demoLink="https://github.com/Kevin-Kwan/gsmst-ArkanoidGame/releases"
             demoText="Releases"
           />
           <ProjectCard
             name="Triggering Insanity (2D Platformer)"
-            description={
-              (descriptions['gsmst-TriggeringInsanityGame'] || loadingMessage) +
-              ' ' +
-              'Written in Java.'
-            }
+            description={`${
+              descriptions['gsmst-TriggeringInsanityGame'] || loadingMessage
+            } Written in Java.`}
             githubLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame"
             demoLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame/releases"
-            demoText="Releases"
           />
         </div>
       </main>

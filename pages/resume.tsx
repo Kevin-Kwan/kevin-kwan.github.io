@@ -64,7 +64,7 @@ export default function Resume({ adobeClientId }: ResumeProps) {
       window.adobe_dc_sdk = undefined;
       window.adobe_dc_view_sdk = undefined;
     };
-  }, []);
+  }, [adobeClientId]);
 
   return (
     <Layout>
