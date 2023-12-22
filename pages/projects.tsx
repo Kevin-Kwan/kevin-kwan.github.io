@@ -217,4 +217,4 @@ export async function getServerSideProps() {
   };
 }
 // Comment out this line if you are doing npm run dev
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
