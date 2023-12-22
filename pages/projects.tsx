@@ -10,32 +10,66 @@ export default function Projects() {
         <title>Kevin Kwan | My Projects</title>
       </Head>
       <main className="flex-1 p-4">
-        <p className="text-3xl font-bold mb-4 text-center ">Ongoing Projects</p>
+        <p className="text-3xl font-bold mb-2 text-center ">Ongoing Projects</p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Project 1"
-            date="2022-Present"
-            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
-            onClick={() => {}}
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 2"
-            date="2022-2023"
-            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
-            onClick={() => {}}
+            name="Project 1"
+            description="Description Here Description HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 3"
-            date="June 2023 - August 2023"
-            imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
-            onClick={() => {}}
+            name="Project 1"
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
           />
           <ProjectCard
-            name="Project 4"
+            name="Project 1"
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
+          />
+
+          {/* <ProjectCard
+            name="AI WhatsApp ChatBot for Travel/Hospitality (Internship)"
             date="August 2023 - December 2023"
             imageSrc="https://i.redd.it/vo9vm1fcqrp71.jpg"
             onClick={() => {}}
+          /> */}
+        </div>
+        <div className="flex flex-wrap -mx-2">
+          <ProjectCard
+            name="Project 1"
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
           />
+          <ProjectCard
+            name="Project 1"
+            description="Description Here Description HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription HereDescription Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
+          />
+          <ProjectCard
+            name="Project 1"
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
+          />
+          <ProjectCard
+            name="Project 1"
+            description="Description Here"
+            githubLink="https://github.com"
+            demoLink="https://github.com"
+          />
+
           {/* <ProjectCard
             name="AI WhatsApp ChatBot for Travel/Hospitality (Internship)"
             date="August 2023 - December 2023"

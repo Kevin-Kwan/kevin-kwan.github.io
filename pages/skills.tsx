@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
-import Link from 'next/link';
-import Image from 'next/image';
 import TechLogo from '../components/TechLogo';
 
 export default function Skills() {
@@ -12,7 +10,7 @@ export default function Skills() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-4xl mx-auto ">
-          <p className="text-3xl font-bold mb-4 text-white text-center">
+          <p className="text-3xl font-bold mb-2 text-white text-center">
             My Skills
           </p>
           <p className="text-1xl text-white ">
