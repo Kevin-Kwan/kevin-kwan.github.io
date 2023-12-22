@@ -104,3 +104,4 @@ export async function getServerSideProps() {
     },
   };
 }
+export const runtime = 'edge';
