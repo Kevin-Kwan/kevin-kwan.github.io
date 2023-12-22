@@ -60,7 +60,9 @@ export default function Projects({ descriptions }: ProjectsProps) {
         <title>Kevin Kwan | My Projects</title>
       </Head>
       <main className="flex-1 p-4">
-        <p className="text-3xl font-bold mb-2 text-center ">Ongoing Projects</p>
+        <p className="text-3xl font-bold mb-2 text-center text-green-200 underline">
+          Ongoing Projects
+        </p>
         <div className="flex flex-wrap -mx-2">
           <ProjectCard
             name="Dark Cloud 2 Fishing Implementation"
@@ -92,7 +94,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
             demoText="LeetCode Profile"
           />
         </div>
-        <p className="text-3xl font-bold mb-2 text-center ">
+        <p className="text-3xl font-bold mb-2 text-center text-blue-200 underline">
           Completed Projects
         </p>
         <div className="flex flex-wrap -mx-2">

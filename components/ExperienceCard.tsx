@@ -27,7 +27,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   subCompanyDescription,
   location = 'Atlanta, GA',
 }) => (
-  <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-5xl mx-auto">
+  <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-6xl mx-auto">
     <div className="flex items-center">
       <Image
         src={logoUrl}
@@ -37,25 +37,33 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         height={1000}
       />
       <div>
-        <h3 className="text-xl font-bold text-black">
+        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-black">
           {companyName}
           {subCompanyDescription && (
             <>
               {' '}
-              <span className="text-gray-300">|</span>{' '}
-              <span className="text-gray-500">{subCompanyDescription}</span>
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">
+                |
+              </span>{' '}
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-500">
+                {subCompanyDescription}
+              </span>
             </>
           )}
         </h3>
-        <p className="text-sm text-gray-700">{location}</p>{' '}
-        <p className="text-sm text-gray-800">{dateRange}</p>
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700">
+          {location}
+        </p>{' '}
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-800">
+          {dateRange}
+        </p>
         {links.map((link, index) => (
           <React.Fragment key={link.url}>
             <a
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-sm text-blue-500 underline ${
+              className={`text-xs sm:text-sm md:text-base lg:text-lg text-blue-500 underline ${
                 index !== 0 ? 'ml-3' : ''
               }`}
             >
@@ -65,8 +73,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         ))}
       </div>
     </div>
-    <h4 className="text-lg font-bold mt-2 text-black">{jobTitle}</h4>
-    <div className="text-sm text-gray-700 mt-2">{jobDescription}</div>
+    <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-black">
+      {jobTitle}
+    </h4>
+    <div className="text-xs sm:text-sm md:text-base text-gray-700">
+      {jobDescription}
+    </div>
   </div>
 );
 

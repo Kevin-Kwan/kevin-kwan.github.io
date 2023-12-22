@@ -10,17 +10,17 @@ export default function Skills() {
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-4xl mx-auto ">
-          <p className="text-3xl font-bold mb-2 text-white text-center">
+          <p className="sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold mb-2 text-white text-center">
             My Skills
           </p>
-          <p className="text-1xl text-white ">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-1xl text-white">
             Here, you&apos;ll find a comprehensive and ever-growing list of the
             technologies I&apos;ve worked with. Each logo represents a different
             technology that I&apos;ve used in my projects and my professional
             work. My experience spans across various domains, whether it&apos;s
             front-end or back-end development, databases, or deployment.
           </p>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-8 bg-blue-100 rounded-lg p-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-3 bg-blue-100 rounded-lg p-4">
             <TechLogo
               href="https://git-scm.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png"
