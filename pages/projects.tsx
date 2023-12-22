@@ -41,10 +41,19 @@ const projectsWithDescriptions = [
 const loadingMessage =
   'Fetching GitHub Repository Description... Please wait...';
 // const projectsWithDescriptions = [''];
+
+function LoadingCard() {
+  return (
+    <div className="flex items-center justify-center p-4">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+  );
+}
 interface ProjectsProps {
   descriptions: { [key: string]: string };
 }
 export default function Projects({ descriptions }: ProjectsProps) {
+  const isLoading = Object.values(descriptions).includes(loadingMessage);
   return (
     <Layout>
       <Head>
@@ -183,12 +192,20 @@ export async function getServerSideProps() {
   const descriptions: { [key: string]: string } = {};
 
   try {
-    for (const project of projectsWithDescriptions) {
-      const description = await getRepoDescription(
-        `https://github.com/Kevin-Kwan/${project}`
-      );
-      descriptions[project] = description;
-    }
+    // Fetch all descriptions in parallel
+    const descriptionPromises = projectsWithDescriptions.map((project) =>
+      getRepoDescription(`https://github.com/Kevin-Kwan/${project}`)
+        .then((description) => {
+          descriptions[project] = description;
+        })
+        .catch((error) => {
+          console.error(`Error fetching description for ${project}: ${error}`);
+          descriptions[project] =
+            'Error: Could not fetch GitHub Repository description. Please try again later.';
+        })
+    );
+
+    await Promise.all(descriptionPromises);
   } catch (error) {
     console.error(`Error fetching descriptions: ${error}`);
   }
