@@ -80,7 +80,7 @@ export default function Skills() {
             {/* GitLab */}
             <TechLogo
               href="https://www.gitlab.com/"
-              src="https://assets.stickpng.com/images/5847f997cef1014c0b5e48c1.png"
+              src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/144_Gitlab_logo_logos-512.png"
               alt="GitLab"
             />
             <TechLogo
