@@ -12,7 +12,7 @@ const Footer = () => {
         <p className="text-center ">
           <Link
             legacyBehavior
-            href="https://github.com/Kevin-Kwan/portfolio-next"
+            href="https://github.com/Kevin-Kwan/portfolio-nextjs"
           >
             <a className="text-blue-300 hover:underline">
               Custom Made by Kevin Kwan
