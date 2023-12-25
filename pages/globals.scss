@@ -38,15 +38,15 @@ body {
   $value: '#{random(100)}vw #{random(100)}vh #FFF';
 
   @for $i from 2 through $n {
-    $value: '#{$value}, #{random(100)}vw #{random(100)}vh #FFF';
+    $value: '#{$value}, #{random(100)}vw #{random(300)}vh #FFF';
   }
 
   @return unquote($value);
 }
 
-$shadows-small: multiple-box-shadow(200);
-$shadows-medium: multiple-box-shadow(100);
-$shadows-big: multiple-box-shadow(50);
+$shadows-small: multiple-box-shadow(250);
+$shadows-medium: multiple-box-shadow(150);
+$shadows-big: multiple-box-shadow(75);
 
 #stars {
   width: 0.1vh;
