@@ -1,29 +1,33 @@
-My first, custom NextJS project using Tailwind CSS featuring a custom-made, easy-to-set-up, customizable website portfolio to showcase your programming skills, experience, and projects. Includes a one-of-a-kind home page and working contact form.
-<br/>
-Take a look at what the site looks like when deployed: [https://kevin-kwan.tech](https://kevin-kwan.tech)
+# Kevin Kwan's Portfolio
 
-## Getting Started
+## Description
 
-First, run the development server:
+This is the source code for Kevin Kwan's personal portfolio website. The website is a testament to my front-end development skills, showcasing proficiency in **React**, **Next.js**, **TypeScript**, **JavaScript**, **TailwindCSS** and other modern web technologies. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The portfolio includes various projects that I have worked on, demonstrating his ability to create **responsive designs**, **interactive user interfaces**, and **accessible web components**. Each project in the portfolio highlights different aspects of front and back-end development, providing a comprehensive view of my capabilities.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-## Learn More
+You can view the live demo of the website at [Kevin Kwan's Portfolio](https://kevin-kwan.tech).
 
-To learn more about Next.js, take a look at the following resources:
+## Installation and Running the Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow these steps to install and run the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository:
+    ```
+    git clone https://github.com/Kevin-Kwan/portfolio-nextjs.git
+    ```
+2. Navigate into the project directory and install the dependencies:
+    ```
+    npm install
+    ```
+3. Run the project:
+    ```
+    npm run dev
+    ```
+The website should now be running on `localhost:3000`.
 
-## Deployment
-The site is currently deployed by Cloudflare Page/Vercel.
+## Contributing
+
+Contributions, issues, and feature requests are welcome. Feel free to check the issues page if you want to contribute.
