@@ -32,7 +32,11 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
             About Me
           </button>
         </Link> */}
-        <Link legacyBehavior href={process.env.NEXT_PUBLIC_RESUME_LINK}>
+        <a
+          href={process.env.NEXT_PUBLIC_RESUME_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button
             type="button"
             className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
@@ -40,7 +44,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
           >
             Résumé
           </button>
-        </Link>
+        </a>
         <Link legacyBehavior href="/skills">
           <button
             type="button"
