@@ -1,5 +1,7 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
+# Modified Versionn of the sample workflow for building and deploying a Next.js site to GitHub Pages
+# Expect there's no deployment to GitHub Pages
+# And the purpose of this workflow is to ensure there's no build errors (for my purposes at least)
+# CloudFlare Pages handles continuous deployment.
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
 name: Deploy Next.js site to Pages
