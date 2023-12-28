@@ -21,7 +21,7 @@ function App({ Component, pageProps }: AppProps) {
             <title>Kevin Kwan | Software Engineering Portfolio</title>
             <meta
               name="description"
-              content="A custom-made portfolio website to showcase a talented, entry-level software engineer based in Atlanta, Georgia and his skills, experience, projects, and more."
+              content="A custom-made portfolio showcasing a talented, entry-level software engineer based in Atlanta, Georgia and his skills, experience, projects, and more."
             />
             <meta
               name="keywords"
