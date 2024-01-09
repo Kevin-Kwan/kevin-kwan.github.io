@@ -28,6 +28,10 @@ export default function Education() {
                 url: 'https://www.gatech.edu/',
                 displayText: 'University Website',
               },
+              {
+                url: 'https://www.cc.gatech.edu/',
+                displayText: 'College Website',
+              },
             ]}
             eduDescription={
               <p>
