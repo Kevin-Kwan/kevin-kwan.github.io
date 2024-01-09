@@ -29,20 +29,20 @@ const projectsWithDescriptions = [
   'DarkCloud2Fishing',
   'portfolio-nextjs',
   'leetcode',
-  'gsmst-LetsSurf',
+  'Lets-Surf',
   'eduNFT',
-  'gsmst-TriggeringInsanityGame',
-  'gsmst-Noneuclidean-World',
-  'gsmst-ArkanoidGame',
+  'Triggering-Insanity',
+  'Noneuclidean-World',
   'WindowsXPWebsite',
-  'gsmst-EvadeAndDeceive',
+  'Evade-And-Deceive',
   'fixed_pytorch_mpiigaze_demo',
   'Dark-Ascent',
   'hackerrank',
+  'Arkanoid',
 ];
 
 const loadingMessage =
-  'Fetching GitHub Repository Description... Please wait...';
+  'Failed to fetch GitHub Repository description. Please try again later.';
 // const projectsWithDescriptions = [''];
 
 function LoadingCard() {
@@ -142,46 +142,46 @@ export default function Projects({ descriptions }: ProjectsProps) {
             <ProjectCard
               name="Evade and Deceive (Unity 3D Online Multiplayer Racing Game)"
               description={`${
-                descriptions['gsmst-EvadeAndDeceive'] || loadingMessage
+                descriptions['Evade-And-Deceive'] || loadingMessage
               } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/gsmst-EvadeAndDeceive/"
-              demoLink="https://github.com/Kevin-Kwan/gsmst-EvadeAndDeceive/releases"
+              githubLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/"
+              demoLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/releases"
               demoText="Releases"
             />
             <ProjectCard
               name="Let's Surf (Unity 3D Movement Game)"
               description={`${
-                descriptions['gsmst-LetsSurf'] || loadingMessage
+                descriptions['Lets-Surf'] || loadingMessage
               } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/"
-              demoLink="https://github.com/Kevin-Kwan/gsmst-LetsSurf/releases"
+              githubLink="https://github.com/Kevin-Kwan/Lets-Surf/"
+              demoLink="https://github.com/Kevin-Kwan/Lets-Surf/releases"
               demoText="Releases"
             />
             <ProjectCard
               name="Non-Euclidean Geometry Implementation (Unity 3D)"
               description={`${
-                descriptions['gsmst-Noneuclidean-World'] || loadingMessage
+                descriptions['Noneuclidean-World'] || loadingMessage
               } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/gsmst-Noneuclidean-World"
-              demoLink="https://github.com/Kevin-Kwan/gsmst-Noneuclidean-World/releases"
+              githubLink="https://github.com/Kevin-Kwan/Noneuclidean-World"
+              demoLink="https://github.com/Kevin-Kwan/Noneuclidean-World/releases"
               demoText="Releases"
             />
             <ProjectCard
               name="Arkanoid Game (Unity 2D)"
               description={`${
-                descriptions['gsmst-ArkanoidGame'] || loadingMessage
+                descriptions['Arkanoid'] || loadingMessage
               } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/gsmst-ArkanoidGame"
-              demoLink="https://github.com/Kevin-Kwan/gsmst-ArkanoidGame/releases"
+              githubLink="https://github.com/Kevin-Kwan/Arkanoid"
+              demoLink="https://github.com/Kevin-Kwan/Arkanoid/releases"
               demoText="Releases"
             />
             <ProjectCard
               name="Triggering Insanity (2D Platformer)"
-              description={`${
-                descriptions['gsmst-TriggeringInsanityGame'] || loadingMessage
-              } Written in Java.`}
-              githubLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame"
-              demoLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame/releases"
+              description={
+                descriptions['Triggering-Insanity'] || loadingMessage
+              }
+              githubLink="https://github.com/Kevin-Kwan/Triggering-Insanity"
+              demoLink="https://github.com/Kevin-Kwan/Triggering-Insanity/releases"
               demoText="Releases"
             />
           </Suspense>
