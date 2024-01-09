@@ -38,6 +38,7 @@ const projectsWithDescriptions = [
   'gsmst-EvadeAndDeceive',
   'fixed_pytorch_mpiigaze_demo',
   'Dark-Ascent',
+  'hackerrank',
 ];
 
 const loadingMessage =
@@ -88,13 +89,6 @@ export default function Projects({ descriptions }: ProjectsProps) {
               } Made with Next.js and TailwindCSS.`}
               githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
               demoLink="/"
-            />
-            <ProjectCard
-              name="My Personal LeetCode Solutions"
-              description={descriptions['leetcode'] || loadingMessage}
-              githubLink="https://github.com/Kevin-Kwan/leetcode"
-              demoLink="https://leetcode.com/kevinkwan/"
-              demoText="LeetCode Profile"
             />
           </Suspense>
         </div>
@@ -189,6 +183,27 @@ export default function Projects({ descriptions }: ProjectsProps) {
               githubLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame"
               demoLink="https://github.com/Kevin-Kwan/gsmst-TriggeringInsanityGame/releases"
               demoText="Releases"
+            />
+          </Suspense>
+        </div>
+        <p className="text-3xl font-bold mb-2 text-center text-purple-200 underline">
+          Coding Challenge Solutions
+        </p>
+        <div className="flex flex-wrap -mx-2">
+          <Suspense fallback={<LoadingCard />}>
+            <ProjectCard
+              name="My Personal LeetCode Solutions"
+              description={descriptions['leetcode'] || loadingMessage}
+              githubLink="https://github.com/Kevin-Kwan/leetcode"
+              demoLink="https://leetcode.com/kevinkwan/"
+              demoText="LeetCode Profile"
+            />
+            <ProjectCard
+              name="My Personal HackerRank Solutions"
+              description={descriptions['hackerrank'] || loadingMessage}
+              githubLink="https://github.com/Kevin-Kwan/hackerrank"
+              demoLink="https://www.hackerrank.com/profile/kevinkwan"
+              demoText="HackerRank Profile"
             />
           </Suspense>
         </div>
