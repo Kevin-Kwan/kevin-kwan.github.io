@@ -566,7 +566,7 @@ export default function Home() {
               </div> */}
               <p
                 className={
-                  'gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all duration-200'
+                  'gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
                 }
                 style={{
                   fontFamily: 'Lato, sans-serif',
@@ -578,7 +578,7 @@ export default function Home() {
 
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
+                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
@@ -587,7 +587,7 @@ export default function Home() {
 
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
+                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Interests/Passions include AI/ML, Game Development,
@@ -596,7 +596,7 @@ export default function Home() {
               </p>
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all duration-200 text-white'
+                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Always in pursuit of creating impactful and purposeful works 🚀
@@ -606,7 +606,7 @@ export default function Home() {
                   href="https://github.com/Kevin-Kwan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
+                  className="text-white transition-transform ease-in-out duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -614,7 +614,7 @@ export default function Home() {
                   href="https://linkedin.com/in/kevinkwan3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white transition-transform duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
+                  className="text-white transition-transform ease-in-out duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
                 >
                   <FaLinkedin size={24} />
                 </a>

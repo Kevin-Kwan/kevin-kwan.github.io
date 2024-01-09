@@ -22,7 +22,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
       animate={{ y: isMenuOpen ? '0' : '-100vh' }}
       transition={{ duration: 0.3 }}
     >
-      <div className="text-xl flex flex-col items-center justify-center">
+      <div className="text-xl flex flex-col items-center justify-center w-full">
         {/* <Link legacyBehavior href="/about">
           <button
             type="button"
@@ -32,23 +32,19 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
             About Me
           </button>
         </Link> */}
-        <a
-          href={process.env.NEXT_PUBLIC_RESUME_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link legacyBehavior href={process.env.NEXT_PUBLIC_RESUME_LINK || '#'}>
           <button
             type="button"
-            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 ease-in-out duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Résumé
           </button>
-        </a>
-        <Link legacyBehavior href="/Education">
+        </Link>
+        <Link legacyBehavior href="/education">
           <button
             type="button"
-            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 ease-in-out duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Education
@@ -57,7 +53,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/skills">
           <button
             type="button"
-            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 ease-in-out duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Skills
@@ -66,7 +62,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/experience">
           <button
             type="button"
-            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 ease-in-out duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Experience
@@ -75,7 +71,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         <Link legacyBehavior href="/projects">
           <button
             type="button"
-            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 duration-200 hover:text-blue-500"
+            className="text-lg md:text-xl w-full text-white block py-2 px-4 hover:bg-gray-700 ease-in-out duration-200 hover:text-blue-500"
             onClick={toggleMenu}
           >
             Projects
@@ -83,7 +79,7 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
         </Link>
         <Link legacyBehavior href="/contact">
           <div className="pb-3">
-            <button className="text-lg md:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 ">
+            <button className="text-lg md:text-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ease-in-out duration-200 ">
               Contact Me
             </button>
           </div>

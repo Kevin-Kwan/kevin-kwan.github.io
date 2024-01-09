@@ -28,9 +28,9 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               alt="Logo"
               width={40}
               height={40}
-              className="mr-2 transform transition-transform duration-200 hover:scale-125 hover:rotate-[15deg]"
+              className="mr-2 transform transition-transform duration-200 ease-in-out hover:scale-125 hover:rotate-[15deg]"
             />
-            <span className="text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 hover:text-blue-500">
+            <span className="text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500">
               Home
             </span>
           </a>
@@ -39,27 +39,27 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       <div className="hidden md:flex items-center justify-center flex-1 md:pl-0 lg:pl-24">
         <div className="flex justify-end">
           <Link legacyBehavior href="/resume">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
               Résumé
             </a>
           </Link>
           <Link legacyBehavior href="/education">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
               Education
             </a>
           </Link>
           <Link legacyBehavior href="/skills">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
               Skills
             </a>
           </Link>
           <Link legacyBehavior href="/experience">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
               Experience
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
               Projects
             </a>
           </Link>
@@ -70,7 +70,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           href="https://github.com/Kevin-Kwan"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-300 transition-transform duration-200 duration-200 hover:scale-150 hover:text-blue-500"
+          className="text-gray-300 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500"
         >
           <FaGithub className="h-6 w-6" />
         </a>
@@ -78,14 +78,14 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           href="https://www.linkedin.com/in/kevinkwan3"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-300 transition-transform duration-200 hover:scale-150 hover:text-blue-500 ml-4 mr-4"
+          className="text-gray-300 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500 ml-4 mr-4"
         >
           <FaLinkedin className="h-6 w-6" />
         </a>
       </div>
       <div className="hidden md:block items-center">
         <Link legacyBehavior href="/contact">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto hover:text-xl transition-fontSize duration-200">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto hover:text-xl transition-fontSize ease-in-out duration-200">
             Contact Me
           </button>
         </Link>
