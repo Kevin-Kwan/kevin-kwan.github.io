@@ -43,6 +43,11 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
               Résumé
             </a>
           </Link>
+          <Link legacyBehavior href="/education">
+            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
+              Education
+            </a>
+          </Link>
           <Link legacyBehavior href="/skills">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 hover:text-blue-500 text-center">
               Skills
