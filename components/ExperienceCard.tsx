@@ -32,7 +32,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <Image
         src={logoUrl}
         alt={companyName}
-        className="w-16 h-16 rounded-full mr-4"
+        className="w-20 h-20 rounded-full mr-4 object-contain"
         width={1000}
         height={1000}
       />
