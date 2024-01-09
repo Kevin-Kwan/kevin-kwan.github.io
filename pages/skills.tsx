@@ -84,6 +84,11 @@ export default function Skills() {
               alt="GitLab"
             />
             <TechLogo
+              href="https://www.mysql.com/"
+              src="https://upload.wikimedia.org/wikipedia/labs/8/8e/Mysql_logo.png"
+              alt="MySQL"
+            />
+            <TechLogo
               href="https://www.mongodb.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/1280px-MongoDB_Logo.svg.png"
               alt="MongoDB"
