@@ -11,6 +11,8 @@ const nextConfig = {
       'www.cdnlogo.com',
       'seeklogo.com',
       'cdn4.iconfinder.com',
+      'brand.gatech.edu',
+      'gwinnetttech.edu',
     ],
   },
 };

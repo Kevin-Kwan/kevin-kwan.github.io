@@ -6,47 +6,49 @@ interface Link {
   displayText: string;
 }
 
-interface ExperienceCardProps {
-  companyName: string;
+interface EducationCardProps {
+  schoolName: string;
   dateRange: string;
-  jobTitle: string;
+  credential: string;
   logoUrl: string;
-  jobDescription: React.ReactNode;
+  eduDescription?: React.ReactNode;
+  gpa?: string;
   links: Link[];
-  subCompanyDescription: string;
+  subschoolDescription: string;
   location?: string;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({
-  companyName,
+const EducationCard: React.FC<EducationCardProps> = ({
+  schoolName,
   dateRange,
-  jobTitle,
+  credential,
   logoUrl,
-  jobDescription,
+  eduDescription,
+  gpa,
   links = [],
-  subCompanyDescription,
+  subschoolDescription,
   location = 'Atlanta, GA',
 }) => (
   <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-6xl mx-auto">
     <div className="flex items-center">
       <Image
         src={logoUrl}
-        alt={companyName}
-        className="w-20 h-20 rounded-full mr-4 object-contain"
+        alt={schoolName}
+        className="w-20 h-20 mr-4 object-contain"
         width={1000}
         height={1000}
       />
       <div>
         <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-black">
-          {companyName}
-          {subCompanyDescription && (
+          {schoolName}
+          {subschoolDescription && (
             <>
               {' '}
               <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">
                 |
               </span>{' '}
               <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-500">
-                {subCompanyDescription}
+                {subschoolDescription}
               </span>
             </>
           )}
@@ -74,12 +76,15 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       </div>
     </div>
     <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-black">
-      {jobTitle}
+      {credential}
     </h4>
-    <div className="text-xs sm:text-sm md:text-base text-gray-700">
-      {jobDescription}
+    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-800">
+      {eduDescription}
+    </div>
+    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-800">
+      <b> GPA: </b> {gpa}
     </div>
   </div>
 );
 
-export default ExperienceCard;
+export default EducationCard;
