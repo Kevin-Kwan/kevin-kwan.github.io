@@ -67,145 +67,137 @@ export default function Projects({ descriptions }: ProjectsProps) {
           Ongoing Projects
         </p>
         <div className="flex flex-wrap -mx-2">
-          <Suspense fallback={<LoadingCard />}>
-            <ProjectCard
-              name="Dark Cloud 2 Fishing Implementation"
-              description={`${
-                descriptions['DarkCloud2Fishing'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/DarkCloud2Fishing"
-            />
-            <ProjectCard
-              name="CutieBot (Discord Bot Application)"
-              description={`${
-                descriptions['CutieBot'] || loadingMessage
-              } Written in JavaScript.`}
-              githubLink="https://github.com/Kevin-Kwan/CutieBot"
-            />
-            <ProjectCard
-              name="Software Engineer Portfolio Website"
-              description={`This website I made with TypeScript! ${
-                descriptions['portfolio-nextjs'] || loadingMessage
-              } Made with Next.js and TailwindCSS.`}
-              githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
-              demoLink="/"
-            />
-          </Suspense>
+          <ProjectCard
+            name="Dark Cloud 2 Fishing Implementation"
+            description={`${
+              descriptions['DarkCloud2Fishing'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/DarkCloud2Fishing"
+          />
+          <ProjectCard
+            name="CutieBot (Discord Bot Application)"
+            description={`${
+              descriptions['CutieBot'] || loadingMessage
+            } Written in JavaScript.`}
+            githubLink="https://github.com/Kevin-Kwan/CutieBot"
+          />
+          <ProjectCard
+            name="Software Engineer Portfolio Website"
+            description={`This website I made with TypeScript! ${
+              descriptions['portfolio-nextjs'] || loadingMessage
+            } Made with Next.js and TailwindCSS.`}
+            githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
+            demoLink="/"
+          />
         </div>
         <p className="text-3xl font-bold mb-2 text-center text-blue-200 underline">
           Completed Projects
         </p>
         <div className="flex flex-wrap -mx-2">
-          <Suspense fallback={<LoadingCard />}>
-            <ProjectCard
-              name="Dark Ascent (3D Platformer Game)"
-              description={`${
-                descriptions['Dark-Ascent'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
-              demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name='"Eyetracking-Driven Human Computer Interaction" Software'
-              description={`${
-                descriptions['fixed_pytorch_mpiigaze_demo'] || loadingMessage
-              } Used Python, PyTorch, numpy, and OpenCV.`}
-              githubLink="https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/"
-              demoLink="https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb"
-              demoText="Colab Demo"
-            />
+          <ProjectCard
+            name="Dark Ascent (3D Platformer Game)"
+            description={`${
+              descriptions['Dark-Ascent'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Dark-Ascent/"
+            demoLink="https://github.com/Kevin-Kwan/Dark-Ascent/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name='"Eyetracking-Driven Human Computer Interaction" Software'
+            description={`${
+              descriptions['fixed_pytorch_mpiigaze_demo'] || loadingMessage
+            } Used Python, PyTorch, numpy, and OpenCV.`}
+            githubLink="https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/"
+            demoLink="https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb"
+            demoText="Colab Demo"
+          />
 
-            <ProjectCard
-              name="Project Blu (2D Unity Game Suite)"
-              description={
-                'A game suite made for Objects & Design class (CS 2340) during the Summer of 2022 featuring Blackjack, Chess with AI, and a Rouge-like Georgia Tech-themed game. We learned and applied principles of Software Engineering and the best design principles by putting them into practice with this project. Written in C#.'
-              }
-              githubLink="https://github.com/majesityreal/CS2340-Team-7"
-              demoLink="https://github.com/majesityreal/CS2340-Team-7/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name="Windows XP-themed Website"
-              description={descriptions['WindowsXPWebsite'] || loadingMessage}
-              githubLink="https://github.com/Kevin-Kwan/WindowsXPWebsite/"
-              demoLink="https://kevin-kwan.github.io/WindowsXPWebsite/"
-              demoText="Demo"
-            />
-            <ProjectCard
-              name="eduNFT (HackGT 8 2021)"
-              description={descriptions['eduNFT'] || loadingMessage}
-              githubLink="https://github.com/Kevin-Kwan/eduNFT/"
-              demoLink="https://kevin-kwan.github.io/eduNFT/"
-              demoText="Demo"
-            />
-            <ProjectCard
-              name="Evade and Deceive (Unity 3D Online Multiplayer Racing Game)"
-              description={`${
-                descriptions['Evade-And-Deceive'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/"
-              demoLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name="Let's Surf (Unity 3D Movement Game)"
-              description={`${
-                descriptions['Lets-Surf'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/Lets-Surf/"
-              demoLink="https://github.com/Kevin-Kwan/Lets-Surf/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name="Non-Euclidean Geometry Implementation (Unity 3D)"
-              description={`${
-                descriptions['Noneuclidean-World'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/Noneuclidean-World"
-              demoLink="https://github.com/Kevin-Kwan/Noneuclidean-World/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name="Arkanoid Game (Unity 2D)"
-              description={`${
-                descriptions['Arkanoid'] || loadingMessage
-              } Written in C#.`}
-              githubLink="https://github.com/Kevin-Kwan/Arkanoid"
-              demoLink="https://github.com/Kevin-Kwan/Arkanoid/releases"
-              demoText="Releases"
-            />
-            <ProjectCard
-              name="Triggering Insanity (2D Platformer)"
-              description={
-                descriptions['Triggering-Insanity'] || loadingMessage
-              }
-              githubLink="https://github.com/Kevin-Kwan/Triggering-Insanity"
-              demoLink="https://github.com/Kevin-Kwan/Triggering-Insanity/releases"
-              demoText="Releases"
-            />
-          </Suspense>
+          <ProjectCard
+            name="Project Blu (2D Unity Game Suite)"
+            description={
+              'A game suite made for Objects & Design class (CS 2340) during the Summer of 2022 featuring Blackjack, Chess with AI, and a Rouge-like Georgia Tech-themed game. We learned and applied principles of Software Engineering and the best design principles by putting them into practice with this project. Written in C#.'
+            }
+            githubLink="https://github.com/majesityreal/CS2340-Team-7"
+            demoLink="https://github.com/majesityreal/CS2340-Team-7/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name="Windows XP-themed Website"
+            description={descriptions['WindowsXPWebsite'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/WindowsXPWebsite/"
+            demoLink="https://kevin-kwan.github.io/WindowsXPWebsite/"
+            demoText="Demo"
+          />
+          <ProjectCard
+            name="eduNFT (HackGT 8 2021)"
+            description={descriptions['eduNFT'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/eduNFT/"
+            demoLink="https://kevin-kwan.github.io/eduNFT/"
+            demoText="Demo"
+          />
+          <ProjectCard
+            name="Evade and Deceive (Unity 3D Online Multiplayer Racing Game)"
+            description={`${
+              descriptions['Evade-And-Deceive'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/"
+            demoLink="https://github.com/Kevin-Kwan/Evade-And-Deceive/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name="Let's Surf (Unity 3D Movement Game)"
+            description={`${
+              descriptions['Lets-Surf'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Lets-Surf/"
+            demoLink="https://github.com/Kevin-Kwan/Lets-Surf/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name="Non-Euclidean Geometry Implementation (Unity 3D)"
+            description={`${
+              descriptions['Noneuclidean-World'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Noneuclidean-World"
+            demoLink="https://github.com/Kevin-Kwan/Noneuclidean-World/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name="Arkanoid Game (Unity 2D)"
+            description={`${
+              descriptions['Arkanoid'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Arkanoid"
+            demoLink="https://github.com/Kevin-Kwan/Arkanoid/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
+            name="Triggering Insanity (2D Platformer)"
+            description={descriptions['Triggering-Insanity'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/Triggering-Insanity"
+            demoLink="https://github.com/Kevin-Kwan/Triggering-Insanity/releases"
+            demoText="Releases"
+          />
         </div>
         <p className="text-3xl font-bold mb-2 text-center text-purple-200 underline">
           Coding Challenge Solutions
         </p>
         <div className="flex flex-wrap -mx-2">
-          <Suspense fallback={<LoadingCard />}>
-            <ProjectCard
-              name="My Personal LeetCode Solutions"
-              description={descriptions['leetcode'] || loadingMessage}
-              githubLink="https://github.com/Kevin-Kwan/leetcode"
-              demoLink="https://leetcode.com/kevinkwan/"
-              demoText="LeetCode Profile"
-            />
-            <ProjectCard
-              name="My Personal HackerRank Solutions"
-              description={descriptions['hackerrank'] || loadingMessage}
-              githubLink="https://github.com/Kevin-Kwan/hackerrank"
-              demoLink="https://www.hackerrank.com/profile/kevinkwan"
-              demoText="HackerRank Profile"
-            />
-          </Suspense>
+          <ProjectCard
+            name="My Personal LeetCode Solutions"
+            description={descriptions['leetcode'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/leetcode"
+            demoLink="https://leetcode.com/kevinkwan/"
+            demoText="LeetCode Profile"
+          />
+          <ProjectCard
+            name="My Personal HackerRank Solutions"
+            description={descriptions['hackerrank'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/hackerrank"
+            demoLink="https://www.hackerrank.com/profile/kevinkwan"
+            demoText="HackerRank Profile"
+          />
         </div>
       </main>
     </Layout>
