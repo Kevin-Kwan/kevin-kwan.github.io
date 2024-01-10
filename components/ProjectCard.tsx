@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { FaGithub, FaGlobe } from 'react-icons/fa';
 

@@ -31,7 +31,7 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
     reset,
   } = useForm();
 
-  const onSubmit = async (data: FieldValues) => {
+  async function onSubmit() {
     if (!serviceId || !templateId || !publicKey || !form.current) {
       console.error(
         'EmailJS environment variables or form reference are not defined'
@@ -48,7 +48,7 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
       setSubmitResult('failure');
       setIsModalOpen(true);
     }
-  };
+  }
 
   return (
     <div>
