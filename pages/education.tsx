@@ -6,7 +6,7 @@ export default function Education() {
   return (
     <Layout>
       <Head>
-        <title>Kevin Kwan | Education</title>
+        <title>Kevin Kwan | My Education</title>
       </Head>
       <main className="flex-1 p-4">
         <div className="max-w-4xl mx-auto">
