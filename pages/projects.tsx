@@ -238,6 +238,7 @@ export async function getStaticProps() {
     props: {
       descriptions,
     },
+    revalidate: 600,
   };
 }
 // Comment out this line if you are doing npm run dev
