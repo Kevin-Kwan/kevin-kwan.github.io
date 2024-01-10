@@ -5,6 +5,10 @@ import ProjectCard from '../components/ProjectCard';
 
 const github_pat = process.env.GITHUB_PAT;
 
+const loadingMessage =
+  'Failed to fetch GitHub Repository description. Please try again later.';
+// const projectsWithDescriptions = [''];
+
 async function getRepoDescription(githubRepoUrl: string) {
   const [, owner, repo] = new URL(githubRepoUrl).pathname.split('/');
   try {
@@ -17,7 +21,7 @@ async function getRepoDescription(githubRepoUrl: string) {
       }
     );
     const data = await response.json();
-    return data.description;
+    return data.description || loadingMessage;
   } catch (error) {
     console.error(`Error: ${error}`);
     return 'Error: Could not fetch GitHub Repository description. Please try again later.';
@@ -40,10 +44,6 @@ const projectsWithDescriptions = [
   'hackerrank',
   'Arkanoid',
 ];
-
-const loadingMessage =
-  'Failed to fetch GitHub Repository description. Please try again later.';
-// const projectsWithDescriptions = [''];
 
 function LoadingCard() {
   return (
