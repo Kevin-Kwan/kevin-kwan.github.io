@@ -2,6 +2,7 @@
 import Head from 'next/head';
 import Layout from '../components/RootLayout';
 import ProjectCard from '../components/ProjectCard';
+import { FaHackerrank } from 'react-icons/fa';
 
 const github_pat = process.env.GITHUB_PAT;
 
@@ -190,6 +191,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
             githubLink="https://github.com/Kevin-Kwan/leetcode"
             demoLink="https://leetcode.com/kevinkwan/"
             demoText="Profile"
+            // There is no LeetCode Icon from FontAwesome yet
           />
           <ProjectCard
             name="My Personal HackerRank Solutions"
@@ -197,6 +199,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
             githubLink="https://github.com/Kevin-Kwan/hackerrank"
             demoLink="https://www.hackerrank.com/profile/kevinkwan"
             demoText="Profile"
+            Icon={FaHackerrank}
           />
         </div>
       </main>

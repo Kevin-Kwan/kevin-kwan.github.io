@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -9,9 +9,19 @@ type NavbarProps = {
 };
 
 const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
-  const memoizedToggleMenu = useCallback(() => {
-    toggleMenu();
-  }, [toggleMenu]);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 916 && isMenuOpen) {
+        toggleMenu();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMenuOpen, toggleMenu]);
   return (
     <nav
       style={{
@@ -36,7 +46,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
           </a>
         </Link>
       </div>
-      <div className="hidden md:flex items-center justify-center flex-1 md:pl-0 lg:pl-24">
+      <div className="hidden md:flex items-center justify-center flex-1 md:pl-0 lg:pl-10 xl:pl-24">
         <div className="flex justify-end">
           <Link legacyBehavior href="/resume">
             <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
@@ -93,7 +103,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       <div className="flex items-center justify-center md:hidden">
         <button
           className="text-white hover:text-gray-300 focus:outline-none"
-          onClick={memoizedToggleMenu}
+          onClick={toggleMenu}
         >
           <svg
             className="h-6 w-6 fill-current"
