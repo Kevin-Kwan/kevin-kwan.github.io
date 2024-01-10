@@ -113,6 +113,18 @@ export default function Skills() {
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tailwind_CSS_logo.svg/2560px-Tailwind_CSS_logo.svg.png"
               alt="Tailwind CSS"
             />
+            {/* docker */}
+            <TechLogo
+              href="https://www.docker.com/"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2560px-Docker_%28container_engine%29_logo.svg.png"
+              alt="Docker"
+            />
+            <TechLogo
+              href="https://www.fly.io/"
+              src="https://1526789230-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYrzxpMpCQh51K4O99y0o%2Fuploads%2FMoSiK0dG5BrFfBpZ3DkK%2Fflyio-logo.png?alt=media&token=25528521-92c7-43b7-95f2-895fe0c52d53"
+              alt="Fly.io"
+            />
+
             <TechLogo
               href="https://heroku.com/"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Heroku_logo.svg/2560px-Heroku_logo.svg.png"

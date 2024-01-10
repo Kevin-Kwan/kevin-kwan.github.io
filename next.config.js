@@ -13,6 +13,7 @@ const nextConfig = {
       'cdn4.iconfinder.com',
       'brand.gatech.edu',
       'gwinnetttech.edu',
+      '1526789230-files.gitbook.io',
     ],
   },
 };
