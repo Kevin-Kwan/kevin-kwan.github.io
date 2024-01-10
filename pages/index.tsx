@@ -17,12 +17,12 @@ export default function Home() {
     });
   }, []);
 
-  const particlesLoaded = useCallback(
-    async (container?: Container): Promise<void> => {
-      // console.log(container);
-    },
-    []
-  );
+  // const particlesLoaded = useCallback(
+  //   async (container?: Container): Promise<void> => {
+  //     // console.log(container);
+  //   },
+  //   []
+  // );
 
   const options: ISourceOptions = useMemo(
     () => ({
