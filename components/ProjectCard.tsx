@@ -8,7 +8,7 @@ interface ProjectCardProps {
   githubLink: string;
   demoLink?: string;
   demoText?: string;
-  Icon?: ReactNode;
+  Icon?: React.ComponentType<{ className?: string }>;
 }
 
 function ProjectCard({
@@ -19,6 +19,7 @@ function ProjectCard({
   demoText = 'Demo',
   Icon = FaGlobe,
 }: ProjectCardProps) {
+  const DefaultIcon = Icon || FaGlobe;
   return (
     <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-2 md:p-4">
       <div className="bg-zinc-900 rounded-lg shadow-lg overflow-hidden h-full flex flex-col justify-between">
@@ -41,7 +42,7 @@ function ProjectCard({
           {demoLink && (
             <Link href={demoLink} rel="noopener noreferrer" target="_blank">
               <div className="bg-slate-400 hover:bg-green-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
-                <Icon className="mr-2 text-sm md:text-base" />
+                <DefaultIcon className="mr-2 text-sm md:text-base" />
                 <span>{demoText}</span>
               </div>
             </Link>
