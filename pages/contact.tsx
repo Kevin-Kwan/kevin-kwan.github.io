@@ -2,7 +2,7 @@ import React, { useRef, useState, useCallback } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
+
 import {
   AiOutlineCheckCircle,
   AiOutlineCloseCircle,
@@ -15,11 +15,7 @@ interface ContactProps {
   publicKey: string;
 }
 
-export default function Contact({
-  serviceId,
-  templateId,
-  publicKey,
-}: ContactProps) {
+function Contact({ serviceId, templateId, publicKey }: ContactProps) {
   const form = useRef<HTMLFormElement>(null);
   const [submitResult, setSubmitResult] = useState<
     'success' | 'failure' | null
@@ -55,7 +51,7 @@ export default function Contact({
   };
 
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | Contact Form</title>
       </Head>
@@ -178,7 +174,7 @@ export default function Contact({
           </div>
         </div>
       )}
-    </Layout>
+    </div>
   );
 }
 
@@ -196,4 +192,5 @@ export async function getServerSideProps() {
   };
 }
 
-export const runtime = 'experimental-edge';
+export default Contact;
+// export const runtime = 'experimental-edge';

@@ -8,20 +8,23 @@ type NavbarProps = {
   toggleMenu: () => void;
 };
 
-const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 916 && isMenuOpen) {
-        toggleMenu();
-      }
-    };
+function Navbar({ isMenuOpen, toggleMenu }: NavbarProps) {
+  useEffect(
+    function () {
+      const handleResize = function () {
+        if (window.innerWidth >= 916 && isMenuOpen) {
+          toggleMenu();
+        }
+      };
 
-    window.addEventListener('resize', handleResize);
+      window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isMenuOpen, toggleMenu]);
+      return function () {
+        window.removeEventListener('resize', handleResize);
+      };
+    },
+    [isMenuOpen, toggleMenu]
+  );
   return (
     <nav
       style={{
@@ -128,6 +131,6 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

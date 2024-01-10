@@ -5,11 +5,7 @@ import Footer from './Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
@@ -61,3 +57,5 @@ export default function RootLayout({
     </div>
   );
 }
+
+export default RootLayout;

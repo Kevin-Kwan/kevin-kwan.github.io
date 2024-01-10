@@ -1,4 +1,4 @@
-const StarBackground = () => {
+function StarBackground() {
   return (
     <div
       style={{
@@ -13,6 +13,6 @@ const StarBackground = () => {
       <div id="stars3" className="stars3 m-0 p-0 absolute top-0" />
     </div>
   );
-};
+}
 
 export default StarBackground;

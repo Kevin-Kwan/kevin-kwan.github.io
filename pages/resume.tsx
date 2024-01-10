@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import { useMediaQuery } from 'react-responsive';
 
 declare global {
@@ -14,7 +13,7 @@ interface ResumeProps {
   adobeClientId: string;
 }
 
-export default function Resume({ adobeClientId }: ResumeProps) {
+function Resume({ adobeClientId }: ResumeProps) {
   const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
@@ -67,7 +66,7 @@ export default function Resume({ adobeClientId }: ResumeProps) {
   }, [adobeClientId]);
 
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | Résumé</title>
       </Head>
@@ -91,7 +90,7 @@ export default function Resume({ adobeClientId }: ResumeProps) {
         </p>
         {!isMobile && <div id="adobe-dc-view" className="max-w-5xl mx-auto" />}
       </main>
-    </Layout>
+    </div>
   );
 }
 
@@ -105,4 +104,6 @@ export async function getStaticProps() {
     revalidate: 600,
   };
 }
+
+export default Resume;
 // export const runtime = 'experimental-edge';

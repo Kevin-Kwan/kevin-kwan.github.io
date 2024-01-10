@@ -11,14 +11,14 @@ interface ProjectCardProps {
   Icon?: ReactNode;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
+function ProjectCard({
   name,
   description,
   githubLink,
   demoLink,
   demoText = 'Demo',
   Icon = FaGlobe,
-}) => {
+}: ProjectCardProps) {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-2 md:p-4">
       <div className="bg-zinc-900 rounded-lg shadow-lg overflow-hidden h-full flex flex-col justify-between">
@@ -50,6 +50,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProjectCard;

@@ -10,13 +10,13 @@ interface TechLogoProps {
   height?: number;
 }
 
-const TechLogo: React.FC<TechLogoProps> = ({
+function TechLogo({
   href,
   src,
   alt,
   width = 1000,
   height = 1000,
-}) => {
+}: TechLogoProps) {
   return (
     <div className="flex flex-col items-center justify-center">
       <Link href={href} passHref rel="noopener noreferrer" target="_blank">
@@ -24,6 +24,6 @@ const TechLogo: React.FC<TechLogoProps> = ({
       </Link>
     </div>
   );
-};
+}
 
 export default TechLogo;

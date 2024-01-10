@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import ExperienceCard from '../components/ExperienceCard';
 
-export default function Experience() {
+function Experience() {
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | Work Experience</title>
       </Head>
@@ -194,6 +193,8 @@ export default function Experience() {
           />
         </div>
       </main>
-    </Layout>
+    </div>
   );
 }
+
+export default Experience;

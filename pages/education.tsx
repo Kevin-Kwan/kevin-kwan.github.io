@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import EducationCard from '../components/EducationCard';
 
-export default function Education() {
+function Education() {
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | My Education</title>
       </Head>
@@ -72,6 +71,8 @@ export default function Education() {
           />
         </div>
       </main>
-    </Layout>
+    </div>
   );
 }
+
+export default Education;

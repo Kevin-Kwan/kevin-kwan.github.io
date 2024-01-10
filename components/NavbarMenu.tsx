@@ -7,7 +7,7 @@ type MenuProps = {
   toggleMenu: () => void;
 };
 
-const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
+function NavbarMenu({ isMenuOpen, toggleMenu }: MenuProps) {
   useEffect(() => {
     // If the menu is being opened, prevent scrolling. Otherwise, allow it.
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
@@ -87,6 +87,6 @@ const NavbarMenu = ({ isMenuOpen, toggleMenu }: MenuProps) => {
       </div>
     </motion.div>
   );
-};
+}
 
 export default NavbarMenu;

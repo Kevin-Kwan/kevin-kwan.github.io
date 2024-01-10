@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Footer = () => {
+function Footer() {
   return (
     <footer
       className="text-white p-4"
@@ -41,6 +41,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

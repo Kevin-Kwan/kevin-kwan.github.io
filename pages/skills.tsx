@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import TechLogo from '../components/TechLogo';
 
-export default function Skills() {
+function Skills() {
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | My Skills</title>
       </Head>
@@ -153,6 +152,8 @@ export default function Skills() {
           </div>
         </div>
       </main>
-    </Layout>
+    </div>
   );
 }
+
+export default Skills;

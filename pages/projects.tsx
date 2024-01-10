@@ -1,6 +1,4 @@
-// import { Suspense } from 'react';
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import ProjectCard from '../components/ProjectCard';
 import { FaHackerrank } from 'react-icons/fa';
 
@@ -56,10 +54,10 @@ const projectsWithDescriptions = [
 interface ProjectsProps {
   descriptions: { [key: string]: string };
 }
-export default function Projects({ descriptions }: ProjectsProps) {
+function Projects({ descriptions }: ProjectsProps) {
   // const isLoading = Object.values(descriptions).includes(loadingMessage);
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | My Projects</title>
       </Head>
@@ -203,7 +201,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
           />
         </div>
       </main>
-    </Layout>
+    </div>
   );
 }
 
@@ -244,5 +242,7 @@ export async function getStaticProps() {
     revalidate: 600,
   };
 }
+
+export default Projects;
 // Comment out this line if you are doing npm run dev
 // export const runtime = 'experimental-edge';

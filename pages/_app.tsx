@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter, NextRouter } from 'next/router';
 import Head from 'next/head';
 import StarBackground from '../components/StarBackground';
+import Layout from '../components/RootLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -46,10 +47,13 @@ function App({ Component, pageProps }: AppProps) {
             <meta property="og:image:width" content="448" />
             <meta property="og:image:height" content="448" />
           </Head>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </div>
       </AnimatePresence>
     </main>
   );
 }
+
 export default App;

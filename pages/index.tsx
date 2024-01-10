@@ -3,10 +3,9 @@ import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { type Container, type ISourceOptions } from '@tsparticles/engine';
 import { loadFull } from 'tsparticles';
 import Head from 'next/head';
-import Layout from '../components/RootLayout';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-export default function Home() {
+function Home() {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -535,7 +534,7 @@ export default function Home() {
   );
 
   return (
-    <Layout>
+    <div>
       <Head>
         <title>Kevin Kwan | Home Page</title>
       </Head>
@@ -627,6 +626,8 @@ export default function Home() {
           </div> */}
         </main>
       </div>
-    </Layout>
+    </div>
   );
 }
+
+export default Home;
