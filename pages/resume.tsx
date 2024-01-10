@@ -95,7 +95,7 @@ export default function Resume({ adobeClientId }: ResumeProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const adobeClientId = process.env.ADOBE_CLIENT_ID;
 
   return {

@@ -212,7 +212,7 @@ export default function Projects({ descriptions }: ProjectsProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const descriptions: { [key: string]: string } = {};
 
   try {
