@@ -206,24 +206,31 @@ export default function Projects({ descriptions }: ProjectsProps) {
 
 export async function getStaticProps() {
   const descriptions: { [key: string]: string } = {};
+  console.log('Fetching descriptions...');
 
-  try {
-    // Fetch all descriptions in parallel
-    const descriptionPromises = projectsWithDescriptions.map((project) =>
-      getRepoDescription(`https://github.com/Kevin-Kwan/${project}`)
-        .then((description) => {
-          descriptions[project] = description;
-        })
-        .catch((error) => {
-          console.error(`Error fetching description for ${project}: ${error}`);
-          descriptions[project] =
-            'Error: Could not fetch GitHub Repository description. Please try again later.';
-        })
-    );
+  // if length of descriptions is 0, then we need to fetch descriptions
+  if (Object.keys(descriptions).length === 0) {
+    try {
+      console.log('Attempting to fetch descriptions...');
+      // Fetch all descriptions in parallel
+      const descriptionPromises = projectsWithDescriptions.map((project) =>
+        getRepoDescription(`https://github.com/Kevin-Kwan/${project}`)
+          .then((description) => {
+            descriptions[project] = description;
+          })
+          .catch((error) => {
+            console.error(
+              `Error fetching description for ${project}: ${error}`
+            );
+            descriptions[project] =
+              'Error: Could not fetch GitHub Repository description. Please try again later.';
+          })
+      );
 
-    await Promise.all(descriptionPromises);
-  } catch (error) {
-    console.error(`Error fetching descriptions: ${error}`);
+      await Promise.all(descriptionPromises);
+    } catch (error) {
+      console.error(`Error fetching descriptions: ${error}`);
+    }
   }
 
   return {
@@ -234,4 +241,4 @@ export async function getStaticProps() {
   };
 }
 // Comment out this line if you are doing npm run dev
-export const runtime = 'experimental-edge';
+// export const runtime = 'experimental-edge';

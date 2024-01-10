@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   demoText = 'Demo',
 }) => {
   return (
-    <div className="w-full md:w-1/2 lg:w-1/4 p-2 md:p-4">
+    <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-2 md:p-4">
       <div className="bg-zinc-900 rounded-lg shadow-lg overflow-hidden h-full flex flex-col justify-between">
         <div>
           <h2 className="text-sm md:text-lg font-bold p-3 text-zinc-200">

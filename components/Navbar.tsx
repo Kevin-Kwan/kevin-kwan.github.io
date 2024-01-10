@@ -18,7 +18,7 @@ const Navbar = ({ isMenuOpen, toggleMenu }: NavbarProps) => {
         zIndex: 10,
         background: 'linear-gradient(to right, #3F4C6B, #171F29, #3F4C6B)',
       }}
-      className="flex text-white p-4 items-center h-16 justify-center w-full px-4 md:px-8 lg:px-16"
+      className="flex text-white p-4 items-center h-16 justify-center w-full px-2 md:px-6 lg:px-8"
     >
       <div className="flex items-center justify-center">
         <Link legacyBehavior href="/">
