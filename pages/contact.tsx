@@ -179,9 +179,9 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
 }
 
 export async function getStaticProps() {
-  const serviceId = process.env.EMAILJS_SERVICE_ID;
-  const templateId = process.env.EMAILJS_TEMPLATE_ID;
-  const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+  const serviceId = process.env.EMAILJS_SERVICE_ID || null;
+  const templateId = process.env.EMAILJS_TEMPLATE_ID || null;
+  const publicKey = process.env.EMAILJS_PUBLIC_KEY || null;
 
   return {
     props: {

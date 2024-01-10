@@ -2,7 +2,7 @@ import Head from 'next/head';
 import ProjectCard from '../components/ProjectCard';
 import { FaHackerrank } from 'react-icons/fa';
 
-const github_pat = process.env.GITHUB_PAT;
+// const github_pat = process.env.GITHUB_PAT;
 
 const loadingMessage =
   'Failed to fetch GitHub Repository description. Please try again later.';
@@ -12,12 +12,12 @@ async function getRepoDescription(githubRepoUrl: string) {
   const [, owner, repo] = new URL(githubRepoUrl).pathname.split('/');
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}`,
-      {
-        headers: {
-          Authorization: `Bearer ${github_pat}`,
-        },
-      }
+      `https://api.github.com/repos/${owner}/${repo}`
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${github_pat}`,
+      //   },
+      // }
     );
     const data = await response.json();
     return data.description || loadingMessage;
