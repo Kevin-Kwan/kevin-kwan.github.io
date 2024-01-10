@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { useForm, FieldValues } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Head from 'next/head';
 
@@ -178,7 +178,7 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const serviceId = process.env.EMAILJS_SERVICE_ID;
   const templateId = process.env.EMAILJS_TEMPLATE_ID;
   const publicKey = process.env.EMAILJS_PUBLIC_KEY;
