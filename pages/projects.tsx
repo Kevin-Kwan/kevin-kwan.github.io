@@ -189,14 +189,14 @@ export default function Projects({ descriptions }: ProjectsProps) {
             description={descriptions['leetcode'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/leetcode"
             demoLink="https://leetcode.com/kevinkwan/"
-            demoText="LeetCode Profile"
+            demoText="Profile"
           />
           <ProjectCard
             name="My Personal HackerRank Solutions"
             description={descriptions['hackerrank'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/hackerrank"
             demoLink="https://www.hackerrank.com/profile/kevinkwan"
-            demoText="HackerRank Profile"
+            demoText="Profile"
           />
         </div>
       </main>
