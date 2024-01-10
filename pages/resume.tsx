@@ -15,7 +15,7 @@ interface ResumeProps {
 }
 
 export default function Resume({ adobeClientId }: ResumeProps) {
-  const isMobile = useMediaQuery({ query: '(max-width: 430px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 846px)' });
   useEffect(() => {
     function initializeAdobeDCView() {
       var adobeDCView = new window.AdobeDC.View({
@@ -102,6 +102,7 @@ export async function getStaticProps() {
     props: {
       adobeClientId,
     },
+    revalidate: 600,
   };
 }
 // export const runtime = 'experimental-edge';

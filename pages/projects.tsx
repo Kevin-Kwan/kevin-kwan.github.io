@@ -228,6 +228,7 @@ export async function getStaticProps() {
       );
 
       await Promise.all(descriptionPromises);
+      console.log('Finished fetching descriptions!');
     } catch (error) {
       console.error(`Error fetching descriptions: ${error}`);
     }
