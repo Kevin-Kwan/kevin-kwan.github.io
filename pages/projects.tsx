@@ -239,7 +239,7 @@ export async function getStaticProps() {
     props: {
       descriptions,
     },
-    revalidate: 600,
+    revalidate: 300,
   };
 }
 

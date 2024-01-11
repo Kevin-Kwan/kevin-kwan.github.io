@@ -101,7 +101,7 @@ export async function getStaticProps() {
     props: {
       adobeClientId,
     },
-    revalidate: 600,
+    revalidate: 300,
   };
 }
 
