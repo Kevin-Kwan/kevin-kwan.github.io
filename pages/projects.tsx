@@ -29,7 +29,6 @@ async function getRepoDescription(githubRepoUrl: string) {
 
 const projectsWithDescriptions = [
   'CutieBot',
-  'DarkCloud2Fishing',
   'portfolio-nextjs',
   'leetcode',
   'Lets-Surf',
@@ -66,13 +65,6 @@ function Projects({ descriptions }: ProjectsProps) {
           Ongoing Projects
         </p>
         <div className="flex flex-wrap -mx-2">
-          <ProjectCard
-            name="Dark Cloud 2 Fishing Implementation"
-            description={`${
-              descriptions['DarkCloud2Fishing'] || loadingMessage
-            } Written in C#.`}
-            githubLink="https://github.com/Kevin-Kwan/DarkCloud2Fishing"
-          />
           <ProjectCard
             name="CutieBot (Discord Bot Application)"
             description={`${
