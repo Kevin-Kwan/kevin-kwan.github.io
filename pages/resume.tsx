@@ -32,7 +32,7 @@ function Resume({ adobeClientId }: ResumeProps) {
         },
         {
           embedMode: 'FULL_WINDOW',
-          defaultViewMode: 'FIT_PAGE',
+          defaultViewMode: 'FIT_WIDTH',
           showFullScreen: true,
           showAnnotationTools: false,
           showZoomControl: true,
