@@ -239,7 +239,9 @@ export async function getStaticProps() {
     props: {
       descriptions,
     },
-    revalidate: 300,
+    revalidate: 900,
+    // 15 minutes because GitHub API has a rate limit of 60 requests per hour for unauthenticated requests, so we can only fetch descriptions every 15 minutes
+    // 14 (about 15) * 4 = 56-60 requests per hour
   };
 }
 
