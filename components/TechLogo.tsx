@@ -14,8 +14,8 @@ function TechLogo({
   href,
   src,
   alt,
-  width = 1000,
-  height = 1000,
+  width = 100,
+  height = 100,
 }: TechLogoProps) {
   return (
     <div className="flex flex-col items-center justify-center">

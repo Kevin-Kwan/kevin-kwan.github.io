@@ -9,21 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.11.0",
+    "@emailjs/browser": "^3.12.1",
     "@tsparticles/react": "^3.0.0",
-    "@types/node": "20.10.8",
+    "@types/node": "20.11.0",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.16",
     "compass-mixins": "^0.12.12",
     "dotenv": "^16.3.1",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
-    "framer-motion": "^10.17.12",
+    "framer-motion": "^10.18.0",
     "next": "14.0.4",
+    "npm-check-updates": "^16.14.12",
     "postcss": "8.4.33",
     "react": "18.2.0",
     "react-hook-form": "^7.49.3",
-    "react-icons": "^5.0.0",
+    "react-icons": "^5.0.1",
     "react-responsive": "^9.0.2",
     "sass": "^1.69.7",
     "sharp": "^0.33.1",
@@ -33,6 +34,6 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.47",
-    "mini-css-extract-plugin": "^2.7.6"
+    "mini-css-extract-plugin": "^2.7.7"
   }
 }
