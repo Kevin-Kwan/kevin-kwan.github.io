@@ -64,7 +64,7 @@ function Projects({ descriptions }: ProjectsProps) {
         <p className="text-3xl font-bold mb-2 text-center text-green-200 underline">
           Ongoing Projects
         </p>
-        <div className="flex flex-wrap -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
             name="CutieBot (Discord Bot Application)"
             description={`${
@@ -84,7 +84,7 @@ function Projects({ descriptions }: ProjectsProps) {
         <p className="text-3xl font-bold mb-2 text-center text-blue-200 underline">
           Completed Projects
         </p>
-        <div className="flex flex-wrap -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
             name="Dark Ascent (3D Platformer Game)"
             description={`${
@@ -174,7 +174,7 @@ function Projects({ descriptions }: ProjectsProps) {
         <p className="text-3xl font-bold mb-2 text-center text-purple-200 underline">
           Coding Challenge Solutions
         </p>
-        <div className="flex flex-wrap -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
             name="My Personal LeetCode Solutions"
             description={descriptions['leetcode'] || loadingMessage}
