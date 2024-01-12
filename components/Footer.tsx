@@ -14,7 +14,7 @@ function Footer() {
             legacyBehavior
             href="https://github.com/Kevin-Kwan/portfolio-nextjs"
           >
-            <a className="text-blue-300 hover:underline">
+            <a className="text-blue-300 hover:underline transition-colors ease-in-out hover:text-blue-500">
               Custom Made by Kevin Kwan
             </a>
           </Link>{' '}
@@ -23,7 +23,7 @@ function Footer() {
             href="https://nextjs.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-300 hover:underline"
+            className="text-blue-300 hover:underline transition-colors ease-in-out hover:text-blue-500"
           >
             Next.js
           </a>{' '}
@@ -32,7 +32,7 @@ function Footer() {
             href="https://tailwindcss.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-300 hover:underline"
+            className="text-blue-300 hover:underline transition-colors ease-in-out hover:text-blue-500"
           >
             Tailwind CSS
           </a>{' '}

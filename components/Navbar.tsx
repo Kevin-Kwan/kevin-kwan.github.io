@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { HomeIcon } from '@heroicons/react/24/solid';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Home from '../pages';
 
 type NavbarProps = {
   isMenuOpen: boolean;
@@ -43,9 +45,10 @@ function Navbar({ isMenuOpen, toggleMenu }: NavbarProps) {
               height={40}
               className="mr-2 transform transition-transform duration-200 ease-in-out hover:scale-125 hover:rotate-[15deg]"
             />
-            <span className="text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500">
+            <span className="hidden lg:inline-block text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500">
               Home
             </span>
+            <HomeIcon className="inline-block lg:hidden h-6 w-6 text-white ml-3 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500" />
           </a>
         </Link>
       </div>
