@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import Home from '../pages';
 
 type NavbarProps = {
   isMenuOpen: boolean;

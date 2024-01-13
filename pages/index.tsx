@@ -542,7 +542,7 @@ function Home() {
         <main className="flex-1">
           <div
             id="tsparticles"
-            style={{ height: 'calc(100vh - 6vh)' }}
+            style={{ height: 'calc(92vh)' }}
             className="w-full relative"
           >
             {init && (
@@ -565,7 +565,7 @@ function Home() {
               </div> */}
               <p
                 className={
-                  'gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center hover:text-6xl sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
+                  'gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center  sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
                 }
                 style={{
                   fontFamily: 'Lato, sans-serif',
