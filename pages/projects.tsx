@@ -27,6 +27,7 @@ async function getRepoDescription(githubRepoUrl: string) {
   }
 }
 
+// Add your GitHub Repository names here to fetch descriptions from GitHub API
 const projectsWithDescriptions = [
   'CutieBot',
   'portfolio-nextjs',
@@ -41,6 +42,7 @@ const projectsWithDescriptions = [
   'Dark-Ascent',
   'hackerrank',
   'Arkanoid',
+  'Unity3D-FishingRodMotion'
 ];
 
 // function LoadingCard() {
@@ -86,7 +88,14 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
-            name="Dark Ascent (3D Platformer Game)"
+            name="Fishing Line Physics Implementation (Unity 3D)"
+            description={`${
+              descriptions['Unity3D-FishingRodMotion'] || loadingMessage
+            } Written in C#.`}
+            githubLink="https://github.com/Kevin-Kwan/Unity3D-FishingRodMotion"
+          />
+          <ProjectCard
+            name='"Dark Ascent" (3D Platformer Game)'
             description={`${
               descriptions['Dark-Ascent'] || loadingMessage
             } Written in C#.`}
@@ -105,7 +114,7 @@ function Projects({ descriptions }: ProjectsProps) {
           />
 
           <ProjectCard
-            name="Project Blu (2D Unity Game Suite)"
+            name='"Project Blu" (2D Unity Game Suite)'
             description={
               'A game suite made for Objects & Design class (CS 2340) during the Summer of 2022 featuring Blackjack, Chess with AI, and a Rouge-like Georgia Tech-themed game. We learned and applied principles of Software Engineering and the best design principles by putting them into practice with this project. Written in C#.'
             }
@@ -114,21 +123,21 @@ function Projects({ descriptions }: ProjectsProps) {
             demoText="Releases"
           />
           <ProjectCard
-            name="Windows XP-themed Website"
+            name="Windows XP-themed Website/Socials Page"
             description={descriptions['WindowsXPWebsite'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/WindowsXPWebsite/"
             demoLink="https://kevin-kwan.github.io/WindowsXPWebsite/"
             demoText="Demo"
           />
           <ProjectCard
-            name="eduNFT (HackGT 8 2021)"
+            name='"eduNFT" (HackGT 8 2021)'
             description={descriptions['eduNFT'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/eduNFT/"
             demoLink="https://kevin-kwan.github.io/eduNFT/"
             demoText="Demo"
           />
           <ProjectCard
-            name="Evade and Deceive (Unity 3D Online Multiplayer Racing Game)"
+            name='"Evade and Deceive" (Unity 3D Online Multiplayer Racing Game)'
             description={`${
               descriptions['Evade-And-Deceive'] || loadingMessage
             } Written in C#.`}
@@ -137,7 +146,7 @@ function Projects({ descriptions }: ProjectsProps) {
             demoText="Releases"
           />
           <ProjectCard
-            name="Let's Surf (Unity 3D Movement Game)"
+            name='"Let&apos;s Surf" (Unity 3D Movement Game)'
             description={`${
               descriptions['Lets-Surf'] || loadingMessage
             } Written in C#.`}
@@ -164,7 +173,7 @@ function Projects({ descriptions }: ProjectsProps) {
             demoText="Releases"
           />
           <ProjectCard
-            name="Triggering Insanity (2D Platformer)"
+            name='"Triggering Insanity" (2D Platformer)'
             description={descriptions['Triggering-Insanity'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/Triggering-Insanity"
             demoLink="https://github.com/Kevin-Kwan/Triggering-Insanity/releases"
