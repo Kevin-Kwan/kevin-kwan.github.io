@@ -7,7 +7,7 @@ function Education() {
       <Head>
         <title>Kevin Kwan | My Education</title>
       </Head>
-      <main className="flex-1 p-4">
+      <main className="flex-1 p-4" style={{ paddingTop: '5rem' }}>
         <div className="max-w-4xl mx-auto">
           <p className="sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold mb-2 text-white text-center">
             My Education

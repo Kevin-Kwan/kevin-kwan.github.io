@@ -542,7 +542,7 @@ function Home() {
         <main className="flex-1">
           <div
             id="tsparticles"
-            style={{ height: 'calc(92vh)' }}
+            style={{ height: '100vh', overflow: 'auto' }}
             className="w-full relative"
           >
             {init && (

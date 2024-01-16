@@ -42,7 +42,7 @@ const projectsWithDescriptions = [
   'Dark-Ascent',
   'hackerrank',
   'Arkanoid',
-  'Unity3D-FishingRodMotion'
+  'Unity3D-FishingRodMotion',
 ];
 
 // function LoadingCard() {
@@ -62,7 +62,7 @@ function Projects({ descriptions }: ProjectsProps) {
       <Head>
         <title>Kevin Kwan | My Projects</title>
       </Head>
-      <main className="flex-1 p-4">
+      <main className="flex-1 p-4" style={{ paddingTop: '5rem' }}>
         <p className="text-3xl font-bold mb-2 text-center text-green-200 underline">
           Ongoing Projects
         </p>

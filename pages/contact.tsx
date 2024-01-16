@@ -55,7 +55,7 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
       <Head>
         <title>Kevin Kwan | Contact Form</title>
       </Head>
-      <main className="flex-1 p-4">
+      <main className="flex-1 p-4" style={{ paddingTop: '5rem' }}>
         <div className="max-w-2xl mx-auto">
           <p className="text-white text-2xl font-bold mb-4 text-center">
             Feel Free to Contact Me!

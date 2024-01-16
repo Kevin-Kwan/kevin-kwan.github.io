@@ -4,12 +4,13 @@ import Image from 'next/image';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-type NavbarProps = {
+interface NavbarProps {
+  fixed?: boolean;
   isMenuOpen: boolean;
   toggleMenu: () => void;
-};
+}
 
-function Navbar({ isMenuOpen, toggleMenu }: NavbarProps) {
+function Navbar({ fixed = true, isMenuOpen, toggleMenu }: NavbarProps) {
   useEffect(
     function () {
       const handleResize = function () {
@@ -30,6 +31,9 @@ function Navbar({ isMenuOpen, toggleMenu }: NavbarProps) {
     <nav
       style={{
         zIndex: 10,
+        position: fixed ? 'fixed' : 'relative',
+        top: fixed ? 0 : 'auto',
+        width: fixed ? '100%' : 'auto',
         background: 'linear-gradient(to right, #3F4C6B, #171F29, #3F4C6B)',
       }}
       className="flex text-white p-4 items-center h-16 justify-center w-full px-2 md:px-6 lg:px-8"

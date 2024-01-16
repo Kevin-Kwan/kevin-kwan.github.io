@@ -72,7 +72,7 @@ function Resume({ adobeClientId }: ResumeProps) {
       </Head>
       <main
         className="flex-1 p-4 flex flex-col items-center justify-center"
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', paddingTop: '5rem' }}
       >
         <p className="text-white text-2xl font-bold mb-4 text-center">
           {isMobile
