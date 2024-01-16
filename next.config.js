@@ -1,19 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'i.redd.it',
-      'github.com',
-      'careers.publicissapient.com',
-      'media.licdn.com',
-      '1000logos.net',
-      'upload.wikimedia.org',
-      'www.cdnlogo.com',
-      'seeklogo.com',
-      'cdn4.iconfinder.com',
-      'brand.gatech.edu',
-      'gwinnetttech.edu',
-      '1526789230-files.gitbook.io',
+    remotePatterns: [
+      { hostname: 'i.redd.it' },
+      { hostname: 'github.com' },
+      { hostname: 'careers.publicissapient.com' },
+      { hostname: 'media.licdn.com' },
+      { hostname: '1000logos.net' },
+      { hostname: 'upload.wikimedia.org' },
+      { hostname: 'www.cdnlogo.com' },
+      { hostname: 'seeklogo.com' },
+      { hostname: 'cdn4.iconfinder.com' },
+      { hostname: 'brand.gatech.edu' },
+      { hostname: 'gwinnetttech.edu' },
+      { hostname: '1526789230-files.gitbook.io' },
     ],
   },
 };
