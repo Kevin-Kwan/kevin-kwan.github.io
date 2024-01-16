@@ -30,7 +30,7 @@ async function getRepoDescription(githubRepoUrl: string) {
 // Add your GitHub Repository names here to fetch descriptions from GitHub API
 const projectsWithDescriptions = [
   'CutieBot',
-  'portfolio-nextjs',
+  'portfolio',
   'leetcode',
   'Lets-Surf',
   'eduNFT',
@@ -77,9 +77,9 @@ function Projects({ descriptions }: ProjectsProps) {
           <ProjectCard
             name="Software Engineer Portfolio Website"
             description={`This website I made with TypeScript! ${
-              descriptions['portfolio-nextjs'] || loadingMessage
+              descriptions['portfolio'] || loadingMessage
             } Made with Next.js and TailwindCSS.`}
-            githubLink="https://github.com/Kevin-Kwan/portfolio-nextjs"
+            githubLink="https://github.com/Kevin-Kwan/portfolio"
             demoLink="/"
           />
         </div>
