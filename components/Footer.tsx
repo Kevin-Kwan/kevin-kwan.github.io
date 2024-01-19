@@ -3,13 +3,13 @@ import Link from 'next/link';
 function Footer() {
   return (
     <footer
-      className="text-white p-4"
+      className="text-white p-2 sm:p-3"
       style={{
         background: 'linear-gradient(to right, #171F29, #3F4C6B, #171F29)',
       }}
     >
       <div className="max-w-2xl mx-auto">
-        <p className="text-center ">
+        <p className="text-center text-sm sm:text-base">
           <Link
             legacyBehavior
             href="https://github.com/Kevin-Kwan/portfolio-nextjs"
