@@ -14,11 +14,13 @@ function Login() {
       router.push('/new-post');
     }
   }, [router]);
-  const handleInputChange = (setter) => (e) => {
-    setter(e.target.value);
-    setResponse(''); // Clear the response when the user types
-  };
-  const handleSubmit = async (event) => {
+  const handleInputChange =
+    (setter: (value: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setter(e.target.value);
+      setResponse(''); // Clear the response when the user types
+    };
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // Send a request to your API to authenticate the user

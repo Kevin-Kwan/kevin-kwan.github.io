@@ -12,7 +12,7 @@ export default function NewPost() {
     setTitle('');
     setContent('');
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // API request to create a new post
@@ -54,7 +54,7 @@ export default function NewPost() {
         <textarea
           className="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-black"
           placeholder="Content"
-          rows="24"
+          rows={24}
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
