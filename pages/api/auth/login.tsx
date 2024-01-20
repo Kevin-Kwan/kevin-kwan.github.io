@@ -52,3 +52,4 @@ export default async function handler(
   // Send the token in the response
   return res.status(200).json({ token });
 }
+export const runtime = 'edge';
