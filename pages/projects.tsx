@@ -43,6 +43,7 @@ const projectsWithDescriptions = [
   'hackerrank',
   'Arkanoid',
   'Unity3D-FishingRodMotion',
+  'GlimpseShare',
 ];
 
 // function LoadingCard() {
@@ -67,6 +68,13 @@ function Projects({ descriptions }: ProjectsProps) {
           Ongoing Projects
         </p>
         <div className="flex flex-wrap justify-center -mx-2">
+          <ProjectCard
+            name="GlimpseShare (Media Sharing Web App)"
+            description={`${
+              descriptions['GlimpseShare'] || loadingMessage
+            } Fullstack App made with Next.js.`}
+            githubLink="https://github.com/Kevin-Kwan/GlimpseShare"
+          />
           <ProjectCard
             name="CutieBot (Discord Bot Application)"
             description={`${
