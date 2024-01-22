@@ -28,6 +28,10 @@ Follow these steps to install and run the project:
     ```
 The website should now be running on `localhost:3000`.
 
+## Deployment
+I am currently using Cloudflare Pages to host and deploy my site.
+Other options that should include Vercel and GitHub Pages (the GitHub workflow yaml for it might need to be modified though)
+
 ## Contributing
 
 Contributions, issues, and feature requests are welcome. Feel free to check the issues page if you want to contribute.
