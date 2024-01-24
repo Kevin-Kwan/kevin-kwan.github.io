@@ -78,7 +78,7 @@ function Projects({ descriptions }: ProjectsProps) {
             name="GlimpseShare (Media Sharing Web App)"
             description={`${
               descriptions['GlimpseShare'] || loadingMessage
-            } Fullstack App made with Next.js.`}
+            } Full-stack App made with Next.js.`}
             githubLink="https://github.com/Kevin-Kwan/GlimpseShare"
           />
           <ProjectCard
