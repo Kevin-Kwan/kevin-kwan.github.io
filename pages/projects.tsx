@@ -69,6 +69,11 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
+            name="Company Careers Portal (Paid Client Project)"
+            description="A full-stack dynamic careers portal website made with Next.js, Express.js, MongoDB, and Bucket Storage for any business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client."
+          />
+
+          <ProjectCard
             name="GlimpseShare (Media Sharing Web App)"
             description={`${
               descriptions['GlimpseShare'] || loadingMessage

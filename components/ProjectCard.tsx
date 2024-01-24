@@ -5,7 +5,7 @@ import { FaGithub, FaGlobe } from 'react-icons/fa';
 interface ProjectCardProps {
   name: string;
   description: string;
-  githubLink: string;
+  githubLink?: string;
   demoLink?: string;
   demoText?: string;
   Icon?: React.ComponentType<{ className?: string }>;
@@ -33,12 +33,14 @@ function ProjectCard({
           </div>
         </div>
         <div className="pb-3 pl-3 pr-3 flex justify-between">
-          <Link href={githubLink} rel="noopener noreferrer" target="_blank">
-            <div className="bg-slate-400 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
-              <FaGithub className="mr-2 text-sm md:text-base" />
-              <span>GitHub</span>
-            </div>
-          </Link>
+          {githubLink && (
+            <Link href={githubLink} rel="noopener noreferrer" target="_blank">
+              <div className="bg-slate-400 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
+                <FaGithub className="mr-2 text-sm md:text-base" />
+                <span>GitHub</span>
+              </div>
+            </Link>
+          )}
           {demoLink && (
             <Link href={demoLink} rel="noopener noreferrer" target="_blank">
               <div className="bg-slate-400 hover:bg-green-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
