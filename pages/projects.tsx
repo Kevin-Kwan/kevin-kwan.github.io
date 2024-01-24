@@ -44,6 +44,7 @@ const projectsWithDescriptions = [
   'Arkanoid',
   'Unity3D-FishingRodMotion',
   'GlimpseShare',
+  'UCLA-CS31-Project-2-Winter-2024',
 ];
 
 // function LoadingCard() {
@@ -101,6 +102,15 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2">
           <ProjectCard
+            name="Sales Tax Calculator (UCLA CS31 Project)"
+            description={
+              descriptions['UCLA-CS31-Project-2-Winter-2024'] || loadingMessage
+            }
+            githubLink="https://github.com/Kevin-Kwan/UCLA-CS31-Project-2-Winter-2024"
+            demoLink="https://github.com/Kevin-Kwan/UCLA-CS31-Project-2-Winter-2024/releases"
+            demoText="Releases"
+          />
+          <ProjectCard
             name="Fishing Line Physics Implementation (Unity 3D)"
             description={`${
               descriptions['Unity3D-FishingRodMotion'] || loadingMessage
@@ -125,7 +135,24 @@ function Projects({ descriptions }: ProjectsProps) {
             demoLink="https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb"
             demoText="Colab Demo"
           />
-
+          <ProjectCard
+            name="Currency Converter (Learning React Project)"
+            description={
+              'A simple currency converter made with React as a team project. This was one my first React projects, so I learned about components, useState and useEffect, and using external APIs with React. I also deployed our React app to Netlify.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/currency-converter"
+            demoLink="https://moneyconversion.netlify.app/"
+            demoText="Demo"
+          />
+          <ProjectCard
+            name="Rock, Paper, Scissors (Learning React Project)"
+            description={
+              'A simple Rock, Paper, Scissors game made with React as a team project. This was my first React project, so I learned about components, useState and useEffect, and props with React. I also deployed our React app to Netlify.'
+            }
+            githubLink="https://github.com/Kevin-Kwan/rps-app"
+            demoLink="https://reactrps.netlify.app"
+            demoText="Demo"
+          />
           <ProjectCard
             name='"Project Blu" (2D Unity Game Suite)'
             description={
