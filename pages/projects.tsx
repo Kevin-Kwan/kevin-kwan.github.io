@@ -68,7 +68,7 @@ function Projects({ descriptions }: ProjectsProps) {
         <p className="text-3xl font-bold mb-2 text-center text-green-200 underline">
           Ongoing Projects
         </p>
-        <div className="flex flex-wrap justify-center -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2 bg-green-300 bg-opacity-30 rounded">
           <ProjectCard
             name="Company Careers Portal (Paid Client Project)"
             description="A full-stack dynamic careers portal website made with Next.js, Express.js, MongoDB, and Bucket Storage for any business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
@@ -97,10 +97,10 @@ function Projects({ descriptions }: ProjectsProps) {
             demoLink="/"
           />
         </div>
-        <p className="text-3xl font-bold mb-2 text-center text-blue-200 underline">
+        <p className="text-3xl font-bold mb-2 text-center text-blue-200 underline pt-4">
           Completed Projects
         </p>
-        <div className="flex flex-wrap justify-center -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2 bg-blue-300 bg-opacity-30 rounded">
           <ProjectCard
             name="Sales Tax Calculator (UCLA CS31 Project)"
             description={
@@ -220,10 +220,10 @@ function Projects({ descriptions }: ProjectsProps) {
             demoText="Releases"
           />
         </div>
-        <p className="text-3xl font-bold mb-2 text-center text-purple-200 underline">
+        <p className="text-3xl font-bold mb-2 text-center text-purple-200 underline pt-4">
           Coding Challenge Solutions
         </p>
-        <div className="flex flex-wrap justify-center -mx-2">
+        <div className="flex flex-wrap justify-center -mx-2 bg-purple-300 bg-opacity-30 rounded">
           <ProjectCard
             name="My Personal LeetCode Solutions"
             description={descriptions['leetcode'] || loadingMessage}
