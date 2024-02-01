@@ -45,6 +45,7 @@ const projectsWithDescriptions = [
   'Unity3D-FishingRodMotion',
   'GlimpseShare',
   'UCLA-CS31-Project-2-Winter-2024',
+  'UCLA-CS31-Project-3-Winter-2024',
 ];
 
 // function LoadingCard() {
@@ -102,13 +103,18 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2 bg-blue-300 bg-opacity-30 rounded">
           <ProjectCard
+            name="Quality Control Testing (UCLA CS31 Project)"
+            description={
+              descriptions['UCLA-CS31-Project-3-Winter-2024'] || loadingMessage
+            }
+            githubLink="https://github.com/Kevin-Kwan/UCLA-CS31-Project-3-Winter-2024"
+          />
+          <ProjectCard
             name="Sales Tax Calculator (UCLA CS31 Project)"
             description={
               descriptions['UCLA-CS31-Project-2-Winter-2024'] || loadingMessage
             }
             githubLink="https://github.com/Kevin-Kwan/UCLA-CS31-Project-2-Winter-2024"
-            demoLink="https://github.com/Kevin-Kwan/UCLA-CS31-Project-2-Winter-2024/releases"
-            demoText="Releases"
           />
           <ProjectCard
             name="Fishing Line Physics Implementation (Unity 3D)"
@@ -280,9 +286,7 @@ export async function getStaticProps() {
     props: {
       descriptions,
     },
-    revalidate: 900,
-    // 15 minutes because GitHub API has a rate limit of 60 requests per hour for unauthenticated requests, so we can only fetch descriptions every 15 minutes
-    // 14 (about 15) * 4 = 56-60 requests per hour
+    revalidate: projectsWithDescriptions.length * 60,
   };
 }
 
