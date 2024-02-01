@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Fade } from 'react-awesome-reveal';
 
 interface TechLogoProps {
   href: string;
@@ -20,7 +21,9 @@ function TechLogo({
   return (
     <div className="flex flex-col items-center justify-center">
       <Link href={href} passHref rel="noopener noreferrer" target="_blank">
-        <Image src={src} alt={alt} width={width} height={height} />
+        <Fade triggerOnce>
+          <Image src={src} alt={alt} width={width} height={height} />
+        </Fade>
       </Link>
     </div>
   );
