@@ -8,10 +8,10 @@ type MenuProps = {
 };
 
 function NavbarMenu({ isMenuOpen, toggleMenu }: MenuProps) {
-  useEffect(() => {
-    // If the menu is being opened, prevent scrolling. Otherwise, allow it.
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
-  }, [isMenuOpen]);
+  // useEffect(() => {
+  //   // If the menu is being opened, prevent scrolling. Otherwise, allow it.
+  //   document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+  // }, [isMenuOpen]);
   return (
     <motion.div
       style={{ zIndex: 5, backgroundColor: '#171F29', paddingTop: '64px' }}
