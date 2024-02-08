@@ -72,7 +72,7 @@ function Projects({ descriptions }: ProjectsProps) {
         <div className="flex flex-wrap justify-center -mx-2 bg-green-300 bg-opacity-30 rounded">
           <ProjectCard
             name="Company Careers Portal (Paid Client Project)"
-            description="A full-stack dynamic careers portal website made with Next.js, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
+            description="A full-stack dynamic careers portal website made with Next.js, TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
           />
 
           <ProjectCard
