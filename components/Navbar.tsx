@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HomeIcon } from '@heroicons/react/24/solid';
@@ -11,6 +12,16 @@ interface NavbarProps {
 }
 
 function Navbar({ fixed = true, isMenuOpen, toggleMenu }: NavbarProps) {
+  const router = useRouter();
+  useEffect(() => {
+    router.prefetch('/resume');
+    router.prefetch('/education');
+    router.prefetch('/skills');
+    router.prefetch('/experience');
+    router.prefetch('/projects');
+    router.prefetch('/contact');
+  }, [router]);
+
   useEffect(
     function () {
       const handleResize = function () {
