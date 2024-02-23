@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -8,6 +9,15 @@ type MenuProps = {
 };
 
 function NavbarMenu({ isMenuOpen, toggleMenu }: MenuProps) {
+  const router = useRouter();
+  useEffect(() => {
+    router.prefetch('/resume');
+    router.prefetch('/education');
+    router.prefetch('/skills');
+    router.prefetch('/experience');
+    router.prefetch('/projects');
+    router.prefetch('/contact');
+  }, [router]);
   // useEffect(() => {
   //   // If the menu is being opened, prevent scrolling. Otherwise, allow it.
   //   document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
