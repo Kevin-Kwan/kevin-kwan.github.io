@@ -46,6 +46,7 @@ const projectsWithDescriptions = [
   'GlimpseShare',
   'UCLA-CS31-Project-2-Winter-2024',
   'UCLA-CS31-Project-3-Winter-2024',
+  'MATLAB-face-training',
 ];
 
 // function LoadingCard() {
@@ -217,6 +218,11 @@ function Projects({ descriptions }: ProjectsProps) {
             githubLink="https://github.com/Kevin-Kwan/Arkanoid"
             demoLink="https://github.com/Kevin-Kwan/Arkanoid/releases"
             demoText="Releases"
+          />
+          <ProjectCard
+            name="Facial Recognition with MATLAB"
+            description={descriptions['MATLAB-face-training'] || loadingMessage}
+            githubLink="https://github.com/Kevin-Kwan/MATLAB-face-training"
           />
           <ProjectCard
             name='"Triggering Insanity" (2D Platformer)'
