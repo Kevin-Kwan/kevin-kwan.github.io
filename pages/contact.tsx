@@ -61,8 +61,9 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
             Feel Free to Contact Me!
           </p>
           <p className="text-white mb-4">
-            If you would like to reach out to me or report a bug on my website,
-            please fill out the form below with your name, email, and a message.
+            If you would like to reach out to me, leave feedback, or report a
+            bug on my website, please fill out the form below with your name,
+            email, and a message.
             <br />
             You can also directly email me at{' '}
             {process.env.NEXT_PUBLIC_CONTACT_EMAIL ? (
@@ -78,7 +79,7 @@ function Contact({ serviceId, templateId, publicKey }: ContactProps) {
             <a>.</a>
             <br />
             <br />
-            I&lsquo;ll get back to you as soon as possible!
+            I&lsquo;ll get back to you as soon as possible! 😁
           </p>
           <form
             ref={form}
