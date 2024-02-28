@@ -16,7 +16,7 @@ Follow these steps to install and run the project:
 
 1. Clone the repository:
     ```
-    git clone https://github.com/Kevin-Kwan/portfolio-nextjs.git
+    git clone https://github.com/Kevin-Kwan/portfolio.git
     ```
 2. Navigate into the project directory and install the dependencies:
     ```
