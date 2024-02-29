@@ -72,11 +72,6 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2 bg-green-300 bg-opacity-30 rounded">
           <ProjectCard
-            name="Company Careers Portal (Paid Client Project)"
-            description="A full-stack dynamic careers portal website made with Next.js, TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
-          />
-
-          <ProjectCard
             name="GlimpseShare (Media Sharing Web App)"
             description={`${
               descriptions['GlimpseShare'] || loadingMessage
@@ -103,6 +98,10 @@ function Projects({ descriptions }: ProjectsProps) {
           Completed Projects
         </p>
         <div className="flex flex-wrap justify-center -mx-2 bg-blue-300 bg-opacity-30 rounded">
+          <ProjectCard
+            name="Company Careers Portal (Paid Client Project)"
+            description="A full-stack dynamic careers portal website made with Next.js, TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
+          />
           <ProjectCard
             name="Quality Control Testing (UCLA CS31 Project)"
             description={
