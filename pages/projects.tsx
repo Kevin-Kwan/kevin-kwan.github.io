@@ -291,7 +291,7 @@ export async function getStaticProps() {
     props: {
       descriptions,
     },
-    revalidate: projectsWithDescriptions.length * 60,
+    // revalidate: projectsWithDescriptions.length * 60,
   };
 }
 
