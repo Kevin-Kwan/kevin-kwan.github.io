@@ -12,6 +12,7 @@ You can view the live demo of the website at [Kevin Kwan's Portfolio](https://ke
 
 ## Installation and Running the Project
 
+Make sure you have ``node.js`` and ``git`` installed. 
 Follow these steps to install and run the project:
 
 1. Clone the repository:
