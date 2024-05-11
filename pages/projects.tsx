@@ -172,14 +172,14 @@ function Projects({ descriptions }: ProjectsProps) {
             name="Windows XP-themed Website/Socials Page"
             description={descriptions['WindowsXPWebsite'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/WindowsXPWebsite/"
-            demoLink="https://kevin-kwan.github.io/WindowsXPWebsite/"
+            demoLink="https://windows-xp-website.vercel.app/"
             demoText="Demo"
           />
           <ProjectCard
             name='"eduNFT" (HackGT 8 2021)'
             description={descriptions['eduNFT'] || loadingMessage}
             githubLink="https://github.com/Kevin-Kwan/eduNFT/"
-            demoLink="https://kevin-kwan.github.io/eduNFT/"
+            demoLink="https://edu-nft.vercel.app/"
             demoText="Demo"
           />
           <ProjectCard
