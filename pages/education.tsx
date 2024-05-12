@@ -19,8 +19,8 @@ function Education() {
           <EducationCard
             schoolName="Georgia Institute of Technology"
             subschoolDescription="College of Computing"
-            dateRange="August 2021 - Expected May 2024"
-            credential="Bachelor of Science in Computer Science"
+            dateRange="August 2021 - May 2024"
+            credential="Bachelor of Science in Computer Science with Highest Honors"
             logoUrl="https://brand.gatech.edu/sites/default/files/inline-images/GTVertical_RGB.png"
             links={[
               {
@@ -37,7 +37,7 @@ function Education() {
                 <b>Threads:</b> Intelligence and Media
               </p>
             }
-            gpa="3.9"
+            gpa="3.9, summa cum laude"
           />
           <EducationCard
             schoolName="Gwinnett Technical College"
