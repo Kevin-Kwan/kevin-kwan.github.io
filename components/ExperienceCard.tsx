@@ -22,7 +22,7 @@ function ExperienceCard({
   companyName,
   dateRange,
   jobTitle,
-  logoUrl,
+  logoUrl, // todo: make the image clickable and redirect to the first link
   jobDescription,
   links = [],
   subCompanyDescription,

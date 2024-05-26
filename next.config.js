@@ -6,6 +6,7 @@ const nextConfig = {
       { hostname: 'github.com' },
       { hostname: 'careers.publicissapient.com' },
       { hostname: 'media.licdn.com' },
+      { hostname: 'scontent.cdninstagram.com' },
       { hostname: '1000logos.net' },
       { hostname: 'upload.wikimedia.org' },
       { hostname: 'www.cdnlogo.com' },
