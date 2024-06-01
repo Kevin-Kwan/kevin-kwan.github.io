@@ -151,7 +151,7 @@ function Experience() {
             subCompanyDescription='Formerly "NCR Corporation"'
             dateRange="July 2019 - August 2019"
             jobTitle="Software Engineer Intern"
-            logoUrl="https://scontent.cdninstagram.com/v/t51.2885-19/392900149_350160417452049_3758010073993478161_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_cat=109&_nc_ohc=T-6Ns3baaEcQ7kNvgGJG0Rg&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYAuMqWGlpNFQw1EPGavn0rSK7bHaHHrWuy_iN8i512Bjg&oe=66597DD4&_nc_sid=10d13b"
+            logoUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ5UGKVEqd2rsXKBf9rxkHEiCKEn6fVVWVMQ&s"
             jobDescription={
               <div>
                 <p style={{ marginBottom: '0.5rem' }}>
