@@ -75,7 +75,7 @@ function Projects({ descriptions }: ProjectsProps) {
             name="GlimpseShare (Media Sharing Web App)"
             description={`${
               descriptions['GlimpseShare'] || loadingMessage
-            } Full-stack App made with Next.js.`}
+            } Full-stack App made with Next.js (React).`}
             githubLink="https://github.com/Kevin-Kwan/GlimpseShare"
           />
           <ProjectCard
@@ -89,7 +89,7 @@ function Projects({ descriptions }: ProjectsProps) {
             name="Software Engineer Portfolio Website"
             description={`This website I made with TypeScript! ${
               descriptions['portfolio'] || loadingMessage
-            } Made with Next.js and TailwindCSS.`}
+            } Made with Next.js (React) and TailwindCSS.`}
             githubLink="https://github.com/Kevin-Kwan/portfolio"
             demoLink="/"
           />
@@ -99,8 +99,23 @@ function Projects({ descriptions }: ProjectsProps) {
         </p>
         <div className="flex flex-wrap justify-center -mx-2 bg-blue-300 bg-opacity-30 rounded">
           <ProjectCard
+            name="PreMiD Presence Open-Source Contribution"
+            description="A contribution to the PreMiD Presence project, a Discord Rich Presence application that allows users to show what they are doing in Discord. I added a new presence for the website 'Stake.us' to display various information about the user's gaming activity on the website."
+            githubLink="https://github.com/PreMiD/Presences/pull/8288"
+          />
+          <ProjectCard
+            name="Drone Dispatch Express Delivery System"
+            description="A full-stack application for a drone-based grocery delivery system (CS4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database."
+          />
+          <ProjectCard
+            name="CompAnIon (Learning Platform POC)"
+            description="Interactive personalized web app inspired by LeetCode to train software developers on responsible integration of AI coding assistants. Provides modules, simulations, guidelines, and gamification to understand AI tool capabilities/risks and maintain code quality, security, and ethics when leveraging AI. Made using Next.js (React), TailwindCSS, and Firebase."
+            demoLink="https://companion-training.vercel.app/"
+            demoText="Demo"
+          />
+          <ProjectCard
             name="Company Careers Portal (Paid Client Project)"
-            description="A full-stack dynamic careers portal website made with Next.js, TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
+            description="A full-stack dynamic careers portal website made with Next.js (React), TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source."
           />
           <ProjectCard
             name="Quality Control Testing (UCLA CS31 Project)"

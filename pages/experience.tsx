@@ -19,6 +19,28 @@ function Experience() {
             learned.
           </p>
           <ExperienceCard
+            companyName="GEICO"
+            subCompanyDescription="Tech"
+            dateRange="July 2024 - Present"
+            jobTitle="TDP Software Engineer I"
+            logoUrl="https://asset.brandfetch.io/idVducn8DJ/id_Q6afC2M.jpeg"
+            jobDescription={
+              <div>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  Associate Software Engineer in the Tech Development Program
+                  working on IVR (Interactive Voice Response) systems under
+                  Claims.
+                </p>
+              </div>
+            }
+            links={[
+              {
+                url: 'https://www.geico.com/tech/',
+                displayText: 'Company Website',
+              },
+            ]}
+          />
+          <ExperienceCard
             companyName="Publicis Sapient"
             subCompanyDescription="Digital Business Transformation & Consulting"
             dateRange="June 2023 - August 2023"
