@@ -15,6 +15,7 @@ const nextConfig = {
       { hostname: 'brand.gatech.edu' },
       { hostname: 'gwinnetttech.edu' },
       { hostname: '1526789230-files.gitbook.io' },
+      { hostname: 'asset.brandfetch.io' },
     ],
   },
 };
