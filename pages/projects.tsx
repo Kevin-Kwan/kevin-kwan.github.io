@@ -71,13 +71,13 @@ function Projects({ descriptions }: ProjectsProps) {
           Ongoing Projects
         </p>
         <div className="flex flex-wrap justify-center -mx-2 bg-green-300 bg-opacity-30 rounded">
-          <ProjectCard
+          {/* <ProjectCard
             name="GlimpseShare (Media Sharing Web App)"
             description={`${
               descriptions['GlimpseShare'] || loadingMessage
             } Full-stack App made with Next.js (React).`}
             githubLink="https://github.com/Kevin-Kwan/GlimpseShare"
-          />
+          /> */}
           <ProjectCard
             name="CutieBot (Discord Bot Application)"
             description={`${
