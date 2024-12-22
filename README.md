@@ -8,7 +8,7 @@ The portfolio includes various projects that I have worked on, demonstrating his
 
 ## Live Demo
 
-You can view the live demo of the website at [Kevin Kwan's Portfolio](https://kevin-kwan.tech).
+You can view the live demo of the website at [Kevin Kwan's Portfolio](https://kevinkwan.tech).
 
 ## Installation and Running the Project
 

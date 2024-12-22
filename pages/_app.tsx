@@ -42,7 +42,7 @@ function App({ Component, pageProps }: AppProps) {
               content="A custom-made portfolio website made by Kevin Kwan, a talented, entry-level software engineer based in Atlanta, Georgia, to showcase his skills, experience, projects, and more."
             />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://kevin-kwan.tech" />
+            <meta property="og:url" content="https://kevinkwan.tech" />
             <meta property="og:image" content="/logo.png" />
             <meta property="og:image:width" content="448" />
             <meta property="og:image:height" content="448" />
