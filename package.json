@@ -18,7 +18,7 @@
     "compass-mixins": "^0.12.12",
     "dotenv": "^16.4.1",
     "eslint": "8.56.0",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "15.2.4",
     "framer-motion": "^11.0.3",
     "next": "14.2.21",
     "npm-check-updates": "^16.14.14",
