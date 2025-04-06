@@ -13,7 +13,7 @@
     "@heroicons/react": "^2.1.1",
     "@tsparticles/react": "^3.0.0",
     "@types/node": "22.14.0",
-    "@types/react-dom": "18.2.18",
+    "@types/react-dom": "19.1.1",
     "autoprefixer": "10.4.21",
     "compass-mixins": "^0.12.12",
     "dotenv": "^16.4.1",
