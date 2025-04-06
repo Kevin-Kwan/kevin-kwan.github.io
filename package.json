@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.12.1",
+    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.1.1",
     "@tsparticles/react": "^3.0.0",
     "@types/node": "22.14.0",
