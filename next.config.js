@@ -10,7 +10,6 @@ const nextConfig = {
       { hostname: '1000logos.net' },
       { hostname: 'upload.wikimedia.org' },
       { hostname: 'www.cdnlogo.com' },
-      { hostname: 'seeklogo.com' },
       { hostname: 'cdn4.iconfinder.com' },
       { hostname: 'brand.gatech.edu' },
       { hostname: 'gwinnetttech.edu' },

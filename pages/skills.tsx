@@ -27,7 +27,7 @@ function Skills() {
             />
             <TechLogo
               href="https://python.org"
-              src="https://seeklogo.com/images/P/python-logo-C50EED1930-seeklogo.com.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/800px-Python.svg.png"
               alt="Python"
             />
             <TechLogo
