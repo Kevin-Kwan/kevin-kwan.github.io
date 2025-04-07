@@ -1,9 +1,11 @@
+@use 'sass:math';
+@use 'sass:string';
+@use '~compass-mixins/lib/compass/css3' as compass;
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-// Credits for the Star Background. https://codepen.io/sarazond/pen/LYGbwj
-@import '~compass-mixins/lib/compass/css3'; // n is number of stars required
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -36,13 +38,13 @@ body {
 }
 
 @function multiple-box-shadow($n) {
-  $value: '#{random(200)}vw #{random(500)}vh #FFF';
+  $value: '#{math.random(200)}vw #{math.random(500)}vh #FFF';
 
   @for $i from 2 through $n {
-    $value: '#{$value}, #{random(200)}vw #{random(500)}vh #FFF';
+    $value: '#{$value}, #{math.random(200)}vw #{math.random(500)}vh #FFF';
   }
 
-  @return unquote($value);
+  @return string.unquote($value);
 }
 
 $shadows-small: multiple-box-shadow(700);
