@@ -17,7 +17,7 @@
     "autoprefixer": "10.4.21",
     "compass-mixins": "^0.12.12",
     "dotenv": "^16.5.0",
-    "eslint": "9.24.0",
+    "eslint": "9.25.1",
     "eslint-config-next": "15.3.0",
     "framer-motion": "^12.9.2",
     "next": "15.3.1",
