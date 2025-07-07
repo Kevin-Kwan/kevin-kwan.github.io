@@ -19,7 +19,7 @@
     "dotenv": "^17.0.1",
     "eslint": "9.30.1",
     "eslint-config-next": "15.3.4",
-    "framer-motion": "^12.20.1",
+    "framer-motion": "^12.22.0",
     "next": "15.3.4",
     "npm-check-updates": "^18.0.1",
     "postcss": "8.5.6",
