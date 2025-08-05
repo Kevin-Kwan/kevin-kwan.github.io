@@ -16,7 +16,7 @@
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "10.4.21",
     "compass-mixins": "^0.12.12",
-    "dotenv": "^17.2.0",
+    "dotenv": "^17.2.1",
     "eslint": "9.31.0",
     "eslint-config-next": "15.4.2",
     "framer-motion": "^12.23.6",
