@@ -109,7 +109,7 @@ function Skills() {
             />
             <TechLogo
               href="https://tailwindcss.com/"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tailwind_CSS_logo.svg/2560px-Tailwind_CSS_logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tailwind_CSS_logo_with_dark_text.svg/2560px-Tailwind_CSS_logo_with_dark_text.svg.png"
               alt="Tailwind CSS"
             />
             {/* docker */}

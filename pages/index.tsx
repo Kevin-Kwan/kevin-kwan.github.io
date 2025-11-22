@@ -565,19 +565,15 @@ function Home() {
               </div> */}
               <p
                 className={
-                  'gradientText text-5xl sm:text-7xl md:text-8xl font-bold mt-4 text-center  sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
+                  'custom-title text-5xl sm:text-7xl md:text-8xl mt-4 text-center sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
                 }
-                style={{
-                  fontFamily: 'Lato, sans-serif',
-                  fontWeight: 900,
-                }}
               >
                 Kevin Kwan
               </p>
 
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
+                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
@@ -586,7 +582,7 @@ function Home() {
 
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
+                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Interests/Passions include AI/ML, Game Development,
@@ -595,7 +591,7 @@ function Home() {
               </p>
               <p
                 className={
-                  'shadowText text-sm sm:text-base md:text-lg mt-2 text-center transition-all ease-in-out duration-200 text-white'
+                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
                 }
               >
                 Always in pursuit of creating impactful and purposeful works 🚀
