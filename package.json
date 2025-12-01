@@ -21,7 +21,7 @@
     "eslint-config-next": "16.0.0",
     "framer-motion": "^12.23.24",
     "next": "16.0.2",
-    "npm-check-updates": "^18.0.1",
+    "npm-check-updates": "^19.1.2",
     "postcss": "8.5.6",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.3.1",
