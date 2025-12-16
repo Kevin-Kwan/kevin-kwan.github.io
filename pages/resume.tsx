@@ -28,7 +28,7 @@ function Resume({ adobeClientId }: ResumeProps) {
               url: process.env.NEXT_PUBLIC_RESUME_LINK,
             },
           },
-          metaData: { fileName: 'Kevin_Kwan_Resume_2024.pdf' },
+          metaData: { fileName: 'Kevin_Kwan_SWE_2025_Resume.pdf' },
         },
         {
           embedMode: 'FULL_WINDOW',
