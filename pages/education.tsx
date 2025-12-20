@@ -45,7 +45,7 @@ function Education() {
             dateRange="May 2020 - June 2021"
             credential="PC Repair and Network Technician Certificate"
             location="Lawrenceville, GA"
-            logoUrl="https://gwinnetttech.edu/wp-content/uploads/2023/10/gtclogo_studentservices.jpg"
+            logoUrl="https://pbs.twimg.com/profile_images/1509269895799885828/gX49JoRB_400x400.jpg"
             links={[
               {
                 url: 'https://gwinnetttech.edu',

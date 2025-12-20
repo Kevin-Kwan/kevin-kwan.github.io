@@ -12,7 +12,7 @@ const nextConfig = {
       { hostname: 'www.cdnlogo.com' },
       { hostname: 'cdn4.iconfinder.com' },
       { hostname: 'brand.gatech.edu' },
-      { hostname: 'gwinnetttech.edu' },
+      { hostname: 'pbs.twimg.com' },
       { hostname: '1526789230-files.gitbook.io' },
       { hostname: 'asset.brandfetch.io' },
     ],
