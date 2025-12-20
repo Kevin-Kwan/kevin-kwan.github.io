@@ -13,23 +13,24 @@ on:
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
+permissions: 
   contents: read
   pages: write
-  id-token: write
+  id-token:  write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete. 
 concurrency:
-  group: "pages"
+  group:  "pages"
   cancel-in-progress: false
 
-jobs:
+jobs: 
   # Build job
-  build:
+  build: 
     runs-on: ubuntu-latest
+    environment:  github-pages
     steps:
-      - name: Checkout
+      - name:  Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
         id: detect-package-manager
@@ -39,7 +40,7 @@ jobs:
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
+          elif [ -f "${{ github. workspace }}/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
@@ -48,33 +49,43 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-      - name: Setup Node
+      - name:  Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version:  "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses:  actions/configure-pages@v5
         with:
-          # Automatically inject basePath in your Next.js configuration file and disable
+          # Automatically inject basePath in your Next. js configuration file and disable
           # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
           #
-          # You may remove this line if you want to manage the configuration yourself.
+          # You may remove this line if you want to manage the configuration yourself. 
           static_site_generator: next
-      - name: Restore cache
+      - name:  Restore cache
         uses: actions/cache@v4
         with:
           path: |
-            .next/cache
+            . next/cache
           # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn. lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+            ${{ runner. os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.detect-package-manager. outputs.manager }} ${{ steps. detect-package-manager.outputs. command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          ADOBE_CLIENT_ID: ${{ secrets.ADOBE_CLIENT_ID }}
+          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          EMAILJS_SERVICE_ID:  ${{ secrets.EMAILJS_SERVICE_ID }}
+          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NEXT_PUBLIC_CONTACT_EMAIL: ${{ secrets.NEXT_PUBLIC_CONTACT_EMAIL }}
+          NEXT_PUBLIC_RESUME_LINK: ${{ secrets.NEXT_PUBLIC_RESUME_LINK }}
+          SITE_HASHED_PASSWORD: ${{ secrets. SITE_HASHED_PASSWORD }}
+          SITE_USERNAME: ${{ secrets.SITE_USERNAME }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -84,10 +95,10 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url:  ${{ steps.deployment.outputs. page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses:  actions/deploy-pages@v4
