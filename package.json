@@ -23,7 +23,7 @@
     "next": "16.0.10",
     "npm-check-updates": "^19.2.0",
     "postcss": "8.5.6",
-    "react": "^18.2.0",
+    "react": "^19.2.3",
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.68.0",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
-    "@types/react": "^18.2.48",
+    "@types/react": "^19.2.7",
     "mini-css-extract-plugin": "^2.9.4"
   }
 }
