@@ -38,6 +38,6 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "@types/react": "^18.2.48",
-    "mini-css-extract-plugin": "^2.9.4"
+    "mini-css-extract-plugin": "^2.10.0"
   }
 }
