@@ -78,13 +78,18 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} eslint .
       - name: Typecheck
         run: ${{ steps.detect-package-manager.outputs.runner }} tsc --noEmit
+      - name: Test
+        run: ${{ steps.detect-package-manager.outputs.runner }} vitest run
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
           EMAILJS_SERVICE_ID:  ${{ secrets.EMAILJS_SERVICE_ID }}
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ secrets.NEXT_PUBLIC_CONTACT_EMAIL }}
+          SITE_HASHED_PASSWORD: ${{ secrets. SITE_HASHED_PASSWORD }}
+          SITE_USERNAME: ${{ secrets.SITE_USERNAME }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
