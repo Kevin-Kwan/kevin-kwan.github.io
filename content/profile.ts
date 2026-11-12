@@ -24,7 +24,7 @@ export const profile = {
   employer: 'GEICO',
   location: 'Atlanta, Georgia',
   openToOpportunities: true,
-  availabilityNote: 'Open to new opportunities',
+  availabilityNote: '🚀 Always open to new opportunities',
   tagline:
     'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls at scale.',
   heroIntro:
