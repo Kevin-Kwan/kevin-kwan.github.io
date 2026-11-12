@@ -13,17 +13,35 @@
   --color-accent: #8b5cf6;
   --color-accent-2: #06b6d4;
 
-  --animate-page-in: page-in 0.45s ease-out both;
   --animate-wave: wave 1.6s ease-in-out infinite;
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-pipeline-x: pipeline-x 2.2s linear infinite;
+  --animate-pipeline-y: pipeline-y 2.2s linear infinite;
 
-  @keyframes page-in {
+  @keyframes marquee {
     from {
-      opacity: 0;
-      transform: translateY(6px);
+      transform: translateX(0);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pipeline-x {
+    from {
+      transform: translateX(-110%);
+    }
+    to {
+      transform: translateX(320%);
+    }
+  }
+
+  @keyframes pipeline-y {
+    from {
+      transform: translateY(-110%);
+    }
+    to {
+      transform: translateY(320%);
     }
   }
 
@@ -71,7 +89,86 @@ body {
       38rem 20rem at 88% 0%,
       rgb(6 182 212 / 0.1),
       transparent 65%
+    ),
+    radial-gradient(
+      46rem 24rem at 50% 115%,
+      rgb(139 92 246 / 0.07),
+      transparent 65%
+    ),
+    radial-gradient(
+      30rem 16rem at 72% 108%,
+      rgb(6 182 212 / 0.05),
+      transparent 65%
     );
+}
+
+/* Dot grid used as a quiet backdrop inside the bento expertise cells. */
+.dot-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(255 255 255 / 0.09) 1px,
+    transparent 0
+  );
+  background-size: 18px 18px;
+}
+
+/* Tech marquee: pause the ticker while the pointer is over it. */
+.marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Border beam: a light pulse that travels the card border (featured
+   cards only). The ring is a conic gradient masked down to a ~1.5px
+   border strip; the rotation animates a registered custom property, so
+   browsers without @property support simply show a static faint segment.
+   The effect only runs on hover-capable fine pointers, and is fully off
+   under prefers-reduced-motion. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-rotate {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+.border-beam {
+  position: relative;
+}
+.border-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 245deg,
+    rgb(139 92 246 / 0.6) 305deg,
+    rgb(6 182 212 / 0.6) 338deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .border-beam::after {
+    opacity: 1;
+    animation: beam-rotate 7s linear infinite;
+  }
 }
 
 /* Gradient text for the name / key highlights. */
@@ -136,5 +233,16 @@ body {
   }
   .wave-bar {
     animation: none;
+  }
+  /* Decorative loops off entirely: pipeline pulses and the border beam
+     leave their static lines/borders behind. */
+  .animate-pipeline-x,
+  .animate-pipeline-y {
+    animation: none;
+    opacity: 0;
+  }
+  .border-beam::after {
+    animation: none;
+    opacity: 0;
   }
 }
