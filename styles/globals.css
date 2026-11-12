@@ -103,18 +103,8 @@ body {
   opacity: 1;
 }
 
-/* Scroll-reveal (driven by the Reveal component + IntersectionObserver). */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Scroll-reveal is handled by the Reveal component (motion whileInView);
+   no CSS hides content, so pages stay fully visible without JavaScript. */
 
 /* Waveform bars (decorative voice-AI motif). */
 .wave-bar {
@@ -143,10 +133,6 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .reveal {
-    opacity: 1;
-    transform: none;
   }
   .wave-bar {
     animation: none;
