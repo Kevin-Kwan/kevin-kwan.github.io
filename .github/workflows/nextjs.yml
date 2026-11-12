@@ -74,19 +74,18 @@ jobs:
             ${{ runner. os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager. outputs.manager }} ${{ steps. detect-package-manager.outputs. command }}
+      - name: Lint
+        run: ${{ steps.detect-package-manager.outputs.runner }} eslint .
+      - name: Typecheck
+        run: ${{ steps.detect-package-manager.outputs.runner }} tsc --noEmit
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          ADOBE_CLIENT_ID: ${{ secrets.ADOBE_CLIENT_ID }}
           EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
           EMAILJS_SERVICE_ID:  ${{ secrets.EMAILJS_SERVICE_ID }}
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ secrets.NEXT_PUBLIC_CONTACT_EMAIL }}
-          NEXT_PUBLIC_RESUME_LINK: ${{ secrets.NEXT_PUBLIC_RESUME_LINK }}
-          SITE_HASHED_PASSWORD: ${{ secrets. SITE_HASHED_PASSWORD }}
-          SITE_USERNAME: ${{ secrets.SITE_USERNAME }}
-      - name: Upload artifact
+          me: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
