@@ -3,7 +3,7 @@
 \documentclass[10pt]{article}
 
 % ---------- Packages ----------
-\usepackage[letterpaper, top=0.35in, bottom=0.35in, left=0.55in, right=0.55in]{geometry}
+\usepackage[letterpaper, top=0.28in, bottom=0.25in, left=0.55in, right=0.55in]{geometry}
 \usepackage{charter}            % Bitstream Charter — clean, compact serif
 \usepackage[T1]{fontenc}
 \usepackage{titlesec}           % Section formatting
@@ -14,21 +14,25 @@
 % ---------- Style ----------
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\linespread{0.93}
+\linespread{0.87}
 \emergencystretch=1.5em
 \definecolor{accent}{HTML}{1F3864}
 
 % Section headings: bold uppercase, thin rule below
 \titleformat{\section}{\bfseries\fontsize{11}{13}\selectfont\color{accent}}{}{0em}{\MakeUppercase}[\vspace{1pt}\titlerule]
-\titlespacing*{\section}{0pt}{4pt}{2pt}
+\titlespacing*{\section}{0pt}{2pt}{1pt}
 
 % Tight bullet lists
-\setlist[itemize]{leftmargin=13pt, itemsep=0.5pt, topsep=2pt, parsep=0pt, partopsep=0pt}
+\setlist[itemize]{leftmargin=13pt, itemsep=0.5pt, topsep=1pt, parsep=0pt, partopsep=0pt}
 
 % Job header: title left, dates right; subline beneath
 \newcommand{\jobheader}[3]{%
   \noindent\textbf{#1}\hfill #2\par
   \noindent\textit{#3}\par\vspace{0pt}}
+
+% Role line inside a company block: title left, dates right
+\newcommand{\roleline}[2]{%
+  \noindent\textbf{#1}\hfill #2\par\vspace{0pt}}
 
 \begin{document}
 
@@ -46,51 +50,61 @@
 
 % ---------- Summary ----------
 \section{Summary}
-Software Engineer II specializing in conversational AI and voice automation, building and operating production AI voice agents and IVR platforms on AWS that resolve real customer calls at scale. Georgia Tech Computer Science, \textit{summa cum laude}. Track record of self-service impact, migration delivery, and reliability leadership in high-volume production environments.
+Software Engineer II at GEICO — conversational AI and voice automation. Build and operate the Sierra AI billing voice agent and Amazon Connect IVR on AWS, automating routine billing self-service in place of human agents: 436,000+ conversations at \textasciitilde51\% containment, \textasciitilde30,000 calls/week.
+
+% ---------- Work Experience ----------
+\section{Work Experience}
+\jobheader{GEICO}{July 2024 -- Present}{Atlanta, GA (Remote)}
+\roleline{Software Engineer II — Conversational AI \& IVR}{February 2026 -- Present}
+\roleline{Software Engineer I — Technology Development Program}{July 2024 -- February 2026}
+\begin{itemize}
+  \item Spearheaded the Sierra AI billing voice agent (live since May 2026) as its largest contributor, containing \textasciitilde51\% of 436,000+ English and Spanish conversations without live-agent transfer (May--Oct 2026) and improving containment from 48\% to 52\% as volume scaled \textasciitilde10x to \textasciitilde30,000 calls/week across payments, rescheduling, AutoPay, and billing questions.
+  \item Delivered end-to-end make-payment flows, processing 22,600+ payments at 92--95\% authorization success across saved methods, scheduled payments, policies pending cancellation, and declined- or expired-card recovery; shipped net-new Pause AutoPay, 82,800 reschedules, and 192,000 informational answers at 98\% tool success.
+  \item Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys — decomposing every intent into goal-based journeys for distinct self-service needs (\textasciitilde20,000 net lines removed) — and built simulation-based regression suites and automated code-review quality gates.
+  \item Pioneered conversation patterns — main menu, authentication, and operator recovery — now referenced and adapted by other teams for their own use cases, and standardized the analytics tagging used for platform data analysis.
+  \item Resolved 86 of 91 production and pre-release billing bugs at the root cause; reviewed code for 12+ engineers and onboarded two engineers onto the Sierra platform.
+  \item Led a full-volume conversation-experience review to resolve top customer-experience gaps and owned production reliability across release validation, Cyara automated IVR regression testing, outage rollbacks, and postmortems.
+  \item Migrated GEICO's legacy Cisco UCCE and Nuance IVR to Amazon Connect on AWS, engineering Java traffic-redirection logic for gradual live-caller cutover, legacy endpoint migration, and Amazon Lex pattern migration.
+  \item Led the Proof of Coverage IVR (\textasciitilde80\% containment) and its disaster-recovery rebuild pipeline, and built the AWS self-service payment IVR (\textasciitilde60\% containment) with a zero-amount-due flow, automated declined-payment retries, and new card tokenization.
+  \item Engineered asynchronous voice-workflow orchestration using AWS Lambda, API Gateway, DynamoDB, and Amazon Lex (JavaScript code hooks) across Amazon Connect contact flows, with AES-256 encryption for customer PII and payment APIs and Terraform-automated infrastructure deployments.
+\end{itemize}
+
+\vspace{1pt}
+\jobheader{Publicis Sapient (Publicis Groupe)}{June 2023 -- August 2023}{Software Engineer Intern \textbar{} Atlanta, GA}
+\begin{itemize}
+  \item Built a WhatsApp AI chatbot for the Travel \& Hospitality industry using Google Vertex AI's PaLM LLM, LangChain, MongoDB, and external APIs to deliver live data and recommendations for Atlanta attractions, hotels, and restaurants, achieving 91\% response accuracy.
+  \item Developed Python/Flask RESTful APIs bridging MongoDB, the AI chatbot backend, and an interactive map website, automating CI/CD pipelines via GitLab and Docker to deploy on Google App Engine and Firebase Hosting.
+\end{itemize}
+
+\vspace{1pt}
+\jobheader{Georgia Tech EcoCAR}{January 2022 -- May 2023}{Software Engineer, Connected \& Automated Vehicles (V2X Subteam) \textbar{} EcoCAR (Electric Vehicle) Mobility Challenge \textbar{} Atlanta, GA}
+\begin{itemize}
+  \item Designed a camera/sensor state machine for automated stop/go decisions across traffic-light scenarios, helping Georgia Tech secure 1st place in the U.S. Department of Energy's 2022 EcoCAR Mobility Challenge.
+\end{itemize}
+
+% ---------- Projects & Open Source ----------
+\section{Projects \& Open Source}
+\begin{itemize}
+  \item \textbf{PreMiD (Open Source):} Authored the Stake.us activity (TypeScript) for the open-source Discord Rich Presence app — merged April 2024, with a follow-up enhancement merged November 2025.
+  \item \textbf{Unity3D Fishing Rod Motion:} Real-time fishing-rod casting and line-reeling physics in Unity (C\#, Verlet integration); 49 stars on GitHub.
+\end{itemize}
+
+% ---------- Technical Skills ----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0pt, label={}, itemsep=0.6pt]
+  \item \textbf{Languages:} Java, Python, TypeScript, JavaScript, C\#, C++
+  \item \textbf{Conversational AI \& Voice:} Sierra AI, Amazon Connect, Amazon Lex, LangChain, Google Vertex AI, OpenAI, Cyara, LLM Evaluation, Agentic Workflows, Tool Calling, State Machines
+  \item \textbf{AWS \& Cloud Infrastructure:} AWS (Lambda, DynamoDB, API Gateway, S3, CloudWatch), Serverless, Event-Driven Systems, Asynchronous Orchestration, Disaster Recovery, Google Cloud Platform (App Engine, Firebase)
+  \item \textbf{Web, APIs \& Data:} REST APIs, Flask, Node.js, React, Next.js, Tailwind CSS, MySQL, MongoDB, Cloud Firestore
+  \item \textbf{DevOps \& Tooling:} Terraform, Docker, CI/CD, Git, GitHub, GitLab, SonarQube, Cursor, Claude Code
+\end{itemize}
 
 % ---------- Education ----------
 \section{Education}
 \noindent\textbf{Georgia Institute of Technology — Atlanta, GA}\hfill August 2021 -- May 2024\par
 \begin{itemize}
-  \item Bachelor of Science in Computer Science; \textit{summa cum laude} \hfill GPA: 3.9
+  \item Bachelor of Science in Computer Science, College of Computing; Threads: Intelligence and Media; \textit{summa cum laude} \hfill GPA: 3.9
   \item Zell Miller Scholarship, Graduated with Highest Honors, Dean's List, Faculty Honors
-\end{itemize}
-
-% ---------- Technical Skills ----------
-\section{Technical Skills and Knowledge}
-\begin{itemize}[leftmargin=0pt, label={}, itemsep=0.6pt]
-  \item \textbf{Languages:} Java, Python, C\#, JavaScript, TypeScript, SQL, Lua, C
-  \item \textbf{Conversational AI \& Voice:} Sierra AI, Amazon Connect, Amazon Lex, Cyara
-  \item \textbf{Cloud \& Backend:} AWS (Lambda, Connect, Lex, DynamoDB), Azure, Google Cloud, Serverless Architectures, REST APIs
-  \item \textbf{Security:} AES 256 Encryption, Secure API Design, PII Protection
-  \item \textbf{DevOps \& Tooling:} Git, Terraform, CI/CD, GitHub, Azure DevOps, Docker, Node.js, SonarQube, Cursor, Claude Code
-  \item \textbf{Databases:} DynamoDB, MongoDB, MySQL
-  \item \textbf{Frontend:} React, Next.js, HTML, CSS
-  \item \textbf{Practices:} Agile/Scrum, SDLC, Application Resiliency, Production Support
-\end{itemize}
-
-% ---------- Work Experience ----------
-\section{Work Experience}
-\jobheader{Software Engineer II — GEICO}{July 2024 -- Present}{Atlanta, GA (Remote) \textbar{} Promoted from Software Engineer I in February 2026}
-\begin{itemize}
-  \item Co-built and operate the Sierra AI billing voice agent (live since May 2026), handling \textasciitilde30,000 GEICO billing calls per week — payments, rescheduling, AutoPay, billing questions — in English and Spanish; contained \textasciitilde51\% of 436,112 conversations without a live-agent transfer (May--Oct 2026), trending 48\% $\rightarrow$ 52\% as weekly volume grew \textasciitilde10$\times$.
-  \item Delivered end-to-end make-payment for the agent (saved method, pay-now or scheduled, debit authorization, declined-/expired-card recovery, payments on policies pending cancellation): 22,600+ payments at 92--95\% authorization success; shipped net-new Pause AutoPay, 82,800 reschedules, and 192,000 info answers at 98\% tool success.
-  \item Re-architected the billing agent from regex-/classifier-based routing to fact-based journeys (178 files, \textasciitilde20,000 net lines removed) and built simulation-based regression quality gates (5-of-5 pass standard) plus automated code-review follow-up, keeping high-velocity releases safe.
-  \item Fixed 86 of 91 production and UT1 billing bugs at the root cause (median 3 days from report to fix); authored 468 PRs — 309 of 559 commits to the billing agent since May, its largest contributor — and 294 production builds across 45 repos; reviewed 653 PRs for 12+ engineers and onboarded two engineers onto the Sierra platform.
-  \item Key contributor to migrating GEICO's enterprise IVR platform from Cisco UCCE and Microsoft Nuance to Amazon Connect on AWS; developed Java traffic-redirection logic to shift a controlled percentage of live caller traffic gradually, and delivered legacy endpoint migration plus a Lex pattern cutover on schedule.
-  \item Improved the AWS IVR billing and payments experience (Dec 2025--Apr 2026): built the zero-amount-due flow, reworked billing error handling so declined cards and banks retry instead of transferring to an agent, and delivered new card tokenization.
-  \item Delivered customer self-service payment workflows on the AWS IVR at \textasciitilde60\% containment across very high call volume, and led the Proof of Coverage IVR solution at \textasciitilde80\% containment; own its disaster-recovery rebuild pipeline.
-  \item Designed and implemented AWS Lambda functions and Amazon Lex bots (JavaScript code hooks) connecting internal APIs with Amazon Connect contact flows; built an asynchronous, high-throughput Lambda orchestration system backed by DynamoDB queues processing tens of thousands of concurrent requests.
-  \item Implemented secure internal APIs exposing sensitive customer data using AES encryption to protect PII and payment information (credit card and bank data); maintained Terraform infrastructure pipelines for secure, repeatable deployments.
-  \item Extensive on-call and production support: release validation, live IVR testing, outage response and rollbacks, postmortems, and a 41,829-call conversation-experience review that ranked and closed the agent's biggest customer-experience gaps.
-\end{itemize}
-
-\vspace{1pt}
-\jobheader{Software Engineer Intern — Publicis Sapient (Publicis Groupe)}{June 2023 -- August 2023}{Atlanta, GA}
-\begin{itemize}
-  \item Engineered an AI-powered conversational chatbot with memory and agent tools using Google Vertex AI's LLM, LangChain, MongoDB, and APIs for the Travel \& Hospitality industry, giving tourists accurate, up-to-date answers and recommendations for Atlanta attractions, hotels, and restaurants.
-  \item Architected and deployed RESTful APIs using Flask and Python connecting the frontend to backend MongoDB databases and the AI chatbot endpoint to generate and retrieve responses.
-  \item Improved the accuracy of the bot's responses up to 91\% through rigorous testing and validation.
 \end{itemize}
 
 \end{document}
