@@ -1,628 +1,296 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { type Container, type ISourceOptions } from '@tsparticles/engine';
-import { loadFull } from 'tsparticles';
 import Head from 'next/head';
+import Link from 'next/link';
+import { ArrowRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import Seo from '../components/Seo';
+import SectionHeading from '../components/SectionHeading';
+import Reveal from '../components/Reveal';
+import Waveform from '../components/Waveform';
+import ExperienceCard from '../components/ExperienceCard';
+import EducationCard from '../components/EducationCard';
+import ProjectCard from '../components/ProjectCard';
+import SpotlightCard from '../components/SpotlightCard';
+import TechTag from '../components/TechTag';
+import { profile, metrics, expertiseAreas } from '../content/profile';
+import { experience } from '../content/experience';
+import { featuredProjects } from '../content/projects';
+import { education } from '../content/education';
+import { coreSkills } from '../content/skills';
+import { site, socials } from '../content/site';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Kevin Kwan',
+  jobTitle: 'Software Engineer II',
+  worksFor: { '@type': 'Organization', name: 'GEICO' },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Georgia Institute of Technology',
+  },
+  url: site.siteUrl,
+  sameAs: [socials.github, socials.linkedin],
+};
 
 function Home() {
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadFull(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
-  const particlesLoaded = useCallback(
-    async (container?: Container): Promise<void> => {
-      console.log(container);
-    },
-    []
-  );
-
-  const options: ISourceOptions = useMemo(
-    () => ({
-      autoPlay: true,
-      background: {
-        // color: {
-        //   value: '#0d47a1',
-        // },
-        image: '',
-        position: '',
-        repeat: '',
-        size: '',
-        opacity: 1,
-      },
-      backgroundMask: {
-        composite: 'destination-out',
-        cover: {
-          color: {
-            value: '#fff',
-          },
-          opacity: 1,
-        },
-        enable: false,
-      },
-      clear: true,
-      defaultThemes: {},
-      delay: 0,
-      fullScreen: {
-        enable: false,
-        zIndex: 0,
-      },
-      detectRetina: true,
-      duration: 0,
-      fpsLimit: 120,
-      interactivity: {
-        detectsOn: 'window',
-        events: {
-          onClick: {
-            enable: true,
-            mode: 'push',
-          },
-          onDiv: {
-            selectors: [],
-            enable: false,
-            mode: [],
-            type: 'circle',
-          },
-          onHover: {
-            enable: true,
-            mode: 'grab',
-            parallax: {
-              enable: true,
-              force: 60,
-              smooth: 10,
-            },
-          },
-          resize: {
-            delay: 0.5,
-            enable: true,
-          },
-        },
-        modes: {
-          trail: {
-            delay: 1,
-            pauseOnStop: false,
-            quantity: 1,
-          },
-          attract: {
-            distance: 200,
-            duration: 0.4,
-            easing: 'ease-out-quad',
-            factor: 1,
-            maxSpeed: 50,
-            speed: 1,
-          },
-          bounce: {
-            distance: 200,
-          },
-          bubble: {
-            distance: 400,
-            duration: 2,
-            mix: false,
-            opacity: 0.8,
-            size: 40,
-            divs: {
-              distance: 200,
-              duration: 0.4,
-              mix: false,
-              selectors: [],
-            },
-          },
-          connect: {
-            distance: 80,
-            links: {
-              opacity: 0.5,
-            },
-            radius: 60,
-          },
-          grab: {
-            distance: 400,
-            links: {
-              blink: false,
-              consent: false,
-              opacity: 1,
-            },
-          },
-          push: {
-            default: true,
-            groups: [],
-            quantity: 4,
-          },
-          remove: {
-            quantity: 2,
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-            factor: 100,
-            speed: 1,
-            maxSpeed: 50,
-            easing: 'ease-out-quad',
-            divs: {
-              distance: 200,
-              duration: 0.4,
-              factor: 100,
-              speed: 1,
-              maxSpeed: 50,
-              easing: 'ease-out-quad',
-              selectors: [],
-            },
-          },
-          slow: {
-            factor: 3,
-            radius: 200,
-          },
-          light: {
-            area: {
-              gradient: {
-                start: {
-                  value: '#ffffff',
-                },
-                stop: {
-                  value: '#000000',
-                },
-              },
-              radius: 1000,
-            },
-            shadow: {
-              color: {
-                value: '#000000',
-              },
-              length: 2000,
-            },
-          },
-        },
-      },
-      manualParticles: [],
-      particles: {
-        bounce: {
-          horizontal: {
-            value: 1,
-          },
-          vertical: {
-            value: 1,
-          },
-        },
-        collisions: {
-          absorb: {
-            speed: 2,
-          },
-          bounce: {
-            horizontal: {
-              value: 1,
-            },
-            vertical: {
-              value: 1,
-            },
-          },
-          enable: false,
-          maxSpeed: 50,
-          mode: 'bounce',
-          overlap: {
-            enable: true,
-            retries: 0,
-          },
-        },
-        color: {
-          value: '#ffffff',
-          animation: {
-            h: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
-            s: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
-            l: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
-          },
-        },
-        effect: {
-          close: true,
-          fill: true,
-          options: {},
-          type: [],
-        },
-        groups: {},
-        move: {
-          angle: {
-            offset: 0,
-            value: 90,
-          },
-          attract: {
-            distance: 200,
-            enable: false,
-            rotate: {
-              x: 3000,
-              y: 3000,
-            },
-          },
-          center: {
-            x: 50,
-            y: 50,
-            mode: 'percent',
-            radius: 0,
-          },
-          decay: 0,
-          distance: {},
-          direction: 'none',
-          drift: 0,
-          enable: true,
-          gravity: {
-            acceleration: 9.81,
-            enable: false,
-            inverse: false,
-            maxSpeed: 50,
-          },
-          path: {
-            clamp: true,
-            delay: {
-              value: 0,
-            },
-            enable: false,
-            options: {},
-          },
-          outModes: {
-            default: 'out',
-            bottom: 'out',
-            left: 'out',
-            right: 'out',
-            top: 'out',
-          },
-          random: false,
-          size: false,
-          speed: 2,
-          spin: {
-            acceleration: 0,
-            enable: false,
-          },
-          straight: false,
-          trail: {
-            enable: false,
-            length: 10,
-            fill: {},
-          },
-          vibrate: false,
-          warp: false,
-        },
-        number: {
-          density: {
-            enable: true,
-            width: 1920,
-            height: 1080,
-          },
-          limit: {
-            mode: 'delete',
-            value: 0,
-          },
-          value: 90,
-        },
-        opacity: {
-          value: {
-            min: 0.1,
-            max: 0.5,
-          },
-          animation: {
-            count: 0,
-            enable: true,
-            speed: 3,
-            decay: 0,
-            delay: 0,
-            sync: false,
-            mode: 'auto',
-            startValue: 'random',
-            destroy: 'none',
-          },
-        },
-        reduceDuplicates: false,
-        shadow: {
-          blur: 0,
-          color: {
-            value: '#000',
-          },
-          enable: false,
-          offset: {
-            x: 0,
-            y: 0,
-          },
-        },
-        shape: {
-          close: true,
-          fill: true,
-          options: {},
-          type: 'circle',
-        },
-        size: {
-          value: {
-            min: 1,
-            max: 10,
-          },
-          animation: {
-            count: 0,
-            enable: true,
-            speed: 20,
-            decay: 0,
-            delay: 0,
-            sync: false,
-            mode: 'auto',
-            startValue: 'random',
-            destroy: 'none',
-          },
-        },
-        stroke: {
-          width: 0,
-        },
-        zIndex: {
-          value: 0,
-          opacityRate: 1,
-          sizeRate: 1,
-          velocityRate: 1,
-        },
-        destroy: {
-          bounds: {},
-          mode: 'none',
-          split: {
-            count: 1,
-            factor: {
-              value: 3,
-            },
-            rate: {
-              value: {
-                min: 4,
-                max: 9,
-              },
-            },
-            sizeOffset: true,
-            particles: {},
-          },
-        },
-        roll: {
-          darken: {
-            enable: false,
-            value: 0,
-          },
-          enable: false,
-          enlighten: {
-            enable: false,
-            value: 0,
-          },
-          mode: 'vertical',
-          speed: 25,
-        },
-        tilt: {
-          value: 0,
-          animation: {
-            enable: false,
-            speed: 0,
-            decay: 0,
-            sync: false,
-          },
-          direction: 'clockwise',
-          enable: false,
-        },
-        twinkle: {
-          lines: {
-            enable: false,
-            frequency: 0.05,
-            opacity: 1,
-          },
-          particles: {
-            enable: false,
-            frequency: 0.05,
-            opacity: 1,
-          },
-        },
-        wobble: {
-          distance: 5,
-          enable: false,
-          speed: {
-            angle: 50,
-            move: 10,
-          },
-        },
-        life: {
-          count: 0,
-          delay: {
-            value: 0,
-            sync: false,
-          },
-          duration: {
-            value: 0,
-            sync: false,
-          },
-        },
-        rotate: {
-          value: 0,
-          animation: {
-            enable: false,
-            speed: 0,
-            decay: 0,
-            sync: false,
-          },
-          direction: 'clockwise',
-          path: false,
-        },
-        orbit: {
-          animation: {
-            count: 0,
-            enable: false,
-            speed: 1,
-            decay: 0,
-            delay: 0,
-            sync: false,
-          },
-          enable: false,
-          opacity: 1,
-          rotation: {
-            value: 45,
-          },
-          width: 1,
-        },
-        links: {
-          blink: false,
-          color: {
-            value: '#ffffff',
-          },
-          consent: false,
-          distance: 150,
-          enable: true,
-          frequency: 1,
-          opacity: 0.4,
-          shadow: {
-            blur: 5,
-            color: {
-              value: '#000',
-            },
-            enable: false,
-          },
-          triangles: {
-            enable: false,
-            frequency: 1,
-          },
-          width: 1,
-          warp: false,
-        },
-        repulse: {
-          value: 0,
-          enabled: false,
-          distance: 1,
-          duration: 1,
-          factor: 1,
-          speed: 1,
-        },
-      },
-      pauseOnBlur: true,
-      pauseOnOutsideViewport: true,
-      responsive: [],
-      smooth: false,
-      style: {},
-      themes: [],
-      zLayers: 100,
-      name: 'Parallax',
-      motion: {
-        disable: false,
-        reduce: {
-          factor: 4,
-          value: true,
-        },
-      },
-    }),
-    []
-  );
+  const geico = experience[0];
+  const georgiaTech = education[0];
 
   return (
-    <div>
+    <>
+      <Seo
+        title="Kevin Kwan | Software Engineer II — Conversational AI & IVR"
+        description="Kevin Kwan is a Software Engineer II at GEICO building conversational AI and IVR systems on Amazon Connect and AWS. Georgia Tech B.S. Computer Science, summa cum laude."
+        path="/"
+      />
       <Head>
-        <title>Kevin Kwan | Home Page</title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </Head>
-      <div id="container">
-        <main className="flex-1">
-          <div
-            id="tsparticles"
-            style={{ height: '100vh', overflow: 'auto' }}
-            className="w-full relative"
-          >
-            {init && (
-              <Particles
-                id="tsparticles"
-                options={options}
-                particlesLoaded={particlesLoaded}
-              />
-            )}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-              {/* <div
-                style={{ width: '20vw', height: '20vw' }}
-                className="mx-auto rounded-full overflow-hidden"
-              >
-                <img
-                  src="https://media.licdn.com/dms/image/D5603AQFJHsp7k3lE5g/profile-displayphoto-shrink_800_800/0/1690062986221?e=1708560000&v=beta&t=zxWNvDHLTmQQPPKctNEKAUeFohd1AunVBSIpRABI0Sc"
-                  alt="Kevin Kwan"
-                  className="w-full h-full object-cover"
-                />
-              </div> */}
-              <p
-                className={
-                  'custom-title text-5xl sm:text-7xl md:text-8xl mt-4 text-center sm:hover:text-8xl md:hover:text-9xl transition-all ease-in-out duration-200'
-                }
-              >
-                Kevin Kwan
-              </p>
 
-              <p
-                className={
-                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
-                }
-              >
-                Python, Java, C#, JavaScript/TypeScript Full-Stack Entry-Level
-                Software Developer.
-              </p>
+      {/* Hero */}
+      <section className="ambient-glow relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+          {profile.openToOpportunities && (
+            <p className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3.5 py-1.5 text-sm font-medium text-emerald-300">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              {profile.availabilityNote}
+            </p>
+          )}
 
-              <p
-                className={
-                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
-                }
+          <h1 className="mt-7 text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl">
+            Kevin <span className="text-gradient">Kwan</span>
+          </h1>
+          <p className="mt-5 font-mono text-sm uppercase tracking-[0.2em] text-zinc-400 sm:text-base">
+            {profile.role} · {profile.specialty} · {profile.employer}
+          </p>
+          <p className="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-200 sm:text-2xl">
+            {profile.tagline}
+          </p>
+          <p className="mt-5 max-w-3xl leading-relaxed text-zinc-400">
+            {profile.heroIntro}
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link
+              href="/experience"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+            >
+              View my experience
+              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <a
+              href={site.resumePdfPath}
+              download={site.resumeFileName}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
+            >
+              <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+              Download résumé
+            </a>
+            <div className="flex items-center gap-1.5">
+              <a
+                href={socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="rounded-lg border border-white/10 bg-white/[0.04] p-3 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
               >
-                Interests/Passions include AI/ML, Game Development,
-                Cybersecurity, Reverse Engineering, and Web/Application
-                Development.
-              </p>
-              <p
-                className={
-                  'shadowText text-xs sm:text-sm md:text-base mt-2 text-center transition-all ease-in-out duration-200 text-white'
-                }
+                <FaGithub className="h-5 w-5" aria-hidden="true" />
+              </a>
+              <a
+                href={socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="rounded-lg border border-white/10 bg-white/[0.04] p-3 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
               >
-                Always in pursuit of creating impactful and purposeful works 🚀
-              </p>
-              <div className="flex justify-center mt-4 space-x-2 sm:space-x-4 md:space-x-4">
-                <a
-                  href="https://github.com/Kevin-Kwan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white transition-transform ease-in-out duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
-                >
-                  <FaGithub size={24} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/kevinkwan3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white transition-transform ease-in-out duration-200 hover:scale-115 sm:hover:scale-130 md:hover:scale-150 hover:text-blue-500"
-                >
-                  <FaLinkedin size={24} />
-                </a>
-              </div>
+                <FaLinkedin className="h-5 w-5" aria-hidden="true" />
+              </a>
             </div>
           </div>
-          {/* <div className="max-w-2xl mx-auto h-screen">
-            <p className="text-2xl font-bold mt-4 text-center">About Me</p>
-            <p className="text-lg mt-2 text-center">Blurb</p>
-          </div> */}
-        </main>
-      </div>
-    </div>
+
+          <Waveform animated className="mt-12 h-10 w-full max-w-xl" />
+          <p className="mt-6 font-mono text-xs text-zinc-500">
+            Interests: {profile.interests.join(' · ')}
+          </p>
+        </div>
+      </section>
+
+      {/* Impact metrics */}
+      <section aria-label="Impact metrics" className="border-y border-white/5 bg-white/[0.015]">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px lg:grid-cols-4">
+          {metrics.map((metric, i) => (
+            <Reveal key={metric.label} delay={i * 70} className="px-4 py-8 sm:px-6">
+              <p className="text-gradient font-mono text-4xl font-bold tracking-tight sm:text-5xl">
+                {metric.value}
+              </p>
+              <p className="mt-3 text-sm font-medium text-zinc-100">
+                {metric.label}
+              </p>
+              <p className="mt-1 text-sm text-zinc-500">{metric.detail}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Expertise */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <SectionHeading
+          eyebrow="Expertise"
+          title="What I do"
+          description="Production systems that talk to customers, run on AWS, and stay up — plus the full-stack range to build around them."
+        />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {expertiseAreas.map((area, i) => (
+            <Reveal key={area.title} delay={i * 80}>
+              <SpotlightCard className="h-full rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
+                <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
+                  {area.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-zinc-400">
+                  {area.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {area.points.map((point) => (
+                    <TechTag key={point} label={point} />
+                  ))}
+                </div>
+              </SpotlightCard>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured experience */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="Experience"
+            title="Currently at GEICO"
+          />
+          <Link
+            href="/experience"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+          >
+            Full experience
+            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+        <Reveal className="mt-8">
+          <ExperienceCard entry={geico} />
+        </Reveal>
+      </section>
+
+      {/* Selected projects */}
+      <section className="border-y border-white/5 bg-white/[0.015]">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading
+              eyebrow="Selected work"
+              title="Featured projects"
+              description="A few favorites — the full archive includes games, hackathon builds, and open-source contributions."
+            />
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+            >
+              All projects
+              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {featuredProjects.map((project, i) => (
+              <Reveal key={project.id} delay={(i % 2) * 80}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills snapshot */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="Toolbox"
+            title="Core skills"
+            description="The short list — see the skills page for the full, categorized inventory."
+          />
+          <Link
+            href="/skills"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+          >
+            All skills
+            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {coreSkills.map((skill) => (
+            <span
+              key={skill}
+              className="rounded-full border border-white/10 bg-surface px-4 py-2 text-sm text-zinc-200"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Education highlight */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading eyebrow="Education" title="Georgia Tech" />
+          <Link
+            href="/education"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+          >
+            Full education
+            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+        <Reveal className="mt-8">
+          <EducationCard entry={georgiaTech} />
+        </Reveal>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="border-t border-white/5">
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
+          <Waveform className="mx-auto h-8 w-56" />
+          <h2 className="mt-8 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
+            Let&apos;s build something that answers.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
+            {profile.closingLine} If you&apos;re hiring for conversational AI,
+            voice, or full-stack roles — or just want to talk shop — my inbox
+            is open.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+            >
+              Get in touch
+              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <a
+              href={socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
+            >
+              <FaLinkedin className="h-4 w-4" aria-hidden="true" />
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
