@@ -1,3 +1,5 @@
+import type { OrgLogoSpec } from '../components/OrgLogo';
+
 export interface EducationLink {
   label: string;
   url: string;
@@ -10,7 +12,7 @@ export interface EducationEntry {
   dateRange: string;
   credential: string;
   location: string;
-  monogram: string;
+  logo: OrgLogoSpec;
   gpa?: string;
   /** Optional qualifier rendered after the GPA, e.g. '(weighted)'. */
   gpaNote?: string;
@@ -27,7 +29,11 @@ export const education: EducationEntry[] = [
     credential:
       'Bachelor of Science in Computer Science with Highest Honors',
     location: 'Atlanta, GA',
-    monogram: 'GT',
+    logo: {
+      src: '/logos/georgia-tech.svg',
+      alt: 'Georgia Tech logo',
+      imgClassName: 'p-2',
+    },
     gpa: '3.9',
     details: ['Threads: Intelligence and Media', 'Graduated summa cum laude.'],
     links: [
@@ -42,7 +48,12 @@ export const education: EducationEntry[] = [
     dateRange: 'May 2020 – June 2021',
     credential: 'PC Repair and Network Technician Certificate',
     location: 'Lawrenceville, GA',
-    monogram: 'GTC',
+    logo: {
+      src: '/logos/gwinnett-tech.png',
+      alt: 'Gwinnett Technical College logo',
+      tileClassName: 'bg-[#002d74]',
+      imgClassName: 'p-1.5',
+    },
     gpa: '4.0',
     details: [],
     links: [{ label: 'College Website', url: 'https://gwinnetttech.edu' }],
@@ -54,7 +65,11 @@ export const education: EducationEntry[] = [
     dateRange: 'August 2017 – May 2021',
     credential: 'High School Diploma with Honors',
     location: 'Lawrenceville, GA',
-    monogram: 'GSMST',
+    logo: {
+      src: '/logos/gsmst-seal.png',
+      alt: 'Gwinnett School of Mathematics, Science, and Technology seal',
+      imgClassName: 'p-1.5',
+    },
     gpa: '4.211',
     gpaNote: '(weighted)',
     details: [],

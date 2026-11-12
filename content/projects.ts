@@ -11,6 +11,8 @@ export interface Project {
   blurb: string;
   /** Shown in place of links when a project has none (e.g. closed coursework). */
   note?: string;
+  /** Generated card artwork (featured projects); see scripts/generate-project-images.mjs. */
+  image?: { src: string; alt: string };
   tech: string[];
   githubUrl?: string;
   demo?: ProjectLink;
@@ -39,6 +41,10 @@ export const projectGroups: ProjectGroup[] = [
           'A custom, multi-purpose, open-source Discord Bot using DiscordJS v14 and MongoDB that can play music, chat with you using OpenAI ChatGPT, manage your Economy, moderate your server, and provide other fun features. Currently supports Discord\u2019s Slash Commands. Written in JavaScript.',
         tech: ['JavaScript', 'Discord.js', 'MongoDB', 'OpenAI'],
         githubUrl: 'https://github.com/Kevin-Kwan/CutieBot',
+        image: {
+          src: '/projects/cutiebot.webp',
+          alt: 'Abstract chat-bot tile artwork for CutieBot, a multi-purpose Discord bot',
+        },
         featured: true,
       },
       {
@@ -50,7 +56,10 @@ export const projectGroups: ProjectGroup[] = [
           'This website — designed and built with TypeScript using Next.js (React) and Tailwind CSS, with all content managed as typed data.',
         tech: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS'],
         githubUrl: 'https://github.com/Kevin-Kwan/Kevin-Kwan.github.io',
-        demo: { url: '/', label: 'Demo' },
+        image: {
+          src: '/projects/portfolio-website.webp',
+          alt: 'Voice-waveform artwork for this portfolio website',
+        },
         featured: true,
       },
     ],
@@ -79,6 +88,10 @@ export const projectGroups: ProjectGroup[] = [
         description:
           'A full-stack application for a drone-based grocery delivery system (CS4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database.',
         tech: ['Next.js', 'React', 'MySQL', 'REST APIs'],
+        image: {
+          src: '/projects/drone-dispatch.webp',
+          alt: 'Delivery-route artwork for the Drone Dispatch Express delivery system',
+        },
         featured: true,
       },
       {
@@ -90,6 +103,10 @@ export const projectGroups: ProjectGroup[] = [
           'Interactive personalized web app inspired by LeetCode to train software developers on responsible integration of AI coding assistants. Provides modules, simulations, guidelines, and gamification to understand AI tool capabilities/risks and maintain code quality, security, and ethics when leveraging AI. Made using Next.js (React), TailwindCSS, and Firebase.',
         tech: ['Next.js', 'React', 'Tailwind CSS', 'Firebase'],
         demo: { url: 'https://companion-training.vercel.app/', label: 'Demo' },
+        image: {
+          src: '/projects/companion.webp',
+          alt: 'Open-book artwork for CompAnIon, a learning platform for AI coding assistants',
+        },
         featured: true,
       },
       {

@@ -13,6 +13,8 @@ export interface ExpertiseArea {
   title: string;
   description: string;
   points: string[];
+  /** Headline proof line pinned to the bottom of the expertise card. */
+  stat?: string;
 }
 
 export const profile = {
@@ -63,11 +65,12 @@ export const metrics: Metric[] = [
     suffix: '+',
   },
   {
-    value: '3.9',
-    label: 'GPA · summa cum laude',
-    detail: 'B.S. Computer Science, Georgia Tech (2024)',
-    countTo: 3.9,
-    decimals: 1,
+    value: '~80%',
+    label: 'Proof of Coverage IVR containment',
+    detail: 'Amazon Connect IVR at GEICO',
+    countTo: 80,
+    prefix: '~',
+    suffix: '%',
   },
 ];
 
@@ -77,17 +80,20 @@ export const expertiseAreas: ExpertiseArea[] = [
     description:
       'AI voice agents and IVR systems that hold real conversations and resolve calls without an agent.',
     points: ['Amazon Connect', 'Amazon Lex', 'Sierra AI', 'Cyara testing'],
+    stat: '436K+ conversations · ~51% containment',
   },
   {
     title: 'Cloud & AWS',
     description:
       'Event-driven, asynchronous backends on AWS with infrastructure as code and production on-call ownership.',
     points: ['Lambda', 'DynamoDB', 'S3', 'Terraform'],
+    stat: '~80% Proof of Coverage containment',
   },
   {
     title: 'Full-Stack Engineering',
     description:
       'End-to-end product development across the stack, from REST APIs to modern front-ends.',
     points: ['Java', 'Python', 'TypeScript', 'Next.js / React'],
+    stat: '468 PRs authored · 653 reviewed',
   },
 ];

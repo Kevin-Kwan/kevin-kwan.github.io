@@ -1,6 +1,18 @@
+import type { OrgLogoSpec } from '../components/OrgLogo';
+
 export interface ExperienceLink {
   label: string;
   url: string;
+}
+
+export interface ExperienceSection {
+  title: string;
+  points: string[];
+}
+
+export interface ExperienceMetric {
+  value: string;
+  label: string;
 }
 
 export interface ExperienceEntry {
@@ -10,9 +22,13 @@ export interface ExperienceEntry {
   title: string;
   dateRange: string;
   location: string;
-  monogram: string;
+  logo: OrgLogoSpec;
   summary: string;
   highlights: string[];
+  /** Highlights grouped into workstream sections (full /experience view). */
+  sections?: ExperienceSection[];
+  /** Headline metrics rendered as a strip under the summary. */
+  metricStrip?: ExperienceMetric[];
   /** Condensed highlights for the home-page featured block; /experience keeps the full list. */
   shortHighlights?: string[];
   links: ExperienceLink[];
@@ -26,22 +42,52 @@ export const experience: ExperienceEntry[] = [
     title: 'Software Engineer II — Conversational AI & IVR',
     dateRange: 'July 2024 – Present',
     location: 'Atlanta, GA (Remote)',
-    monogram: 'G',
+    logo: { src: '/logos/geico.svg', alt: 'GEICO logo', imgClassName: 'p-2.5' },
     summary:
-      'Conversational AI / IVR engineer on GEICO\u2019s customer-service automation platforms. Joined through the Technology Development Program as a Software Engineer I and promoted to Software Engineer II. Largest single contributor to the Sierra AI billing agent, alongside the Amazon Connect platform work.',
+      'Conversational AI / IVR engineer on GEICO’s customer-service automation platforms. Joined through the Technology Development Program as a Software Engineer I and promoted to Software Engineer II. Largest single contributor to the Sierra AI billing agent, alongside the Amazon Connect platform work.',
     highlights: [
-      'Co-develop and operate the Sierra AI billing voice agent (live May 2026): ~30,000 calls a week across payments, rescheduling, AutoPay, and billing questions in English and Spanish \u2014 about 51% of 436,000+ conversations contained without a live-agent transfer (May\u2013Oct 2026), trending from 48% to 52% as volume grew roughly tenfold.',
-      'Delivered the agent\u2019s end-to-end make-payment flow \u2014 saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation: 22,600+ payments completed at a 92\u201395% authorization success rate. Shipped Pause AutoPay as a net-new capability, plus 82,800 reschedules and 192,000 informational answers at a 98% tool success rate.',
+      'Co-develop and operate the Sierra AI billing voice agent (live May 2026): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026), trending from 48% to 52%, and running at ~30,000 calls a week by October 2026 as volume grew roughly tenfold.',
+      'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation: 22,600+ payments completed at a 92–95% authorization success rate. Shipped Pause AutoPay as a net-new capability, plus 82,800 reschedules and 192,000 informational answers at a 98% tool success rate.',
       'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys (178 files, ~20,000 net lines removed), and built the simulation-based regression quality gates that keep its releases safe.',
-      'Fixed 86 of 91 production billing bugs at the root cause; authored 468 pull requests, reviewed 653 PRs for 12+ engineers, and onboarded two engineers onto the Sierra platform.',
+      'Fixed 86 of 91 production and UT1 billing bugs at the root cause; authored 468 pull requests, reviewed 653 PRs for 12+ engineers, and onboarded two engineers onto the Sierra platform.',
       'Migrated legacy Cisco UCCE + Nuance IVR to Amazon Connect on AWS, including Java traffic-redirection logic for gradual live cutover, a zero-amount-due flow, reworked billing error handling, and legacy endpoint and Lex migrations.',
       'Built the AWS self-service payment IVR (~60% containment) and led the Proof of Coverage IVR (~80% containment); own the Proof of Coverage disaster-recovery rebuild pipeline.',
       'Async orchestration with AWS Lambda and DynamoDB; secure APIs with AES encryption for customer and payment data; Terraform infrastructure pipelines; Cyara testing; production support and on-call.',
     ],
+    sections: [
+      {
+        title: 'Sierra AI Billing Agent',
+        points: [
+          'Co-develop and operate the Sierra AI billing voice agent (live May 2026): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026), trending from 48% to 52%, and running at ~30,000 calls a week by October 2026 as volume grew roughly tenfold.',
+          'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation: 22,600+ payments completed at a 92–95% authorization success rate. Shipped Pause AutoPay as a net-new capability, plus 82,800 reschedules and 192,000 informational answers at a 98% tool success rate.',
+          'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys (178 files, ~20,000 net lines removed), and built the simulation-based regression quality gates that keep its releases safe.',
+        ],
+      },
+      {
+        title: 'Amazon Connect IVR',
+        points: [
+          'Migrated legacy Cisco UCCE + Nuance IVR to Amazon Connect on AWS, including Java traffic-redirection logic for gradual live cutover, a zero-amount-due flow, reworked billing error handling, and legacy endpoint and Lex migrations.',
+          'Built the AWS self-service payment IVR (~60% containment) and led the Proof of Coverage IVR (~80% containment); own the Proof of Coverage disaster-recovery rebuild pipeline.',
+          'Async orchestration with AWS Lambda and DynamoDB; secure APIs with AES encryption for customer and payment data; Terraform infrastructure pipelines; Cyara testing; production support and on-call.',
+        ],
+      },
+      {
+        title: 'Impact & Mentorship',
+        points: [
+          'Fixed 86 of 91 production and UT1 billing bugs at the root cause; authored 468 pull requests, reviewed 653 PRs for 12+ engineers, and onboarded two engineers onto the Sierra platform.',
+        ],
+      },
+    ],
+    metricStrip: [
+      { value: '436K+', label: 'conversations, May–Oct 2026' },
+      { value: '~51%', label: 'contained without a live agent' },
+      { value: '22,600+', label: 'payments, 92–95% success' },
+      { value: '98%', label: 'informational tool success' },
+    ],
     shortHighlights: [
-      'Co-develop and operate the Sierra AI billing voice agent — ~30,000 calls a week in English and Spanish, with about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026).',
+      'Co-develop and operate the Sierra AI billing voice agent — ~30,000 calls a week by October 2026 in English and Spanish, with about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026).',
       'Delivered the agent’s end-to-end make-payment flow: 22,600+ payments completed at a 92–95% authorization success rate, plus Pause AutoPay, 82,800 reschedules, and 192,000 informational answers at 98%.',
-      'Re-architected the agent from regex- and classifier-based routing to fact-based journeys (178 files, ~20,000 net lines removed), and built the simulation-based regression quality gates that keep its releases safe.',
+      'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys (178 files, ~20,000 net lines removed), and built the simulation-based regression quality gates that keep its releases safe.',
     ],
     links: [{ label: 'Company Website', url: 'https://www.geico.com/tech/' }],
   },
@@ -52,7 +98,11 @@ export const experience: ExperienceEntry[] = [
     title: 'Software Engineer Intern',
     dateRange: 'June 2023 – August 2023',
     location: 'Atlanta, GA',
-    monogram: 'PS',
+    logo: {
+      src: '/logos/publicis-sapient.svg',
+      alt: 'Publicis Sapient logo',
+      imgClassName: 'p-2.5',
+    },
     summary:
       'Built an AI chatbot application for the Travel & Hospitality industry, designed for WhatsApp, on a cross-functional team.',
     highlights: [
@@ -74,7 +124,11 @@ export const experience: ExperienceEntry[] = [
     title: 'Software Engineer (Connected and Automated Vehicles Team)',
     dateRange: 'January 2022 – May 2023',
     location: 'Atlanta, GA',
-    monogram: 'GT',
+    logo: {
+      src: '/logos/georgia-tech.svg',
+      alt: 'Georgia Tech logo',
+      imgClassName: 'p-2',
+    },
     summary:
       'Connected and Automated Vehicles (CAV) software engineer for the Georgia Tech EcoCAR EV Challenge at the Georgia Institute of Technology, on the Vehicle-to-Everything (V2X) subteam.',
     highlights: [
@@ -97,12 +151,16 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: 'ncr-voyix',
-    company: 'NCR Voyix',
-    companyTagline: 'Formerly \u201CNCR Corporation\u201D',
+    company: 'NCR Corporation',
+    companyTagline: '',
     title: 'Software Engineer Intern',
     dateRange: 'July 2019 – August 2019',
     location: 'Atlanta, GA',
-    monogram: 'N',
+    logo: {
+      src: '/logos/ncr.svg',
+      alt: 'NCR Corporation logo',
+      imgClassName: 'p-2',
+    },
     summary:
       'Developed a machine learning program using MATLAB — a language and environment that was completely new to me — as a high school intern.',
     highlights: [
