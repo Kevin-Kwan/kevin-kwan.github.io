@@ -2,6 +2,9 @@
   "name": "portfolio-nextjs",
   "version": "0.1.0",
   "private": true,
+  "overrides": {
+    "sharp": "^0.35.5"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,7 +24,7 @@
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.69.0",
     "react-icons": "^5.5.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
