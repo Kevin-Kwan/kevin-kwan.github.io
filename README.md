@@ -48,7 +48,7 @@ file in `public/documents/` is served).
 
 ## Editing content
 
-All site copy lives as typed data under `content/` — pages and components
+Most site copy lives as typed data under `content/` — pages and components
 render from it, so you never need to edit JSX to update the site:
 
 | File                 | Contents                                        |
