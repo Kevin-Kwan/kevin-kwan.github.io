@@ -3,6 +3,8 @@ export interface Skill {
   /** Key resolved to a react-icons component by components/SkillIcon.tsx. */
   icon: string;
   href?: string;
+  /** One-line production proof, shown on /skills under the group's chips. */
+  evidence?: string;
 }
 
 export interface SkillCategory {
@@ -59,10 +61,26 @@ export const skillCategories: SkillCategory[] = [
         name: 'Amazon Connect',
         icon: 'connect',
         href: 'https://aws.amazon.com/connect/',
+        evidence: 'Billing + Proof of Coverage IVRs at GEICO · ~80% PoC containment',
       },
-      { name: 'Amazon Lex', icon: 'lex', href: 'https://aws.amazon.com/lex/' },
-      { name: 'Sierra AI', icon: 'sierra', href: 'https://www.sierra.ai/' },
-      { name: 'Cyara', icon: 'cyara', href: 'https://www.cyara.com/' },
+      {
+        name: 'Amazon Lex',
+        icon: 'lex',
+        href: 'https://aws.amazon.com/lex/',
+        evidence: 'Pattern cutover from the legacy IVR endpoints',
+      },
+      {
+        name: 'Sierra AI',
+        icon: 'sierra',
+        href: 'https://www.sierra.ai/',
+        evidence: 'Billing voice agent · 436K+ conversations, ~51% contained',
+      },
+      {
+        name: 'Cyara',
+        icon: 'cyara',
+        href: 'https://www.cyara.com/',
+        evidence: 'IVR regression testing',
+      },
       { name: 'OpenAI', icon: 'openai', href: 'https://openai.com/' },
       {
         name: 'LangChain',
@@ -86,11 +104,13 @@ export const skillCategories: SkillCategory[] = [
         name: 'Lambda',
         icon: 'lambda',
         href: 'https://aws.amazon.com/lambda/',
+        evidence: 'Tool execution layer for the voice agents',
       },
       {
         name: 'DynamoDB',
         icon: 'dynamodb',
         href: 'https://aws.amazon.com/dynamodb/',
+        evidence: 'Async orchestration for IVR/agent workflows',
       },
       { name: 'S3', icon: 's3', href: 'https://aws.amazon.com/s3/' },
       {
@@ -107,6 +127,7 @@ export const skillCategories: SkillCategory[] = [
         name: 'Terraform',
         icon: 'terraform',
         href: 'https://www.terraform.io/',
+        evidence: 'Infrastructure as code for Connect/Lambda stack',
       },
       { name: 'Docker', icon: 'docker', href: 'https://www.docker.com/' },
       {
