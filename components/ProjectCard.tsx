@@ -1,60 +1,64 @@
-import React from 'react';
-import Link from 'next/link';
-import { FaGithub, FaGlobe } from 'react-icons/fa';
-import { Fade } from 'react-awesome-reveal';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { FaGithub } from 'react-icons/fa';
+import type { Project } from '../content/projects';
+import SpotlightCard from './SpotlightCard';
+import TechTag from './TechTag';
 
 interface ProjectCardProps {
-  name: string;
-  description: string;
-  githubLink?: string;
-  demoLink?: string;
-  demoText?: string;
-  Icon?: React.ComponentType<{ className?: string }>;
+  project: Project;
 }
 
-function ProjectCard({
-  name,
-  description,
-  githubLink,
-  demoLink,
-  demoText = 'Demo',
-  Icon = FaGlobe,
-}: ProjectCardProps) {
-  const DefaultIcon = Icon || FaGlobe;
+function ProjectCard({ project }: ProjectCardProps) {
+  const demoIsExternal = project.demo?.url.startsWith('http');
+
   return (
-    <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-2 md:p-4">
-      <Fade triggerOnce>
-        <div className="bg-zinc-900 rounded-lg shadow-lg overflow-hidden h-full flex flex-col justify-between">
-          <div>
-            <h2 className="text-sm md:text-lg font-bold p-3 text-zinc-200">
-              {name}
-            </h2>
-            <hr />
-            <div className="p-3 text-zinc-200 text-xs md:text-sm">
-              {description}
-            </div>
-          </div>
-          <div className="pb-3 pl-3 pr-3 flex justify-between">
-            {githubLink && (
-              <Link href={githubLink} rel="noopener noreferrer" target="_blank">
-                <div className="bg-slate-400 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
-                  <FaGithub className="mr-2 text-sm md:text-base" />
-                  <span>GitHub</span>
-                </div>
-              </Link>
-            )}
-            {demoLink && (
-              <Link href={demoLink} rel="noopener noreferrer" target="_blank">
-                <div className="bg-slate-400 hover:bg-green-700 text-black font-bold py-2 px-4 rounded inline-flex items-center text-xs md:text-base">
-                  <DefaultIcon className="mr-2 text-sm md:text-base" />
-                  <span>{demoText}</span>
-                </div>
-              </Link>
-            )}
-          </div>
+    <SpotlightCard className="flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
+      <h3 className="text-lg font-semibold leading-snug tracking-tight text-zinc-50">
+        {project.name}
+      </h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">
+        {project.description}
+      </p>
+
+      {project.tech.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {project.tech.map((tech) => (
+            <TechTag key={tech} label={tech} />
+          ))}
         </div>
-      </Fade>
-    </div>
+      )}
+
+      {(project.githubUrl || project.demo) && (
+        <div className="mt-6 flex flex-wrap gap-3 border-t border-white/5 pt-4">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-zinc-100 transition-colors hover:border-white/25 hover:bg-white/[0.08]"
+            >
+              <FaGithub className="h-4 w-4" aria-hidden="true" />
+              GitHub
+            </a>
+          )}
+          {project.demo && (
+            <a
+              href={project.demo.url}
+              {...(demoIsExternal
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+              className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-2 text-sm font-medium text-cyan-200 transition-colors hover:bg-cyan-400/20"
+            >
+              <ArrowTopRightOnSquareIcon
+                className="h-4 w-4"
+                aria-hidden="true"
+              />
+              {project.demo.label}
+            </a>
+          )}
+        </div>
+      )}
+    </SpotlightCard>
   );
 }
 
