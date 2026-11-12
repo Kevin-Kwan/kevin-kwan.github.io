@@ -11,14 +11,21 @@ interface ProjectCardProps {
   variant?: 'full' | 'compact';
   /** Pointer-spotlight treatment — reserved for featured cards. */
   spotlight?: boolean;
+  /** Traveling border-beam treatment — reserved for featured cards. */
+  beam?: boolean;
 }
+
+const LINK_CLASSES =
+  'inline-flex min-h-10 items-center gap-1.5 px-2 py-2 -mx-2 text-sm font-medium transition-colors';
 
 function ProjectCard({
   project,
   variant = 'full',
   spotlight = false,
+  beam = false,
 }: ProjectCardProps) {
   const demoIsExternal = project.demo?.url.startsWith('http');
+  const hasLinks = Boolean(project.githubUrl || project.demo);
 
   if (variant === 'compact') {
     return (
@@ -26,8 +33,8 @@ function ProjectCard({
         <h3 className="text-base font-semibold leading-snug tracking-tight text-zinc-50">
           {project.name}
         </h3>
-        <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-zinc-400">
-          {project.description}
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">
+          {project.blurb}
         </p>
         {project.tech.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
@@ -36,14 +43,14 @@ function ProjectCard({
             ))}
           </div>
         )}
-        {(project.githubUrl || project.demo) && (
-          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
+        {hasLinks && (
+          <div className="mt-3 flex flex-wrap gap-x-2 gap-y-1.5">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-200 transition-colors hover:text-white"
+                className={`${LINK_CLASSES} text-zinc-200 hover:text-white`}
               >
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
                 GitHub
@@ -55,7 +62,7 @@ function ProjectCard({
                 {...(demoIsExternal
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+                className={`${LINK_CLASSES} text-cyan-300 hover:text-cyan-200`}
               >
                 <ArrowTopRightOnSquareIcon
                   className="h-4 w-4"
@@ -65,6 +72,9 @@ function ProjectCard({
               </a>
             )}
           </div>
+        )}
+        {!hasLinks && project.note && (
+          <p className="mt-4 text-sm italic text-zinc-400">{project.note}</p>
         )}
       </div>
     );
@@ -87,14 +97,14 @@ function ProjectCard({
         </div>
       )}
 
-      {(project.githubUrl || project.demo) && (
+      {hasLinks && (
         <div className="mt-6 flex flex-wrap gap-3 border-t border-white/5 pt-4">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-zinc-100 transition-colors hover:border-white/25 hover:bg-white/[0.08]"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-zinc-100 transition-colors hover:border-white/25 hover:bg-white/[0.08]"
             >
               <FaGithub className="h-4 w-4" aria-hidden="true" />
               GitHub
@@ -106,7 +116,7 @@ function ProjectCard({
               {...(demoIsExternal
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
-              className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-2 text-sm font-medium text-cyan-200 transition-colors hover:bg-cyan-400/20"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-2 text-sm font-medium text-cyan-200 transition-colors hover:bg-cyan-400/20"
             >
               <ArrowTopRightOnSquareIcon
                 className="h-4 w-4"
@@ -117,11 +127,18 @@ function ProjectCard({
           )}
         </div>
       )}
+
+      {!hasLinks && project.note && (
+        <div className="mt-6 border-t border-white/5 pt-4">
+          <p className="text-sm italic text-zinc-400">{project.note}</p>
+        </div>
+      )}
     </>
   );
 
-  const cardClasses =
-    'flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20';
+  const cardClasses = `flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20${
+    beam ? ' border-beam' : ''
+  }`;
 
   if (spotlight) {
     return <SpotlightCard className={cardClasses}>{body}</SpotlightCard>;

@@ -25,6 +25,9 @@ import {
   SiFlask,
   SiUnity,
   SiNodedotjs,
+  SiSonarqubeserver,
+  SiCursor,
+  SiClaudecode,
 } from 'react-icons/si';
 import {
   FaAws,
@@ -79,6 +82,9 @@ const ICONS: Record<string, IconComponent> = {
   flask: SiFlask,
   unity: SiUnity,
   nodejs: SiNodedotjs,
+  sonarqube: SiSonarqubeserver,
+  cursor: SiCursor,
+  claudecode: SiClaudecode,
   java: FaJava,
   aws: FaAws,
   azure: FaMicrosoft,

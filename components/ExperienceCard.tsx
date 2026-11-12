@@ -14,6 +14,8 @@ interface ExperienceCardProps {
   highlights?: string[];
   /** Pointer-spotlight treatment — reserved for the featured home block. */
   spotlight?: boolean;
+  /** Traveling border-beam treatment — reserved for the featured home block. */
+  beam?: boolean;
   /** Optional call-to-action rendered under the card body. */
   cta?: { href: string; label: string };
 }
@@ -25,6 +27,7 @@ function ExperienceCard({
   entry,
   highlights,
   spotlight = false,
+  beam = false,
   cta,
 }: ExperienceCardProps) {
   const shownHighlights = highlights ?? entry.highlights;
@@ -100,10 +103,12 @@ function ExperienceCard({
     </>
   );
 
+  const cardClasses = beam ? `${CARD_CLASSES} border-beam` : CARD_CLASSES;
+
   if (spotlight) {
-    return <SpotlightCard className={CARD_CLASSES}>{body}</SpotlightCard>;
+    return <SpotlightCard className={cardClasses}>{body}</SpotlightCard>;
   }
-  return <div className={CARD_CLASSES}>{body}</div>;
+  return <div className={cardClasses}>{body}</div>;
 }
 
 export default ExperienceCard;

@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { useRouter } from 'next/router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -8,8 +7,6 @@ interface RootLayoutProps {
 }
 
 function RootLayout({ children }: RootLayoutProps) {
-  const router = useRouter();
-
   return (
     <div className="grain flex min-h-screen flex-col">
       <a
@@ -20,9 +17,7 @@ function RootLayout({ children }: RootLayoutProps) {
       </a>
       <Navbar />
       <main id="main-content" className="flex-1">
-        <div key={router.pathname} className="animate-page-in">
-          {children}
-        </div>
+        {children}
       </main>
       <Footer />
     </div>

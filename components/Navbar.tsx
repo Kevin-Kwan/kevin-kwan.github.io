@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { navLinks, resumeUrl, site, socials } from '../content/site';
+import ScrollProgress from './ScrollProgress';
 
 function Navbar() {
   const router = useRouter();
@@ -28,6 +29,7 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+      <ScrollProgress />
       <nav
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6"
@@ -77,7 +79,7 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="hidden rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 sm:block"
+            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 md:block"
           >
             <FaGithub className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -86,7 +88,7 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="hidden rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 sm:block"
+            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 md:block"
           >
             <FaLinkedin className="h-5 w-5" aria-hidden="true" />
           </a>

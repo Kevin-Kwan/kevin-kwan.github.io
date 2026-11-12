@@ -27,7 +27,7 @@ function EducationCard({ entry }: EducationCardProps) {
             <p className="mt-2 font-mono text-xs text-zinc-400 sm:hidden">
               <span className="uppercase tracking-widest">GPA</span>{' '}
               <span className="text-sm font-semibold text-zinc-100">
-                {entry.gpa}
+                {`${entry.gpa}${entry.gpaNote ? ` ${entry.gpaNote}` : ''}`}
               </span>
             </p>
           )}
@@ -38,7 +38,7 @@ function EducationCard({ entry }: EducationCardProps) {
               GPA
             </p>
             <p className="font-mono text-sm font-semibold text-zinc-100">
-              {entry.gpa}
+              {`${entry.gpa}${entry.gpaNote ? ` ${entry.gpaNote}` : ''}`}
             </p>
           </div>
         )}
