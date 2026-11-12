@@ -16,7 +16,6 @@
     "generate-project-images": "node scripts/generate-project-images.mjs"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@heroicons/react": "^2.2.0",
