@@ -3,14 +3,27 @@ export interface ProjectLink {
   label: string;
 }
 
+export type ProjectCategory = 'ai' | 'web' | 'games' | 'coursework';
+
+export const projectCategoryLabels: Record<ProjectCategory, string> = {
+  ai: 'AI & Bots',
+  web: 'Web & Full-Stack',
+  games: 'Games & Interactive',
+  coursework: 'Coursework & Challenges',
+};
+
 export interface Project {
   id: string;
+  category: ProjectCategory;
   name: string;
   description: string;
   /** One concise line (≤90 chars) for compact cards and the archive list. */
   blurb: string;
   /** Shown in place of links when a project has none (e.g. closed coursework). */
   note?: string;
+  /** Optional call-to-action shown under the note (e.g. request the code). */
+  noteHref?: string;
+  noteLinkLabel?: string;
   /** Generated card artwork (featured projects); see scripts/generate-project-images.mjs. */
   image?: { src: string; alt: string };
   tech: string[];
@@ -34,6 +47,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'cutiebot',
+        category: 'ai',
         name: 'CutieBot (Discord Bot Application)',
         blurb:
           'Multi-purpose Discord bot: music, AI chat, economy, moderation, slash commands.',
@@ -49,6 +63,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'portfolio-website',
+        category: 'web',
         name: 'Software Engineer Portfolio Website',
         blurb:
           'This website — Next.js, React, and Tailwind, with all content managed as typed data.',
@@ -71,6 +86,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'premid-presence',
+        category: 'web',
         name: 'PreMiD Presence Open-Source Contribution',
         blurb:
           'Open-source contribution: a Stake.us presence for the PreMiD Discord app.',
@@ -81,10 +97,13 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'drone-dispatch',
+        category: 'web',
         name: 'Drone Dispatch Express Delivery System',
         blurb:
           'Full-stack drone grocery-delivery system coordinating orders, stores, and pilots.',
         note: 'Course project (CS 4400) — code available on request.',
+        noteHref: '/contact',
+        noteLinkLabel: 'Request the code',
         description:
           'A full-stack application for a drone-based grocery delivery system (CS4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database.',
         tech: ['Next.js', 'React', 'MySQL', 'REST APIs'],
@@ -96,6 +115,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'companion',
+        category: 'ai',
         name: 'CompAnIon (Learning Platform POC)',
         blurb:
           'LeetCode-inspired platform teaching developers to use AI coding assistants responsibly.',
@@ -111,6 +131,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'careers-portal',
+        category: 'web',
         name: 'Company Careers Portal (Paid Client Project)',
         blurb:
           'Full-stack careers portal with job listings, benefits pages, and an application form.',
@@ -120,6 +141,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'qc-testing',
+        category: 'coursework',
         name: 'Quality Control Testing (UCLA CS31 Project)',
         blurb:
           'C++ program that validates QC result strings and tallies tests, passes, and defects.',
@@ -131,6 +153,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'sales-tax-calculator',
+        category: 'coursework',
         name: 'Sales Tax Calculator (UCLA CS31 Project)',
         blurb:
           'C++ sales tax calculator using purchase state and date, with input error handling.',
@@ -142,6 +165,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'fishing-line-physics',
+        category: 'games',
         name: 'Fishing Line Physics Implementation (Unity 3D)',
         blurb:
           'Unity proof of concept for fishing-rod casting physics using Verlet integration.',
@@ -152,6 +176,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'dark-ascent',
+        category: 'games',
         name: '\u201CDark Ascent\u201D (3D Platformer Game)',
         blurb:
           'Third-person 3D horror platformer built around creative movement mechanics in Unity.',
@@ -166,6 +191,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'eyetracking-hci',
+        category: 'ai',
         name: '\u201CEyetracking-Driven Human Computer Interaction\u201D Software',
         blurb:
           'Deep-learning gaze estimation mapping eye direction to screen coordinates with ResNet50.',
@@ -180,6 +206,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'currency-converter',
+        category: 'web',
         name: 'Currency Converter (Learning React Project)',
         blurb:
           'React currency converter using components, hooks, and a live exchange-rate API.',
@@ -191,6 +218,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'rps-app',
+        category: 'web',
         name: 'Rock, Paper, Scissors (Learning React Project)',
         blurb:
           'Rock, Paper, Scissors in React — an early project for learning components and props.',
@@ -202,6 +230,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'project-blu',
+        category: 'games',
         name: '\u201CProject Blu\u201D (2D Unity Game Suite)',
         blurb:
           'Unity game suite: Blackjack, Chess against an AI, and a Georgia Tech-themed Rogue-like.',
@@ -216,6 +245,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'windows-xp-website',
+        category: 'web',
         name: 'Windows XP-themed Website/Socials Page',
         blurb:
           'Static socials page styled as a clickable Windows XP desktop, sounds included.',
@@ -227,6 +257,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'edunft',
+        category: 'web',
         name: '\u201CeduNFT\u201D (HackGT 8 2021)',
         blurb:
           'HackGT 8 concept site: a Webflow marketplace for students to mint and sell NFTs.',
@@ -238,6 +269,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'evade-and-deceive',
+        category: 'games',
         name: '\u201CEvade and Deceive\u201D (Unity 3D Online Multiplayer Racing Game)',
         blurb:
           'Online multiplayer 3D racing game in Unity, built on Photon PUN 2 networking.',
@@ -252,6 +284,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'lets-surf',
+        category: 'games',
         name: '\u201CLet\u2019s Surf\u201D (Unity 3D Movement Game)',
         blurb:
           'Unity movement demo recreating CS:GO surfing, bunny-hopping, and air strafing.',
@@ -266,6 +299,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'noneuclidean-world',
+        category: 'games',
         name: 'Non-Euclidean Geometry Implementation (Unity 3D)',
         blurb:
           'Unity exploration of non-Euclidean space: impossible portals and infinite stairs.',
@@ -280,6 +314,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'arkanoid',
+        category: 'games',
         name: 'Arkanoid Game (Unity 2D)',
         blurb:
           'A Unity 2D twist on Arkanoid and Breakout — the first game I ever made.',
@@ -294,6 +329,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'facial-recognition-matlab',
+        category: 'ai',
         name: 'Facial Recognition with MATLAB',
         blurb:
           'MATLAB project from a 2019 internship: AlexNet trained for real-time facial recognition.',
@@ -304,6 +340,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'triggering-insanity',
+        category: 'games',
         name: '\u201CTriggering Insanity\u201D (2D Platformer)',
         blurb:
           'Rage-platformer built with Greenfoot and Java, inspired by I Wanna Be the Guy.',
@@ -325,6 +362,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'leetcode',
+        category: 'coursework',
         name: 'My Personal LeetCode Solutions',
         blurb:
           'My own LeetCode solutions in several languages, shared to help other programmers.',
@@ -336,6 +374,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'hackerrank',
+        category: 'coursework',
         name: 'My Personal HackerRank Solutions',
         blurb:
           'My own HackerRank solutions in several languages, shared to help other programmers.',
