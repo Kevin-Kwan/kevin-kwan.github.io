@@ -1,24 +1,45 @@
-import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import type { ReactNode } from 'react';
+import Link from 'next/link';
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+} from '@heroicons/react/24/outline';
 import type { ExperienceEntry } from '../content/experience';
 import Monogram from './Monogram';
 import SpotlightCard from './SpotlightCard';
 
 interface ExperienceCardProps {
   entry: ExperienceEntry;
+  /** Overrides entry.highlights (home page passes the condensed set). */
+  highlights?: string[];
+  /** Pointer-spotlight treatment — reserved for the featured home block. */
+  spotlight?: boolean;
+  /** Optional call-to-action rendered under the card body. */
+  cta?: { href: string; label: string };
 }
 
-function ExperienceCard({ entry }: ExperienceCardProps) {
-  return (
-    <SpotlightCard className="rounded-2xl border border-white/10 bg-surface p-6 shadow-sm transition-colors duration-200 hover:border-white/20 sm:p-8">
-      <div className="flex flex-wrap items-start gap-4">
-        <Monogram text={entry.monogram} className="h-14 w-14 text-base" />
+const CARD_CLASSES =
+  'rounded-2xl border border-white/10 bg-surface p-6 shadow-sm transition-colors duration-200 hover:border-white/20 sm:p-8';
+
+function ExperienceCard({
+  entry,
+  highlights,
+  spotlight = false,
+  cta,
+}: ExperienceCardProps) {
+  const shownHighlights = highlights ?? entry.highlights;
+
+  const body: ReactNode = (
+    <>
+      <div className="flex items-start gap-4">
+        <Monogram text={entry.monogram} className="h-14 w-14 shrink-0 text-base" />
         <div className="min-w-0 flex-1">
           <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.company}
             {entry.companyTagline && (
-              <span className="font-normal text-zinc-500">
-                {' '}
-                · {entry.companyTagline}
+              <span className="block text-base font-normal leading-snug text-zinc-400 sm:inline sm:text-xl">
+                <span className="hidden sm:inline"> · </span>
+                {entry.companyTagline}
               </span>
             )}
           </h3>
@@ -34,7 +55,7 @@ function ExperienceCard({ entry }: ExperienceCardProps) {
       <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
 
       <ul className="mt-4 space-y-2.5">
-        {entry.highlights.map((highlight) => (
+        {shownHighlights.map((highlight) => (
           <li
             key={highlight.slice(0, 48)}
             className="flex gap-3 leading-relaxed text-zinc-400"
@@ -64,8 +85,25 @@ function ExperienceCard({ entry }: ExperienceCardProps) {
           ))}
         </div>
       )}
-    </SpotlightCard>
+
+      {cta && (
+        <div className="mt-5 border-t border-white/5 pt-4">
+          <Link
+            href={cta.href}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+          >
+            {cta.label}
+            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      )}
+    </>
   );
+
+  if (spotlight) {
+    return <SpotlightCard className={CARD_CLASSES}>{body}</SpotlightCard>;
+  }
+  return <div className={CARD_CLASSES}>{body}</div>;
 }
 
 export default ExperienceCard;

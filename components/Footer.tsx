@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { navLinks, site, socials } from '../content/site';
+import { profile } from '../content/profile';
 import Waveform from './Waveform';
 
 function Footer() {
@@ -10,17 +11,17 @@ function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
             <p className="text-base font-semibold tracking-tight text-zinc-50">
-              Kevin Kwan
+              {profile.name}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              Software Engineer II at GEICO — conversational AI &amp; IVR.
-              Georgia Tech B.S. Computer Science, summa cum laude.
+              {profile.role} at {profile.employer} — conversational AI &amp;
+              IVR. Georgia Tech B.S. Computer Science, summa cum laude.
             </p>
             <Waveform className="mt-5 h-6 w-44 opacity-70" />
           </div>
 
           <nav aria-label="Footer">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
               Explore
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-x-10 gap-y-2.5">
@@ -38,7 +39,7 @@ function Footer() {
           </nav>
 
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
               Connect
             </p>
             <div className="mt-4 flex items-center gap-2">
@@ -64,8 +65,10 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/5 pt-6 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Kevin Kwan. All rights reserved.</p>
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/5 pt-6 text-sm text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          </p>
           <p>
             Built with Next.js, TypeScript &amp; Tailwind CSS ·{' '}
             <a

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { navLinks, site, socials } from '../content/site';
+import { navLinks, resumeUrl, site, socials } from '../content/site';
 
 function Navbar() {
   const router = useRouter();
@@ -77,7 +77,7 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50"
+            className="hidden rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 sm:block"
           >
             <FaGithub className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -86,7 +86,7 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50"
+            className="hidden rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 sm:block"
           >
             <FaLinkedin className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -103,7 +103,7 @@ function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="rounded-md p-2 text-zinc-200 transition-colors hover:text-white md:hidden"
+            className="rounded-md p-3 text-zinc-200 transition-colors hover:text-white md:hidden"
           >
             {menuOpen ? (
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -141,12 +141,32 @@ function Navbar() {
             })}
           </ul>
           <a
-            href={site.resumePdfPath}
+            href={resumeUrl}
             download={site.resumeFileName}
             className="mt-3 block rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-base font-medium text-zinc-100"
           >
             Download Résumé (PDF)
           </a>
+          <div className="mt-2 flex items-center gap-2 px-1 pt-1">
+            <a
+              href={socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-zinc-50"
+            >
+              <FaGithub className="h-5 w-5" aria-hidden="true" />
+              GitHub
+            </a>
+            <a
+              href={socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-zinc-50"
+            >
+              <FaLinkedin className="h-5 w-5" aria-hidden="true" />
+              LinkedIn
+            </a>
+          </div>
         </nav>
       )}
     </header>

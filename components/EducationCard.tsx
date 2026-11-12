@@ -1,7 +1,6 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import type { EducationEntry } from '../content/education';
 import Monogram from './Monogram';
-import SpotlightCard from './SpotlightCard';
 
 interface EducationCardProps {
   entry: EducationEntry;
@@ -9,23 +8,33 @@ interface EducationCardProps {
 
 function EducationCard({ entry }: EducationCardProps) {
   return (
-    <SpotlightCard className="rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20 sm:p-8">
-      <div className="flex flex-wrap items-start gap-4">
-        <Monogram text={entry.monogram} className="h-14 w-14" />
+    <div className="rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20 sm:p-8">
+      <div className="flex items-start gap-4">
+        <Monogram text={entry.monogram} className="h-14 w-14 shrink-0" />
         <div className="min-w-0 flex-1">
           <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.school}
             {entry.unit && (
-              <span className="font-normal text-zinc-500"> · {entry.unit}</span>
+              <span className="font-normal text-zinc-400"> · {entry.unit}</span>
             )}
           </h3>
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
+          {/* On small screens the GPA sits inline under the date line so the
+              school name keeps the full text column; the side badge is sm+. */}
+          {entry.gpa && (
+            <p className="mt-2 font-mono text-xs text-zinc-400 sm:hidden">
+              <span className="uppercase tracking-widest">GPA</span>{' '}
+              <span className="text-sm font-semibold text-zinc-100">
+                {entry.gpa}
+              </span>
+            </p>
+          )}
         </div>
         {entry.gpa && (
-          <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-right">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+          <div className="hidden shrink-0 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-right sm:block">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               GPA
             </p>
             <p className="font-mono text-sm font-semibold text-zinc-100">
@@ -60,7 +69,7 @@ function EducationCard({ entry }: EducationCardProps) {
           ))}
         </div>
       )}
-    </SpotlightCard>
+    </div>
   );
 }
 
