@@ -10,6 +10,7 @@ import { PauseIcon, PlayIcon } from '@heroicons/react/24/outline';
 import {
   SiGit,
   SiNextdotjs,
+  SiOpenjdk,
   SiPython,
   SiReact,
   SiTerraform,
@@ -23,6 +24,7 @@ import { useMounted } from './useMounted';
  * exact match; every other skill stays text-only.
  */
 const SKILL_ICONS: Record<string, ComponentType<{ className?: string }>> = {
+  Java: SiOpenjdk,
   Python: SiPython,
   TypeScript: SiTypescript,
   React: SiReact,

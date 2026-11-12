@@ -1,5 +1,9 @@
 import type { ReactNode } from 'react';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import {
+  ArrowRightIcon,
+  ArrowTopRightOnSquareIcon,
+} from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
 import type { Project } from '../content/projects';
 import SpotlightCard from './SpotlightCard';
@@ -74,7 +78,18 @@ function ProjectCard({
           </div>
         )}
         {!hasLinks && project.note && (
-          <p className="mt-4 text-sm italic text-zinc-400">{project.note}</p>
+          <div className="mt-4">
+            <p className="text-sm italic text-zinc-400">{project.note}</p>
+            {project.noteHref && project.noteLinkLabel && (
+              <Link
+                href={project.noteHref}
+                className="mt-1.5 inline-flex items-center gap-1 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+              >
+                {project.noteLinkLabel}
+                <ArrowRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            )}
+          </div>
         )}
       </div>
     );
@@ -142,6 +157,15 @@ function ProjectCard({
       {!hasLinks && project.note && (
         <div className="mt-6 border-t border-white/5 pt-4">
           <p className="text-sm italic text-zinc-400">{project.note}</p>
+          {project.noteHref && project.noteLinkLabel && (
+            <Link
+              href={project.noteHref}
+              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+            >
+              {project.noteLinkLabel}
+              <ArrowRightIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
+          )}
         </div>
       )}
     </>
