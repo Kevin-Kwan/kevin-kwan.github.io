@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import {
@@ -37,7 +37,23 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<ContactFormValues>();
+
+  // Project cards link here with ?project=<name> (e.g. "Request the code"
+  // on Drone Dispatch) — prefill the message so the request keeps its
+  // context instead of landing as a bare contact form.
+  useEffect(() => {
+    const project = new URLSearchParams(window.location.search).get(
+      'project'
+    );
+    if (project) {
+      setValue(
+        'message',
+        `Hi Kevin — I'm interested in the ${project} project from your portfolio. Could I take a look at the code?`
+      );
+    }
+  }, [setValue]);
 
   // Without EmailJS configuration the form can never succeed — render a
   // direct-contact fallback instead of a dead form.

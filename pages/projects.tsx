@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
@@ -34,9 +34,39 @@ function countFor(filter: ProjectFilter): number {
   return allProjects.filter((project) => project.category === filter).length;
 }
 
+const FILTER_IDS: ProjectFilter[] = [
+  'all',
+  'featured',
+  'ai',
+  'web',
+  'games',
+  'coursework',
+];
+
 function Projects() {
   const [filter, setFilter] = useState<ProjectFilter>('all');
   const reduceMotion = useReducedMotion();
+
+  // Filter state is URL-synced (?category=<id>) so a filtered view is
+  // bookmarkable/shareable; 'all' keeps the bare /projects URL.
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get('category');
+    if (param && FILTER_IDS.includes(param as ProjectFilter)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from the URL after hydration; SSR always renders 'all'
+      setFilter(param as ProjectFilter);
+    }
+  }, []);
+
+  function applyFilter(next: ProjectFilter) {
+    setFilter(next);
+    const url = new URL(window.location.href);
+    if (next === 'all') {
+      url.searchParams.delete('category');
+    } else {
+      url.searchParams.set('category', next);
+    }
+    window.history.replaceState(null, '', url);
+  }
   const featuredIds = new Set(featuredProjects.map((project) => project.id));
   const completedGroup = projectGroups.find(
     (group) => group.id === 'completed'
@@ -85,7 +115,7 @@ function Projects() {
                 key={f.id}
                 type="button"
                 aria-pressed={active}
-                onClick={() => setFilter(f.id)}
+                onClick={() => applyFilter(f.id)}
                 className={`rounded-full border px-3.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? 'border-violet-400/50 bg-violet-400/15 text-zinc-50'
@@ -100,6 +130,13 @@ function Projects() {
             );
           })}
         </div>
+
+        {/* Screen-reader announcement of the active filter result. */}
+        <p className="sr-only" role="status" aria-live="polite">
+          {filteredProjects
+            ? `Showing ${filteredProjects.length} projects in ${activeFilterLabel}`
+            : ''}
+        </p>
 
         {filteredProjects ? (
           <section aria-labelledby="group-filtered" className="mt-12">
