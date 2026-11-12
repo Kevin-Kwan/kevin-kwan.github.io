@@ -1,59 +1,30 @@
-import React, { useState, useCallback } from 'react';
-import Navbar from './Navbar';
-import NavbarMenu from './NavbarMenu';
-import Footer from './Footer';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-function RootLayout({ children }: { children: React.ReactNode }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+function RootLayout({ children }: RootLayoutProps) {
   const router = useRouter();
 
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
-  }, []);
-
   return (
-    <div>
-      {/* <motion.div
-        initial="pageInitial"
-        animate="pageAnimate"
-        variants={{
-          pageInitial: {
-            opacity: 0,
-          },
-          pageAnimate: {
-            opacity: 1,
-          },
-        }}
-        transition={{ duration: 1 }}
+    <div className="grain flex min-h-screen flex-col">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-lg focus:bg-violet-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
       >
-        <StarBackground />
-      </motion.div> */}
-      <div className="flex flex-col min-h-screen">
-        <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <NavbarMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={router.pathname}
-            initial="pageInitial"
-            animate="pageAnimate"
-            variants={{
-              pageInitial: {
-                opacity: 0,
-              },
-              pageAnimate: {
-                opacity: 1,
-              },
-            }}
-            transition={{ duration: 1 }}
-            className="flex-grow"
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
-        <Footer />
-      </div>
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main-content" className="flex-1">
+        <div key={router.pathname} className="animate-page-in">
+          {children}
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
