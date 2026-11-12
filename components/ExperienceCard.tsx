@@ -86,6 +86,25 @@ function ExperienceCard({
       </h4>
       <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
 
+      {useSections && entry.roles && (
+        <ul className="mt-4 space-y-1.5">
+          {entry.roles.map((role) => (
+            <li
+              key={role.title}
+              className="flex flex-wrap items-baseline gap-x-2 text-sm"
+            >
+              <span className="font-medium text-zinc-200">{role.title}</span>
+              <span aria-hidden="true" className="text-zinc-600">
+                ·
+              </span>
+              <span className="font-mono text-xs text-zinc-400">
+                {role.period}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
       {useSections ? (
         <>
           {entry.metricStrip && (

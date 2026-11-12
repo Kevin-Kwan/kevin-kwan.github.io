@@ -9,6 +9,7 @@ import { useReducedMotion } from 'motion/react';
 import { PauseIcon, PlayIcon } from '@heroicons/react/24/outline';
 import {
   SiGit,
+  SiGithubactions,
   SiNextdotjs,
   SiOpenjdk,
   SiPython,
@@ -16,21 +17,55 @@ import {
   SiTerraform,
   SiTypescript,
 } from 'react-icons/si';
+import { FaHeadset, FaPlug } from 'react-icons/fa';
+import {
+  BeakerIcon,
+  ChatBubbleLeftRightIcon,
+  CircleStackIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline';
 import { coreSkills } from '../content/skills';
 import { useMounted } from './useMounted';
 
 /**
- * Brand icons (Simple Icons via react-icons) for marquee items with an
- * exact match; every other skill stays text-only.
+ * Custom Lambda glyph — the one marquee skill whose service mark is a
+ * single iconic letterform with no Simple Icons entry.
+ */
+function LambdaIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <polygon points="13.5,3 20.5,21 16.9,21 13.5,12.6 10.1,21 6.5,21" />
+    </svg>
+  );
+}
+
+/**
+ * An icon for every marquee skill: real brand icons (Simple Icons via
+ * react-icons) where they exist; for the platform skills with no brand
+ * glyph, the same glyphs the /skills page uses for them (SkillIcon), plus
+ * the custom lambda above — so the marquee and /skills never disagree.
  */
 const SKILL_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   Java: SiOpenjdk,
   Python: SiPython,
   TypeScript: SiTypescript,
+  'Amazon Connect': FaHeadset,
+  'Amazon Lex': ChatBubbleLeftRightIcon,
+  'Sierra AI': SparklesIcon,
+  'AWS Lambda': LambdaIcon,
+  DynamoDB: CircleStackIcon,
+  Terraform: SiTerraform,
   React: SiReact,
   'Next.js': SiNextdotjs,
-  Terraform: SiTerraform,
+  'REST APIs': FaPlug,
+  Cyara: BeakerIcon,
   Git: SiGit,
+  'CI/CD': SiGithubactions,
 };
 
 /**
