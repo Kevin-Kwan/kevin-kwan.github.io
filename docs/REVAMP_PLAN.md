@@ -78,3 +78,50 @@ static `public/sitemap.xml` and `public/robots.txt`. No keyword stuffing.
 
 `npm run build`, `npm run typecheck`, `npm run lint` (ESLint flat config) all pass;
 CI runs lint + typecheck before the Pages build.
+
+## Iteration 1 (Nov 12, 2026)
+
+Fixes from three strict post-launch reviews (Gemini, ChatGPT, browser audit)
+plus an owner-reported mobile defect. No content was deleted; hierarchy and
+layout changed only.
+
+- **Responsive cards.** EducationCard header restructured: the GPA badge no
+  longer shares the header row on small screens (Georgia Tech's long
+  "3.9, summa cum laude" badge string crushed the school name into a ~60px
+  column) — the badge is inline under the date line on mobile and a side
+  badge on sm+; Georgia Tech's `gpa` display value is now "3.9" with
+  "Graduated summa cum laude." in its details. ExperienceCard taglines stack
+  under the company name on mobile. Home SectionHeading action links stack
+  under the heading on mobile instead of floating mid-line.
+- **Home featured GEICO block** shows the summary plus three condensed
+  `shortHighlights` (new optional field in `content/experience.ts`) and a
+  "Full experience" CTA; `/experience` keeps all seven full highlights.
+- **Skills page**: fixed `grid-cols-2` chip grid replaced with flex-wrap
+  content-sized pill chips; chips are no longer external links.
+- **Navbar**: hamburger tap target is 48px (p-3); GitHub/LinkedIn icon
+  buttons hidden below sm and present in the mobile menu instead.
+- **Résumé page**: below md the 85vh PDF iframe is hidden (a letter page at
+  ~300px wide is illegible) in favor of a snapshot card — name, role, key
+  metrics, top skills, and large Download / Open PDF buttons; md+ keeps the
+  summary header + embed. Résumé URL is unified as `resumeUrl` in
+  `content/site.ts` (env override ?? bundled PDF), used by the résumé page,
+  navbar, and home download button.
+- **Motion**: the hand-rolled IntersectionObserver `Reveal` was replaced
+  with the `motion` package — one-time whileInView fade/translate, an `as`
+  prop (`div`/`li`) that also fixes the /skills `ul > div` semantics, and
+  `MotionConfig reducedMotion="user"` in `_app`. The `.reveal` CSS that hid
+  content before JS ran is gone; exported HTML is fully visible without
+  JavaScript. The hero got a one-time staggered entrance. Spotlight hover is
+  kept only on the featured GEICO block and featured project cards.
+- **Accessibility/semantics**: `SectionHeading` accepts `as="h1"`; every
+  secondary page now has exactly one H1. Small text moved from zinc-500 to
+  zinc-400 for WCAG AA contrast. Contact form errors are wired to inputs via
+  `aria-describedby`, and the form is replaced by a direct-contact fallback
+  card when EmailJS configuration is absent.
+- **Projects page**: Featured section (the four selected projects, full
+  cards) → remaining Completed projects as compact cards in a denser grid →
+  Coding Challenge Solutions as a compact list under "Archive — coursework
+  & coding challenges". All projects remain listed.
+- **Copy**: tighter two-sentence hero intro; "A easy-to-customize" grammar
+  fixed in the Windows XP project description. Footer now reads name/role/
+  employer from `content/profile.ts`.
