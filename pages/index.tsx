@@ -30,25 +30,24 @@ const heroContainer: Variants = {
 };
 
 /**
- * Hero entrance is transform/blur-only — opacity is locked at 1, so the
- * hero is never dimmed, even mid-animation. (The previous opacity fade is
- * what made first-glance content look ghosted.)
+ * Hero entrance is transform-only — opacity is locked at 1, so the hero
+ * is never dimmed, even mid-animation. (The previous opacity fade is what
+ * made first-glance content look ghosted; a blur pass hurt first paint
+ * too, so the reveal is y-only.)
  */
 const heroItem: Variants = {
-  hidden: { y: 8, filter: 'blur(4px)' },
+  hidden: { y: 8 },
   show: {
     y: 0,
-    filter: 'blur(0px)',
     transition: { duration: 0.38, ease: 'easeOut' },
   },
 };
 
 /** A block whose words stagger in individually (H1, tagline). */
 const heroWordGroup: Variants = {
-  hidden: { y: 8, filter: 'blur(4px)' },
+  hidden: { y: 8 },
   show: {
     y: 0,
-    filter: 'blur(0px)',
     transition: {
       duration: 0.38,
       ease: 'easeOut',
@@ -58,10 +57,9 @@ const heroWordGroup: Variants = {
 };
 
 const heroWord: Variants = {
-  hidden: { y: 8, filter: 'blur(4px)' },
+  hidden: { y: 8 },
   show: {
     y: 0,
-    filter: 'blur(0px)',
     transition: { duration: 0.34, ease: 'easeOut' },
   },
 };
@@ -197,6 +195,22 @@ function HeroContainer({ active, children }: HeroContainerProps) {
   );
 }
 
+/** Case-study strip under the pipeline diagram — facts already on the site. */
+const pipelineCaseStudy = [
+  {
+    title: 'The problem',
+    body: 'GEICO customers calling about billing waited on hold or hit dead ends in a legacy IVR; the goal was an AI voice agent that resolves real billing tasks end to end.',
+  },
+  {
+    title: 'Engineering decisions',
+    body: 'Fact-based journeys replaced a regex/classifier router; Lambda tools execute payments and rescheduling against live account data; simulation-based regression gates guard every release.',
+  },
+  {
+    title: 'Measured outcomes',
+    body: '~51% of 436K+ conversations contained (May–Oct 2026) · 22,600+ payments at 92–95% authorization success · 98% informational tool success.',
+  },
+] as const;
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -217,8 +231,7 @@ function Home() {
 
   // Gates the hero entrance animation (see HeroBlock): content is fully
   // visible in the static export and animates once hydrated — and never
-  // under prefers-reduced-motion (motion's reducedMotion config disables
-  // transforms but not blur, so the gate is explicit here).
+  // under prefers-reduced-motion, so the gate is explicit here.
   const reduceMotion = useReducedMotion();
   const heroActive = useMounted() && !reduceMotion;
 
@@ -393,15 +406,15 @@ function Home() {
                 i === 0 ? 'md:col-span-2' : i === 2 ? 'md:col-span-3' : ''
               }
             >
-              <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
+              <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
                 <div
                   aria-hidden="true"
                   className="dot-pattern absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_72%)]"
                 />
                 <div
-                  className={`relative ${
+                  className={`relative flex flex-1 flex-col ${
                     i === 2
-                      ? 'flex flex-col gap-5 md:flex-row md:items-center md:justify-between'
+                      ? 'gap-5 md:flex-row md:items-center md:justify-between'
                       : ''
                   }`}
                 >
@@ -423,6 +436,11 @@ function Home() {
                     ))}
                   </div>
                 </div>
+                {area.stat && (
+                  <p className="text-gradient relative mt-auto pt-5 font-mono text-sm font-semibold tracking-tight">
+                    {area.stat}
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}
@@ -444,6 +462,23 @@ function Home() {
         <Reveal className="mt-6">
           <PipelineDiagram />
         </Reveal>
+        <Reveal className="mt-6">
+          <div className="grid gap-5 md:grid-cols-3">
+            {pipelineCaseStudy.map((column) => (
+              <div
+                key={column.title}
+                className="rounded-2xl border border-white/10 bg-surface p-6"
+              >
+                <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                  {column.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                  {column.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* Selected projects */}
@@ -456,9 +491,9 @@ function Home() {
             linkHref="/projects"
             linkLabel="All projects"
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid items-stretch gap-5 sm:grid-cols-2">
             {featuredProjects.map((project, i) => (
-              <Reveal key={project.id} delay={(i % 2) * 80}>
+              <Reveal key={project.id} delay={(i % 2) * 80} className="h-full">
                 <ProjectCard project={project} spotlight beam />
               </Reveal>
             ))}
@@ -508,9 +543,7 @@ function Home() {
             Let&apos;s build something that answers.
           </h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
-            {profile.closingLine} If you&apos;re hiring for conversational AI,
-            voice, or full-stack roles — or just want to talk shop — my inbox
-            is open.
+            {`${profile.closingLine} If you're hiring for conversational AI, voice, or full-stack roles — or just want to talk shop — my inbox is open.`}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Magnetic>

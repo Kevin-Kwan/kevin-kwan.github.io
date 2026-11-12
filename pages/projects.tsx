@@ -49,9 +49,9 @@ function Projects() {
               The ones I&apos;d point you to first.
             </p>
           </div>
-          <div className="mt-7 grid items-start gap-5 sm:grid-cols-2">
+          <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2">
             {featuredProjects.map((project, i) => (
-              <Reveal key={project.id} delay={(i % 2) * 60}>
+              <Reveal key={project.id} delay={(i % 2) * 60} className="h-full">
                 <ProjectCard project={project} spotlight beam />
               </Reveal>
             ))}
@@ -70,9 +70,9 @@ function Projects() {
               </h2>
               <p className="text-sm text-zinc-400">{completedGroup.blurb}</p>
             </div>
-            <div className="mt-7 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {completedProjects.map((project, i) => (
-                <Reveal key={project.id} delay={(i % 3) * 60}>
+                <Reveal key={project.id} delay={(i % 3) * 60} className="h-full">
                   <ProjectCard project={project} variant="compact" />
                 </Reveal>
               ))}

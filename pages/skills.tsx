@@ -43,6 +43,23 @@ function Skills() {
                   </Reveal>
                 ))}
               </ul>
+              {category.skills.some((skill) => skill.evidence) && (
+                <dl className="mt-4 space-y-1.5">
+                  {category.skills
+                    .filter((skill) => skill.evidence)
+                    .map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="flex flex-wrap items-baseline gap-x-2 text-xs"
+                      >
+                        <dt className="font-medium text-zinc-400">
+                          {skill.name}
+                        </dt>
+                        <dd className="text-zinc-500">{skill.evidence}</dd>
+                      </div>
+                    ))}
+                </dl>
+              )}
             </section>
           ))}
         </div>

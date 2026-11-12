@@ -28,7 +28,7 @@ interface ContactFormValues {
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'failure';
 
 const inputClasses =
-  'w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
+  'w-full rounded-lg border border-white/20 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
 
 function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProps) {
   const [status, setStatus] = useState<SubmitStatus>('idle');
@@ -79,7 +79,11 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
           as="h1"
           eyebrow="Contact"
           title="Feel Free to Contact Me!"
-          description="If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
+          description={
+            formAvailable
+              ? "If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
+              : "If you would like to reach out to me, leave feedback, or report a bug on my website, the quickest way is email or LinkedIn — my details are on this page. I'll get back to you as soon as possible!"
+          }
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
