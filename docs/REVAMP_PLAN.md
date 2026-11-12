@@ -62,7 +62,7 @@ editorial, engineer-grade portfolio: content and metrics first, decoration last.
 - `/education` — Georgia Tech, Gwinnett Tech, GSMST, all facts and links preserved.
 - `/skills` — categorized chips (Languages · Conversational AI & Voice · Cloud &
   DevOps · Web & Frameworks · Data · Tools), icons from `react-icons` only.
-- `/resume` — native PDF embed of `public/documents/Kevin_Kwan_SWE_2025_Resume.pdf`
+- `/resume` — native PDF embed of `public/documents/Kevin_Kwan_SWE_2026_Resume.pdf`
   (or `NEXT_PUBLIC_RESUME_LINK` when set) + prominent download. No Adobe SDK.
 - `/contact` — EmailJS form (existing env wiring preserved) + direct email /
   GitHub / LinkedIn cards.
