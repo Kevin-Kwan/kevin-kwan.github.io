@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { MotionConfig } from 'motion/react';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/globals.css';
@@ -29,9 +30,11 @@ function App({ Component, pageProps }: AppProps) {
         />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
-      <RootLayout>
-        <Component {...pageProps} />
-      </RootLayout>
+      <MotionConfig reducedMotion="user">
+        <RootLayout>
+          <Component {...pageProps} />
+        </RootLayout>
+      </MotionConfig>
     </>
   );
 }

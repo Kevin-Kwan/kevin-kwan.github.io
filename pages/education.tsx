@@ -14,6 +14,7 @@ function Education() {
       />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Background"
           title="Education"
           description="My educational experiences, associations, activities and societies, and awards and achievements."

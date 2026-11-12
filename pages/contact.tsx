@@ -27,7 +27,7 @@ interface ContactFormValues {
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'failure';
 
 const inputClasses =
-  'w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-cyan-400/50 focus:outline-none';
+  'w-full rounded-lg border border-white/10 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
 
 function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProps) {
   const [status, setStatus] = useState<SubmitStatus>('idle');
@@ -37,6 +37,10 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
     formState: { errors },
     reset,
   } = useForm<ContactFormValues>();
+
+  // Without EmailJS configuration the form can never succeed — render a
+  // direct-contact fallback instead of a dead form.
+  const formAvailable = Boolean(serviceId && templateId && publicKey);
 
   async function onSubmit(
     _values: ContactFormValues,
@@ -71,12 +75,14 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Contact"
           title="Feel Free to Contact Me!"
           description="If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
+          {formAvailable ? (
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
@@ -95,11 +101,16 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
                 autoComplete="name"
                 placeholder="Your Name"
                 aria-invalid={errors.name ? 'true' : undefined}
+                aria-describedby={errors.name ? 'contact-name-error' : undefined}
                 className={inputClasses}
                 {...register('name', { required: 'This field is required.' })}
               />
               {errors.name && (
-                <p role="alert" className="mt-2 text-sm text-red-400">
+                <p
+                  id="contact-name-error"
+                  role="alert"
+                  className="mt-2 text-sm text-red-400"
+                >
                   {errors.name.message}
                 </p>
               )}
@@ -118,6 +129,9 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
                 autoComplete="email"
                 placeholder="Your Email Address"
                 aria-invalid={errors.email ? 'true' : undefined}
+                aria-describedby={
+                  errors.email ? 'contact-email-error' : undefined
+                }
                 className={inputClasses}
                 {...register('email', {
                   required: 'This field is required.',
@@ -129,7 +143,11 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
                 })}
               />
               {errors.email && (
-                <p role="alert" className="mt-2 text-sm text-red-400">
+                <p
+                  id="contact-email-error"
+                  role="alert"
+                  className="mt-2 text-sm text-red-400"
+                >
                   {errors.email.message}
                 </p>
               )}
@@ -147,6 +165,9 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
                 rows={6}
                 placeholder="Your Message"
                 aria-invalid={errors.message ? 'true' : undefined}
+                aria-describedby={
+                  errors.message ? 'contact-message-error' : undefined
+                }
                 className={inputClasses}
                 {...register('message', {
                   required: 'This field is required.',
@@ -157,7 +178,11 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
                 })}
               />
               {errors.message && (
-                <p role="alert" className="mt-2 text-sm text-red-400">
+                <p
+                  id="contact-message-error"
+                  role="alert"
+                  className="mt-2 text-sm text-red-400"
+                >
                   {errors.message.message}
                 </p>
               )}
@@ -187,9 +212,41 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
               )}
             </div>
           </form>
+          ) : (
+            <div className="h-fit rounded-2xl border border-white/10 bg-surface p-6 sm:p-8">
+              <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
+                The contact form is unavailable right now
+              </h2>
+              <p className="mt-2 leading-relaxed text-zinc-400">
+                The form isn&apos;t configured on this deployment, so it
+                can&apos;t accept messages. Please reach me directly instead
+                — I read everything.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {contactEmail && (
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+                  >
+                    <EnvelopeIcon className="h-4 w-4" aria-hidden="true" />
+                    Email me
+                  </a>
+                )}
+                <a
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
+                >
+                  <FaLinkedin className="h-4 w-4" aria-hidden="true" />
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+          )}
 
           <aside className="space-y-4">
-            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
               Or reach me directly
             </h2>
             {contactEmail && (

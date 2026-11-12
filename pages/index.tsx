@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { motion, type Variants } from 'motion/react';
 import { ArrowRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
@@ -9,14 +11,119 @@ import Waveform from '../components/Waveform';
 import ExperienceCard from '../components/ExperienceCard';
 import EducationCard from '../components/EducationCard';
 import ProjectCard from '../components/ProjectCard';
-import SpotlightCard from '../components/SpotlightCard';
 import TechTag from '../components/TechTag';
+import { useMounted } from '../components/useMounted';
 import { profile, metrics, expertiseAreas } from '../content/profile';
 import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
 import { education } from '../content/education';
 import { coreSkills } from '../content/skills';
-import { site, socials } from '../content/site';
+import { resumeUrl, site, socials } from '../content/site';
+
+const heroContainer: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
+
+const heroItem: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.38, ease: 'easeOut' },
+  },
+};
+
+interface SectionHeadingRowProps {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  linkHref: string;
+  linkLabel: string;
+}
+
+/** Section heading with an action link — stacked on mobile (link under the
+    heading block), side-by-side from sm up. */
+function SectionHeadingRow({
+  eyebrow,
+  title,
+  description,
+  linkHref,
+  linkLabel,
+}: SectionHeadingRowProps) {
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+      <SectionHeading
+        eyebrow={eyebrow}
+        title={title}
+        description={description}
+      />
+      <Link
+        href={linkHref}
+        className="inline-flex shrink-0 items-center gap-1.5 self-start text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200 sm:self-auto"
+      >
+        {linkLabel}
+        <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+      </Link>
+    </div>
+  );
+}
+
+const HERO_MOTION_TAGS = {
+  h1: motion.h1,
+  p: motion.p,
+  div: motion.div,
+} as const;
+
+type HeroTag = keyof typeof HERO_MOTION_TAGS;
+
+interface HeroBlockProps {
+  as: HeroTag;
+  className?: string;
+  children: ReactNode;
+  /** Render the motion variant (post-mount); plain element before that. */
+  active: boolean;
+}
+
+/**
+ * One hero block in the staggered entrance. Renders a plain element until
+ * the page has mounted so the exported HTML is never hidden pre-JS
+ * (motion server-renders its hidden initial styles inline otherwise).
+ */
+function HeroBlock({ as, className, children, active }: HeroBlockProps) {
+  if (!active) {
+    const PlainTag = as;
+    return <PlainTag className={className}>{children}</PlainTag>;
+  }
+  const MotionTag = HERO_MOTION_TAGS[as] as typeof motion.div;
+  return (
+    <MotionTag variants={heroItem} className={className}>
+      {children}
+    </MotionTag>
+  );
+}
+
+interface HeroContainerProps {
+  active: boolean;
+  children: ReactNode;
+}
+
+function HeroContainer({ active, children }: HeroContainerProps) {
+  const classes = 'mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24';
+  if (!active) {
+    return <div className={classes}>{children}</div>;
+  }
+  return (
+    <motion.div
+      className={classes}
+      variants={heroContainer}
+      initial="hidden"
+      animate="show"
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -36,6 +143,10 @@ function Home() {
   const geico = experience[0];
   const georgiaTech = education[0];
 
+  // Gates the hero entrance animation (see HeroBlock): content is fully
+  // visible in the static export and animates once hydrated.
+  const heroActive = useMounted();
+
   return (
     <>
       <Seo
@@ -52,31 +163,55 @@ function Home() {
 
       {/* Hero */}
       <section className="ambient-glow relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+        <HeroContainer active={heroActive}>
           {profile.openToOpportunities && (
-            <p className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3.5 py-1.5 text-sm font-medium text-emerald-300">
+            <HeroBlock
+              as="p"
+              active={heroActive}
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3.5 py-1.5 text-sm font-medium text-emerald-300"
+            >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               {profile.availabilityNote}
-            </p>
+            </HeroBlock>
           )}
 
-          <h1 className="mt-7 text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl">
+          <HeroBlock
+            as="h1"
+            active={heroActive}
+            className="mt-7 text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl"
+          >
             Kevin <span className="text-gradient">Kwan</span>
-          </h1>
-          <p className="mt-5 font-mono text-sm uppercase tracking-[0.2em] text-zinc-400 sm:text-base">
+          </HeroBlock>
+          <HeroBlock
+            as="p"
+            active={heroActive}
+            className="mt-5 font-mono text-sm uppercase tracking-[0.2em] text-zinc-400 sm:text-base"
+          >
             {profile.role} · {profile.specialty} · {profile.employer}
-          </p>
-          <p className="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-200 sm:text-2xl">
+          </HeroBlock>
+          <HeroBlock
+            as="p"
+            active={heroActive}
+            className="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-200 sm:text-2xl"
+          >
             {profile.tagline}
-          </p>
-          <p className="mt-5 max-w-3xl leading-relaxed text-zinc-400">
+          </HeroBlock>
+          <HeroBlock
+            as="p"
+            active={heroActive}
+            className="mt-5 max-w-3xl leading-relaxed text-zinc-400"
+          >
             {profile.heroIntro}
-          </p>
+          </HeroBlock>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <HeroBlock
+            as="div"
+            active={heroActive}
+            className="mt-9 flex flex-wrap items-center gap-3"
+          >
             <Link
               href="/experience"
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
@@ -85,7 +220,7 @@ function Home() {
               <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
             </Link>
             <a
-              href={site.resumePdfPath}
+              href={resumeUrl}
               download={site.resumeFileName}
               className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
             >
@@ -112,13 +247,15 @@ function Home() {
                 <FaLinkedin className="h-5 w-5" aria-hidden="true" />
               </a>
             </div>
-          </div>
+          </HeroBlock>
 
-          <Waveform animated className="mt-12 h-10 w-full max-w-xl" />
-          <p className="mt-6 font-mono text-xs text-zinc-500">
-            Interests: {profile.interests.join(' · ')}
-          </p>
-        </div>
+          <HeroBlock as="div" active={heroActive}>
+            <Waveform animated className="mt-12 h-10 w-full max-w-xl" />
+            <p className="mt-6 font-mono text-xs text-zinc-400">
+              Interests: {profile.interests.join(' · ')}
+            </p>
+          </HeroBlock>
+        </HeroContainer>
       </section>
 
       {/* Impact metrics */}
@@ -132,7 +269,7 @@ function Home() {
               <p className="mt-3 text-sm font-medium text-zinc-100">
                 {metric.label}
               </p>
-              <p className="mt-1 text-sm text-zinc-500">{metric.detail}</p>
+              <p className="mt-1 text-sm text-zinc-400">{metric.detail}</p>
             </Reveal>
           ))}
         </div>
@@ -148,7 +285,7 @@ function Home() {
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {expertiseAreas.map((area, i) => (
             <Reveal key={area.title} delay={i * 80}>
-              <SpotlightCard className="h-full rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
+              <div className="h-full rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
                 <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
                   {area.title}
                 </h3>
@@ -160,53 +297,39 @@ function Home() {
                     <TechTag key={point} label={point} />
                   ))}
                 </div>
-              </SpotlightCard>
+              </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Featured experience */}
+      {/* Featured experience — condensed highlights; /experience has the full set */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading
-            eyebrow="Experience"
-            title="Currently at GEICO"
-          />
-          <Link
-            href="/experience"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-          >
-            Full experience
-            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
+        <SectionHeading eyebrow="Experience" title="Currently at GEICO" />
         <Reveal className="mt-8">
-          <ExperienceCard entry={geico} />
+          <ExperienceCard
+            entry={geico}
+            highlights={geico.shortHighlights}
+            spotlight
+            cta={{ href: '/experience', label: 'Full experience' }}
+          />
         </Reveal>
       </section>
 
       {/* Selected projects */}
       <section className="border-y border-white/5 bg-white/[0.015]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Selected work"
-              title="Featured projects"
-              description="A few favorites — the full archive includes games, hackathon builds, and open-source contributions."
-            />
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-            >
-              All projects
-              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <SectionHeadingRow
+            eyebrow="Selected work"
+            title="Featured projects"
+            description="A few favorites — the full archive includes games, hackathon builds, and open-source contributions."
+            linkHref="/projects"
+            linkLabel="All projects"
+          />
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {featuredProjects.map((project, i) => (
               <Reveal key={project.id} delay={(i % 2) * 80}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} spotlight />
               </Reveal>
             ))}
           </div>
@@ -215,20 +338,13 @@ function Home() {
 
       {/* Skills snapshot */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading
-            eyebrow="Toolbox"
-            title="Core skills"
-            description="The short list — see the skills page for the full, categorized inventory."
-          />
-          <Link
-            href="/skills"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-          >
-            All skills
-            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
+        <SectionHeadingRow
+          eyebrow="Toolbox"
+          title="Core skills"
+          description="The short list — see the skills page for the full, categorized inventory."
+          linkHref="/skills"
+          linkLabel="All skills"
+        />
         <div className="mt-8 flex flex-wrap gap-2">
           {coreSkills.map((skill) => (
             <span
@@ -243,16 +359,12 @@ function Home() {
 
       {/* Education highlight */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="Education" title="Georgia Tech" />
-          <Link
-            href="/education"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-          >
-            Full education
-            <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
+        <SectionHeadingRow
+          eyebrow="Education"
+          title="Georgia Tech"
+          linkHref="/education"
+          linkLabel="Full education"
+        />
         <Reveal className="mt-8">
           <EducationCard entry={georgiaTech} />
         </Reveal>

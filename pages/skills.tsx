@@ -14,6 +14,7 @@ function Skills() {
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
+          as="h1"
           eyebrow="Toolbox"
           title="Skills"
           description="A comprehensive and ever-growing list of the technologies I've worked with in my projects and professional work — spanning front-end and back-end development, databases, deployment, and conversational AI."
@@ -28,28 +29,17 @@ function Skills() {
               >
                 {category.title}
               </h2>
-              <p className="mt-1.5 text-sm text-zinc-500">{category.blurb}</p>
-              <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              <p className="mt-1.5 text-sm text-zinc-400">{category.blurb}</p>
+              <ul className="mt-5 flex flex-wrap gap-2.5">
                 {category.skills.map((skill, i) => (
-                  <Reveal key={skill.name} delay={(i % 4) * 40}>
-                    <li>
-                      {skill.href ? (
-                        <a
-                          href={skill.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface px-4 py-3.5 text-sm font-medium text-zinc-200 transition-colors duration-200 hover:border-white/25 hover:text-white"
-                        >
-                          <SkillIcon icon={skill.icon} />
-                          {skill.name}
-                        </a>
-                      ) : (
-                        <span className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface px-4 py-3.5 text-sm font-medium text-zinc-200">
-                          <SkillIcon icon={skill.icon} />
-                          {skill.name}
-                        </span>
-                      )}
-                    </li>
+                  <Reveal
+                    as="li"
+                    key={skill.name}
+                    delay={(i % 8) * 30}
+                    className="flex items-center gap-2.5 whitespace-nowrap rounded-full border border-white/10 bg-surface px-4 py-2.5 text-sm font-medium text-zinc-200"
+                  >
+                    <SkillIcon icon={skill.icon} />
+                    {skill.name}
                   </Reveal>
                 ))}
               </ul>
