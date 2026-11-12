@@ -174,6 +174,17 @@ export const skillCategories: SkillCategory[] = [
       { name: 'GitHub', icon: 'github', href: 'https://www.github.com/' },
       { name: 'GitLab', icon: 'gitlab', href: 'https://www.gitlab.com/' },
       { name: 'Unity', icon: 'unity', href: 'https://unity.com/' },
+      {
+        name: 'SonarQube',
+        icon: 'sonarqube',
+        href: 'https://www.sonarsource.com/products/sonarqube/',
+      },
+      { name: 'Cursor', icon: 'cursor', href: 'https://cursor.com/' },
+      {
+        name: 'Claude Code',
+        icon: 'claudecode',
+        href: 'https://claude.com/product/claude-code',
+      },
     ],
   },
 ];

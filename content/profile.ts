@@ -2,6 +2,11 @@ export interface Metric {
   value: string;
   label: string;
   detail: string;
+  /** Numeric target for the count-up animation; display string stays `value`. */
+  countTo?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
 }
 
 export interface ExpertiseArea {
@@ -31,7 +36,7 @@ export const profile = {
     'Web & Application Development',
   ],
   closingLine:
-    'Always in pursuit of creating impactful and purposeful works.',
+    'Always in pursuit of building impactful, purposeful software.',
 } as const;
 
 export const metrics: Metric[] = [
@@ -39,21 +44,30 @@ export const metrics: Metric[] = [
     value: '~30K',
     label: 'Calls per week',
     detail: 'Sierra AI billing agent at GEICO, English & Spanish',
+    countTo: 30,
+    prefix: '~',
+    suffix: 'K',
   },
   {
     value: '436K+',
     label: 'Conversations handled',
     detail: 'May–Oct 2026, ~51% contained without a live agent',
+    countTo: 436,
+    suffix: 'K+',
   },
   {
     value: '22,600+',
     label: 'Payments completed',
     detail: 'Through the voice agent, 92–95% authorization success',
+    countTo: 22600,
+    suffix: '+',
   },
   {
     value: '3.9',
     label: 'GPA · summa cum laude',
     detail: 'B.S. Computer Science, Georgia Tech (2024)',
+    countTo: 3.9,
+    decimals: 1,
   },
 ];
 

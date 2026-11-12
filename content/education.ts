@@ -12,6 +12,8 @@ export interface EducationEntry {
   location: string;
   monogram: string;
   gpa?: string;
+  /** Optional qualifier rendered after the GPA, e.g. '(weighted)'. */
+  gpaNote?: string;
   details: string[];
   links: EducationLink[];
 }
@@ -54,6 +56,7 @@ export const education: EducationEntry[] = [
     location: 'Lawrenceville, GA',
     monogram: 'GSMST',
     gpa: '4.211',
+    gpaNote: '(weighted)',
     details: [],
     links: [{ label: 'School Website', url: 'https://www.gcpsk12.org/GSMST' }],
   },

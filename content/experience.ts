@@ -79,8 +79,8 @@ export const experience: ExperienceEntry[] = [
       'Connected and Automated Vehicles (CAV) software engineer for the Georgia Tech EcoCAR EV Challenge at the Georgia Institute of Technology, on the Vehicle-to-Everything (V2X) subteam.',
     highlights: [
       'Used multiple data streams from cameras and sensors to develop a state machine enabling the car to make intelligent decisions in various traffic light scenarios — for example, based on the distance to the traffic light, determining whether the car should stop or continue driving, improving fuel efficiency and user experience.',
-      'The EcoCAR Mobility Challenge is a prestigious 4-year collegiate competition and a $1 million research program sponsored by Argonne National Labs, the U.S. Department of Energy, General Motors, MathWorks, Intel, and more.',
-      'Contributed to the Georgia Tech team\u2019s victory in the 2022 EcoCAR Mobility Challenge, where we secured 1st place.',
+      'The EcoCAR EV Challenge is a prestigious 4-year collegiate competition and a $1 million research program sponsored by Argonne National Labs, the U.S. Department of Energy, General Motors, MathWorks, Intel, and more.',
+      'Contributed to the Georgia Tech team\u2019s victory in the 2022 EcoCAR EV Challenge, where we secured 1st place.',
     ],
     links: [
       {
@@ -108,7 +108,6 @@ export const experience: ExperienceEntry[] = [
     highlights: [
       'Trained and fine-tuned a neural network using an architecture like AlexNet on a dataset of images where each image was associated with a person\u2019s name, using live footage from a computer webcam to correctly identify people\u2019s faces — a classification problem involving elements of facial recognition.',
       'Learned the basics of MATLAB in just a week, relying heavily on documentation to aid development of the program.',
-      'My supervisor expressed great admiration for the work accomplished in such a short period of time and even offered me a position at the company; as I was still in high school and wanted to prioritize my studies, I respectfully declined the offer.',
     ],
     links: [{ label: 'Company Website', url: 'https://www.ncr.com/' }],
   },
