@@ -20,6 +20,14 @@ export const site = {
   sourceRepoUrl: 'https://github.com/Kevin-Kwan/Kevin-Kwan.github.io',
 } as const;
 
+/**
+ * Single source of truth for the résumé URL, shared by the résumé page,
+ * the navbar, and the home-page download button. An externally hosted
+ * résumé (NEXT_PUBLIC_RESUME_LINK) wins over the bundled PDF when set.
+ */
+export const resumeUrl =
+  process.env.NEXT_PUBLIC_RESUME_LINK ?? site.resumePdfPath;
+
 export const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
   { href: '/experience', label: 'Experience' },

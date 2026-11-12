@@ -13,6 +13,8 @@ export interface ExperienceEntry {
   monogram: string;
   summary: string;
   highlights: string[];
+  /** Condensed highlights for the home-page featured block; /experience keeps the full list. */
+  shortHighlights?: string[];
   links: ExperienceLink[];
 }
 
@@ -35,6 +37,11 @@ export const experience: ExperienceEntry[] = [
       'Migrated legacy Cisco UCCE + Nuance IVR to Amazon Connect on AWS, including Java traffic-redirection logic for gradual live cutover, a zero-amount-due flow, reworked billing error handling, and legacy endpoint and Lex migrations.',
       'Built the AWS self-service payment IVR (~60% containment) and led the Proof of Coverage IVR (~80% containment); own the Proof of Coverage disaster-recovery rebuild pipeline.',
       'Async orchestration with AWS Lambda and DynamoDB; secure APIs with AES encryption for customer and payment data; Terraform infrastructure pipelines; Cyara testing; production support and on-call.',
+    ],
+    shortHighlights: [
+      'Co-develop and operate the Sierra AI billing voice agent — ~30,000 calls a week in English and Spanish, with about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026).',
+      'Delivered the agent’s end-to-end make-payment flow: 22,600+ payments completed at a 92–95% authorization success rate, plus Pause AutoPay, 82,800 reschedules, and 192,000 informational answers at 98%.',
+      'Re-architected the agent from regex- and classifier-based routing to fact-based journeys (178 files, ~20,000 net lines removed), and built the simulation-based regression quality gates that keep its releases safe.',
     ],
     links: [{ label: 'Company Website', url: 'https://www.geico.com/tech/' }],
   },

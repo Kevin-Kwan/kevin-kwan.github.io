@@ -168,7 +168,7 @@ export const projectGroups: ProjectGroup[] = [
         id: 'windows-xp-website',
         name: 'Windows XP-themed Website/Socials Page',
         description:
-          'A easy-to-customize, static front-end website using HTML, CSS, and JavaScript, to display your socials or portfolio in the form of clickable Windows icons on a Windows XP Desktop theme. Sounds included.',
+          'An easy-to-customize, static front-end website using HTML, CSS, and JavaScript, to display your socials or portfolio in the form of clickable Windows icons on a Windows XP Desktop theme. Sounds included.',
         tech: ['HTML', 'CSS', 'JavaScript'],
         githubUrl: 'https://github.com/Kevin-Kwan/WindowsXPWebsite/',
         demo: { url: 'https://windows-xp-website.vercel.app/', label: 'Demo' },

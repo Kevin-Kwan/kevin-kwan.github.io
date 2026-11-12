@@ -21,7 +21,7 @@ export const profile = {
   tagline:
     'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls at scale.',
   heroIntro:
-    'Software Engineer II at GEICO working on conversational AI / IVR. Georgia Tech Computer Science, summa cum laude. I helped migrate a legacy Cisco UCCE + Nuance IVR platform to Amazon Connect, and I co-built the Sierra AI billing agent that now handles about 30,000 calls a week — alongside a self-service payment IVR at roughly 60% containment and a Proof of Coverage IVR at roughly 80%.',
+    'Software Engineer II building production voice AI and cloud systems. At GEICO, I co-build conversational agents that handle about 30,000 calls a week — owning critical payment journeys, architecture improvements, and production reliability.',
   interests: [
     'AI/ML',
     'Conversational AI',

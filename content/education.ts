@@ -26,8 +26,8 @@ export const education: EducationEntry[] = [
       'Bachelor of Science in Computer Science with Highest Honors',
     location: 'Atlanta, GA',
     monogram: 'GT',
-    gpa: '3.9, summa cum laude',
-    details: ['Threads: Intelligence and Media'],
+    gpa: '3.9',
+    details: ['Threads: Intelligence and Media', 'Graduated summa cum laude.'],
     links: [
       { label: 'University Website', url: 'https://www.gatech.edu/' },
       { label: 'College Website', url: 'https://www.cc.gatech.edu/' },
