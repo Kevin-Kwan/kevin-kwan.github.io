@@ -66,7 +66,7 @@ function ExperienceCard({
       <div className="flex items-start gap-4">
         <OrgLogo logo={entry.logo} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-xl font-semibold tracking-tight text-zinc-50">
+          <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.company}
             {entry.companyTagline && (
               <span className="block text-base font-normal leading-snug text-zinc-400 sm:inline sm:text-xl">
@@ -74,16 +74,16 @@ function ExperienceCard({
                 {entry.companyTagline}
               </span>
             )}
-          </h2>
+          </h3>
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
         </div>
       </div>
 
-      <h3 className="mt-5 text-base font-semibold text-violet-300">
+      <h4 className="mt-5 text-base font-semibold text-violet-300">
         {entry.title}
-      </h3>
+      </h4>
       <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
 
       {useSections ? (
@@ -107,9 +107,9 @@ function ExperienceCard({
           )}
           {entry.sections?.map((section) => (
             <div key={section.title}>
-              <h4 className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              <h5 className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 {section.title}
-              </h4>
+              </h5>
               <HighlightList points={section.points} className="mt-3" />
             </div>
           ))}

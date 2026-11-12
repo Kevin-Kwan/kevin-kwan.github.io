@@ -12,12 +12,12 @@ function EducationCard({ entry }: EducationCardProps) {
       <div className="flex items-start gap-4">
         <OrgLogo logo={entry.logo} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-xl font-semibold tracking-tight text-zinc-50">
+          <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.school}
             {entry.unit && (
               <span className="font-normal text-zinc-400"> · {entry.unit}</span>
             )}
-          </h2>
+          </h3>
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
@@ -44,9 +44,9 @@ function EducationCard({ entry }: EducationCardProps) {
         )}
       </div>
 
-      <h3 className="mt-5 text-base font-semibold text-violet-300">
+      <h4 className="mt-5 text-base font-semibold text-violet-300">
         {entry.credential}
-      </h3>
+      </h4>
       {entry.details.map((detail) => (
         <p key={detail} className="mt-2 leading-relaxed text-zinc-400">
           {detail}
