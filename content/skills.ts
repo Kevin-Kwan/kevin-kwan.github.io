@@ -20,17 +20,30 @@ export const skillCategories: SkillCategory[] = [
     title: 'Languages',
     blurb: 'The languages I reach for first, at work and on side projects.',
     skills: [
-      { name: 'Java', icon: 'java', href: 'https://www.java.com' },
-      { name: 'Python', icon: 'python', href: 'https://python.org' },
+      {
+        name: 'Java',
+        icon: 'java',
+        href: 'https://www.java.com',
+        evidence:
+          'Traffic-redirection logic for the Amazon Connect cutover at GEICO',
+      },
+      {
+        name: 'Python',
+        icon: 'python',
+        href: 'https://python.org',
+        evidence: 'Chatbot APIs at Publicis Sapient · Flask + LangChain',
+      },
       {
         name: 'TypeScript',
         icon: 'typescript',
         href: 'https://www.typescriptlang.org/',
+        evidence: 'This site — Next.js app, content managed as typed data',
       },
       {
         name: 'JavaScript',
         icon: 'javascript',
         href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+        evidence: 'CutieBot — open-source Discord bot with slash commands',
       },
       {
         name: 'C#',
@@ -159,16 +172,36 @@ export const skillCategories: SkillCategory[] = [
     title: 'Web & Frameworks',
     blurb: 'Front-ends, APIs, and application frameworks.',
     skills: [
-      { name: 'React', icon: 'react', href: 'https://react.dev/' },
-      { name: 'Next.js', icon: 'nextjs', href: 'https://nextjs.org/' },
+      {
+        name: 'React',
+        icon: 'react',
+        href: 'https://react.dev/',
+        evidence: 'This site + the Drone Dispatch delivery-system UI',
+      },
+      {
+        name: 'Next.js',
+        icon: 'nextjs',
+        href: 'https://nextjs.org/',
+        evidence: 'Portfolio site, Drone Dispatch, CompAnIon learning platform',
+      },
       { name: 'Node.js', icon: 'nodejs', href: 'https://nodejs.org/' },
       {
         name: 'Tailwind CSS',
         icon: 'tailwind',
         href: 'https://tailwindcss.com/',
       },
-      { name: 'Flask', icon: 'flask', href: 'https://flask.palletsprojects.com/' },
-      { name: 'REST APIs', icon: 'rest', href: 'https://restfulapi.net/' },
+      {
+        name: 'Flask',
+        icon: 'flask',
+        href: 'https://flask.palletsprojects.com/',
+        evidence: 'API layer for the Publicis Sapient travel chatbot',
+      },
+      {
+        name: 'REST APIs',
+        icon: 'rest',
+        href: 'https://restfulapi.net/',
+        evidence: 'Drone Dispatch API routes · AES-encrypted payment APIs at GEICO',
+      },
       { name: 'Firebase', icon: 'firebase', href: 'https://firebase.google.com/' },
     ],
   },
@@ -177,12 +210,23 @@ export const skillCategories: SkillCategory[] = [
     title: 'Data',
     blurb: 'Relational, document, and managed data stores.',
     skills: [
-      { name: 'MySQL', icon: 'mysql', href: 'https://www.mysql.com/' },
-      { name: 'MongoDB', icon: 'mongodb', href: 'https://www.mongodb.com/' },
+      {
+        name: 'MySQL',
+        icon: 'mysql',
+        href: 'https://www.mysql.com/',
+        evidence: 'Drone Dispatch delivery-system database (CS 4400)',
+      },
+      {
+        name: 'MongoDB',
+        icon: 'mongodb',
+        href: 'https://www.mongodb.com/',
+        evidence: 'CutieBot + Publicis Sapient chatbot data layer',
+      },
       {
         name: 'Cloud Firestore',
         icon: 'firestore',
         href: 'https://firebase.google.com/docs/firestore',
+        evidence: 'Client careers portal — listings, benefits, applications',
       },
     ],
   },
@@ -191,10 +235,30 @@ export const skillCategories: SkillCategory[] = [
     title: 'Tools & Platforms',
     blurb: 'Version control, collaboration, and game development tooling.',
     skills: [
-      { name: 'Git', icon: 'git', href: 'https://git-scm.com/' },
-      { name: 'GitHub', icon: 'github', href: 'https://www.github.com/' },
-      { name: 'GitLab', icon: 'gitlab', href: 'https://www.gitlab.com/' },
-      { name: 'Unity', icon: 'unity', href: 'https://unity.com/' },
+      {
+        name: 'Git',
+        icon: 'git',
+        href: 'https://git-scm.com/',
+        evidence: '468 PRs authored · 653 reviewed at GEICO',
+      },
+      {
+        name: 'GitHub',
+        icon: 'github',
+        href: 'https://www.github.com/',
+        evidence: "This site's repo + open-source contributions (PreMiD)",
+      },
+      {
+        name: 'GitLab',
+        icon: 'gitlab',
+        href: 'https://www.gitlab.com/',
+        evidence: 'CI/CD pipeline for the Publicis Sapient chatbot',
+      },
+      {
+        name: 'Unity',
+        icon: 'unity',
+        href: 'https://unity.com/',
+        evidence: 'Dark Ascent, Project Blu + movement/physics prototypes',
+      },
       {
         name: 'SonarQube',
         icon: 'sonarqube',
