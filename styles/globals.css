@@ -6,7 +6,7 @@
   --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
     Consolas, monospace;
 
-  --color-base: #09090b;
+  --color-canvas: #09090b;
   --color-surface: #101014;
   --color-surface-raised: #17171c;
   --color-line: rgb(255 255 255 / 0.08);
@@ -62,7 +62,7 @@ html {
 }
 
 body {
-  @apply bg-base text-zinc-100 font-sans antialiased;
+  @apply bg-canvas text-zinc-100 font-sans antialiased;
   text-rendering: optimizeLegibility;
 }
 
@@ -112,10 +112,8 @@ body {
   background-size: 18px 18px;
 }
 
-/* Tech marquee: pause the ticker while the pointer is over it. */
-.marquee:hover .animate-marquee {
-  animation-play-state: paused;
-}
+/* Tech marquee: pause behavior (hover, button, off-screen) is handled in
+   the TechMarquee component via animation-play-state. */
 
 /* Border beam: a light pulse that travels the card border (featured
    cards only). The ring is a conic gradient masked down to a ~1.5px
