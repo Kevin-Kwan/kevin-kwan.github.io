@@ -1,6 +1,5 @@
 import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
 import {
   CheckCircleIcon,
   EnvelopeIcon,
@@ -13,11 +12,15 @@ import Magnetic from '../components/Magnetic';
 import { socials } from '../content/site';
 
 interface ContactProps {
-  serviceId: string | null;
-  templateId: string | null;
-  publicKey: string | null;
   contactEmail: string | null;
 }
+
+// Formspree form endpoint for the portfolio contact form. A Formspree
+// form ID is public-safe by design (it ships in the page HTML of every
+// site that uses it), so it lives here as a constant — no build-time
+// secrets, and no connected-account integration that can silently
+// expire the way the old EmailJS setup did.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/moedvdzd';
 
 interface ContactFormValues {
   name: string;
@@ -30,7 +33,7 @@ type SubmitStatus = 'idle' | 'sending' | 'success' | 'failure';
 const inputClasses =
   'w-full rounded-lg border border-white/20 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
 
-function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProps) {
+function Contact({ contactEmail }: ContactProps) {
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const {
     register,
@@ -55,30 +58,45 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
     }
   }, [setValue]);
 
-  // Without EmailJS configuration the form can never succeed — render a
-  // direct-contact fallback instead of a dead form.
-  const formAvailable = Boolean(serviceId && templateId && publicKey);
-
   async function onSubmit(
-    _values: ContactFormValues,
+    values: ContactFormValues,
     event?: BaseSyntheticEvent
   ) {
     const formElement = event?.target as HTMLFormElement | undefined;
-    if (!serviceId || !templateId || !publicKey || !formElement) {
-      console.error(
-        'EmailJS environment variables or form element are not defined'
-      );
-      setStatus('failure');
+
+    // Honeypot: humans never see or fill the hidden _gotcha field, so a
+    // value there means a bot — quietly pretend success and drop it.
+    const gotcha = formElement
+      ? new FormData(formElement).get('_gotcha')
+      : null;
+    if (gotcha) {
+      setStatus('success');
+      reset();
       return;
     }
 
     setStatus('sending');
     try {
-      await emailjs.sendForm(serviceId, templateId, formElement, publicKey);
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          message: values.message,
+          _subject: `New portfolio message from ${values.name}`,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`Formspree responded ${response.status}`);
+      }
       setStatus('success');
       reset();
     } catch (error) {
-      console.error('EmailJS submission failed:', error);
+      console.error('Contact form submission failed:', error);
       setStatus('failure');
     }
   }
@@ -95,15 +113,10 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
           as="h1"
           eyebrow="Contact"
           title="Feel Free to Contact Me!"
-          description={
-            formAvailable
-              ? "If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
-              : "If you would like to reach out to me, leave feedback, or report a bug on my website, the quickest way is email or LinkedIn — my details are on this page. I'll get back to you as soon as possible!"
-          }
+          description="If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
-          {formAvailable ? (
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
@@ -209,6 +222,16 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
               )}
             </div>
 
+            {/* Honeypot spam trap — hidden from people, filled by bots. */}
+            <input
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
+
             <Magnetic className="w-full sm:w-auto">
               <button
                 type="submit"
@@ -235,38 +258,6 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
               )}
             </div>
           </form>
-          ) : (
-            <div className="h-fit rounded-2xl border border-white/10 bg-surface p-6 sm:p-8">
-              <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
-                The contact form is unavailable right now
-              </h2>
-              <p className="mt-2 leading-relaxed text-zinc-400">
-                The form isn&apos;t configured on this deployment, so it
-                can&apos;t accept messages. Please reach me directly instead
-                — I read everything.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {contactEmail && (
-                  <a
-                    href={`mailto:${contactEmail}`}
-                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
-                  >
-                    <EnvelopeIcon className="h-4 w-4" aria-hidden="true" />
-                    Email me
-                  </a>
-                )}
-                <a
-                  href={socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
-                >
-                  <FaLinkedin className="h-4 w-4" aria-hidden="true" />
-                  Connect on LinkedIn
-                </a>
-              </div>
-            </div>
-          )}
 
           <aside className="space-y-4">
             <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
@@ -328,16 +319,10 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
 }
 
 export async function getStaticProps() {
-  const serviceId = process.env.EMAILJS_SERVICE_ID ?? null;
-  const templateId = process.env.EMAILJS_TEMPLATE_ID ?? null;
-  const publicKey = process.env.EMAILJS_PUBLIC_KEY ?? null;
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? null;
 
   return {
     props: {
-      serviceId,
-      templateId,
-      publicKey,
       contactEmail,
     },
   };
