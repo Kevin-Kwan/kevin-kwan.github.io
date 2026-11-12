@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import type { EducationEntry } from '../content/education';
-import Monogram from './Monogram';
+import OrgLogo from './OrgLogo';
 
 interface EducationCardProps {
   entry: EducationEntry;
@@ -8,16 +8,16 @@ interface EducationCardProps {
 
 function EducationCard({ entry }: EducationCardProps) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20 sm:p-8">
+    <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20 sm:p-8">
       <div className="flex items-start gap-4">
-        <Monogram text={entry.monogram} className="h-14 w-14 shrink-0" />
+        <OrgLogo logo={entry.logo} />
         <div className="min-w-0 flex-1">
-          <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.school}
             {entry.unit && (
               <span className="font-normal text-zinc-400"> · {entry.unit}</span>
             )}
-          </h3>
+          </h2>
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
@@ -44,15 +44,17 @@ function EducationCard({ entry }: EducationCardProps) {
         )}
       </div>
 
-      <h4 className="mt-5 text-base font-semibold text-violet-300">
+      <h3 className="mt-5 text-base font-semibold text-violet-300">
         {entry.credential}
-      </h4>
+      </h3>
       {entry.details.map((detail) => (
         <p key={detail} className="mt-2 leading-relaxed text-zinc-400">
           {detail}
         </p>
       ))}
 
+      {/* Spacer so the links row pins to the card bottom in equal-height rows. */}
+      <div className="flex-1" aria-hidden="true" />
       {entry.links.length > 0 && (
         <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/5 pt-4">
           {entry.links.map((link) => (

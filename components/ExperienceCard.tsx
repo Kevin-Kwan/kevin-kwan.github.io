@@ -5,7 +5,7 @@ import {
   ArrowUpRightIcon,
 } from '@heroicons/react/24/outline';
 import type { ExperienceEntry } from '../content/experience';
-import Monogram from './Monogram';
+import OrgLogo from './OrgLogo';
 import SpotlightCard from './SpotlightCard';
 
 interface ExperienceCardProps {
@@ -23,6 +23,31 @@ interface ExperienceCardProps {
 const CARD_CLASSES =
   'rounded-2xl border border-white/10 bg-surface p-6 shadow-sm transition-colors duration-200 hover:border-white/20 sm:p-8';
 
+function HighlightList({
+  points,
+  className = '',
+}: {
+  points: string[];
+  className?: string;
+}) {
+  return (
+    <ul className={`space-y-2.5 ${className}`}>
+      {points.map((point) => (
+        <li
+          key={point.slice(0, 48)}
+          className="flex gap-3 leading-relaxed text-zinc-400"
+        >
+          <span
+            aria-hidden="true"
+            className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
+          />
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function ExperienceCard({
   entry,
   highlights,
@@ -31,13 +56,17 @@ function ExperienceCard({
   cta,
 }: ExperienceCardProps) {
   const shownHighlights = highlights ?? entry.highlights;
+  // The full /experience view groups GEICO's highlights into workstream
+  // sections with a metric strip; the home card passes condensed
+  // highlights explicitly and keeps the flat list.
+  const useSections = !highlights && Boolean(entry.sections?.length);
 
   const body: ReactNode = (
     <>
       <div className="flex items-start gap-4">
-        <Monogram text={entry.monogram} className="h-14 w-14 shrink-0 text-base" />
+        <OrgLogo logo={entry.logo} />
         <div className="min-w-0 flex-1">
-          <h3 className="text-xl font-semibold tracking-tight text-zinc-50">
+          <h2 className="text-xl font-semibold tracking-tight text-zinc-50">
             {entry.company}
             {entry.companyTagline && (
               <span className="block text-base font-normal leading-snug text-zinc-400 sm:inline sm:text-xl">
@@ -45,32 +74,49 @@ function ExperienceCard({
                 {entry.companyTagline}
               </span>
             )}
-          </h3>
+          </h2>
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
         </div>
       </div>
 
-      <h4 className="mt-5 text-base font-semibold text-violet-300">
+      <h3 className="mt-5 text-base font-semibold text-violet-300">
         {entry.title}
-      </h4>
+      </h3>
       <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
 
-      <ul className="mt-4 space-y-2.5">
-        {shownHighlights.map((highlight) => (
-          <li
-            key={highlight.slice(0, 48)}
-            className="flex gap-3 leading-relaxed text-zinc-400"
-          >
-            <span
-              aria-hidden="true"
-              className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
-            />
-            <span>{highlight}</span>
-          </li>
-        ))}
-      </ul>
+      {useSections ? (
+        <>
+          {entry.metricStrip && (
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {entry.metricStrip.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-xl border border-white/5 bg-white/[0.03] px-3.5 py-3"
+                >
+                  <p className="text-gradient font-mono text-xl font-bold tracking-tight">
+                    {metric.value}
+                  </p>
+                  <p className="mt-1 text-xs leading-snug text-zinc-400">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {entry.sections?.map((section) => (
+            <div key={section.title}>
+              <h4 className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                {section.title}
+              </h4>
+              <HighlightList points={section.points} className="mt-3" />
+            </div>
+          ))}
+        </>
+      ) : (
+        <HighlightList points={shownHighlights} className="mt-4" />
+      )}
 
       {entry.links.length > 0 && (
         <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/5 pt-4">

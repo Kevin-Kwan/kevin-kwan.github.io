@@ -38,8 +38,8 @@ const NODES: PipelineNode[] = [
 ];
 
 /**
- * Light pulse traveling along a connector. Horizontal on sm+ (connectors
- * are flexible-width rows), vertical on mobile (connectors are short
+ * Light pulse traveling along a connector. Horizontal on lg+ (connectors
+ * are flexible-width rows), vertical below lg (connectors are short
  * columns). Pure CSS animation; the connector line itself is a plain div,
  * so without JavaScript — or under prefers-reduced-motion, where the
  * pulses are switched off in globals.css — the diagram reads as a static
@@ -76,13 +76,13 @@ function PipelineDiagram() {
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
         System overview
       </p>
-      <ol className="mt-6 flex flex-col items-center sm:flex-row sm:items-stretch">
+      <ol className="mt-6 flex flex-col items-center lg:flex-row lg:items-stretch">
         {NODES.map((node, i) => (
           <li
             key={node.label}
-            className="flex flex-col items-center sm:flex-1 sm:flex-row"
+            className="flex flex-col items-center lg:flex-1 lg:flex-row"
           >
-            <div className="flex w-full max-w-xs flex-col items-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4 text-center sm:w-auto sm:min-w-[7.5rem] sm:flex-1">
+            <div className="flex w-full max-w-xs flex-col items-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4 text-center lg:w-auto lg:min-w-[7.5rem] lg:flex-1">
               <node.Icon
                 className="h-6 w-6 text-cyan-300"
                 aria-hidden="true"
@@ -96,17 +96,17 @@ function PipelineDiagram() {
             </div>
             {i < NODES.length - 1 && (
               <>
-                {/* Vertical connector (mobile stack) */}
+                {/* Vertical connector (stacked layout, below lg) */}
                 <div
                   aria-hidden="true"
-                  className="relative h-7 w-[2px] shrink-0 overflow-hidden rounded bg-white/10 sm:hidden"
+                  className="relative h-7 w-[2px] shrink-0 overflow-hidden rounded bg-white/10 lg:hidden"
                 >
                   <ConnectorPulse index={i} vertical />
                 </div>
-                {/* Horizontal connector (sm+ row) */}
+                {/* Horizontal connector (lg+ row) */}
                 <div
                   aria-hidden="true"
-                  className="relative mx-1 hidden h-[2px] min-w-5 flex-1 self-center overflow-hidden rounded bg-white/10 sm:block"
+                  className="relative mx-1 hidden h-[2px] min-w-5 flex-1 self-center overflow-hidden rounded bg-white/10 lg:block"
                 >
                   <ConnectorPulse index={i} />
                 </div>

@@ -82,6 +82,17 @@ function ProjectCard({
 
   const body: ReactNode = (
     <>
+      {project.image && (
+        <div className="mb-5 overflow-hidden rounded-xl border border-white/10">
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export; plain img keeps the generated WebP unprocessed */}
+          <img
+            src={project.image.src}
+            alt={project.image.alt}
+            loading="lazy"
+            className="aspect-video w-full object-cover"
+          />
+        </div>
+      )}
       <h3 className="text-lg font-semibold leading-snug tracking-tight text-zinc-50">
         {project.name}
       </h3>

@@ -6,7 +6,7 @@ import Waveform from './Waveform';
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-base">
+    <footer className="border-t border-white/10 bg-canvas">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">

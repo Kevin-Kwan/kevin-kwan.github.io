@@ -28,7 +28,7 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-canvas/80 backdrop-blur-md">
       <ScrollProgress />
       <nav
         aria-label="Primary"
@@ -120,7 +120,7 @@ function Navbar() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="border-t border-white/10 bg-base/95 px-4 pb-5 pt-2 backdrop-blur-md md:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-canvas/95 px-4 pb-5 pt-2 backdrop-blur-md md:hidden"
         >
           <ul className="space-y-1">
             {navLinks.map((link) => {
