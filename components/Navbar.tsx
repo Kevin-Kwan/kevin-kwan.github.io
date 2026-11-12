@@ -1,136 +1,155 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { HomeIcon } from '@heroicons/react/24/solid';
+import { useRouter } from 'next/router';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { RxCross1 } from 'react-icons/rx';
+import { navLinks, site, socials } from '../content/site';
 
-interface NavbarProps {
-  fixed?: boolean;
-  isMenuOpen: boolean;
-  toggleMenu: () => void;
-}
-
-function Navbar({ fixed = true, isMenuOpen, toggleMenu }: NavbarProps) {
+function Navbar() {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu whenever the route changes (React's endorsed
+  // "adjust state during render" pattern instead of an effect).
+  const [lastPathname, setLastPathname] = useState(router.pathname);
+  if (router.pathname !== lastPathname) {
+    setLastPathname(router.pathname);
+    setMenuOpen(false);
+  }
+
   useEffect(() => {
-    router.prefetch('/resume');
-    router.prefetch('/education');
-    router.prefetch('/skills');
-    router.prefetch('/experience');
-    router.prefetch('/projects');
-    router.prefetch('/contact');
-  }, [router]);
+    function onResize() {
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    }
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
-  useEffect(
-    function () {
-      const handleResize = function () {
-        if (window.innerWidth >= 916 && isMenuOpen) {
-          toggleMenu();
-        }
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      return function () {
-        window.removeEventListener('resize', handleResize);
-      };
-    },
-    [isMenuOpen, toggleMenu]
-  );
   return (
-    <nav
-      style={{
-        zIndex: 10,
-        position: fixed ? 'fixed' : 'relative',
-        top: fixed ? 0 : 'auto',
-        width: fixed ? '100%' : 'auto',
-        background: 'linear-gradient(to right, #3F4C6B, #171F29, #3F4C6B)',
-      }}
-      className="flex text-white p-4 items-center h-16 justify-center w-full px-2 md:px-6 lg:px-8"
-    >
-      <div className="flex items-center justify-center">
-        <Link legacyBehavior href="/">
-          <a className="flex items-center justify-center">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="mr-2 transform transition-transform duration-200 ease-in-out hover:scale-125 hover:rotate-[15deg]"
-            />
-            <span className="hidden lg:inline-block text-white font-bold text-lg ml-3 hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500">
-              Home
-            </span>
-            <HomeIcon className="inline-block lg:hidden h-6 w-6 text-white ml-3 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500" />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+      <nav
+        aria-label="Primary"
+        className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6"
+      >
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 rounded-md"
+          aria-label="Kevin Kwan — home"
+        >
+          <Image
+            src="/logo.png"
+            alt=""
+            width={32}
+            height={32}
+            className="rounded-md"
+            priority
+          />
+          <span className="text-[15px] font-semibold tracking-tight text-zinc-50">
+            Kevin Kwan
+          </span>
+        </Link>
+
+        <ul className="ml-6 hidden items-center gap-1 md:flex">
+          {navLinks.slice(1, -1).map((link) => {
+            const active = router.pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`rounded-md px-3 py-2 text-sm transition-colors duration-200 ${
+                    active
+                      ? 'font-medium text-zinc-50'
+                      : 'text-zinc-400 hover:text-zinc-100'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="ml-auto flex items-center gap-1.5">
+          <a
+            href={socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50"
+          >
+            <FaGithub className="h-5 w-5" aria-hidden="true" />
           </a>
-        </Link>
-      </div>
-      <div className="hidden md:flex items-center justify-center flex-1 md:pl-0 lg:pl-10 xl:pl-24">
-        <div className="flex justify-end">
-          <Link legacyBehavior href="/resume">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
-              Résumé
-            </a>
+          <a
+            href={socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="rounded-md p-2 text-zinc-400 transition-colors duration-200 hover:text-zinc-50"
+          >
+            <FaLinkedin className="h-5 w-5" aria-hidden="true" />
+          </a>
+          <Link
+            href="/contact"
+            aria-current={router.pathname === '/contact' ? 'page' : undefined}
+            className="ml-1 hidden rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:inline-flex"
+          >
+            Contact
           </Link>
-          <Link legacyBehavior href="/education">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
-              Education
-            </a>
-          </Link>
-          <Link legacyBehavior href="/skills">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
-              Skills
-            </a>
-          </Link>
-          <Link legacyBehavior href="/experience">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
-              Experience
-            </a>
-          </Link>
-          <Link legacyBehavior href="/projects">
-            <a className="text-white mx-4 text-lg hover:text-2xl transition-fontSize duration-200 ease-in-out hover:text-blue-500 text-center">
-              Projects
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="flex items-center ml-auto">
-        <a
-          href="https://github.com/Kevin-Kwan"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-300 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500"
-        >
-          <FaGithub className="h-6 w-6" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/kevinkwan3"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-300 transition-transform ease-in-out duration-200 hover:scale-150 hover:text-blue-500 ml-4 mr-4"
-        >
-          <FaLinkedin className="h-6 w-6" />
-        </a>
-      </div>
-      <div className="hidden md:block items-center">
-        <Link legacyBehavior href="/contact">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto hover:text-xl transition-fontSize ease-in-out duration-200">
-            Contact Me
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            className="rounded-md p-2 text-zinc-200 transition-colors hover:text-white md:hidden"
+          >
+            {menuOpen ? (
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            )}
           </button>
-        </Link>
-      </div>
-      <div className="flex items-center justify-center md:hidden">
-        <button
-          className="text-white hover:text-gray-300 focus:outline-none h-6 w-6 inline-block"
-          onClick={toggleMenu}
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="border-t border-white/10 bg-base/95 px-4 pb-5 pt-2 backdrop-blur-md md:hidden"
         >
-          {isMenuOpen ? <RxCross1 size={24} /> : <GiHamburgerMenu size={24} />}
-        </button>
-      </div>
-    </nav>
+          <ul className="space-y-1">
+            {navLinks.map((link) => {
+              const active = router.pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={active ? 'page' : undefined}
+                    className={`block rounded-lg px-3 py-2.5 text-base transition-colors ${
+                      active
+                        ? 'bg-white/[0.06] font-medium text-zinc-50'
+                        : 'text-zinc-300 hover:bg-white/[0.04] hover:text-zinc-50'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <a
+            href={site.resumePdfPath}
+            download={site.resumeFileName}
+            className="mt-3 block rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-base font-medium text-zinc-100"
+          >
+            Download Résumé (PDF)
+          </a>
+        </nav>
+      )}
+    </header>
   );
 }
 
