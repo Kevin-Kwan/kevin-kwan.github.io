@@ -17,7 +17,7 @@ function Education() {
           as="h1"
           eyebrow="Background"
           title="Education"
-          description="My educational experiences, associations, activities and societies, and awards and achievements."
+          description="Degrees, certificates, and honors — a Georgia Tech B.S. in Computer Science, dual-enrollment coursework, and a STEM magnet high school."
         />
         <div className="mt-12 space-y-6">
           {education.map((entry, i) => (

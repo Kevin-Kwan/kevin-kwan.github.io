@@ -9,6 +9,7 @@ import {
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
+import Magnetic from '../components/Magnetic';
 import { socials } from '../content/site';
 
 interface ContactProps {
@@ -188,13 +189,15 @@ function Contact({ serviceId, templateId, publicKey, contactEmail }: ContactProp
               )}
             </div>
 
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              className="inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-            >
-              {status === 'sending' ? 'Sending…' : 'Send message'}
-            </button>
+            <Magnetic className="w-full sm:w-auto">
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+              >
+                {status === 'sending' ? 'Sending…' : 'Send message'}
+              </button>
+            </Magnetic>
 
             <div aria-live="polite">
               {status === 'success' && (

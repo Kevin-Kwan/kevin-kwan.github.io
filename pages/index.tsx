@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { motion, type Variants } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { ArrowRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
@@ -12,6 +12,10 @@ import ExperienceCard from '../components/ExperienceCard';
 import EducationCard from '../components/EducationCard';
 import ProjectCard from '../components/ProjectCard';
 import TechTag from '../components/TechTag';
+import AnimatedMetric from '../components/AnimatedMetric';
+import Magnetic from '../components/Magnetic';
+import PipelineDiagram from '../components/PipelineDiagram';
+import TechMarquee from '../components/TechMarquee';
 import { useMounted } from '../components/useMounted';
 import { profile, metrics, expertiseAreas } from '../content/profile';
 import { experience } from '../content/experience';
@@ -25,14 +29,64 @@ const heroContainer: Variants = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
+/**
+ * Hero entrance is transform/blur-only — opacity is locked at 1, so the
+ * hero is never dimmed, even mid-animation. (The previous opacity fade is
+ * what made first-glance content look ghosted.)
+ */
 const heroItem: Variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { y: 8, filter: 'blur(4px)' },
   show: {
-    opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
     transition: { duration: 0.38, ease: 'easeOut' },
   },
 };
+
+/** A block whose words stagger in individually (H1, tagline). */
+const heroWordGroup: Variants = {
+  hidden: { y: 8, filter: 'blur(4px)' },
+  show: {
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.38,
+      ease: 'easeOut',
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const heroWord: Variants = {
+  hidden: { y: 8, filter: 'blur(4px)' },
+  show: {
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.34, ease: 'easeOut' },
+  },
+};
+
+/**
+ * Splits a line of text into word spans for the staggered hero reveal.
+ * Renders the plain string until the entrance is active, so the exported
+ * HTML (and the pre-hydration paint) is the finished text.
+ */
+function SplitWords({ text, active }: { text: string; active: boolean }) {
+  if (!active) return <>{text}</>;
+  const words = text.split(' ');
+  return (
+    <span aria-hidden="true">
+      {words.map((word, i) => (
+        <Fragment key={`${word}-${i}`}>
+          <motion.span variants={heroWord} className="inline-block">
+            {word}
+          </motion.span>
+          {i < words.length - 1 ? ' ' : ''}
+        </Fragment>
+      ))}
+    </span>
+  );
+}
 
 interface SectionHeadingRowProps {
   eyebrow: string;
@@ -83,6 +137,9 @@ interface HeroBlockProps {
   children: ReactNode;
   /** Render the motion variant (post-mount); plain element before that. */
   active: boolean;
+  /** Variant set for this block; word-split blocks pass heroWordGroup. */
+  variants?: Variants;
+  ariaLabel?: string;
 }
 
 /**
@@ -90,14 +147,29 @@ interface HeroBlockProps {
  * the page has mounted so the exported HTML is never hidden pre-JS
  * (motion server-renders its hidden initial styles inline otherwise).
  */
-function HeroBlock({ as, className, children, active }: HeroBlockProps) {
+function HeroBlock({
+  as,
+  className,
+  children,
+  active,
+  variants = heroItem,
+  ariaLabel,
+}: HeroBlockProps) {
   if (!active) {
     const PlainTag = as;
-    return <PlainTag className={className}>{children}</PlainTag>;
+    return (
+      <PlainTag className={className} aria-label={ariaLabel}>
+        {children}
+      </PlainTag>
+    );
   }
   const MotionTag = HERO_MOTION_TAGS[as] as typeof motion.div;
   return (
-    <MotionTag variants={heroItem} className={className}>
+    <MotionTag
+      variants={variants}
+      className={className}
+      aria-label={ariaLabel}
+    >
       {children}
     </MotionTag>
   );
@@ -144,8 +216,11 @@ function Home() {
   const georgiaTech = education[0];
 
   // Gates the hero entrance animation (see HeroBlock): content is fully
-  // visible in the static export and animates once hydrated.
-  const heroActive = useMounted();
+  // visible in the static export and animates once hydrated — and never
+  // under prefers-reduced-motion (motion's reducedMotion config disables
+  // transforms but not blur, so the gate is explicit here).
+  const reduceMotion = useReducedMotion();
+  const heroActive = useMounted() && !reduceMotion;
 
   return (
     <>
@@ -181,9 +256,27 @@ function Home() {
           <HeroBlock
             as="h1"
             active={heroActive}
+            variants={heroWordGroup}
+            ariaLabel="Kevin Kwan"
             className="mt-7 text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl"
           >
-            Kevin <span className="text-gradient">Kwan</span>
+            {heroActive ? (
+              <span aria-hidden="true">
+                <motion.span variants={heroWord} className="inline-block">
+                  Kevin
+                </motion.span>{' '}
+                <motion.span
+                  variants={heroWord}
+                  className="text-gradient inline-block"
+                >
+                  Kwan
+                </motion.span>
+              </span>
+            ) : (
+              <>
+                Kevin <span className="text-gradient">Kwan</span>
+              </>
+            )}
           </HeroBlock>
           <HeroBlock
             as="p"
@@ -195,9 +288,11 @@ function Home() {
           <HeroBlock
             as="p"
             active={heroActive}
+            variants={heroWordGroup}
+            ariaLabel={profile.tagline}
             className="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-200 sm:text-2xl"
           >
-            {profile.tagline}
+            <SplitWords text={profile.tagline} active={heroActive} />
           </HeroBlock>
           <HeroBlock
             as="p"
@@ -212,21 +307,25 @@ function Home() {
             active={heroActive}
             className="mt-9 flex flex-wrap items-center gap-3"
           >
-            <Link
-              href="/experience"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
-            >
-              View my experience
-              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <a
-              href={resumeUrl}
-              download={site.resumeFileName}
-              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
-            >
-              <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
-              Download résumé
-            </a>
+            <Magnetic>
+              <Link
+                href="/experience"
+                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+              >
+                View my experience
+                <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={resumeUrl}
+                download={site.resumeFileName}
+                className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
+              >
+                <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+                Download résumé
+              </a>
+            </Magnetic>
             <div className="flex items-center gap-1.5">
               <a
                 href={socials.github}
@@ -258,13 +357,16 @@ function Home() {
         </HeroContainer>
       </section>
 
+      {/* Core-skills ticker */}
+      <TechMarquee />
+
       {/* Impact metrics */}
       <section aria-label="Impact metrics" className="border-y border-white/5 bg-white/[0.015]">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px lg:grid-cols-4">
           {metrics.map((metric, i) => (
             <Reveal key={metric.label} delay={i * 70} className="px-4 py-8 sm:px-6">
               <p className="text-gradient font-mono text-4xl font-bold tracking-tight sm:text-5xl">
-                {metric.value}
+                <AnimatedMetric metric={metric} />
               </p>
               <p className="mt-3 text-sm font-medium text-zinc-100">
                 {metric.label}
@@ -284,18 +386,42 @@ function Home() {
         />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {expertiseAreas.map((area, i) => (
-            <Reveal key={area.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
-                <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
-                  {area.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-zinc-400">
-                  {area.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {area.points.map((point) => (
-                    <TechTag key={point} label={point} />
-                  ))}
+            <Reveal
+              key={area.title}
+              delay={i * 80}
+              className={
+                i === 0 ? 'md:col-span-2' : i === 2 ? 'md:col-span-3' : ''
+              }
+            >
+              <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
+                <div
+                  aria-hidden="true"
+                  className="dot-pattern absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_72%)]"
+                />
+                <div
+                  className={`relative ${
+                    i === 2
+                      ? 'flex flex-col gap-5 md:flex-row md:items-center md:justify-between'
+                      : ''
+                  }`}
+                >
+                  <div>
+                    <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
+                      {area.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-zinc-400">
+                      {area.description}
+                    </p>
+                  </div>
+                  <div
+                    className={`flex flex-wrap gap-1.5 ${
+                      i === 2 ? 'md:mt-0 md:justify-end' : 'mt-5'
+                    }`}
+                  >
+                    {area.points.map((point) => (
+                      <TechTag key={point} label={point} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -311,8 +437,12 @@ function Home() {
             entry={geico}
             highlights={geico.shortHighlights}
             spotlight
+            beam
             cta={{ href: '/experience', label: 'Full experience' }}
           />
+        </Reveal>
+        <Reveal className="mt-6">
+          <PipelineDiagram />
         </Reveal>
       </section>
 
@@ -329,7 +459,7 @@ function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {featuredProjects.map((project, i) => (
               <Reveal key={project.id} delay={(i % 2) * 80}>
-                <ProjectCard project={project} spotlight />
+                <ProjectCard project={project} spotlight beam />
               </Reveal>
             ))}
           </div>
@@ -383,13 +513,15 @@ function Home() {
             is open.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
-            >
-              Get in touch
-              <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <Magnetic>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+              >
+                Get in touch
+                <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Magnetic>
             <a
               href={socials.linkedin}
               target="_blank"

@@ -6,10 +6,8 @@ import ProjectCard from '../components/ProjectCard';
 import Reveal from '../components/Reveal';
 import { featuredProjects, projectGroups } from '../content/projects';
 
-function firstSentence(text: string): string {
-  const end = text.indexOf('. ');
-  return end === -1 ? text : text.slice(0, end + 1);
-}
+const ARCHIVE_LINK_CLASSES =
+  'inline-flex min-h-10 items-center gap-1.5 px-2 py-2 -mx-2 text-sm font-medium transition-colors';
 
 function Projects() {
   const featuredIds = new Set(featuredProjects.map((project) => project.id));
@@ -54,7 +52,7 @@ function Projects() {
           <div className="mt-7 grid items-start gap-5 sm:grid-cols-2">
             {featuredProjects.map((project, i) => (
               <Reveal key={project.id} delay={(i % 2) * 60}>
-                <ProjectCard project={project} spotlight />
+                <ProjectCard project={project} spotlight beam />
               </Reveal>
             ))}
           </div>
@@ -104,17 +102,17 @@ function Projects() {
                     <h3 className="font-medium text-zinc-50">
                       {project.name}
                     </h3>
-                    <p className="mt-0.5 line-clamp-1 text-sm text-zinc-400">
-                      {firstSentence(project.description)}
+                    <p className="mt-0.5 text-sm text-zinc-400">
+                      {project.blurb}
                     </p>
                   </div>
-                  <div className="flex shrink-0 flex-wrap gap-x-4 gap-y-1.5">
+                  <div className="flex shrink-0 flex-wrap gap-x-2 gap-y-1.5">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-200 transition-colors hover:text-white"
+                        className={`${ARCHIVE_LINK_CLASSES} text-zinc-200 hover:text-white`}
                       >
                         <FaGithub className="h-4 w-4" aria-hidden="true" />
                         GitHub
@@ -125,7 +123,7 @@ function Projects() {
                         href={project.demo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+                        className={`${ARCHIVE_LINK_CLASSES} text-cyan-300 hover:text-cyan-200`}
                       >
                         <ArrowTopRightOnSquareIcon
                           className="h-4 w-4"
