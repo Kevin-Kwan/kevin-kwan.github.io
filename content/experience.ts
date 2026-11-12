@@ -29,6 +29,8 @@ export interface ExperienceEntry {
   sections?: ExperienceSection[];
   /** Headline metrics rendered as a strip under the summary. */
   metricStrip?: ExperienceMetric[];
+  /** Role progression within this entry (full /experience view). */
+  roles?: { title: string; period: string }[];
   /** Condensed highlights for the home-page featured block; /experience keeps the full list. */
   shortHighlights?: string[];
   links: ExperienceLink[];
@@ -44,7 +46,7 @@ export const experience: ExperienceEntry[] = [
     location: 'Atlanta, GA (Remote)',
     logo: { src: '/logos/geico.svg', alt: 'GEICO logo', imgClassName: 'p-2.5' },
     summary:
-      'Conversational AI / IVR engineer on GEICO’s customer-service automation platforms. Joined through the Technology Development Program as a Software Engineer I and promoted to Software Engineer II. Largest single contributor to the Sierra AI billing agent, alongside the Amazon Connect platform work.',
+      'Conversational AI / IVR engineer on GEICO’s customer-service automation platforms. Joined through the Technology Development Program as a Software Engineer I and promoted to Software Engineer II in February 2026. Largest single contributor to the Sierra AI billing agent, alongside the Amazon Connect platform work.',
     highlights: [
       'Co-develop and operate the Sierra AI billing voice agent (live May 2026): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026), trending from 48% to 52%, and running at ~30,000 calls a week by October 2026 as volume grew roughly tenfold.',
       'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation: 22,600+ payments completed at a 92–95% authorization success rate. Shipped Pause AutoPay as a net-new capability, plus 82,800 reschedules and 192,000 informational answers at a 98% tool success rate.',
@@ -84,6 +86,10 @@ export const experience: ExperienceEntry[] = [
       { value: '22,600+', label: 'payments, 92–95% success' },
       { value: '98%', label: 'informational tool success' },
     ],
+    roles: [
+      { title: 'Software Engineer II', period: 'February 2026 – Present' },
+      { title: 'Software Engineer I', period: 'July 2024 – February 2026' },
+    ],
     shortHighlights: [
       'Co-develop and operate the Sierra AI billing voice agent — ~30,000 calls a week by October 2026 in English and Spanish, with about 51% of 436,000+ conversations contained without a live-agent transfer (May–Oct 2026).',
       'Delivered the agent’s end-to-end make-payment flow: 22,600+ payments completed at a 92–95% authorization success rate, plus Pause AutoPay, 82,800 reschedules, and 192,000 informational answers at 98%.',
@@ -119,7 +125,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     id: 'ecocar',
-    company: 'Georgia Tech EcoCAR EV Challenge',
+    company: 'Georgia Tech EcoCAR (Electric Vehicle) Mobility Challenge',
     companyTagline: 'VIP Program',
     title: 'Software Engineer (Connected and Automated Vehicles Team)',
     dateRange: 'January 2022 – May 2023',
@@ -130,11 +136,11 @@ export const experience: ExperienceEntry[] = [
       imgClassName: 'p-2',
     },
     summary:
-      'Connected and Automated Vehicles (CAV) software engineer for the Georgia Tech EcoCAR EV Challenge at the Georgia Institute of Technology, on the Vehicle-to-Everything (V2X) subteam.',
+      'Connected and Automated Vehicles (CAV) software engineer for the Georgia Tech EcoCAR (Electric Vehicle) Mobility Challenge at the Georgia Institute of Technology, on the Vehicle-to-Everything (V2X) subteam.',
     highlights: [
       'Used multiple data streams from cameras and sensors to develop a state machine enabling the car to make intelligent decisions in various traffic light scenarios — for example, based on the distance to the traffic light, determining whether the car should stop or continue driving, improving fuel efficiency and user experience.',
-      'The EcoCAR EV Challenge is a prestigious 4-year collegiate competition and a $1 million research program sponsored by Argonne National Labs, the U.S. Department of Energy, General Motors, MathWorks, Intel, and more.',
-      'Contributed to the Georgia Tech team\u2019s victory in the 2022 EcoCAR EV Challenge, where we secured 1st place.',
+      'The EcoCAR (Electric Vehicle) Mobility Challenge is a prestigious 4-year collegiate competition and a $1 million research program sponsored by Argonne National Labs, the U.S. Department of Energy, General Motors, MathWorks, Intel, and more.',
+      'Contributed to the Georgia Tech team\u2019s victory in the 2022 EcoCAR (Electric Vehicle) Mobility Challenge, where we secured 1st place.',
     ],
     links: [
       {

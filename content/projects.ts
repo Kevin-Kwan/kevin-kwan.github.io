@@ -102,7 +102,7 @@ export const projectGroups: ProjectGroup[] = [
         blurb:
           'Full-stack drone grocery-delivery system coordinating orders, stores, and pilots.',
         note: 'Course project (CS 4400) — code available on request.',
-        noteHref: '/contact',
+        noteHref: '/contact?project=Drone+Dispatch+Express+Delivery+System',
         noteLinkLabel: 'Request the code',
         description:
           'A full-stack application for a drone-based grocery delivery system (CS4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database.',

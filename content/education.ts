@@ -35,7 +35,7 @@ export const education: EducationEntry[] = [
       imgClassName: 'p-2',
     },
     gpa: '3.9',
-    details: ['Threads: Intelligence and Media', 'Graduated summa cum laude.'],
+    details: ['Threads: Intelligence and Media', 'Graduated summa cum laude (Georgia Tech\u2019s Highest Honor).'],
     links: [
       { label: 'University Website', url: 'https://www.gatech.edu/' },
       { label: 'College Website', url: 'https://www.cc.gatech.edu/' },
