@@ -23,6 +23,12 @@ describe('ExperienceCard', () => {
     }
   });
 
+  it('renders the role progression with the promotion date', () => {
+    render(<ExperienceCard entry={geico!} />);
+    expect(screen.getByText('February 2026 – Present')).not.toBeNull();
+    expect(screen.getByText('July 2024 – February 2026')).not.toBeNull();
+  });
+
   it('renders the metric strip values', () => {
     render(<ExperienceCard entry={geico!} />);
     for (const metric of geico!.metricStrip ?? []) {
