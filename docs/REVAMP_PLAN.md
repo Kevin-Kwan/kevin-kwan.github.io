@@ -125,3 +125,76 @@ layout changed only.
 - **Copy**: tighter two-sentence hero intro; "A easy-to-customize" grammar
   fixed in the Windows XP project description. Footer now reads name/role/
   employer from `content/profile.ts`.
+
+## Iteration 2 (Nov 12, 2026)
+
+Round-2 audit fixes plus an owner-approved differentiation batch. Content
+was edited for accuracy but nothing was deleted (the one removal — an
+unverifiable self-praise sentence in the NCR entry — was audit-directed).
+
+- **Ghosting fixed at the root.** `Reveal` no longer fades in content that
+  is already in the viewport at mount: the plain pre-hydration element is
+  measured in a layout effect, elements in view swap to motion with
+  `initial={false}` (full opacity, no animation), and only below-fold
+  elements take the one-time fade-up. The hero entrance is now
+  transform/blur-only (words/blocks rise ~8px and un-blur) with opacity
+  locked at 1, and it is gated off entirely under prefers-reduced-motion
+  (MotionConfig disables transforms but not blur, so the gate is explicit).
+  The old RootLayout CSS page transition, which faded every page in from
+  opacity 0, is gone.
+- **Page transitions** live in `_app`: a route-keyed motion wrapper that
+  renders `initial={false}` for the server/first paint (using the
+  `useMounted` sync-external-store gate) and, for client-side navigations
+  only, a 200ms rise from 85% opacity — content is never invisible.
+- **Content corrections.** Every project gained a one-line `blurb` (≤90
+  chars, written from its existing description); compact cards and the
+  archive list render blurbs instead of line-clamped descriptions (which
+  cut words mid-character). Typos fixed: "HackerRank's", "one of my first
+  React projects", "Rogue-like"; Rock Paper Scissors is now "an early
+  React project" (removing the dueling "first project" claims); Triggering
+  Insanity's IWBTG/IWBTB acronyms spelled out. Drone Dispatch (featured,
+  no links) gained a `note` field — "Course project (CS 4400) — code
+  available on request." — rendered where links would go. Education intro
+  copy trimmed to what the page shows; GSMST's GPA is labeled
+  "4.211 (weighted)" via a new `gpaNote` field. EcoCAR bullets unified to
+  "EcoCAR EV Challenge". Home closing line: "building impactful,
+  purposeful software." Skills → Tools & Platforms gained SonarQube,
+  Cursor, and Claude Code (all on the 2026 résumé) with brand icons.
+- **Tap targets.** Compact/archive project links are ≥40px tall
+  (min-h-10 with compensating negative margins); skill chips went
+  py-2.5 → py-3; navbar social icons moved from `sm:block` to `md:block`
+  (the 640–767px band was crowded) with 40px hit areas.
+- **Differentiation batch** (all degrade to static, fully visible output
+  without JS and under reduced motion):
+  - `PipelineDiagram` in the home GEICO section — Caller → Amazon Connect
+    → AI Voice Agent → Lambda Tools → Resolution, with CSS light pulses
+    on the connectors (static lines when motion is reduced/off).
+  - `TechMarquee` under the hero — infinite CSS ticker of the core-skills
+    list, duplicated for the loop, pause on hover, edge fade masks;
+    a static wrapped list before hydration / under reduced motion.
+  - Hero ambient glow deepened (two additional low-opacity radial layers
+    under the waveform/grain).
+  - Animated metric counters: final values are the SSR/no-JS output; the
+    count-up replays from 90% on first scroll into view, never from 0,
+    and never under reduced motion.
+  - Split-text hero reveal: H1 and tagline animate word-by-word
+    (blur + rise, opacity 1) with aria-labels preserving clean text for
+    assistive tech.
+  - Border beams on the featured GEICO card and the four featured project
+    cards: a conic-gradient ring rotating via a registered `@property`,
+    enabled only on hover-capable fine pointers, off under reduced
+    motion, subtle and slow.
+  - Bento expertise grid: Conversational AI & Voice spans two columns,
+    Full-Stack spans the full row on md+, dot-pattern backdrops in cells.
+  - Scroll progress bar: 2px violet→cyan, spring-smoothed `useScroll`
+    scaleX, pinned to the navbar's bottom edge.
+  - `Magnetic` wrapper on primary CTAs (home hero + contact section,
+    contact form submit): ≤4px spring pull, mouse/fine-pointer only,
+    off under reduced motion.
+- **Security.** Dependabot High for `sharp` resolved: direct dependency
+  bumped ^0.34.5 → ^0.35.5 and an `overrides` pin added, because Next
+  16.1.7 carries sharp as an optional dependency (^0.34.4) and otherwise
+  keeps a nested vulnerable 0.34.5. `npm ls sharp` now resolves a single
+  deduped 0.35.5. (The sandbox blocks the npm audit endpoint with a 403
+  policy error, so the audit summary itself could not be re-run here;
+  verification is the resolved tree plus sharp loading cleanly.)
