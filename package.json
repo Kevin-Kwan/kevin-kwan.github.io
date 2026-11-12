@@ -6,38 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "generate-og": "node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@heroicons/react": "^2.2.0",
-    "@tsparticles/react": "^3.0.0",
-    "@types/node": "25.0.9",
-    "@types/react-dom": "^18.2.0",
-    "autoprefixer": "10.4.27",
-    "compass-mixins": "^0.12.12",
-    "dotenv": "^17.2.3",
-    "eslint": "9.39.1",
-    "eslint-config-next": "16.1.1",
-    "framer-motion": "^12.34.0",
     "next": "16.1.7",
-    "npm-check-updates": "^19.6.5",
-    "postcss": "8.5.6",
-    "react": "^18.2.0",
-    "react-awesome-reveal": "^4.3.1",
-    "react-dom": "^18.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-hook-form": "^7.69.0",
     "react-icons": "^5.5.0",
-    "react-responsive": "^10.0.1",
-    "sass": "^1.98.0",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^3.4.1",
-    "tsparticles": "^3.9.1",
-    "typescript": "5.9.3"
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
-    "@types/react": "^18.2.48",
-    "mini-css-extract-plugin": "^2.10.0"
+    "@types/node": "^20.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.1.1",
+    "postcss": "8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "5.9.3"
   }
 }
