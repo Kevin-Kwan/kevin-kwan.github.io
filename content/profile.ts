@@ -1,3 +1,5 @@
+import { geicoFacts } from './facts';
+
 export interface Metric {
   value: string;
   label: string;
@@ -43,7 +45,7 @@ export const profile = {
 
 export const metrics: Metric[] = [
   {
-    value: '~30K',
+    value: geicoFacts.callsPerWeek,
     label: 'Calls per week',
     detail: 'Sierra AI billing agent at GEICO, English & Spanish',
     countTo: 30,
@@ -51,21 +53,21 @@ export const metrics: Metric[] = [
     suffix: 'K',
   },
   {
-    value: '436K+',
+    value: geicoFacts.conversations,
     label: 'Conversations handled',
     detail: 'May–Oct 2026, ~51% contained without a live agent',
     countTo: 436,
     suffix: 'K+',
   },
   {
-    value: '22,600+',
+    value: geicoFacts.payments,
     label: 'Payments completed',
     detail: 'Through the voice agent, 92–95% authorization success',
     countTo: 22600,
     suffix: '+',
   },
   {
-    value: '~80%',
+    value: geicoFacts.pocContainment,
     label: 'Proof of Coverage IVR containment',
     detail: 'Amazon Connect IVR at GEICO',
     countTo: 80,
@@ -80,14 +82,14 @@ export const expertiseAreas: ExpertiseArea[] = [
     description:
       'AI voice agents and IVR systems that hold real conversations and resolve calls without an agent.',
     points: ['Amazon Connect', 'Amazon Lex', 'Sierra AI', 'Cyara testing'],
-    stat: '436K+ conversations · ~51% containment',
+    stat: `${geicoFacts.conversations} conversations · ${geicoFacts.containment} containment`,
   },
   {
     title: 'Cloud & AWS',
     description:
       'Event-driven, asynchronous backends on AWS with infrastructure as code and production on-call ownership.',
     points: ['Lambda', 'DynamoDB', 'S3', 'Terraform'],
-    stat: '~80% Proof of Coverage containment',
+    stat: `${geicoFacts.pocContainment} Proof of Coverage containment`,
   },
   {
     title: 'Full-Stack Engineering',

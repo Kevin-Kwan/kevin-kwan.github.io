@@ -15,6 +15,8 @@ export const site = {
   defaultDescription:
     'Portfolio of Kevin Kwan, a Software Engineer II at GEICO building conversational AI and IVR systems on Amazon Connect and AWS. Georgia Tech B.S. Computer Science, summa cum laude.',
   ogImage: '/og.png',
+  /** Public contact address shown on /contact — data, not a build secret. */
+  contactEmail: 'kevinkwan@gatech.edu',
   resumePdfPath: '/documents/Kevin_Kwan_SWE_2026_Resume.pdf',
   resumeFileName: 'Kevin_Kwan_SWE_2026_Resume.pdf',
   sourceRepoUrl: 'https://github.com/Kevin-Kwan/Kevin-Kwan.github.io',
