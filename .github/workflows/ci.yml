@@ -1,0 +1,32 @@
+# Validates pull requests before they can merge. Pushes to master are
+# already gated by the deploy workflow's lint/typecheck/test steps; this
+# job exists so the five open PRs (and every future one) get the same
+# checks without triggering a Pages deployment.
+name: CI
+
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test
+        run: npm run test
