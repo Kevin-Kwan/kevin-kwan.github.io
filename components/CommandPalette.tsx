@@ -35,6 +35,7 @@ function CommandPalette() {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<Element | null>(null);
 
   const actions = useMemo<PaletteAction[]>(() => {
@@ -125,8 +126,35 @@ function CommandPalette() {
     if (target instanceof HTMLElement) target.focus();
   }, []);
 
-  // Cmd+K / Ctrl+K toggles the palette from anywhere on the site.
+  // Cmd+K / Ctrl+K toggles the palette from anywhere on the site. While it
+  // is open, this window-level handler also owns the dialog keys: Escape
+  // closes it no matter which element inside has focus, and Tab is trapped
+  // so focus cycles within the palette instead of escaping to the page
+  // behind the modal overlay.
   useEffect(() => {
+    function keepTabInside(event: KeyboardEvent) {
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusable = dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]):not([tabindex="-1"]), ' +
+          'input:not([disabled]), select:not([disabled]), ' +
+          'textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey) {
+        if (active === first || !dialog.contains(active)) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !dialog.contains(active)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
     function onKeyDown(event: KeyboardEvent) {
       if (
         (event.metaKey || event.ctrlKey) &&
@@ -138,6 +166,14 @@ function CommandPalette() {
         } else {
           openPalette();
         }
+        return;
+      }
+      if (!open) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closePalette();
+      } else if (event.key === 'Tab') {
+        keepTabInside(event);
       }
     }
     window.addEventListener('keydown', onKeyDown);
@@ -200,6 +236,7 @@ function CommandPalette() {
         className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm"
       />
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label="Command palette"
@@ -227,9 +264,9 @@ function CommandPalette() {
                 ? `command-palette-option-${activeIndex}`
                 : undefined
             }
-            className="h-12 w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
+            className="h-12 w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-400 focus:outline-none"
           />
-          <kbd className="shrink-0 rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] uppercase text-zinc-500">
+          <kbd className="shrink-0 rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] uppercase text-zinc-400">
             esc
           </kbd>
         </div>
@@ -256,7 +293,7 @@ function CommandPalette() {
               >
                 <span className="min-w-0 flex-1 truncate">{action.label}</span>
                 {action.hint && (
-                  <span className="shrink-0 text-xs text-zinc-500">
+                  <span className="shrink-0 text-xs text-zinc-400">
                     {action.hint}
                   </span>
                 )}
@@ -264,7 +301,7 @@ function CommandPalette() {
             ))}
           </ul>
         ) : (
-          <p className="px-4 py-6 text-center text-sm text-zinc-500">
+          <p className="px-4 py-6 text-center text-sm text-zinc-400">
             No matching commands.
           </p>
         )}
