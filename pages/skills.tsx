@@ -55,7 +55,7 @@ function Skills() {
                         <dt className="font-medium text-zinc-400">
                           {skill.name}
                         </dt>
-                        <dd className="text-zinc-500">{skill.evidence}</dd>
+                        <dd className="text-zinc-400">{skill.evidence}</dd>
                       </div>
                     ))}
                 </dl>

@@ -28,20 +28,14 @@ const FILTERS: { id: ProjectFilter; label: string }[] = [
   })),
 ];
 
+/** Valid ?category= values, derived from FILTERS so the two never drift. */
+const FILTER_IDS: ProjectFilter[] = FILTERS.map((f) => f.id);
+
 function countFor(filter: ProjectFilter): number {
   if (filter === 'all') return allProjects.length;
   if (filter === 'featured') return featuredProjects.length;
   return allProjects.filter((project) => project.category === filter).length;
 }
-
-const FILTER_IDS: ProjectFilter[] = [
-  'all',
-  'featured',
-  'ai',
-  'web',
-  'games',
-  'coursework',
-];
 
 function Projects() {
   const [filter, setFilter] = useState<ProjectFilter>('all');

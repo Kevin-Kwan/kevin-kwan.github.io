@@ -9,11 +9,9 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import Magnetic from '../components/Magnetic';
-import { socials } from '../content/site';
+import { site, socials } from '../content/site';
 
-interface ContactProps {
-  contactEmail: string | null;
-}
+const contactEmail = site.contactEmail;
 
 // Formspree form endpoint for the portfolio contact form. A Formspree
 // form ID is public-safe by design (it ships in the page HTML of every
@@ -33,7 +31,7 @@ type SubmitStatus = 'idle' | 'sending' | 'success' | 'failure';
 const inputClasses =
   'w-full rounded-lg border border-white/20 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
 
-function Contact({ contactEmail }: ContactProps) {
+function Contact() {
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const {
     register,
@@ -121,7 +119,16 @@ function Contact({ contactEmail }: ContactProps) {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
             noValidate
+            action={FORMSPREE_ENDPOINT}
+            method="POST"
           >
+            {/* Static subject for the no-JavaScript path (native form
+                POST to Formspree); the JS path sets a named subject. */}
+            <input
+              type="hidden"
+              name="_subject"
+              value="New portfolio message"
+            />
             <div>
               <label
                 htmlFor="contact-name"
@@ -263,22 +270,20 @@ function Contact({ contactEmail }: ContactProps) {
             <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
               Or reach me directly
             </h2>
-            {contactEmail && (
-              <a
-                href={`mailto:${contactEmail}`}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface px-4 py-4 transition-colors duration-200 hover:border-white/25"
-              >
-                <EnvelopeIcon className="h-6 w-6 text-cyan-300" aria-hidden="true" />
-                <span>
-                  <span className="block text-sm font-medium text-zinc-100">
-                    Email
-                  </span>
-                  <span className="block break-all text-sm text-zinc-400">
-                    {contactEmail}
-                  </span>
+            <a
+              href={`mailto:${contactEmail}`}
+              className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface px-4 py-4 transition-colors duration-200 hover:border-white/25"
+            >
+              <EnvelopeIcon className="h-6 w-6 text-cyan-300" aria-hidden="true" />
+              <span>
+                <span className="block text-sm font-medium text-zinc-100">
+                  Email
                 </span>
-              </a>
-            )}
+                <span className="block break-all text-sm text-zinc-400">
+                  {contactEmail}
+                </span>
+              </span>
+            </a>
             <a
               href={socials.linkedin}
               target="_blank"
@@ -316,16 +321,6 @@ function Contact({ contactEmail }: ContactProps) {
       </div>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? null;
-
-  return {
-    props: {
-      contactEmail,
-    },
-  };
 }
 
 export default Contact;

@@ -137,13 +137,15 @@ interface HeroBlockProps {
   active: boolean;
   /** Variant set for this block; word-split blocks pass heroWordGroup. */
   variants?: Variants;
-  ariaLabel?: string;
 }
 
 /**
  * One hero block in the staggered entrance. Renders a plain element until
  * the page has mounted so the exported HTML is never hidden pre-JS
  * (motion server-renders its hidden initial styles inline otherwise).
+ * Word-split blocks hide their animated spans from assistive tech and
+ * carry an sr-only plain-text copy instead of an aria-label — a <p>
+ * cannot take an accessible name, so the label was never announced.
  */
 function HeroBlock({
   as,
@@ -151,23 +153,14 @@ function HeroBlock({
   children,
   active,
   variants = heroItem,
-  ariaLabel,
 }: HeroBlockProps) {
   if (!active) {
     const PlainTag = as;
-    return (
-      <PlainTag className={className} aria-label={ariaLabel}>
-        {children}
-      </PlainTag>
-    );
+    return <PlainTag className={className}>{children}</PlainTag>;
   }
   const MotionTag = HERO_MOTION_TAGS[as] as typeof motion.div;
   return (
-    <MotionTag
-      variants={variants}
-      className={className}
-      aria-label={ariaLabel}
-    >
+    <MotionTag variants={variants} className={className}>
       {children}
     </MotionTag>
   );
@@ -270,21 +263,23 @@ function Home() {
             as="h1"
             active={heroActive}
             variants={heroWordGroup}
-            ariaLabel="Kevin Kwan"
             className="mt-7 text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl"
           >
             {heroActive ? (
-              <span aria-hidden="true">
-                <motion.span variants={heroWord} className="inline-block">
-                  Kevin
-                </motion.span>{' '}
-                <motion.span
-                  variants={heroWord}
-                  className="text-gradient inline-block"
-                >
-                  Kwan
-                </motion.span>
-              </span>
+              <>
+                <span className="sr-only">Kevin Kwan</span>
+                <span aria-hidden="true">
+                  <motion.span variants={heroWord} className="inline-block">
+                    Kevin
+                  </motion.span>{' '}
+                  <motion.span
+                    variants={heroWord}
+                    className="text-gradient inline-block"
+                  >
+                    Kwan
+                  </motion.span>
+                </span>
+              </>
             ) : (
               <>
                 Kevin <span className="text-gradient">Kwan</span>
@@ -302,9 +297,11 @@ function Home() {
             as="p"
             active={heroActive}
             variants={heroWordGroup}
-            ariaLabel={profile.tagline}
             className="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-200 sm:text-2xl"
           >
+            {heroActive && (
+              <span className="sr-only">{profile.tagline}</span>
+            )}
             <SplitWords text={profile.tagline} active={heroActive} />
           </HeroBlock>
           <HeroBlock
