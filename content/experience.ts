@@ -19,7 +19,7 @@ export interface ExperienceMetric {
 export interface ExperienceEntry {
   id: string;
   company: string;
-  companyTagline: string;
+  companyTagline?: string;
   title: string;
   dateRange: string;
   location: string;
@@ -158,7 +158,6 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'ncr-voyix',
     company: 'NCR Corporation',
-    companyTagline: '',
     title: 'Software Engineer Intern',
     dateRange: 'July 2019 – August 2019',
     location: 'Atlanta, GA',
