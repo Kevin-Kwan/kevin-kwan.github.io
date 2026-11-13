@@ -52,7 +52,7 @@ export const projectGroups: ProjectGroup[] = [
         blurb:
           'Multi-purpose Discord bot: music, AI chat, economy, moderation, slash commands.',
         description:
-          'A custom, multi-purpose, open-source Discord Bot using DiscordJS v14 and MongoDB that can play music, chat with you using OpenAI ChatGPT, manage your Economy, moderate your server, and provide other fun features. Currently supports Discord\u2019s Slash Commands. Written in JavaScript.',
+          'A custom, multi-purpose, open-source Discord Bot using Discord.js v14 and MongoDB that can play music, chat with you using OpenAI ChatGPT, manage your Economy, moderate your server, and provide other fun features. Currently supports Discord\u2019s Slash Commands. Written in JavaScript.',
         tech: ['JavaScript', 'Discord.js', 'MongoDB', 'OpenAI'],
         githubUrl: 'https://github.com/Kevin-Kwan/CutieBot',
         image: {
@@ -105,7 +105,7 @@ export const projectGroups: ProjectGroup[] = [
         noteHref: '/contact?project=Drone+Dispatch+Express+Delivery+System',
         noteLinkLabel: 'Request the code',
         description:
-          'A full-stack application for a drone-based grocery delivery system (CS4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database.',
+          'A full-stack application for a drone-based grocery delivery system (CS 4400: Introduction to Database Systems) made with Next.js (React) and MySQL. Serves as a comprehensive system that coordinates grocery orders, deliveries, and transactions between customers, stores, and drone pilots utilizing self-implemented API routes and MySQL database.',
         tech: ['Next.js', 'React', 'MySQL', 'REST APIs'],
         image: {
           src: '/projects/drone-dispatch.webp',
@@ -120,7 +120,7 @@ export const projectGroups: ProjectGroup[] = [
         blurb:
           'LeetCode-inspired platform teaching developers to use AI coding assistants responsibly.',
         description:
-          'Interactive personalized web app inspired by LeetCode to train software developers on responsible integration of AI coding assistants. Provides modules, simulations, guidelines, and gamification to understand AI tool capabilities/risks and maintain code quality, security, and ethics when leveraging AI. Made using Next.js (React), TailwindCSS, and Firebase.',
+          'Interactive personalized web app inspired by LeetCode to train software developers on responsible integration of AI coding assistants. Provides modules, simulations, guidelines, and gamification to understand AI tool capabilities/risks and maintain code quality, security, and ethics when leveraging AI. Made using Next.js (React), Tailwind CSS, and Firebase.',
         tech: ['Next.js', 'React', 'Tailwind CSS', 'Firebase'],
         demo: { url: 'https://companion-training.vercel.app/', label: 'Demo' },
         image: {
@@ -136,7 +136,7 @@ export const projectGroups: ProjectGroup[] = [
         blurb:
           'Full-stack careers portal with job listings, benefits pages, and an application form.',
         description:
-          'A full-stack dynamic careers portal website made with Next.js (React), TailwindCSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source.',
+          'A full-stack dynamic careers portal website made with Next.js (React), Tailwind CSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source.',
         tech: ['Next.js', 'React', 'Tailwind CSS', 'Firestore', 'Firebase'],
       },
       {
