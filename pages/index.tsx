@@ -22,7 +22,7 @@ import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
 import { pipelineCaseStudy } from '../content/pipeline';
 import { education } from '../content/education';
-import { coreSkills } from '../content/skills';
+import { skillCategories } from '../content/skills';
 import { resumeUrl, site, socials } from '../content/site';
 
 const heroContainer: Variants = {
@@ -483,23 +483,40 @@ function Home() {
         </div>
       </section>
 
-      {/* Skills snapshot */}
+      {/* Skills snapshot — grouped by category as a preview of /skills.
+          (The flat core-skills list already runs in the TechMarquee under
+          the hero; repeating the identical chips here added nothing.) */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionHeadingRow
           eyebrow="Toolbox"
           title="Core skills"
-          description="The short list — see the skills page for the full, categorized inventory."
+          description="Grouped by area — see the skills page for the full inventory with production evidence for each."
           linkHref="/skills"
           linkLabel="All skills"
         />
-        <div className="mt-8 flex flex-wrap gap-2">
-          {coreSkills.map((skill) => (
-            <span
-              key={skill}
-              className="rounded-full border border-white/10 bg-surface px-4 py-2 text-sm text-zinc-200"
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((category) => (
+            <div
+              key={category.id}
+              className="rounded-2xl border border-white/10 bg-surface p-5"
             >
-              {skill}
-            </span>
+              <h3 className="text-sm font-semibold text-zinc-100">
+                {category.title}
+              </h3>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-400">
+                {category.blurb}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-300"
+                  >
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
