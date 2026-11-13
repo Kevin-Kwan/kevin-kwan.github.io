@@ -57,6 +57,27 @@ describe('CommandPalette', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 
+  it('closes on Escape even when the event target is outside the input', () => {
+    render(<CommandPalette />);
+    openWithKeyboard();
+    expect(screen.getByRole('dialog')).not.toBeNull();
+    // Window-level handling: Escape reaches the palette even if focus has
+    // moved off the search input.
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('keeps Tab focus inside the dialog', () => {
+    render(<CommandPalette />);
+    openWithKeyboard();
+    const dialog = screen.getByRole('dialog');
+    const input = screen.getByLabelText('Command palette search');
+    fireEvent.keyDown(input, { key: 'Tab' });
+    expect(dialog.contains(document.activeElement)).toBe(true);
+    fireEvent.keyDown(input, { key: 'Tab', shiftKey: true });
+    expect(dialog.contains(document.activeElement)).toBe(true);
+  });
+
   it('filters commands by the search text', () => {
     render(<CommandPalette />);
     openWithKeyboard();
