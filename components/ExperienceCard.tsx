@@ -55,7 +55,9 @@ function ExperienceCard({
   beam = false,
   cta,
 }: ExperienceCardProps) {
-  const shownHighlights = highlights ?? entry.highlights;
+  // Entries with sections carry no flat highlights copy (see
+  // content/experience.ts) — the sectioned view below renders instead.
+  const shownHighlights = highlights ?? entry.highlights ?? [];
   // The full /experience view groups GEICO's highlights into workstream
   // sections with a metric strip; the home card passes condensed
   // highlights explicitly and keeps the flat list.

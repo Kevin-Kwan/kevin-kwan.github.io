@@ -105,6 +105,9 @@ function MarqueeHalf({ ariaHidden = false }: { ariaHidden?: boolean }) {
  * skill list duplicated once (the second copy is aria-hidden) and slides
  * by half its width on a CSS keyframe loop. It pauses on hover, via an
  * explicit pause/play button, and whenever it is scrolled out of view.
+ * The "Core skills" label sits on a role="region" landmark — a bare
+ * <div> cannot carry an accessible name, so without the role the label
+ * was silently dropped.
  * Before hydration — which includes the no-JavaScript case — and under
  * prefers-reduced-motion, a static wrapped list renders instead, so the
  * exported HTML is the plain, fully readable list.
@@ -131,7 +134,11 @@ function TechMarquee() {
 
   if (!mounted || reduceMotion) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6" aria-label="Core skills">
+      <div
+        className="mx-auto max-w-6xl px-4 py-6 sm:px-6"
+        role="region"
+        aria-label="Core skills"
+      >
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-sm text-zinc-400">
           {coreSkills.map((skill) => (
             <li key={skill}>{skill}</li>
@@ -147,6 +154,7 @@ function TechMarquee() {
     <div
       ref={containerRef}
       className="relative"
+      role="region"
       aria-label="Core skills"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

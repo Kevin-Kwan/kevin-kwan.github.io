@@ -1,4 +1,9 @@
-import { useState, type ComponentType } from 'react';
+import {
+  useRef,
+  useState,
+  type ComponentType,
+  type KeyboardEvent,
+} from 'react';
 import {
   ArrowsRightLeftIcon,
   BoltIcon,
@@ -99,32 +104,77 @@ function ConnectorPulse({ index, vertical }: { index: number; vertical?: boolean
 /**
  * Illustrative overview of the voice-agent systems Kevin builds: a caller
  * reaches an AI voice agent through Amazon Connect, the agent calls Lambda
- * tools, and the request ends in a resolution. Each stage is a button that
- * inspects it in the panel below — production figures for the selected
- * stage, all published elsewhere on the site. The default stage (AI Voice
- * Agent) is server-rendered, so the exported HTML carries its panel too;
- * the moving pulses are decoration only.
+ * tools, and the request ends in a resolution. The stages form a WAI-ARIA
+ * tab list: selecting a stage (click, or arrow keys with automatic
+ * activation, Home/End to jump) shows its production figures in the
+ * tab panel below — all published elsewhere on the site. The default
+ * stage (AI Voice Agent) is server-rendered, so the exported HTML
+ * carries its panel too; the moving pulses are decoration only.
  */
 function PipelineDiagram() {
   const [selected, setSelected] = useState(2);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const active = NODES[selected];
+
+  function activate(index: number) {
+    const next = (index + NODES.length) % NODES.length;
+    setSelected(next);
+    tabRefs.current[next]?.focus();
+  }
+
+  function onTabKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        event.preventDefault();
+        activate(selected + 1);
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        event.preventDefault();
+        activate(selected - 1);
+        break;
+      case 'Home':
+        event.preventDefault();
+        activate(0);
+        break;
+      case 'End':
+        event.preventDefault();
+        activate(NODES.length - 1);
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <figure className="rounded-2xl border border-white/10 bg-surface p-6 sm:p-8">
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
         System overview
       </p>
-      <ol className="mt-6 flex flex-col items-center lg:flex-row lg:items-stretch">
+      <div
+        role="tablist"
+        aria-label="Voice pipeline stages"
+        onKeyDown={onTabKeyDown}
+        className="mt-6 flex flex-col items-center lg:flex-row lg:items-stretch"
+      >
         {NODES.map((node, i) => (
-          <li
+          <div
             key={node.label}
+            role="presentation"
             className="flex flex-col items-center lg:flex-1 lg:flex-row"
           >
             <button
               type="button"
+              role="tab"
+              id={`pipeline-tab-${i}`}
+              aria-selected={selected === i}
+              aria-controls="pipeline-inspector"
+              tabIndex={selected === i ? 0 : -1}
+              ref={(el) => {
+                tabRefs.current[i] = el;
+              }}
               onClick={() => setSelected(i)}
-              aria-pressed={selected === i}
-              aria-label={`Inspect stage: ${node.label}`}
               className={`flex w-full max-w-xs flex-col items-center rounded-xl border px-4 py-4 text-center transition-colors lg:w-auto lg:min-w-[7.5rem] lg:flex-1 ${
                 selected === i
                   ? 'border-cyan-300/50 bg-cyan-300/[0.08]'
@@ -160,14 +210,17 @@ function PipelineDiagram() {
                 </div>
               </>
             )}
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
 
       {/* Stage inspector — production figures for the selected stage. */}
       <div
+        role="tabpanel"
+        id="pipeline-inspector"
+        aria-labelledby={`pipeline-tab-${selected}`}
+        tabIndex={0}
         className="mt-6 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4"
-        aria-live="polite"
       >
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300">
           {active.label}
