@@ -35,14 +35,56 @@ describe('PipelineDiagram', () => {
       screen.getByText('436,112 conversations (May–Oct 2026)')
     ).not.toBeNull();
 
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Inspect stage: Lambda Tools' })
-    );
+    fireEvent.click(screen.getByRole('tab', { name: /Lambda Tools/ }));
     expect(
       screen.getByText('22,600+ payments at 92–95% authorization success')
     ).not.toBeNull();
     expect(
       screen.queryByText('436,112 conversations (May–Oct 2026)')
     ).toBeNull();
+  });
+
+  it('exposes a tab list with roving tabindex and aria-selected', () => {
+    render(<PipelineDiagram />);
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs).toHaveLength(NODE_LABELS.length);
+    // Default selection is AI Voice Agent (index 2).
+    expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+    expect(tabs[2].getAttribute('tabindex')).toBe('0');
+    tabs.forEach((tab, i) => {
+      if (i === 2) return;
+      expect(tab.getAttribute('aria-selected')).toBe('false');
+      expect(tab.getAttribute('tabindex')).toBe('-1');
+    });
+    const panel = screen.getByRole('tabpanel');
+    expect(panel.getAttribute('aria-labelledby')).toBe('pipeline-tab-2');
+  });
+
+  it('moves selection with arrow keys and Home/End (automatic activation)', () => {
+    render(<PipelineDiagram />);
+    const tablist = screen.getByRole('tablist');
+
+    fireEvent.keyDown(tablist, { key: 'ArrowRight' });
+    expect(
+      screen.getByText('22,600+ payments at 92–95% authorization success')
+    ).not.toBeNull();
+    expect(document.activeElement).toBe(
+      screen.getByRole('tab', { name: /Lambda Tools/ })
+    );
+
+    fireEvent.keyDown(tablist, { key: 'ArrowLeft' });
+    expect(
+      screen.getByText('436,112 conversations (May–Oct 2026)')
+    ).not.toBeNull();
+
+    fireEvent.keyDown(tablist, { key: 'End' });
+    expect(
+      screen.getByText('86 of 91 production and UT1 bugs fixed at the root cause')
+    ).not.toBeNull();
+
+    fireEvent.keyDown(tablist, { key: 'Home' });
+    expect(
+      screen.getByText('~30,000 calls a week by October 2026')
+    ).not.toBeNull();
   });
 });
