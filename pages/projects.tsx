@@ -48,15 +48,14 @@ function Projects() {
   const categoryParam = Array.isArray(router.query.category)
     ? router.query.category[0]
     : router.query.category;
-  // On the static export the router query stays empty until the router is
-  // ready, so until then read the param straight from the address bar —
-  // a deep link like /projects?category=games then renders filtered on
-  // first paint instead of flashing the unfiltered view.
-  const urlCategory =
-    !router.isReady && typeof window !== 'undefined'
-      ? new URLSearchParams(window.location.search).get('category')
-      : null;
-  const rawCategory = router.isReady ? categoryParam : urlCategory;
+  // The category must NOT be read from window.location during render: on a
+  // direct load of a filtered URL the server HTML is the unfiltered ('all')
+  // view, and peeking at the address bar before the router is ready makes
+  // the first client render differ from that HTML — React hydration error
+  // #418. Until the router is ready, render the same 'all' view the server
+  // produced; once ready, the query takes over and the filtered view swaps
+  // in. (No first-paint flash concern outweighs a hydration mismatch.)
+  const rawCategory = router.isReady ? categoryParam : null;
   const filter: ProjectFilter =
     rawCategory && FILTER_IDS.includes(rawCategory as ProjectFilter)
       ? (rawCategory as ProjectFilter)
