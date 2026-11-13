@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
@@ -38,28 +39,40 @@ function countFor(filter: ProjectFilter): number {
 }
 
 function Projects() {
+  const router = useRouter();
   const [filter, setFilter] = useState<ProjectFilter>('all');
   const reduceMotion = useReducedMotion();
 
   // Filter state is URL-synced (?category=<id>) so a filtered view is
-  // bookmarkable/shareable; 'all' keeps the bare /projects URL.
+  // bookmarkable/shareable; 'all' keeps the bare /projects URL. The router
+  // owns the query so Back/Forward navigation restores both the URL and
+  // the corresponding filtered view.
+  const categoryParam = Array.isArray(router.query.category)
+    ? router.query.category[0]
+    : router.query.category;
+  const queryFilter =
+    categoryParam && FILTER_IDS.includes(categoryParam as ProjectFilter)
+      ? (categoryParam as ProjectFilter)
+      : 'all';
+
   useEffect(() => {
-    const param = new URLSearchParams(window.location.search).get('category');
-    if (param && FILTER_IDS.includes(param as ProjectFilter)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from the URL after hydration; SSR always renders 'all'
-      setFilter(param as ProjectFilter);
-    }
-  }, []);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync local state whenever Router query changes, including Back/Forward navigation
+    setFilter(queryFilter);
+  }, [queryFilter]);
 
   function applyFilter(next: ProjectFilter) {
     setFilter(next);
-    const url = new URL(window.location.href);
+    const query = { ...router.query };
     if (next === 'all') {
-      url.searchParams.delete('category');
+      delete query.category;
     } else {
-      url.searchParams.set('category', next);
+      query.category = next;
     }
-    window.history.replaceState(null, '', url);
+    void router.replace(
+      { pathname: router.pathname, query },
+      undefined,
+      { shallow: true, scroll: false }
+    );
   }
   const featuredIds = new Set(featuredProjects.map((project) => project.id));
   const completedGroup = projectGroups.find(
@@ -117,7 +130,11 @@ function Projects() {
                 }`}
               >
                 {f.label}
-                <span className="ml-1.5 font-mono text-xs text-zinc-500">
+                <span
+                  className={`ml-1.5 font-mono text-xs ${
+                    active ? 'text-zinc-300' : 'text-zinc-400'
+                  }`}
+                >
                   {countFor(f.id)}
                 </span>
               </button>
@@ -127,9 +144,11 @@ function Projects() {
 
         {/* Screen-reader announcement of the active filter result. */}
         <p className="sr-only" role="status" aria-live="polite">
-          {filteredProjects
-            ? `Showing ${filteredProjects.length} projects in ${activeFilterLabel}`
-            : ''}
+          {filter === 'all'
+            ? `Showing all ${allProjects.length} projects`
+            : `Showing ${countFor(filter)} ${
+                countFor(filter) === 1 ? 'project' : 'projects'
+              } in ${activeFilterLabel}`}
         </p>
 
         {filteredProjects ? (

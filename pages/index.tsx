@@ -20,6 +20,7 @@ import { useMounted } from '../components/useMounted';
 import { profile, metrics, expertiseAreas } from '../content/profile';
 import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
+import { pipelineCaseStudy } from '../content/pipeline';
 import { education } from '../content/education';
 import { coreSkills } from '../content/skills';
 import { resumeUrl, site, socials } from '../content/site';
@@ -187,22 +188,6 @@ function HeroContainer({ active, children }: HeroContainerProps) {
     </motion.div>
   );
 }
-
-/** Case-study strip under the pipeline diagram — facts already on the site. */
-const pipelineCaseStudy = [
-  {
-    title: 'The problem',
-    body: 'GEICO customers calling about billing waited on hold or hit dead ends in a legacy IVR; the goal was an AI voice agent that resolves real billing tasks end to end.',
-  },
-  {
-    title: 'Engineering decisions',
-    body: 'Fact-based journeys replaced a regex/classifier router; Lambda tools execute payments and rescheduling against live account data; simulation-based regression gates guard every release.',
-  },
-  {
-    title: 'Measured outcomes',
-    body: '~51% of 436K+ conversations contained (May–Oct 2026) · 22,600+ payments at 92–95% authorization success · 98% informational tool success.',
-  },
-] as const;
 
 const personJsonLd = {
   '@context': 'https://schema.org',

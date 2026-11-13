@@ -52,7 +52,7 @@ function Skills() {
                         key={skill.name}
                         className="flex flex-wrap items-baseline gap-x-2 text-xs"
                       >
-                        <dt className="font-medium text-zinc-400">
+                        <dt className="font-medium text-zinc-200">
                           {skill.name}
                         </dt>
                         <dd className="text-zinc-400">{skill.evidence}</dd>

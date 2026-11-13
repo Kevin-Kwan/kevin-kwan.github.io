@@ -9,6 +9,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import Magnetic from '../components/Magnetic';
+import { useMounted } from '../components/useMounted';
 import { site, socials } from '../content/site';
 
 const contactEmail = site.contactEmail;
@@ -32,6 +33,10 @@ const inputClasses =
   'w-full rounded-lg border border-white/20 bg-surface px-4 py-3 text-zinc-100 placeholder:text-zinc-400 transition-colors focus:border-cyan-400/50 focus:outline-none';
 
 function Contact() {
+  // Keep native browser validation available until React Hook Form takes
+  // over after mount; without JavaScript, the form never mounts and the
+  // browser validates the native Formspree submission itself.
+  const mounted = useMounted();
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const {
     register,
@@ -118,7 +123,7 @@ function Contact() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
-            noValidate
+            noValidate={mounted}
             action={FORMSPREE_ENDPOINT}
             method="POST"
           >
@@ -144,6 +149,7 @@ function Contact() {
                 aria-invalid={errors.name ? 'true' : undefined}
                 aria-describedby={errors.name ? 'contact-name-error' : undefined}
                 className={inputClasses}
+                required
                 {...register('name', { required: 'This field is required.' })}
               />
               {errors.name && (
@@ -174,6 +180,7 @@ function Contact() {
                   errors.email ? 'contact-email-error' : undefined
                 }
                 className={inputClasses}
+                required
                 {...register('email', {
                   required: 'This field is required.',
                   pattern: {
@@ -210,6 +217,8 @@ function Contact() {
                   errors.message ? 'contact-message-error' : undefined
                 }
                 className={inputClasses}
+                required
+                minLength={10}
                 {...register('message', {
                   required: 'This field is required.',
                   minLength: {
