@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "overrides": {
-    "sharp": "^0.35.5"
+    "sharp": "^0.35.5",
+    "postcss": "^8.5.32"
   },
   "scripts": {
     "dev": "next dev",
@@ -24,22 +25,23 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.69.0",
-    "react-icons": "^5.5.0",
-    "sharp": "^0.35.5"
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
-    "@types/node": "^20.19.0",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.4.6",
     "jsdom": "^26.1.0",
-    "postcss": "8.5.6",
+    "postcss": "^8.5.32",
     "tailwindcss": "^4.1.18",
     "typescript": "5.9.3",
-    "vitest": "^3.2.7"
+    "vitest": "^5.1.0",
+    "sharp": "^0.35.5",
+    "vite": "^7.3.8"
   }
 }

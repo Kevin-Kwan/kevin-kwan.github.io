@@ -40,11 +40,12 @@ To regenerate the social preview image after changing the design, run
 
 ### Environment variables
 
-Copy `.env.local.example` to `.env.local` for local development. The contact
-form needs `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, and `EMAILJS_PUBLIC_KEY`;
-`NEXT_PUBLIC_CONTACT_EMAIL` powers the direct-email links, and
-`NEXT_PUBLIC_RESUME_LINK` optionally overrides the résumé PDF (otherwise the
-file in `public/documents/` is served).
+No environment variables are required — the site builds and runs with none.
+The contact form posts to a Formspree endpoint (a public form ID kept as a
+constant in `pages/contact.tsx`), and the direct-email address is content
+data in `content/site.ts`. The one optional variable, documented in
+`.env.local.example`, is `NEXT_PUBLIC_RESUME_LINK`, which overrides the
+résumé PDF (otherwise the file in `public/documents/` is served).
 
 ## Editing content
 
