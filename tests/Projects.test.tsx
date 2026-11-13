@@ -111,11 +111,30 @@ describe('Projects filter', () => {
     );
   });
 
-  it('reads the category from the URL before the router is ready (no All flash)', () => {
+  it('renders the unfiltered view before the router is ready, even with a category in the URL', () => {
     routerState.isReady = false;
     routerState.query = {};
     window.history.pushState({}, '', '/projects?category=coursework');
     render(<Projects />);
+    // The server renders the unfiltered view, so the first client render
+    // must match it — reading the category from the address bar pre-ready
+    // caused React hydration error #418 on direct loads of filtered URLs.
+    expect(screen.getByRole('status').textContent).toBe(
+      `Showing all ${allProjects.length} projects`
+    );
+    expect(
+      screen.getByRole('button', { name: /^All/ }).getAttribute('aria-pressed')
+    ).toBe('true');
+  });
+
+  it('applies the URL category once the router becomes ready', () => {
+    routerState.isReady = false;
+    routerState.query = {};
+    window.history.pushState({}, '', '/projects?category=coursework');
+    const { rerender } = render(<Projects />);
+    routerState.isReady = true;
+    routerState.query = { category: 'coursework' };
+    rerender(<Projects />);
     const count = countInCategory('coursework');
     expect(screen.getByRole('status').textContent).toBe(
       `Showing ${count} projects in ${projectCategoryLabels.coursework}`
