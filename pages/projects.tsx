@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
@@ -40,39 +39,45 @@ function countFor(filter: ProjectFilter): number {
 
 function Projects() {
   const router = useRouter();
-  const [filter, setFilter] = useState<ProjectFilter>('all');
   const reduceMotion = useReducedMotion();
 
-  // Filter state is URL-synced (?category=<id>) so a filtered view is
-  // bookmarkable/shareable; 'all' keeps the bare /projects URL. The router
-  // owns the query so Back/Forward navigation restores both the URL and
-  // the corresponding filtered view.
+  // The active filter is derived from the URL (?category=<id>) so a
+  // filtered view is bookmarkable/shareable; 'all' keeps the bare
+  // /projects URL. Because the router owns the query, Back/Forward
+  // navigation restores both the URL and the corresponding filtered view.
   const categoryParam = Array.isArray(router.query.category)
     ? router.query.category[0]
     : router.query.category;
-  const queryFilter =
-    categoryParam && FILTER_IDS.includes(categoryParam as ProjectFilter)
-      ? (categoryParam as ProjectFilter)
+  // On the static export the router query stays empty until the router is
+  // ready, so until then read the param straight from the address bar —
+  // a deep link like /projects?category=games then renders filtered on
+  // first paint instead of flashing the unfiltered view.
+  const urlCategory =
+    !router.isReady && typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('category')
+      : null;
+  const rawCategory = router.isReady ? categoryParam : urlCategory;
+  const filter: ProjectFilter =
+    rawCategory && FILTER_IDS.includes(rawCategory as ProjectFilter)
+      ? (rawCategory as ProjectFilter)
       : 'all';
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync local state whenever Router query changes, including Back/Forward navigation
-    setFilter(queryFilter);
-  }, [queryFilter]);
-
   function applyFilter(next: ProjectFilter) {
-    setFilter(next);
+    // Clicking the already-active filter is a no-op — it must not push a
+    // duplicate entry onto the history stack.
+    if (next === filter) return;
     const query = { ...router.query };
     if (next === 'all') {
       delete query.category;
     } else {
       query.category = next;
     }
-    void router.replace(
-      { pathname: router.pathname, query },
-      undefined,
-      { shallow: true, scroll: false }
-    );
+    // push (not replace): each filter choice becomes a history entry, so
+    // Back/Forward steps through the filters the visitor picked.
+    void router.push({ pathname: router.pathname, query }, undefined, {
+      shallow: true,
+      scroll: false,
+    });
   }
   const featuredIds = new Set(featuredProjects.map((project) => project.id));
   const completedGroup = projectGroups.find(
