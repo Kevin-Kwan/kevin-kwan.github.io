@@ -1,6 +1,7 @@
 import {
   useRef,
   useState,
+  useSyncExternalStore,
   type ComponentType,
   type KeyboardEvent,
 } from 'react';
@@ -19,6 +20,32 @@ interface PipelineNode {
   /** Production figures for the inspector panel — all already published
    *  elsewhere on the site (experience highlights / metric strips). */
   metrics: string[];
+}
+
+/** Tailwind's lg breakpoint: below it the stages stack vertically. */
+const BELOW_LG_MEDIA_QUERY = '(max-width: 1023.98px)';
+
+function subscribeToBelowLg(onStoreChange: () => void) {
+  const query = window.matchMedia(BELOW_LG_MEDIA_QUERY);
+  query.addEventListener('change', onStoreChange);
+  return () => query.removeEventListener('change', onStoreChange);
+}
+
+function getBelowLgSnapshot() {
+  return window.matchMedia(BELOW_LG_MEDIA_QUERY).matches;
+}
+
+function getServerBelowLgSnapshot() {
+  return false;
+}
+
+/** True when the tab list is using its below-lg vertical layout. */
+function useVerticalTabList(): boolean {
+  return useSyncExternalStore(
+    subscribeToBelowLg,
+    getBelowLgSnapshot,
+    getServerBelowLgSnapshot
+  );
 }
 
 const NODES: PipelineNode[] = [
@@ -114,6 +141,7 @@ function ConnectorPulse({ index, vertical }: { index: number; vertical?: boolean
 function PipelineDiagram() {
   const [selected, setSelected] = useState(2);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const vertical = useVerticalTabList();
   const active = NODES[selected];
 
   function activate(index: number) {
@@ -123,14 +151,15 @@ function PipelineDiagram() {
   }
 
   function onTabKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const nextKey = vertical ? 'ArrowDown' : 'ArrowRight';
+    const previousKey = vertical ? 'ArrowUp' : 'ArrowLeft';
+
     switch (event.key) {
-      case 'ArrowRight':
-      case 'ArrowDown':
+      case nextKey:
         event.preventDefault();
         activate(selected + 1);
         break;
-      case 'ArrowLeft':
-      case 'ArrowUp':
+      case previousKey:
         event.preventDefault();
         activate(selected - 1);
         break;
@@ -155,6 +184,7 @@ function PipelineDiagram() {
       <div
         role="tablist"
         aria-label="Voice pipeline stages"
+        aria-orientation={vertical ? 'vertical' : 'horizontal'}
         onKeyDown={onTabKeyDown}
         className="mt-6 flex flex-col items-center lg:flex-row lg:items-stretch"
       >
