@@ -12,6 +12,7 @@ import {
   CheckCircleIcon,
   PhoneIcon,
 } from '@heroicons/react/24/outline';
+import { geicoFacts } from '../content/facts';
 
 interface PipelineNode {
   label: string;
@@ -54,7 +55,7 @@ const NODES: PipelineNode[] = [
     sub: 'Customer call',
     Icon: PhoneIcon,
     metrics: [
-      '~30,000 calls a week by October 2026',
+      `${geicoFacts.callsPerWeekLong} calls a week by October 2026`,
       'English and Spanish',
       'Billing questions, payments, and rescheduling',
     ],
@@ -65,8 +66,8 @@ const NODES: PipelineNode[] = [
     Icon: ArrowsRightLeftIcon,
     metrics: [
       'Migrated from Cisco UCCE + Nuance IVR',
-      'Payment IVR at ~60% containment',
-      'Proof of Coverage IVR at ~80% containment',
+      `Payment IVR at ${geicoFacts.paymentIvrContainment} containment`,
+      `Proof of Coverage IVR at ${geicoFacts.pocContainment} containment`,
     ],
   },
   {
@@ -74,9 +75,9 @@ const NODES: PipelineNode[] = [
     sub: 'Intent & dialogue',
     Icon: ChatBubbleLeftRightIcon,
     metrics: [
-      '436,112 conversations (May–Oct 2026)',
-      '~51% contained — trending 48% → 52%',
-      '192,000 informational answers at 98% tool success',
+      `${geicoFacts.conversationsExact} conversations (May–Oct 2026)`,
+      `${geicoFacts.containment} contained — trending 48% → 52%`,
+      `${geicoFacts.informationalAnswers} informational answers at ${geicoFacts.toolSuccess} tool success`,
     ],
   },
   {
@@ -84,8 +85,8 @@ const NODES: PipelineNode[] = [
     sub: 'Payments & account APIs',
     Icon: BoltIcon,
     metrics: [
-      '22,600+ payments at 92–95% authorization success',
-      '82,800 reschedules completed',
+      `${geicoFacts.payments} payments at ${geicoFacts.paymentsSuccess} authorization success`,
+      `${geicoFacts.reschedules} reschedules completed`,
       'AES encryption for customer and payment data',
     ],
   },
@@ -96,7 +97,7 @@ const NODES: PipelineNode[] = [
     metrics: [
       'Contained without a live agent whenever possible',
       'Simulation-based regression gates on every release',
-      '86 of 91 production and UT1 bugs fixed at the root cause',
+      `${geicoFacts.bugsFixed} production and UT1 bugs fixed at the root cause`,
     ],
   },
 ];

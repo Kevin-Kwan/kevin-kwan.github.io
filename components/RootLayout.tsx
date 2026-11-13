@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import CommandPalette from './CommandPalette';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -20,6 +21,7 @@ function RootLayout({ children }: RootLayoutProps) {
         {children}
       </main>
       <Footer />
+      <CommandPalette />
     </div>
   );
 }
