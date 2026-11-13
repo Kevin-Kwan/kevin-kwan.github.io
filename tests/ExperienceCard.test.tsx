@@ -4,6 +4,7 @@ import ExperienceCard from '../components/ExperienceCard';
 import { experience } from '../content/experience';
 
 const geico = experience.find((entry) => entry.id === 'geico');
+const ncr = experience.find((entry) => entry.id === 'ncr-voyix');
 
 describe('ExperienceCard', () => {
   it('keeps the heading hierarchy: company h3, job title h4, workstreams h5', () => {
@@ -34,5 +35,15 @@ describe('ExperienceCard', () => {
     for (const metric of geico!.metricStrip ?? []) {
       expect(screen.getByText(metric.value)).not.toBeNull();
     }
+  });
+
+  it('omits the company tagline when an entry does not provide one', () => {
+    expect(ncr).toBeDefined();
+    expect(ncr!.companyTagline).toBeUndefined();
+    render(<ExperienceCard entry={ncr!} />);
+
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'NCR Corporation' })
+    ).not.toBeNull();
   });
 });

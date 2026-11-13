@@ -63,6 +63,12 @@ describe('PipelineDiagram', () => {
   it('moves selection with arrow keys and Home/End (automatic activation)', () => {
     render(<PipelineDiagram />);
     const tablist = screen.getByRole('tablist');
+    expect(tablist.getAttribute('aria-orientation')).toBe('horizontal');
+
+    fireEvent.keyDown(tablist, { key: 'ArrowDown' });
+    expect(
+      screen.getByText('436,112 conversations (May–Oct 2026)')
+    ).not.toBeNull();
 
     fireEvent.keyDown(tablist, { key: 'ArrowRight' });
     expect(
@@ -86,5 +92,50 @@ describe('PipelineDiagram', () => {
     expect(
       screen.getByText('~30,000 calls a week by October 2026')
     ).not.toBeNull();
+  });
+
+  it('uses vertical orientation and up/down keys in the stacked layout', () => {
+    const originalMatchMedia = window.matchMedia;
+    const verticalMatchMedia = (query: string): MediaQueryList => ({
+      matches:
+        query === '(max-width: 1023.98px)' || query.includes('no-preference'),
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    });
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: verticalMatchMedia,
+    });
+
+    try {
+      render(<PipelineDiagram />);
+      const tablist = screen.getByRole('tablist');
+      expect(tablist.getAttribute('aria-orientation')).toBe('vertical');
+
+      fireEvent.keyDown(tablist, { key: 'ArrowRight' });
+      expect(
+        screen.getByText('436,112 conversations (May–Oct 2026)')
+      ).not.toBeNull();
+
+      fireEvent.keyDown(tablist, { key: 'ArrowDown' });
+      expect(
+        screen.getByText('22,600+ payments at 92–95% authorization success')
+      ).not.toBeNull();
+
+      fireEvent.keyDown(tablist, { key: 'ArrowUp' });
+      expect(
+        screen.getByText('436,112 conversations (May–Oct 2026)')
+      ).not.toBeNull();
+    } finally {
+      Object.defineProperty(window, 'matchMedia', {
+        writable: true,
+        value: originalMatchMedia,
+      });
+    }
   });
 });
