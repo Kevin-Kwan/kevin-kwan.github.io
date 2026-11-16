@@ -5,7 +5,7 @@ export const profile = {
   employer: 'GEICO',
   location: 'Atlanta, Georgia',
   tagline:
-    'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls at scale.',
+    'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls.',
   heroIntro:
     'Software Engineer II owning critical payment journeys, architecture improvements, and production reliability for the billing voice agent and Amazon Connect IVRs.',
   interests: [

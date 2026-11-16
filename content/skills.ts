@@ -103,9 +103,10 @@ export const skillTiers: SkillTier[] = [
     ],
   },
   {
-    id: 'cloud-infrastructure',
-    title: 'Cloud & Infrastructure',
-    blurb: 'AWS-first infrastructure, automation, and delivery pipelines.',
+    id: 'cloud-services',
+    title: 'Cloud Services & IaC',
+    blurb:
+      'AWS-first services and infrastructure automation behind the production systems.',
     skills: [
       { name: 'AWS', icon: 'aws', href: 'https://aws.amazon.com/' },
       {
@@ -140,6 +141,13 @@ export const skillTiers: SkillTier[] = [
         icon: 'cicd',
         href: 'https://github.com/features/actions',
       },
+    ],
+  },
+  {
+    id: 'deployment-platforms',
+    title: 'Deployment Platforms',
+    blurb: 'Other clouds and hosting platforms used across projects.',
+    skills: [
       {
         name: 'Google Cloud Platform',
         icon: 'gcp',

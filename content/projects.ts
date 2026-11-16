@@ -5,14 +5,14 @@ export interface ProjectLink {
 
 export type ProjectCategory = 'ai' | 'web' | 'games' | 'coursework';
 
-/** Curated split for the default /projects view: the strong,
-    production-grade work leads; early learning work, coursework, and
+/** Curated split for the default /projects view: the core applications
+    and advanced systems lead; early learning work, coursework, and
     coding-challenge solutions sit in the archival tier. Every project
     is in exactly one tier. */
 export type ProjectTier = 'production' | 'archival';
 
 export const projectTierLabels: Record<ProjectTier, string> = {
-  production: 'Production & Advanced Systems',
+  production: 'Core Applications & Systems',
   archival: 'Archival & Academic Works',
 };
 
