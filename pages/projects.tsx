@@ -109,7 +109,7 @@ function Projects() {
           as="h1"
           eyebrow="Portfolio"
           title="Projects"
-          description="Everything from a production Discord bot to Unity games, database systems, and hackathon builds — grouped by status."
+          description="Everything from a production Discord bot to Unity games, database systems, and hackathon builds — filter by category to explore them."
         />
 
         {/* Category filter — 'All' keeps the grouped layout below; any other
@@ -134,13 +134,6 @@ function Projects() {
                 }`}
               >
                 {f.label}
-                <span
-                  className={`ml-1.5 font-mono text-xs ${
-                    active ? 'text-zinc-300' : 'text-zinc-400'
-                  }`}
-                >
-                  {countFor(f.id)}
-                </span>
               </button>
             );
           })}
