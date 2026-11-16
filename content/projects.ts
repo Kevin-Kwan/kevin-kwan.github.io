@@ -89,9 +89,9 @@ export const projectGroups: ProjectGroup[] = [
         category: 'web',
         name: 'PreMiD Presence Open-Source Contribution',
         blurb:
-          'Open-source contribution: a Stake.us presence for the PreMiD Discord app.',
+          'Open-source contribution to PreMiD, a Discord Rich Presence app.',
         description:
-          'A contribution to the PreMiD Presence project, a Discord Rich Presence application that allows users to show what they are doing in Discord. I added a new presence for the website \u2018Stake.us\u2019 to display various information about the user\u2019s gaming activity on the website.',
+          'A contribution to the PreMiD Presence project, a Discord Rich Presence application that lets users show what they are doing in Discord. I added a new presence that surfaces live activity from a gaming site into Discord, built with TypeScript.',
         tech: ['TypeScript', 'Discord Rich Presence', 'Open Source'],
         githubUrl: 'https://github.com/PreMiD/Presences/pull/8288',
       },
@@ -135,6 +135,7 @@ export const projectGroups: ProjectGroup[] = [
         name: 'Company Careers Portal (Paid Client Project)',
         blurb:
           'Full-stack careers portal with job listings, benefits pages, and an application form.',
+        note: 'Private client work — no public repo/demo.',
         description:
           'A full-stack dynamic careers portal website made with Next.js (React), Tailwind CSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source.',
         tech: ['Next.js', 'React', 'Tailwind CSS', 'Firestore', 'Firebase'],

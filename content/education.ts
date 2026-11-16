@@ -58,21 +58,4 @@ export const education: EducationEntry[] = [
     details: [],
     links: [{ label: 'College Website', url: 'https://gwinnetttech.edu' }],
   },
-  {
-    id: 'gsmst',
-    school: 'Gwinnett School of Mathematics, Science, and Technology',
-    unit: 'High School',
-    dateRange: 'August 2017 – May 2021',
-    credential: 'High School Diploma with Honors',
-    location: 'Lawrenceville, GA',
-    logo: {
-      src: '/logos/gsmst-seal.png',
-      alt: 'Gwinnett School of Mathematics, Science, and Technology seal',
-      imgClassName: 'p-1.5',
-    },
-    gpa: '4.211',
-    gpaNote: '(weighted)',
-    details: [],
-    links: [{ label: 'School Website', url: 'https://www.gcpsk12.org/GSMST' }],
-  },
 ];
