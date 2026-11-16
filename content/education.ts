@@ -32,34 +32,21 @@ export const academicHighlights: string[] = [
   'EcoCAR VIP program — 1st place, 2022 U.S. DOE EcoCAR Mobility Challenge',
 ];
 
-export interface CourseworkGroup {
-  /** Georgia Tech CS thread the courses belong to. */
-  thread: string;
-  courses: { code: string; name: string }[];
+export interface CourseworkCourse {
+  code: string;
+  name: string;
 }
 
 /**
- * Selected upper-level coursework, grouped by Georgia Tech CS thread.
- * Every course is named in a project description on this site (Video
- * Game Design in Dark Ascent, Database Systems in Drone Dispatch) and
- * the thread mapping is the Georgia Tech catalog's: CS 4455 is a Media
- * thread technology, CS 4400 a Systems & Architecture elective. The
- * Intelligence thread has no course named anywhere on the site or the
- * résumé, so it is left out rather than filled in.
+ * Selected upper-level coursework — the courses behind several projects
+ * on this site (Video Game Design in Dark Ascent, Database Systems in
+ * Drone Dispatch). Presented plainly, with no thread grouping: the two
+ * courses sit in different Georgia Tech CS threads and a thread label
+ * would imply a grouping the list does not have. Nothing invented.
  */
-export const selectedCoursework: CourseworkGroup[] = [
-  {
-    thread: 'Media',
-    courses: [
-      { code: 'CS 4455 / CS 6457', name: 'Video Game Design' },
-    ],
-  },
-  {
-    thread: 'Systems',
-    courses: [
-      { code: 'CS 4400', name: 'Introduction to Database Systems' },
-    ],
-  },
+export const selectedCoursework: CourseworkCourse[] = [
+  { code: 'CS 4455 / CS 6457', name: 'Video Game Design' },
+  { code: 'CS 4400', name: 'Introduction to Database Systems' },
 ];
 
 export const education: EducationEntry[] = [
@@ -77,7 +64,7 @@ export const education: EducationEntry[] = [
       imgClassName: 'p-2',
     },
     gpa: '3.9',
-    details: ['Threads: Intelligence and Media', 'Graduated summa cum laude (Georgia Tech\u2019s Highest Honor).'],
+    details: ['Threads: Intelligence and Media'],
     links: [
       { label: 'University Website', url: 'https://www.gatech.edu/' },
       { label: 'College Website', url: 'https://www.cc.gatech.edu/' },
@@ -99,5 +86,20 @@ export const education: EducationEntry[] = [
     gpa: '4.0',
     details: [],
     links: [{ label: 'College Website', url: 'https://gwinnetttech.edu' }],
+  },
+  {
+    id: 'gsmst',
+    school: 'Gwinnett School of Mathematics, Science, and Technology',
+    unit: 'High School',
+    dateRange: 'August 2017 – May 2021',
+    credential: 'High School Diploma with Honors',
+    location: 'Lawrenceville, GA',
+    logo: {
+      src: '/logos/gsmst-seal.png',
+      alt: 'Gwinnett School of Mathematics, Science, and Technology seal',
+      imgClassName: 'p-1.5',
+    },
+    details: [],
+    links: [{ label: 'School Website', url: 'https://www.gcpsk12.org/GSMST' }],
   },
 ];
