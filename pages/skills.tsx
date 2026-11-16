@@ -2,7 +2,7 @@ import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import SkillIcon from '../components/SkillIcon';
 import Reveal from '../components/Reveal';
-import { skillCategories } from '../content/skills';
+import { skillTiers } from '../content/skills';
 
 function Skills() {
   return (
@@ -17,21 +17,21 @@ function Skills() {
           as="h1"
           eyebrow="Toolbox"
           title="Skills"
-          description="A comprehensive and ever-growing list of the technologies I've worked with in my projects and professional work — spanning front-end and back-end development, databases, deployment, and conversational AI."
+          description="A comprehensive and ever-growing list of the technologies I've worked with in my projects and professional work — organized into tiers, from the production languages and conversational AI stack I use every day to tools I've picked up along the way."
         />
 
         <div className="mt-12 space-y-12">
-          {skillCategories.map((category) => (
-            <section key={category.id} aria-labelledby={`skills-${category.id}`}>
+          {skillTiers.map((tier) => (
+            <section key={tier.id} aria-labelledby={`skills-${tier.id}`}>
               <h2
-                id={`skills-${category.id}`}
+                id={`skills-${tier.id}`}
                 className="text-xl font-semibold tracking-tight text-zinc-50"
               >
-                {category.title}
+                {tier.title}
               </h2>
-              <p className="mt-1.5 text-sm text-zinc-300">{category.blurb}</p>
+              <p className="mt-1.5 text-sm text-zinc-300">{tier.blurb}</p>
               <ul className="mt-5 flex flex-wrap gap-2.5">
-                {category.skills.map((skill, i) => (
+                {tier.skills.map((skill, i) => (
                   <Reveal
                     as="li"
                     key={skill.name}

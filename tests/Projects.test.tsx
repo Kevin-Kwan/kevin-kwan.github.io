@@ -5,6 +5,7 @@ import {
   allProjects,
   featuredProjects,
   projectCategoryLabels,
+  projectTierLabels,
 } from '../content/projects';
 
 // Controllable stand-in for the Next router: tests set the query / ready
@@ -139,5 +140,82 @@ describe('Projects filter', () => {
     expect(screen.getByRole('status').textContent).toBe(
       `Showing ${count} projects in ${projectCategoryLabels.coursework}`
     );
+  });
+});
+
+describe('Projects tiers', () => {
+  it('assigns every project to exactly one tier — 15 production, 8 archival', () => {
+    expect(allProjects.length).toBe(23);
+    const production = allProjects.filter((p) => p.tier === 'production');
+    const archival = allProjects.filter((p) => p.tier === 'archival');
+    expect(production.length).toBe(15);
+    expect(archival.length).toBe(8);
+    expect(production.length + archival.length).toBe(allProjects.length);
+    // The featured cards are all production-tier work.
+    expect(
+      featuredProjects.every((p) => p.tier === 'production')
+    ).toBe(true);
+  });
+
+  it('renders the default view as Featured, then Production, then Archival, covering all 23 projects once', () => {
+    render(<Projects />);
+    const headings = screen
+      .getAllByRole('heading', { level: 2 })
+      .map((h) => h.textContent);
+    expect(headings).toEqual([
+      'Featured Projects',
+      projectTierLabels.production,
+      projectTierLabels.archival,
+    ]);
+    // One h3 per project card, no duplicates, no project missing.
+    const cardTitles = screen
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent);
+    expect(cardTitles.length).toBe(23);
+    expect(new Set(cardTitles).size).toBe(23);
+    for (const project of allProjects) {
+      expect(cardTitles).toContain(project.name);
+    }
+  });
+
+  it('keeps the early learning work in the archival group, not the production group', () => {
+    render(<Projects />);
+    // The section is identified by aria-labelledby; the id itself lives
+    // on the heading inside it.
+    const productionSection = document.querySelector(
+      'section[aria-labelledby="group-production"]'
+    );
+    const archivalSection = document.querySelector(
+      'section[aria-labelledby="group-archival"]'
+    );
+    expect(productionSection).not.toBeNull();
+    expect(archivalSection).not.toBeNull();
+    for (const name of [
+      'Currency Converter (Learning React Project)',
+      'Rock, Paper, Scissors (Learning React Project)',
+      'Sales Tax Calculator (UCLA CS31 Project)',
+      'My Personal LeetCode Solutions',
+    ]) {
+      expect(archivalSection!.textContent).toContain(name);
+      expect(productionSection!.textContent).not.toContain(name);
+    }
+    for (const name of [
+      'PreMiD Presence Open-Source Contribution',
+      'Company Careers Portal (Paid Client Project)',
+    ]) {
+      expect(productionSection!.textContent).toContain(name);
+      expect(archivalSection!.textContent).not.toContain(name);
+    }
+    // Featured work still leads the page in its own section.
+    const featuredSection = document.querySelector(
+      'section[aria-labelledby="group-featured"]'
+    );
+    expect(featuredSection).not.toBeNull();
+    for (const name of [
+      'CutieBot (Discord Bot Application)',
+      'CompAnIon (Learning Platform POC)',
+    ]) {
+      expect(featuredSection!.textContent).toContain(name);
+    }
   });
 });

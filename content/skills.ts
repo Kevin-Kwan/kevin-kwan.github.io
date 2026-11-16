@@ -5,18 +5,26 @@ export interface Skill {
   href?: string;
 }
 
-export interface SkillCategory {
+/**
+ * One tier of the skills inventory. Tiers are ordered by how central the
+ * tools are to the day-to-day work — the production languages and the
+ * conversational AI stack first, tools picked up along the way last.
+ * A tier groups by area; it is not a proficiency score, and no levels or
+ * percentages are claimed anywhere.
+ */
+export interface SkillTier {
   id: string;
   title: string;
   blurb: string;
   skills: Skill[];
 }
 
-export const skillCategories: SkillCategory[] = [
+export const skillTiers: SkillTier[] = [
   {
-    id: 'languages',
-    title: 'Languages',
-    blurb: 'The languages I reach for first, at work and on side projects.',
+    id: 'core-languages',
+    title: 'Core Production Languages',
+    blurb:
+      'The languages behind my production work — voice agents, IVRs, and full-stack systems.',
     skills: [
       {
         name: 'Java',
@@ -54,14 +62,12 @@ export const skillCategories: SkillCategory[] = [
         icon: 'css',
         href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
       },
-      { name: 'Lua', icon: 'lua', href: 'https://www.lua.org/' },
-      { name: 'MATLAB', icon: 'matlab', href: 'https://matlab.mathworks.com/' },
     ],
   },
   {
-    id: 'conversational-ai',
-    title: 'Conversational AI & Voice',
-    blurb: 'My specialty — the stack behind GEICO\u2019s voice automation.',
+    id: 'ai-agentic',
+    title: 'AI & Agentic Workflows',
+    blurb: 'My specialty — the stack behind GEICO’s voice automation.',
     skills: [
       {
         name: 'Amazon Connect',
@@ -97,8 +103,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: 'cloud-devops',
-    title: 'Cloud & DevOps',
+    id: 'cloud-infrastructure',
+    title: 'Cloud & Infrastructure',
     blurb: 'AWS-first infrastructure, automation, and delivery pipelines.',
     skills: [
       { name: 'AWS', icon: 'aws', href: 'https://aws.amazon.com/' },
@@ -210,9 +216,10 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: 'tools-platforms',
-    title: 'Tools & Platforms',
-    blurb: 'Version control, collaboration, and game development tooling.',
+    id: 'developer-tooling',
+    title: 'Developer Tooling',
+    blurb:
+      'Version control, code quality, AI-assisted development, and game tooling.',
     skills: [
       {
         name: 'Git',
@@ -247,9 +254,19 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
   },
+  {
+    id: 'additional-languages',
+    title: 'Additional Languages',
+    blurb:
+      'Picked up along the way — used on side projects and earlier work rather than in production systems.',
+    skills: [
+      { name: 'Lua', icon: 'lua', href: 'https://www.lua.org/' },
+      { name: 'MATLAB', icon: 'matlab', href: 'https://matlab.mathworks.com/' },
+    ],
+  },
 ];
 
-/** Flat list used for the home-page skills snapshot. */
+/** Flat list used by the home-page marquee (components/TechMarquee.tsx). */
 export const coreSkills: string[] = [
   'Java',
   'Python',
