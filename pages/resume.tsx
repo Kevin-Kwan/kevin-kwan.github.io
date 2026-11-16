@@ -6,7 +6,7 @@ import TechTag from '../components/TechTag';
 import { profile } from '../content/profile';
 import { experience } from '../content/experience';
 import { education } from '../content/education';
-import { skillCategories } from '../content/skills';
+import { skillTiers } from '../content/skills';
 import { resumeRequestUrl, site, socials } from '../content/site';
 
 /**
@@ -208,16 +208,16 @@ function Resume() {
             Skills
           </h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {skillCategories.map((category) => (
+            {skillTiers.map((tier) => (
               <div
-                key={category.id}
+                key={tier.id}
                 className="rounded-2xl border border-white/10 bg-surface p-5"
               >
                 <h3 className="text-sm font-semibold text-zinc-100">
-                  {category.title}
+                  {tier.title}
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-1.5">
-                  {category.skills.map((skill) => (
+                  {tier.skills.map((skill) => (
                     <TechTag key={skill.name} label={skill.name} />
                   ))}
                 </div>

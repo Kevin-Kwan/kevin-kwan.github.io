@@ -11,18 +11,15 @@ import Waveform from '../components/Waveform';
 import ExperienceCard from '../components/ExperienceCard';
 import EducationCard from '../components/EducationCard';
 import ProjectCard from '../components/ProjectCard';
-import TechTag from '../components/TechTag';
-import AnimatedMetric from '../components/AnimatedMetric';
 import Magnetic from '../components/Magnetic';
 import PipelineDiagram from '../components/PipelineDiagram';
 import TechMarquee from '../components/TechMarquee';
 import { useMounted } from '../components/useMounted';
-import { profile, metrics, expertiseAreas } from '../content/profile';
+import { profile } from '../content/profile';
 import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
 import { pipelineCaseStudy } from '../content/pipeline';
 import { education } from '../content/education';
-import { skillCategories } from '../content/skills';
 import { resumeRequestUrl, site, socials } from '../content/site';
 
 const heroContainer: Variants = {
@@ -339,80 +336,6 @@ function Home() {
       {/* Core-skills ticker */}
       <TechMarquee />
 
-      {/* Production capabilities */}
-      <section aria-label="Production capabilities" className="border-y border-white/5 bg-white/[0.015]">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px lg:grid-cols-4">
-          {metrics.map((metric, i) => (
-            <Reveal key={metric.label} delay={i * 70} className="px-4 py-8 sm:px-6">
-              <p className="text-gradient whitespace-nowrap font-mono text-2xl font-bold tracking-tight sm:text-3xl">
-                <AnimatedMetric metric={metric} />
-              </p>
-              <p className="mt-3 text-sm font-medium text-zinc-100">
-                {metric.label}
-              </p>
-              <p className="mt-1 text-sm text-zinc-400">{metric.detail}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Expertise */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionHeading
-          eyebrow="Expertise"
-          title="What I do"
-          description="Production systems that talk to customers, run on AWS, and stay up — plus the full-stack range to build around them."
-        />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {expertiseAreas.map((area, i) => (
-            <Reveal
-              key={area.title}
-              delay={i * 80}
-              className={
-                i === 0 ? 'md:col-span-2' : i === 2 ? 'md:col-span-3' : ''
-              }
-            >
-              <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20">
-                <div
-                  aria-hidden="true"
-                  className="dot-pattern absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_72%)]"
-                />
-                <div
-                  className={`relative flex flex-1 flex-col ${
-                    i === 2
-                      ? 'gap-5 md:flex-row md:items-center md:justify-between'
-                      : ''
-                  }`}
-                >
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
-                      {area.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-zinc-400">
-                      {area.description}
-                    </p>
-                  </div>
-                  <div
-                    className={`flex flex-wrap gap-1.5 ${
-                      i === 2 ? 'md:mt-0 md:justify-end' : 'mt-5'
-                    }`}
-                  >
-                    {area.points.map((point) => (
-                      <TechTag key={point} label={point} />
-                    ))}
-                  </div>
-                </div>
-                {area.stat && (
-                  <p className="text-gradient relative mt-auto pt-5 font-mono text-sm font-semibold tracking-tight">
-                    {area.stat}
-                  </p>
-                )}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* Featured experience — condensed highlights; /experience has the full set */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <SectionHeading eyebrow="Experience" title="Currently at GEICO" />
@@ -464,44 +387,6 @@ function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Skills snapshot — grouped by category as a preview of /skills.
-          (The flat core-skills list already runs in the TechMarquee under
-          the hero; repeating the identical chips here added nothing.) */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionHeadingRow
-          eyebrow="Toolbox"
-          title="Core skills"
-          description="Grouped by area — see the skills page for the full inventory."
-          linkHref="/skills"
-          linkLabel="All skills"
-        />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category) => (
-            <div
-              key={category.id}
-              className="rounded-2xl border border-white/10 bg-surface p-5"
-            >
-              <h3 className="text-sm font-semibold text-zinc-100">
-                {category.title}
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                {category.blurb}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-300"
-                  >
-                    {skill.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 

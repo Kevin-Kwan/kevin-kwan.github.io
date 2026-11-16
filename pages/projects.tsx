@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { FaGithub } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import ProjectCard from '../components/ProjectCard';
@@ -10,12 +8,9 @@ import {
   allProjects,
   featuredProjects,
   projectCategoryLabels,
-  projectGroups,
+  projectTierLabels,
   type ProjectCategory,
 } from '../content/projects';
-
-const ARCHIVE_LINK_CLASSES =
-  'inline-flex min-h-10 items-center gap-1.5 px-2 py-2 -mx-2 text-sm font-medium transition-colors';
 
 type ProjectFilter = 'all' | 'featured' | ProjectCategory;
 
@@ -79,14 +74,14 @@ function Projects() {
     });
   }
   const featuredIds = new Set(featuredProjects.map((project) => project.id));
-  const completedGroup = projectGroups.find(
-    (group) => group.id === 'completed'
+  // Default view groups by curated tier, not by the data file's
+  // ongoing/completed/challenge groups: the strong work leads, and the
+  // archival tier keeps every early-learning project reachable below it.
+  const productionProjects = allProjects.filter(
+    (project) => project.tier === 'production' && !featuredIds.has(project.id)
   );
-  const completedProjects = (completedGroup?.projects ?? []).filter(
-    (project) => !featuredIds.has(project.id)
-  );
-  const archiveGroup = projectGroups.find(
-    (group) => group.id === 'coding-challenges'
+  const archivalProjects = allProjects.filter(
+    (project) => project.tier === 'archival'
   );
 
   const filteredProjects =
@@ -232,22 +227,23 @@ function Projects() {
               </div>
             </section>
 
-            {/* Remaining completed projects — compact cards */}
-            {completedGroup && completedProjects.length > 0 && (
-              <section aria-labelledby="group-completed" className="mt-16">
+            {/* Production & Advanced Systems — the strong work beyond the
+                featured cards, as compact cards */}
+            {productionProjects.length > 0 && (
+              <section aria-labelledby="group-production" className="mt-16">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                   <h2
-                    id="group-completed"
+                    id="group-production"
                     className="text-2xl font-semibold tracking-tight text-zinc-50"
                   >
-                    {completedGroup.title}
+                    {projectTierLabels.production}
                   </h2>
                   <p className="text-sm text-zinc-400">
-                    {completedGroup.blurb}
+                    Production systems, client projects, and advanced builds.
                   </p>
                 </div>
                 <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {completedProjects.map((project, i) => (
+                  {productionProjects.map((project, i) => (
                     <Reveal
                       key={project.id}
                       delay={(i % 3) * 60}
@@ -260,65 +256,33 @@ function Projects() {
               </section>
             )}
 
-            {/* Archive — coding challenge solutions as a compact list */}
-            {archiveGroup && (
-              <section aria-labelledby="group-archive" className="mt-16">
+            {/* Archival & Academic Works — early learning work, coursework,
+                and coding-challenge solutions, kept here for the record */}
+            {archivalProjects.length > 0 && (
+              <section aria-labelledby="group-archival" className="mt-16">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                   <h2
-                    id="group-archive"
+                    id="group-archival"
                     className="text-2xl font-semibold tracking-tight text-zinc-50"
                   >
-                    Archive — coursework &amp; coding challenges
+                    {projectTierLabels.archival}
                   </h2>
-                  <p className="text-sm text-zinc-400">{archiveGroup.blurb}</p>
+                  <p className="text-sm text-zinc-400">
+                    Early learning work, coursework, and coding-challenge
+                    solutions — kept here for the record.
+                  </p>
                 </div>
-                <ul className="mt-7 divide-y divide-white/5 rounded-2xl border border-white/10 bg-surface">
-                  {archiveGroup.projects.map((project) => (
-                    <li
+                <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {archivalProjects.map((project, i) => (
+                    <Reveal
                       key={project.id}
-                      className="flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:gap-5"
+                      delay={(i % 3) * 60}
+                      className="h-full"
                     >
-                      <div className="min-w-0 flex-1">
-                        <h3 className="font-medium text-zinc-50">
-                          {project.name}
-                        </h3>
-                        <p className="mt-0.5 text-sm text-zinc-400">
-                          {project.blurb}
-                        </p>
-                      </div>
-                      <div className="flex shrink-0 flex-wrap gap-x-2 gap-y-1.5">
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`${ARCHIVE_LINK_CLASSES} text-zinc-200 hover:text-white`}
-                          >
-                            <FaGithub
-                              className="h-4 w-4"
-                              aria-hidden="true"
-                            />
-                            GitHub
-                          </a>
-                        )}
-                        {project.demo && (
-                          <a
-                            href={project.demo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`${ARCHIVE_LINK_CLASSES} text-cyan-300 hover:text-cyan-200`}
-                          >
-                            <ArrowTopRightOnSquareIcon
-                              className="h-4 w-4"
-                              aria-hidden="true"
-                            />
-                            {project.demo.label}
-                          </a>
-                        )}
-                      </div>
-                    </li>
+                      <ProjectCard project={project} variant="compact" />
+                    </Reveal>
                   ))}
-                </ul>
+                </div>
               </section>
             )}
           </>
