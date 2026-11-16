@@ -142,14 +142,8 @@ function Navbar() {
               );
             })}
           </ul>
-          {/* Routes to the /resume request gate, not a raw mailto: —
-              see content/site.ts. */}
-          <Link
-            href="/resume"
-            className="mt-3 block rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-base font-medium text-zinc-100"
-          >
-            Request Résumé
-          </Link>
+          {/* No second résumé entry here: the "Résumé" nav link above
+              already routes to the /resume request gate. */}
           <div className="mt-2 flex items-center gap-2 px-1 pt-1">
             <a
               href={socials.github}
