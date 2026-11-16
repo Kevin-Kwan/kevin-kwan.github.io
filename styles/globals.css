@@ -262,6 +262,13 @@ body {
   .wave-bar {
     animation: none;
   }
+  /* The skills ticker is a continuous loop: stop it outright under
+     reduced motion instead of relying on the JS static branch alone
+     (motion's useReducedMotion captures the preference once at first
+     render and never re-reads it, so the CSS rule is the guarantee). */
+  .animate-marquee {
+    animation: none;
+  }
   /* Decorative loops off entirely: pipeline pulses and the border beam
      leave their static lines/borders behind. */
   .animate-pipeline-x,
