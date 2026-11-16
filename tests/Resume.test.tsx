@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Resume from '../pages/resume';
 import { resumeRequestUrl } from '../content/site';
 
@@ -26,5 +26,22 @@ describe('Resume request gate', () => {
     expect(container.textContent).toContain(
       'Bachelor of Science in Computer Science with Highest Honors'
     );
+  });
+
+  it('puts the request action before the At-a-glance summary in the DOM', () => {
+    // Iteration 19: the CTA sits at the top of the page, above the
+    // summary, so a visitor can act on it without scrolling past the
+    // whole summary — and there is still exactly one of it.
+    const { container } = render(<Resume />);
+    expect(
+      screen.getAllByRole('link', { name: 'Request résumé' })
+    ).toHaveLength(1);
+    const cta = screen.getByRole('link', { name: 'Request résumé' });
+    const glance = screen.getByRole('heading', { name: 'At a glance' });
+    expect(
+      cta.compareDocumentPosition(glance) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(container.textContent).toContain('At a glance');
   });
 });

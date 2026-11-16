@@ -301,9 +301,7 @@ function PipelineDiagram() {
 
       <figcaption className="mt-6 text-center text-sm leading-relaxed text-zinc-400">
         Illustrative overview of the voice-agent pipeline behind the GEICO
-        work above — a call is routed, understood, acted on by backend
-        tools, and resolved without a live agent whenever possible. Select
-        any stage to inspect its highlights.
+        work above. Select any stage to inspect its highlights.
       </figcaption>
     </figure>
   );

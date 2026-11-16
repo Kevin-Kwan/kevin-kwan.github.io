@@ -18,7 +18,6 @@ import { useMounted } from '../components/useMounted';
 import { profile } from '../content/profile';
 import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
-import { pipelineCaseStudy } from '../content/pipeline';
 import { education } from '../content/education';
 import { site, socials } from '../content/site';
 
@@ -334,23 +333,6 @@ function Home() {
         </Reveal>
         <Reveal className="mt-6">
           <PipelineDiagram />
-        </Reveal>
-        <Reveal className="mt-6">
-          <div className="grid gap-5 md:grid-cols-3">
-            {pipelineCaseStudy.map((column) => (
-              <div
-                key={column.title}
-                className="rounded-2xl border border-white/10 bg-surface p-6"
-              >
-                <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                  {column.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                  {column.body}
-                </p>
-              </div>
-            ))}
-          </div>
         </Reveal>
       </section>
 

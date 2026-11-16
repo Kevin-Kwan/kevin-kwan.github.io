@@ -29,6 +29,25 @@ describe('PipelineDiagram', () => {
     expect(screen.getByText('Contained or handed off')).not.toBeNull();
   });
 
+  it('caption does not restate the pipeline flow — the stages speak for themselves', () => {
+    // Iteration 19: the caption used to narrate the call flow
+    // ("routed, understood, acted on … resolved"), duplicating the
+    // five stages above it. It now only frames the diagram and tells
+    // the visitor the stages are inspectable.
+    const { container } = render(<PipelineDiagram />);
+    expect(container.textContent).not.toContain(
+      'a call is routed, understood, acted on by backend tools'
+    );
+    expect(container.textContent).not.toContain(
+      'resolved without a live agent whenever possible'
+    );
+    expect(
+      screen.getByText(
+        'Illustrative overview of the voice-agent pipeline behind the GEICO work above. Select any stage to inspect its highlights.'
+      )
+    ).not.toBeNull();
+  });
+
   it('inspects the default stage (AI Voice Agent) and swaps on selection', () => {
     render(<PipelineDiagram />);
     // Default panel: the voice agent's highlights.
