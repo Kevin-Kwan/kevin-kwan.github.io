@@ -115,26 +115,32 @@ body {
 /* Tech marquee: pause behavior (hover, button, off-screen) is handled in
    the TechMarquee component via animation-play-state. */
 
-/* Tech marquee edge fade: the fade zones are fixed-width (180px), not
-   percentages, so they are always wider than the widest chip (~145px for
-   "Amazon Connect" with its icon) at every viewport width — a chip is
-   fully faded out before any part of it crosses the container edge, and
-   no chip is ever shown half-cut. A percentage fade narrows on small
-   screens until the fade is shorter than a chip, which is why the 20%
-   mask still showed cut chips. */
+/* Tech marquee edge fade: the fade zones are min(180px, max(120px,
+   22%)) of the container, not a fixed 180px and not a bare percentage
+   — wide enough at desktop to exceed the widest chip (~145px for
+   "Amazon Connect" with its icon), while on narrow screens the zones
+   shrink instead of overlapping and dimming the middle, and the 120px
+   floor keeps the zone wider than most chips even at 390px, so a unit
+   sliced by the container edge is always near-zero opacity (a fixed
+   180px fade still showed half-cut chips: a chip sliding through a
+   linear fade stays legible for seconds while straddling the edge).
+   The mask is now only the base layer — TechMarquee also fades each
+   ticker unit as a whole in JS (smoothstep of the fraction of the unit
+   inside the opaque zone, same min(180px, max(120px, 22%)) geometry),
+   so no chip is ever shown sliced. */
 .marquee-fade {
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
-    #000 180px,
-    #000 calc(100% - 180px),
+    #000 min(180px, max(120px, 22%)),
+    #000 calc(100% - min(180px, max(120px, 22%))),
     transparent
   );
   mask-image: linear-gradient(
     to right,
     transparent,
-    #000 180px,
-    #000 calc(100% - 180px),
+    #000 min(180px, max(120px, 22%)),
+    #000 calc(100% - min(180px, max(120px, 22%))),
     transparent
   );
 }
