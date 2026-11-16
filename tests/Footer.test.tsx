@@ -6,7 +6,7 @@ describe('Footer', () => {
   it('renders the role line with real spaces (no concatenated text nodes)', () => {
     const { container } = render(<Footer />);
     expect(container.textContent).toContain(
-      'Software Engineer II at a major U.S. auto insurer'
+      'Software Engineer II at GEICO'
     );
   });
 

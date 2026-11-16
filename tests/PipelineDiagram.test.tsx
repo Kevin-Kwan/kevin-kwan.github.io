@@ -90,7 +90,7 @@ describe('PipelineDiagram', () => {
 
     fireEvent.keyDown(tablist, { key: 'Home' });
     expect(
-      screen.getByText('High call volume')
+      screen.getByText('Billing calls at scale')
     ).not.toBeNull();
   });
 
