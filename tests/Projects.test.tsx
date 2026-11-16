@@ -157,7 +157,7 @@ describe('Projects tiers', () => {
     ).toBe(true);
   });
 
-  it('renders the default view as Featured, then Production, then Archival, covering all 23 projects once', () => {
+  it('renders the default view as Featured, then Core Applications & Systems, then Archival, covering all 23 projects once', () => {
     render(<Projects />);
     const headings = screen
       .getAllByRole('heading', { level: 2 })
@@ -178,7 +178,7 @@ describe('Projects tiers', () => {
     }
   });
 
-  it('keeps the early learning work in the archival group, not the production group', () => {
+  it('keeps the early learning work in the archival group, not the core group', () => {
     render(<Projects />);
     // The section is identified by aria-labelledby; the id itself lives
     // on the heading inside it.
