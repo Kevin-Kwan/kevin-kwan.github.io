@@ -52,4 +52,30 @@ describe('Home hero', () => {
       screen.getByRole('link', { name: 'Connect on LinkedIn' })
     ).not.toBeNull();
   });
+
+  it('does not retell the pipeline sequence in prose — the pipeline widget is the one place it lives', () => {
+    // Iteration 19: the case-study strip under the pipeline (problem /
+    // decisions / capabilities, echoing the pipeline stages and the
+    // ExperienceCard highlights) is gone, and the pipeline caption no
+    // longer restates the call flow. The substance stays: the hero, the
+    // GEICO card, and the pipeline inspector still describe the work.
+    const { container } = render(<Home />);
+    expect(container.textContent).not.toContain(
+      'Customers calling GEICO about billing waited on hold'
+    );
+    expect(container.textContent).not.toContain(
+      'Fact-based journeys replaced a regex'
+    );
+    expect(container.textContent).not.toContain(
+      'Billing conversations resolved without a live agent whenever possible'
+    );
+    expect(container.textContent).not.toContain(
+      'a call is routed, understood, acted on by backend tools'
+    );
+    // The pipeline itself and the GEICO highlights remain.
+    expect(screen.getAllByText('AI Voice Agent').length).toBeGreaterThan(0);
+    expect(
+      screen.getByText(/Co-develop and operate the billing voice agent/)
+    ).not.toBeNull();
+  });
 });
