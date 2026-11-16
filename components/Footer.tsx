@@ -18,7 +18,7 @@ function Footer() {
               IVR.
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
-              Georgia Tech B.S. Computer Science, summa cum laude.
+              Georgia Tech B.S. in Computer Science.
             </p>
             <Waveform className="mt-5 h-6 w-44 opacity-70" />
           </div>
