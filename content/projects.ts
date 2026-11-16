@@ -5,6 +5,17 @@ export interface ProjectLink {
 
 export type ProjectCategory = 'ai' | 'web' | 'games' | 'coursework';
 
+/** Curated split for the default /projects view: the strong,
+    production-grade work leads; early learning work, coursework, and
+    coding-challenge solutions sit in the archival tier. Every project
+    is in exactly one tier. */
+export type ProjectTier = 'production' | 'archival';
+
+export const projectTierLabels: Record<ProjectTier, string> = {
+  production: 'Production & Advanced Systems',
+  archival: 'Archival & Academic Works',
+};
+
 export const projectCategoryLabels: Record<ProjectCategory, string> = {
   ai: 'AI & Bots',
   web: 'Web & Full-Stack',
@@ -15,6 +26,7 @@ export const projectCategoryLabels: Record<ProjectCategory, string> = {
 export interface Project {
   id: string;
   category: ProjectCategory;
+  tier: ProjectTier;
   name: string;
   description: string;
   /** One concise line (≤90 chars) for compact cards and the archive list. */
@@ -47,6 +59,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'cutiebot',
+        tier: 'production',
         category: 'ai',
         name: 'CutieBot (Discord Bot Application)',
         blurb:
@@ -63,6 +76,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'portfolio-website',
+        tier: 'production',
         category: 'web',
         name: 'Software Engineer Portfolio Website',
         blurb:
@@ -86,6 +100,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'premid-presence',
+        tier: 'production',
         category: 'web',
         name: 'PreMiD Presence Open-Source Contribution',
         blurb:
@@ -97,6 +112,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'drone-dispatch',
+        tier: 'production',
         category: 'web',
         name: 'Drone Dispatch Express Delivery System',
         blurb:
@@ -115,6 +131,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'companion',
+        tier: 'production',
         category: 'ai',
         name: 'CompAnIon (Learning Platform POC)',
         blurb:
@@ -131,6 +148,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'careers-portal',
+        tier: 'production',
         category: 'web',
         name: 'Company Careers Portal (Paid Client Project)',
         blurb:
@@ -142,6 +160,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'qc-testing',
+        tier: 'archival',
         category: 'coursework',
         name: 'Quality Control Testing (UCLA CS31 Project)',
         blurb:
@@ -154,6 +173,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'sales-tax-calculator',
+        tier: 'archival',
         category: 'coursework',
         name: 'Sales Tax Calculator (UCLA CS31 Project)',
         blurb:
@@ -166,6 +186,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'fishing-line-physics',
+        tier: 'production',
         category: 'games',
         name: 'Fishing Line Physics Implementation (Unity 3D)',
         blurb:
@@ -177,6 +198,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'dark-ascent',
+        tier: 'production',
         category: 'games',
         name: '\u201CDark Ascent\u201D (3D Platformer Game)',
         blurb:
@@ -192,6 +214,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'eyetracking-hci',
+        tier: 'production',
         category: 'ai',
         name: '\u201CEyetracking-Driven Human Computer Interaction\u201D Software',
         blurb:
@@ -207,6 +230,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'currency-converter',
+        tier: 'archival',
         category: 'web',
         name: 'Currency Converter (Learning React Project)',
         blurb:
@@ -219,6 +243,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'rps-app',
+        tier: 'archival',
         category: 'web',
         name: 'Rock, Paper, Scissors (Learning React Project)',
         blurb:
@@ -231,6 +256,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'project-blu',
+        tier: 'production',
         category: 'games',
         name: '\u201CProject Blu\u201D (2D Unity Game Suite)',
         blurb:
@@ -246,6 +272,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'windows-xp-website',
+        tier: 'production',
         category: 'web',
         name: 'Windows XP-themed Website/Socials Page',
         blurb:
@@ -258,6 +285,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'edunft',
+        tier: 'production',
         category: 'web',
         name: '\u201CeduNFT\u201D (HackGT 8 2021)',
         blurb:
@@ -270,6 +298,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'evade-and-deceive',
+        tier: 'production',
         category: 'games',
         name: '\u201CEvade and Deceive\u201D (Unity 3D Online Multiplayer Racing Game)',
         blurb:
@@ -285,6 +314,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'lets-surf',
+        tier: 'production',
         category: 'games',
         name: '\u201CLet\u2019s Surf\u201D (Unity 3D Movement Game)',
         blurb:
@@ -300,6 +330,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'noneuclidean-world',
+        tier: 'production',
         category: 'games',
         name: 'Non-Euclidean Geometry Implementation (Unity 3D)',
         blurb:
@@ -315,6 +346,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'arkanoid',
+        tier: 'archival',
         category: 'games',
         name: 'Arkanoid Game (Unity 2D)',
         blurb:
@@ -330,6 +362,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'triggering-insanity',
+        tier: 'archival',
         category: 'games',
         name: '\u201CTriggering Insanity\u201D (2D Platformer)',
         blurb:
@@ -352,6 +385,7 @@ export const projectGroups: ProjectGroup[] = [
     projects: [
       {
         id: 'leetcode',
+        tier: 'archival',
         category: 'coursework',
         name: 'My Personal LeetCode Solutions',
         blurb:
@@ -364,6 +398,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         id: 'hackerrank',
+        tier: 'archival',
         category: 'coursework',
         name: 'My Personal HackerRank Solutions',
         blurb:
