@@ -110,7 +110,7 @@ export const skillTiers: SkillTier[] = [
     skills: [
       { name: 'AWS', icon: 'aws', href: 'https://aws.amazon.com/' },
       {
-        name: 'Lambda',
+        name: 'AWS Lambda',
         icon: 'lambda',
         href: 'https://aws.amazon.com/lambda/',
       },

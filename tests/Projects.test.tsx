@@ -143,6 +143,46 @@ describe('Projects filter', () => {
   });
 });
 
+describe('Projects links', () => {
+  it('points the Eyetracking Colab demo at the repo that exists', () => {
+    const eyetracking = allProjects.find((p) => p.id === 'eyetracking-hci');
+    expect(eyetracking).toBeDefined();
+    // The GitHub link uses fixed_pytorch_mpiigaze_demo; the Colab link
+    // used the bare pytorch_mpiigaze_demo slug, which is not a repo
+    // under Kevin-Kwan — Colab 404s on it. Both must name the repo
+    // that exists, and demo.ipynb is on its master branch.
+    expect(eyetracking!.githubUrl).toBe(
+      'https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/'
+    );
+    expect(eyetracking!.demo?.url).toBe(
+      'https://colab.research.google.com/github/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/blob/master/demo.ipynb'
+    );
+  });
+
+  it('uses the lowercase repo name in every github.io URL', () => {
+    // GitHub redirects, but the footer source link and the Portfolio
+    // project card both used capital-K "Kevin-Kwan.github.io" as the
+    // repo name while the site URL is lowercase everywhere else.
+    for (const project of allProjects) {
+      if (project.githubUrl) {
+        expect(project.githubUrl).not.toContain('Kevin-Kwan.github.io');
+      }
+    }
+    const portfolio = allProjects.find((p) => p.id === 'portfolio-website');
+    expect(portfolio?.githubUrl).toBe(
+      'https://github.com/Kevin-Kwan/kevin-kwan.github.io'
+    );
+  });
+
+  it('names the Firestore database "Cloud Firestore" in tech tags, never bare "Firestore"', () => {
+    for (const project of allProjects) {
+      expect(project.tech).not.toContain('Firestore');
+    }
+    const careers = allProjects.find((p) => p.id === 'careers-portal');
+    expect(careers?.tech).toContain('Cloud Firestore');
+  });
+});
+
 describe('Projects tiers', () => {
   it('assigns every project to exactly one tier — 16 production, 8 archival', () => {
     expect(allProjects.length).toBe(24);

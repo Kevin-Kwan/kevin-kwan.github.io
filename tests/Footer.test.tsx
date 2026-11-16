@@ -26,4 +26,13 @@ describe('Footer', () => {
     // card; the footer must not duplicate it.
     expect(container.textContent).not.toContain('summa cum laude');
   });
+
+  it('links "View source" at the lowercase repo name', () => {
+    const { container } = render(<Footer />);
+    const link = container.querySelector('a[href*="github.com/Kevin-Kwan/"]');
+    expect(link).not.toBeNull();
+    expect(link!.getAttribute('href')).toBe(
+      'https://github.com/Kevin-Kwan/kevin-kwan.github.io'
+    );
+  });
 });

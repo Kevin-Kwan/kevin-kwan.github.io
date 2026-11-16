@@ -213,7 +213,7 @@ function Home() {
     <>
       <Seo
         title="Kevin Kwan | Software Engineer II — Conversational AI & IVR"
-        description="Kevin Kwan is a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science, summa cum laude."
+        description="Kevin Kwan is a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science with Highest Honors."
         path="/"
       />
       <Head>
@@ -326,6 +326,7 @@ function Home() {
           <ExperienceCard
             entry={insurerRole}
             highlights={insurerRole.shortHighlights}
+            showSummary={false}
             spotlight
             beam
             cta={{ href: '/experience', label: 'Full experience' }}

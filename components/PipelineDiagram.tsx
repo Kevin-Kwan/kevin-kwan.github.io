@@ -31,16 +31,26 @@ function subscribeToBelowLg(onStoreChange: () => void) {
   return () => query.removeEventListener('change', onStoreChange);
 }
 
-function getBelowLgSnapshot() {
+function getBelowLgSnapshot(): boolean {
   return window.matchMedia(BELOW_LG_MEDIA_QUERY).matches;
 }
 
-function getServerBelowLgSnapshot() {
-  return false;
+/**
+ * No orientation claim during server rendering: the static export is one
+ * HTML file served at every viewport, so a hardcoded 'horizontal' would
+ * lie about the vertical stepper phones actually render. The attribute is
+ * set by the media-query hook once the page hydrates instead.
+ */
+function getServerBelowLgSnapshot(): boolean | undefined {
+  return undefined;
 }
 
-/** True when the tab list is using its below-lg vertical layout. */
-function useVerticalTabList(): boolean {
+/**
+ * True when the tab list is using its below-lg vertical layout;
+ * undefined until hydration, while the static HTML must not claim an
+ * orientation it cannot know.
+ */
+function useVerticalTabList(): boolean | undefined {
   return useSyncExternalStore(
     subscribeToBelowLg,
     getBelowLgSnapshot,
@@ -184,7 +194,13 @@ function PipelineDiagram() {
       <div
         role="tablist"
         aria-label="Voice pipeline stages"
-        aria-orientation={vertical ? 'vertical' : 'horizontal'}
+        aria-orientation={
+          vertical === undefined
+            ? undefined
+            : vertical
+              ? 'vertical'
+              : 'horizontal'
+        }
         onKeyDown={onTabKeyDown}
         className="mt-6 flex flex-col items-center lg:flex-row lg:items-stretch"
       >
