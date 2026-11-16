@@ -116,7 +116,7 @@ function Contact() {
           as="h1"
           eyebrow="Contact"
           title="Feel Free to Contact Me!"
-          description="If you would like to reach out to me, leave feedback, or report a bug on my website, please fill out the form below with your name, email, and a message. I'll get back to you as soon as possible!"
+          description="Questions, feedback, or a bug to report — send a message below and I'll get back to you."
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">

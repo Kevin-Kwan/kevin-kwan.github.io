@@ -11,9 +11,10 @@ import { resumeRequestUrl, site, socials } from '../content/site';
 
 /**
  * Résumé page. The résumé itself is not hosted on this site — visitors
- * email Kevin to request a copy. The page carries a compact summary
- * (roles, education, top skills) above the request gate, not a full
- * duplicate of the Experience, Education, and Skills pages.
+ * email Kevin to request a copy. The request action comes first, above
+ * the compact summary (roles, education, top skills), so a visitor can
+ * act on it without scrolling past the whole summary; the full detail
+ * lives on /experience, /education, and /skills.
  */
 function Resume() {
   return (
@@ -31,10 +32,31 @@ function Resume() {
           description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
         />
 
-        {/* At-a-glance summary — roles, education, top skills, and the
-            single request action. The full detail lives on /experience,
-            /education, and /skills. */}
-        <div className="mt-10 rounded-2xl border border-white/10 bg-surface p-6">
+        {/* Request gate — first thing on the page, above the summary,
+            so the résumé can be requested without scrolling past it. */}
+        <div className="mt-10 flex flex-col items-start gap-3">
+          <a
+            href={resumeRequestUrl}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3.5 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+          >
+            <EnvelopeIcon className="h-5 w-5" aria-hidden="true" />
+            Request résumé
+          </a>
+          <p className="text-sm text-zinc-400">
+            Email{' '}
+            <a
+              href={resumeRequestUrl}
+              className="text-cyan-300 underline decoration-cyan-800 underline-offset-4 transition-colors hover:text-cyan-200"
+            >
+              {site.contactEmail}
+            </a>{' '}
+            and Kevin will send you a copy.
+          </p>
+        </div>
+
+        {/* At-a-glance summary — roles, education, and top skills. The
+            full detail lives on /experience, /education, and /skills. */}
+        <div className="mt-8 rounded-2xl border border-white/10 bg-surface p-6">
           <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
             At a glance
           </h2>
@@ -115,26 +137,6 @@ function Resume() {
               <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               LinkedIn
             </a>
-          </div>
-
-          <div className="mt-7 flex flex-col gap-3">
-            <a
-              href={resumeRequestUrl}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3.5 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
-            >
-              <EnvelopeIcon className="h-5 w-5" aria-hidden="true" />
-              Request résumé
-            </a>
-            <p className="text-center text-sm text-zinc-400">
-              Email{' '}
-              <a
-                href={resumeRequestUrl}
-                className="text-cyan-300 underline decoration-cyan-800 underline-offset-4 transition-colors hover:text-cyan-200"
-              >
-                {site.contactEmail}
-              </a>{' '}
-              and Kevin will send you a copy.
-            </p>
           </div>
         </div>
       </div>
