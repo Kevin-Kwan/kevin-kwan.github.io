@@ -48,7 +48,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <text x="80" y="248" font-family="Inter, Helvetica, Arial, sans-serif" font-size="118" font-weight="700" fill="#F4F4F5">Kevin</text>
   <text x="470" y="248" font-family="Inter, Helvetica, Arial, sans-serif" font-size="118" font-weight="700" fill="url(#accent)">Kwan</text>
   <text x="80" y="322" font-family="Inter, Helvetica, Arial, sans-serif" font-size="38" fill="#D4D4D8">Conversational AI &amp; IVR — Amazon Connect · AWS · Sierra AI</text>
-  <text x="80" y="382" font-family="Inter, Helvetica, Arial, sans-serif" font-size="30" fill="#A1A1AA">Major U.S. Auto Insurer · Georgia Tech B.S. Computer Science, summa cum laude</text>
+  <text x="80" y="382" font-family="Inter, Helvetica, Arial, sans-serif" font-size="30" fill="#A1A1AA">GEICO · Georgia Tech B.S. Computer Science with Highest Honors</text>
 
   ${barRects}
 
