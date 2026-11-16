@@ -53,7 +53,6 @@ export const education: EducationEntry[] = [
       alt: 'Gwinnett Technical College logo',
       tileClassName: 'bg-[#002d74]',
       imgClassName: 'p-1.5',
-      wide: true,
     },
     gpa: '4.0',
     details: [],
