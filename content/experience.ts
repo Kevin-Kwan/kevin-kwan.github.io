@@ -56,7 +56,7 @@ export const experience: ExperienceEntry[] = [
       {
         title: 'AI Billing Voice Agent',
         points: [
-          'Co-develop and operate the billing voice agent (Sierra AI, in production): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — resolving billing conversations end to end without a live-agent transfer whenever possible, as volume scaled sharply.',
+          'Co-develop and operate the billing voice agent (Sierra AI, in production): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish, including handoff to a live agent when a conversation needs one.',
           'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation. Shipped Pause AutoPay as a net-new capability, plus rescheduling and informational answers across billing topics.',
           'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys, and built the simulation-based regression quality gates that keep its releases safe.',
         ],
@@ -92,7 +92,7 @@ export const experience: ExperienceEntry[] = [
       { value: 'Cloud', label: 'Lambda, DynamoDB, Lex, Terraform' },
     ],
     shortHighlights: [
-      'Co-develop and operate the billing voice agent (Sierra AI) in English and Spanish, resolving billing conversations end to end without a live-agent transfer whenever possible.',
+      'Co-develop and operate the billing voice agent (Sierra AI) in English and Spanish, handling payments, rescheduling, AutoPay, and billing questions, including handoff to a live agent when needed.',
       'Delivered the agent’s end-to-end make-payment flow, plus Pause AutoPay, rescheduling, and informational answers across billing topics.',
       'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys, and built the simulation-based regression quality gates that keep its releases safe.',
     ],
@@ -154,24 +154,5 @@ export const experience: ExperienceEntry[] = [
         url: 'https://avtcseries.org/about-the-ecocar-ev-challenge/',
       },
     ],
-  },
-  {
-    id: 'ncr-voyix',
-    company: 'NCR Corporation',
-    title: 'Software Engineer Intern',
-    dateRange: 'July 2019 – August 2019',
-    location: 'Atlanta, GA',
-    logo: {
-      src: '/logos/ncr.svg',
-      alt: 'NCR Corporation logo',
-      imgClassName: 'p-2',
-    },
-    summary:
-      'Developed a machine learning program using MATLAB — a language and environment that was completely new to me — as a high school intern.',
-    highlights: [
-      'Trained and fine-tuned a neural network using an architecture like AlexNet on a dataset of images where each image was associated with a person\u2019s name, using live footage from a computer webcam to correctly identify people\u2019s faces — a classification problem involving elements of facial recognition.',
-      'Learned the basics of MATLAB in just a week, relying heavily on documentation to aid development of the program.',
-    ],
-    links: [{ label: 'Company Website', url: 'https://www.ncr.com/' }],
   },
 ];
