@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { renderToString } from 'react-dom/server';
 import { fireEvent, render, screen } from '@testing-library/react';
 import PipelineDiagram from '../components/PipelineDiagram';
 
@@ -107,6 +108,12 @@ describe('PipelineDiagram', () => {
       expect(tab.className).not.toContain('max-w-xs');
       expect(tab.parentElement?.className).toContain('w-full');
     });
+  });
+
+  it('omits aria-orientation from the server-rendered HTML — one static file cannot claim the orientation for every viewport', () => {
+    const html = renderToString(<PipelineDiagram />);
+    expect(html).not.toContain('aria-orientation');
+    // The media-query hook sets the correct value once hydrated instead.
   });
 
   it('uses vertical orientation and up/down keys in the stacked layout', () => {

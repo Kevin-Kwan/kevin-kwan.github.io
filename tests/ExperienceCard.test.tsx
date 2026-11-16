@@ -48,6 +48,30 @@ describe('ExperienceCard', () => {
     }
   });
 
+  it('capitalizes every metric-strip sub-label', () => {
+    // The first two pills were lowercase ("billing agent…",
+    // "payment journeys…") while the other two were capitalized.
+    for (const metric of insurer!.metricStrip ?? []) {
+      expect(metric.label[0]).toBe(metric.label[0].toUpperCase());
+    }
+    render(<ExperienceCard entry={insurer!} />);
+    expect(
+      screen.getByText('Billing agent in production, English & Spanish')
+    ).not.toBeNull();
+    expect(
+      screen.getByText('Payment journeys, incl. Pause AutoPay')
+    ).not.toBeNull();
+  });
+
+  it('shows the summary by default and hides it when showSummary is false', () => {
+    const { rerender } = render(<ExperienceCard entry={insurer!} />);
+    expect(screen.getByText(insurer!.summary)).not.toBeNull();
+    // The home card hides it — the hero already states the role,
+    // employer, and ownership, so it only repeats them.
+    rerender(<ExperienceCard entry={insurer!} showSummary={false} />);
+    expect(screen.queryByText(insurer!.summary)).toBeNull();
+  });
+
   it('omits the company tagline when an entry does not provide one', () => {
     expect(untaggedEntry.companyTagline).toBeUndefined();
     render(<ExperienceCard entry={untaggedEntry} />);
