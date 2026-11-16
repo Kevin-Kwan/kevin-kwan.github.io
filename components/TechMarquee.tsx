@@ -83,7 +83,10 @@ function MarqueeHalf({ ariaHidden = false }: { ariaHidden?: boolean }) {
         const Icon = SKILL_ICONS[skill];
         return (
           <Fragment key={skill}>
-            <span className="flex items-center gap-2 whitespace-nowrap">
+            <span
+              data-marquee-unit
+              className="flex items-center gap-2 whitespace-nowrap"
+            >
               {Icon && (
                 <Icon className="h-4 w-4 text-zinc-400" aria-hidden="true" />
               )}
@@ -91,6 +94,7 @@ function MarqueeHalf({ ariaHidden = false }: { ariaHidden?: boolean }) {
             </span>
             <span
               aria-hidden="true"
+              data-marquee-unit
               className="h-1.5 w-1.5 shrink-0 rotate-45 bg-gradient-to-br from-violet-400 to-cyan-400"
             />
           </Fragment>
@@ -116,6 +120,8 @@ function TechMarquee() {
   const mounted = useMounted();
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
+  const fadeRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [userPaused, setUserPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [inView, setInView] = useState(true);
@@ -131,6 +137,70 @@ function TechMarquee() {
     observer.observe(el);
     return () => observer.disconnect();
   }, [mounted, reduceMotion]);
+
+  const paused = userPaused || hovered || !inView;
+
+  /**
+   * Per-unit edge fade. The CSS mask alone cannot keep a chip from
+   * looking half-cut: a 145px chip sliding through a 180px linear fade
+   * stays legible for ~3s while straddling the container edge. So each
+   * ticker unit (chip or diamond, marked data-marquee-unit) fades as a
+   * whole instead: its opacity is a smoothstep of the fraction of its
+   * width inside the fully-opaque zone, so it is never shown sliced —
+   * it fades in and out as one unit, and a unit barely inside the zone
+   * stays effectively invisible instead of showing a faint fragment at
+   * the edge. The fade width matches `.marquee-fade` in globals.css
+   * (min(180px, max(120px, 22%)) of the container — the 120px floor
+   * keeps the zone wider than most chips even on narrow screens, so a
+   * unit sliced by the container edge is always near-zero opacity);
+   * the mask stays as the base layer and as the fallback if this loop
+   * ever stalls. The loop runs only while the ticker is mounted,
+   * moving, and on screen; when paused the opacities freeze with the
+   * animation, which is the correct frame for the frozen positions.
+   * NOTE: this effect must stay above the early return below — hooks
+   * cannot be called conditionally, and the static branch returns
+   * before it.
+   */
+  useEffect(() => {
+    if (!mounted || reduceMotion || paused) return;
+    const track = trackRef.current;
+    const fadeEl = fadeRef.current;
+    if (!track || !fadeEl || typeof requestAnimationFrame === 'undefined') {
+      return;
+    }
+    let raf = 0;
+    let stopped = false;
+    const update = () => {
+      if (stopped) return;
+      const cRect = fadeEl.getBoundingClientRect();
+      const fade = Math.min(180, Math.max(120, cRect.width * 0.22));
+      const safeLeft = cRect.left + fade;
+      const safeRight = cRect.right - fade;
+      track.querySelectorAll('[data-marquee-unit]').forEach((unit) => {
+        const el = unit as HTMLElement;
+        const r = el.getBoundingClientRect();
+        if (r.width <= 0) {
+          el.style.opacity = '';
+          return;
+        }
+        const inside = Math.max(
+          0,
+          Math.min(r.right, safeRight) - Math.max(r.left, safeLeft)
+        );
+        const frac = Math.min(1, inside / r.width);
+        // Smoothstep the fraction: a unit barely inside the zone stays
+        // effectively invisible (frac 0.12 -> opacity ~0.04) instead of
+        // showing a faintly legible fragment at the container edge.
+        el.style.opacity = String(frac * frac * (3 - 2 * frac));
+      });
+      raf = requestAnimationFrame(update);
+    };
+    raf = requestAnimationFrame(update);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+    };
+  }, [mounted, reduceMotion, paused]);
 
   if (!mounted || reduceMotion) {
     return (
@@ -148,8 +218,6 @@ function TechMarquee() {
     );
   }
 
-  const paused = userPaused || hovered || !inView;
-
   return (
     <div
       ref={containerRef}
@@ -159,8 +227,9 @@ function TechMarquee() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="marquee-fade overflow-hidden py-6">
+      <div ref={fadeRef} className="marquee-fade overflow-hidden py-6">
         <div
+          ref={trackRef}
           className="animate-marquee flex w-max font-mono text-sm text-zinc-400 will-change-transform"
           style={{ animationPlayState: paused ? 'paused' : 'running' }}
         >

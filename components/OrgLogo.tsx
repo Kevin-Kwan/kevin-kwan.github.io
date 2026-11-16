@@ -7,12 +7,6 @@ export interface OrgLogoSpec {
   tileClassName?: string;
   /** Per-logo padding tuning so wide/portrait marks sit evenly in the tile. */
   imgClassName?: string;
-  /**
-   * Wide horizontal lockups (e.g. Gwinnett Tech's wordmark, ~2.8:1) get a
-   * wider tile at the same height, so the mark stays legible instead of
-   * shrinking to a thin strip inside the square tile.
-   */
-  wide?: boolean;
 }
 
 interface OrgLogoProps {
@@ -21,17 +15,21 @@ interface OrgLogoProps {
 }
 
 /**
- * Real organization logo in a fixed h-14 w-14 rounded tile, replacing the old
- * letter monograms. Most brand marks are dark-on-transparent, so the default
- * tile is a light neutral field; individual logos can override the tile
- * background (e.g. Gwinnett Tech's white wordmark sits on its brand navy).
+ * Real organization logo in a fixed h-14 w-14 square tile, replacing the
+ * old letter monograms. Every logo is contained inside the square tile
+ * (object-contain with padding) and must never bleed out of it — wide
+ * horizontal lockups render as a smaller strip inside the square, which
+ * is the required fit. Most brand marks are dark-on-transparent, so the
+ * default tile is a light neutral field; individual logos can override
+ * the tile background (e.g. Gwinnett Tech's white wordmark sits on its
+ * brand navy).
  */
 function OrgLogo({ logo, className = '' }: OrgLogoProps) {
   return (
     <div
-      className={`flex h-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 ${
-        logo.wide ? 'w-28' : 'w-14'
-      } ${logo.tileClassName ?? 'bg-white/95'} ${className}`}
+      className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 ${
+        logo.tileClassName ?? 'bg-white/95'
+      } ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- static export; plain img keeps local SVG/PNG logos unprocessed */}
       <img
