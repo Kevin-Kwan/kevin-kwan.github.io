@@ -13,7 +13,7 @@ function Education() {
     <>
       <Seo
         title="Education | Kevin Kwan"
-        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA, summa cum laude) from the Georgia Institute of Technology, plus Gwinnett Technical College and the Gwinnett School of Mathematics, Science, and Technology."
+        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA) from the Georgia Institute of Technology, plus Gwinnett Technical College and the Gwinnett School of Mathematics, Science, and Technology."
         path="/education"
       />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">

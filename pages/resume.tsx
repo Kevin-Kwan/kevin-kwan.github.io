@@ -20,7 +20,7 @@ function Resume() {
     <>
       <Seo
         title="Résumé | Kevin Kwan"
-        description="Résumé of Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO, Georgia Tech B.S. Computer Science, summa cum laude. Available on request."
+        description="Résumé of Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO, Georgia Tech B.S. Computer Science with Highest Honors. Available on request."
         path="/resume"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
@@ -128,7 +128,7 @@ function Resume() {
             <p className="text-center text-sm text-zinc-400">
               Email{' '}
               <a
-                href={`mailto:${site.contactEmail}`}
+                href={resumeRequestUrl}
                 className="text-cyan-300 underline decoration-cyan-800 underline-offset-4 transition-colors hover:text-cyan-200"
               >
                 {site.contactEmail}
