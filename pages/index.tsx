@@ -474,7 +474,7 @@ function Home() {
         <SectionHeadingRow
           eyebrow="Toolbox"
           title="Core skills"
-          description="Grouped by area — see the skills page for the full inventory with production evidence for each."
+          description="Grouped by area — see the skills page for the full inventory."
           linkHref="/skills"
           linkLabel="All skills"
         />
