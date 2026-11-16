@@ -4,27 +4,27 @@ import AnimatedMetric from '../components/AnimatedMetric';
 import { metrics, type Metric } from '../content/profile';
 
 describe('AnimatedMetric', () => {
-  it('renders the final formatted value, not a mid-animation number', () => {
-    const metric = metrics.find((m) => m.label === 'Containment');
+  it('renders the capability word verbatim', () => {
+    const metric = metrics.find((m) => m.label === 'Billing agent');
     expect(metric).toBeDefined();
     const { container } = render(<AnimatedMetric metric={metric!} />);
-    expect(container.textContent).toBe('High');
+    expect(container.textContent).toBe('Voice AI');
   });
 
-  it('renders the content value verbatim when there is no count-up target', () => {
+  it('renders every home-band metric value verbatim', () => {
+    for (const metric of metrics) {
+      const { container } = render(<AnimatedMetric metric={metric} />);
+      expect(container.textContent).toBe(metric.value);
+    }
+  });
+
+  it('renders a plain metric definition verbatim', () => {
     const metric: Metric = {
-      value: 'Live',
-      label: 'Billing voice agent',
-      detail: 'Payments, rescheduling and AutoPay',
+      value: 'IVR',
+      label: 'Amazon Connect',
+      detail: 'Billing and Proof of Coverage IVRs',
     };
     const { container } = render(<AnimatedMetric metric={metric} />);
-    expect(container.textContent).toBe('Live');
-  });
-
-  it('applies prefix/suffix formatting from the metric definition', () => {
-    const metric = metrics.find((m) => m.label === 'Billing voice agent');
-    expect(metric).toBeDefined();
-    const { container } = render(<AnimatedMetric metric={metric!} />);
-    expect(container.textContent).toBe('Live');
+    expect(container.textContent).toBe('IVR');
   });
 });

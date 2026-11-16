@@ -29,7 +29,7 @@ function Skills() {
               >
                 {category.title}
               </h2>
-              <p className="mt-1.5 text-sm text-zinc-400">{category.blurb}</p>
+              <p className="mt-1.5 text-sm text-zinc-300">{category.blurb}</p>
               <ul className="mt-5 flex flex-wrap gap-2.5">
                 {category.skills.map((skill, i) => (
                   <Reveal
@@ -43,23 +43,6 @@ function Skills() {
                   </Reveal>
                 ))}
               </ul>
-              {category.skills.some((skill) => skill.evidence) && (
-                <dl className="mt-4 space-y-1.5">
-                  {category.skills
-                    .filter((skill) => skill.evidence)
-                    .map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="flex flex-wrap items-baseline gap-x-2 text-xs"
-                      >
-                        <dt className="font-medium text-zinc-200">
-                          {skill.name}
-                        </dt>
-                        <dd className="text-zinc-400">{skill.evidence}</dd>
-                      </div>
-                    ))}
-                </dl>
-              )}
             </section>
           ))}
         </div>

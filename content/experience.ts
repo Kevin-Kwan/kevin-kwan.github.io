@@ -28,7 +28,7 @@ export interface ExperienceEntry {
   /**
    * Flat bullet list for the plain card view. Omit when `sections` is
    * present — the sectioned view renders those points instead, and a
-   * second copy of the same bullets only drifts (the insurer's did, verbatim).
+   * second copy of the same bullets only drifts (GEICO's did, verbatim).
    */
   highlights?: string[];
   /** Highlights grouped into workstream sections (full /experience view). */
@@ -44,20 +44,20 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
-    id: 'major-insurer',
-    company: 'Major U.S. Auto Insurer',
+    id: 'geico',
+    company: 'GEICO',
     companyTagline: 'Insurance technology',
     title: 'Software Engineer II — Conversational AI & IVR',
     dateRange: 'July 2024 – Present',
     location: 'Atlanta, GA (Remote)',
     summary:
-      'Conversational AI / IVR engineer on a major U.S. auto insurer’s customer-service automation platforms. Joined as a Software Engineer I and promoted to Software Engineer II. Largest single contributor to the AI billing voice agent, alongside the Amazon Connect platform work.',
+      'Conversational AI / IVR engineer on GEICO’s customer-service automation platforms. Joined as a Software Engineer I and promoted to Software Engineer II. Drove core implementation architecture and primary feature development for the AI billing voice agent, alongside the Amazon Connect platform work.',
     sections: [
       {
         title: 'AI Billing Voice Agent',
         points: [
-          'Co-develop and operate the billing voice agent (Sierra AI, in production): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — containing a high share of conversations without a live-agent transfer as volume scaled sharply.',
-          'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation. Shipped Pause AutoPay as a net-new capability, plus rescheduling and informational answers at high tool success.',
+          'Co-develop and operate the billing voice agent (Sierra AI, in production): handling payments, rescheduling, AutoPay, and billing questions in English and Spanish — resolving billing conversations end to end without a live-agent transfer whenever possible, as volume scaled sharply.',
+          'Delivered the agent’s end-to-end make-payment flow — saved payment methods, scheduled payments, declined- and expired-card recovery, and payments on policies pending cancellation. Shipped Pause AutoPay as a net-new capability, plus rescheduling and informational answers across billing topics.',
           'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys, and built the simulation-based regression quality gates that keep its releases safe.',
         ],
       },
@@ -78,19 +78,22 @@ export const experience: ExperienceEntry[] = [
     ],
     metricStrip: [
       {
-        value: 'High containment',
-        label: 'billing conversations resolved without a live agent',
+        value: 'Voice AI',
+        label: 'billing agent in production, English & Spanish',
       },
-      { value: 'Bilingual', label: 'English & Spanish voice agent' },
       {
         value: 'End-to-end',
         label: 'payment journeys, incl. Pause AutoPay',
       },
-      { value: 'Production', label: 'Amazon Connect IVR platforms' },
+      {
+        value: 'Amazon Connect',
+        label: 'IVR platforms, migrated from Cisco UCCE + Nuance',
+      },
+      { value: 'Cloud', label: 'Lambda, DynamoDB, Lex, Terraform' },
     ],
     shortHighlights: [
-      'Co-develop and operate the billing voice agent (Sierra AI) in English and Spanish, containing a high share of conversations without a live-agent transfer.',
-      'Delivered the agent’s end-to-end make-payment flow, plus Pause AutoPay, rescheduling, and informational answers at high tool success.',
+      'Co-develop and operate the billing voice agent (Sierra AI) in English and Spanish, resolving billing conversations end to end without a live-agent transfer whenever possible.',
+      'Delivered the agent’s end-to-end make-payment flow, plus Pause AutoPay, rescheduling, and informational answers across billing topics.',
       'Re-architected the billing agent from regex- and classifier-based routing to fact-based journeys, and built the simulation-based regression quality gates that keep its releases safe.',
     ],
     links: [],
@@ -113,9 +116,8 @@ export const experience: ExperienceEntry[] = [
       'Engineered a WhatsApp AI chatbot using Google Vertex AI\u2019s PaLM LLM, LangChain, MongoDB, and APIs, giving tourists engaging conversations, accurate and up-to-date answers, live data, and recommendations for Atlanta attractions (World of Coca-Cola, Zoo Atlanta, Georgia Aquarium), hotels (like Marriott\u00AE), and restaurants.',
       'Architected RESTful APIs with Flask and Python to bridge the frontend team and backend resources such as the MongoDB databases and the AI chatbot program, enabling the team to generate and retrieve responses effectively.',
       'Automated the CI/CD (DevOps) pipeline through GitLab and Docker; deployed frontend applications on Google Firebase Hosting and backend applications on Google App Engine.',
-      'Improved the accuracy of the bot\u2019s responses up to 91% through rigorous testing and validation.',
+      'Improved the accuracy of the bot’s responses through rigorous testing and validation.',
       'Assembled an interactive map website to serve chatbot options and venue information to users.',
-      'Our efforts were met with great satisfaction from our client and coaches — we outperformed the team in Boston, as well as all the other teams in the Atlanta office.',
     ],
     links: [
       { label: 'Company Website', url: 'https://www.publicissapient.com/' },

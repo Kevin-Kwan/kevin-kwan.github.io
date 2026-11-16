@@ -9,7 +9,7 @@ function Education() {
     <>
       <Seo
         title="Education | Kevin Kwan"
-        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA, summa cum laude) from the Georgia Institute of Technology, plus Gwinnett Technical College and GSMST."
+        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA, summa cum laude) from the Georgia Institute of Technology, plus Gwinnett Technical College."
         path="/education"
       />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
@@ -17,7 +17,7 @@ function Education() {
           as="h1"
           eyebrow="Background"
           title="Education"
-          description="Degrees, certificates, and honors — a Georgia Tech B.S. in Computer Science, dual-enrollment coursework, and a STEM magnet high school."
+          description="Degrees, certificates, and honors — a Georgia Tech B.S. in Computer Science and dual-enrollment coursework."
         />
         <div className="mt-12 space-y-6">
           {education.map((entry, i) => (

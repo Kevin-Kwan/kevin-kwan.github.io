@@ -95,6 +95,14 @@ function ProjectCard({
     );
   }
 
+  // Primary destination for the card title link: the code repo when
+  // there is one, otherwise the live demo — so every featured card has a
+  // direct "view the work" link at the top, not only in the footer row.
+  const primaryUrl = project.githubUrl ?? project.demo?.url;
+  const primaryLabel = project.githubUrl
+    ? 'View code on GitHub'
+    : 'View live project';
+
   const body: ReactNode = (
     <>
       {project.image && (
@@ -109,7 +117,20 @@ function ProjectCard({
         </div>
       )}
       <h3 className="text-lg font-semibold leading-snug tracking-tight text-zinc-50">
-        {project.name}
+        {primaryUrl ? (
+          <a
+            href={primaryUrl}
+            {...(primaryUrl.startsWith('http')
+              ? { target: '_blank', rel: 'noopener noreferrer' }
+              : {})}
+            aria-label={`${project.name} — ${primaryLabel}`}
+            className="transition-colors hover:text-cyan-200 hover:underline hover:decoration-cyan-400/60 hover:underline-offset-4"
+          >
+            {project.name}
+          </a>
+        ) : (
+          project.name
+        )}
       </h3>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">
         {project.description}

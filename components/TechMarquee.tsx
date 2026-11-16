@@ -159,9 +159,9 @@ function TechMarquee() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      <div className="overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
         <div
-          className="animate-marquee flex w-max font-mono text-sm text-zinc-400"
+          className="animate-marquee flex w-max font-mono text-sm text-zinc-400 will-change-transform"
           style={{ animationPlayState: paused ? 'paused' : 'running' }}
         >
           <MarqueeHalf />

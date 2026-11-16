@@ -54,7 +54,7 @@ const NODES: PipelineNode[] = [
     sub: 'Customer call',
     Icon: PhoneIcon,
     metrics: [
-      'High call volume',
+      'Billing calls at scale',
       'English and Spanish',
       'Billing questions, payments, and rescheduling',
     ],
@@ -75,8 +75,8 @@ const NODES: PipelineNode[] = [
     Icon: ChatBubbleLeftRightIcon,
     metrics: [
       'Billing conversations at scale',
-      'High containment — most resolved without a live agent',
-      'Informational answers at high tool success',
+      'Resolves most billing conversations without a live agent',
+      'Informational answers across billing topics',
     ],
   },
   {
@@ -222,7 +222,7 @@ function PipelineDiagram() {
                 {node.sub}
               </p>
             </button>
-            {i < NODES.length - 1 && (
+            {i < NODES.length - 1 ? (
               <>
                 {/* Vertical connector (stacked layout, below lg) */}
                 <div
@@ -239,12 +239,20 @@ function PipelineDiagram() {
                   <ConnectorPulse index={i} />
                 </div>
               </>
+            ) : (
+              // Invisible spacer matching the connector width, so the final
+              // stage button is exactly as wide as the others (each earlier
+              // button shares its row with a flex-1 connector).
+              <div
+                aria-hidden="true"
+                className="relative mx-1 hidden h-[2px] min-w-5 flex-1 self-center lg:block"
+              />
             )}
           </div>
         ))}
       </div>
 
-      {/* Stage inspector — production figures for the selected stage. */}
+      {/* Stage inspector — highlights for the selected stage. */}
       <div
         role="tabpanel"
         id="pipeline-inspector"
@@ -272,7 +280,7 @@ function PipelineDiagram() {
       </div>
 
       <figcaption className="mt-6 text-center text-sm leading-relaxed text-zinc-400">
-        Illustrative overview of the voice-agent pipeline behind the insurer
+        Illustrative overview of the voice-agent pipeline behind the GEICO
         work above — a call is routed, understood, acted on by backend
         tools, and resolved without a live agent whenever possible. Select
         any stage to inspect its highlights.

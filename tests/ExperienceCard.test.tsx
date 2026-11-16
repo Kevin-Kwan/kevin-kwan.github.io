@@ -3,23 +3,23 @@ import { render, screen } from '@testing-library/react';
 import ExperienceCard from '../components/ExperienceCard';
 import { experience } from '../content/experience';
 
-const insurer = experience.find((entry) => entry.id === 'major-insurer');
+const insurer = experience.find((entry) => entry.id === 'geico');
 const ncr = experience.find((entry) => entry.id === 'ncr-voyix');
 
 describe('ExperienceCard', () => {
-  it('keeps the heading hierarchy: company h3, job title h4, workstreams h5', () => {
+  it('keeps the heading hierarchy: company h2, job title h3, workstreams h4', () => {
     expect(insurer).toBeDefined();
     render(<ExperienceCard entry={insurer!} />);
 
     expect(
-      screen.getByRole('heading', { level: 3, name: /Major U.S. Auto Insurer/ })
+      screen.getByRole('heading', { level: 2, name: /GEICO/ })
     ).not.toBeNull();
     expect(
-      screen.getByRole('heading', { level: 4, name: /Software Engineer II/ })
+      screen.getByRole('heading', { level: 3, name: /Software Engineer II/ })
     ).not.toBeNull();
     for (const section of insurer!.sections ?? []) {
       expect(
-        screen.getByRole('heading', { level: 5, name: section.title })
+        screen.getByRole('heading', { level: 4, name: section.title })
       ).not.toBeNull();
     }
   });
@@ -43,7 +43,7 @@ describe('ExperienceCard', () => {
     render(<ExperienceCard entry={ncr!} />);
 
     expect(
-      screen.getByRole('heading', { level: 3, name: 'NCR Corporation' })
+      screen.getByRole('heading', { level: 2, name: 'NCR Corporation' })
     ).not.toBeNull();
   });
 });

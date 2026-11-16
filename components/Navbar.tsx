@@ -21,7 +21,7 @@ function Navbar() {
 
   useEffect(() => {
     function onResize() {
-      if (window.innerWidth >= 768) setMenuOpen(false);
+      if (window.innerWidth >= 1024) setMenuOpen(false);
     }
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
@@ -47,12 +47,12 @@ function Navbar() {
             className="rounded-md"
             priority
           />
-          <span className="text-[15px] font-semibold tracking-tight text-zinc-50">
+          <span className="whitespace-nowrap text-[15px] font-semibold tracking-tight text-zinc-50">
             Kevin Kwan
           </span>
         </Link>
 
-        <ul className="ml-6 hidden items-center gap-1 md:flex">
+        <ul className="ml-6 hidden items-center gap-1 lg:flex">
           {navLinks.slice(1, -1).map((link) => {
             const active = router.pathname === link.href;
             return (
@@ -79,7 +79,7 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 md:block"
+            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 lg:block"
           >
             <FaGithub className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -88,14 +88,14 @@ function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 md:block"
+            className="hidden rounded-md p-2.5 text-zinc-400 transition-colors duration-200 hover:text-zinc-50 lg:block"
           >
             <FaLinkedin className="h-5 w-5" aria-hidden="true" />
           </a>
           <Link
             href="/contact"
             aria-current={router.pathname === '/contact' ? 'page' : undefined}
-            className="ml-1 hidden rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:inline-flex"
+            className="ml-1 hidden rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 lg:inline-flex"
           >
             Contact
           </Link>
@@ -105,7 +105,7 @@ function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="rounded-md p-3 text-zinc-200 transition-colors hover:text-white md:hidden"
+            className="rounded-md p-3 text-zinc-200 transition-colors hover:text-white lg:hidden"
           >
             {menuOpen ? (
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -120,7 +120,7 @@ function Navbar() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-canvas/95 px-4 pb-5 pt-2 backdrop-blur-md md:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-canvas/95 px-4 pb-5 pt-2 backdrop-blur-md lg:hidden"
         >
           <ul className="space-y-1">
             {navLinks.map((link) => {

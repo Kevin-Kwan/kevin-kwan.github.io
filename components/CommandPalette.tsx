@@ -25,7 +25,7 @@ interface PaletteAction {
 /**
  * Site-wide command palette, opened with Cmd+K / Ctrl+K from any page.
  * Actions jump to pages, open /projects with a category filter applied,
- * download the résumé, or copy the contact email. Hand-rolled on the
+ * request the résumé, or copy the contact email. Hand-rolled on the
  * existing stack — no extra dependency — with listbox semantics: the
  * input keeps focus and drives the active option via aria-activedescendant.
  */

@@ -108,7 +108,7 @@ function Contact() {
     <>
       <Seo
         title="Contact | Kevin Kwan"
-        description="Get in touch with Kevin Kwan — Software Engineer II (conversational AI & IVR) at a major U.S. auto insurer. Send a message, email directly, or connect on LinkedIn and GitHub."
+        description="Get in touch with Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO. Send a message, email directly, or connect on LinkedIn and GitHub."
         path="/contact"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">

@@ -216,7 +216,7 @@ function Home() {
     <>
       <Seo
         title="Kevin Kwan | Software Engineer II — Conversational AI & IVR"
-        description="Kevin Kwan is a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for a major U.S. auto insurer. Georgia Tech B.S. Computer Science, summa cum laude."
+        description="Kevin Kwan is a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science, summa cum laude."
         path="/"
       />
       <Head>
@@ -339,12 +339,12 @@ function Home() {
       {/* Core-skills ticker */}
       <TechMarquee />
 
-      {/* Impact metrics */}
-      <section aria-label="Impact metrics" className="border-y border-white/5 bg-white/[0.015]">
+      {/* Production capabilities */}
+      <section aria-label="Production capabilities" className="border-y border-white/5 bg-white/[0.015]">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px lg:grid-cols-4">
           {metrics.map((metric, i) => (
             <Reveal key={metric.label} delay={i * 70} className="px-4 py-8 sm:px-6">
-              <p className="text-gradient font-mono text-4xl font-bold tracking-tight sm:text-5xl">
+              <p className="text-gradient whitespace-nowrap font-mono text-2xl font-bold tracking-tight sm:text-3xl">
                 <AnimatedMetric metric={metric} />
               </p>
               <p className="mt-3 text-sm font-medium text-zinc-100">
@@ -415,7 +415,7 @@ function Home() {
 
       {/* Featured experience — condensed highlights; /experience has the full set */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <SectionHeading eyebrow="Experience" title="Currently at a major U.S. auto insurer" />
+        <SectionHeading eyebrow="Experience" title="Currently at GEICO" />
         <Reveal className="mt-8">
           <ExperienceCard
             entry={insurerRole}

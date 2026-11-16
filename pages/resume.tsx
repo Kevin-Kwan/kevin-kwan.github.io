@@ -3,44 +3,49 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import TechTag from '../components/TechTag';
-import { metrics, profile } from '../content/profile';
-import { coreSkills } from '../content/skills';
+import { profile } from '../content/profile';
+import { experience } from '../content/experience';
+import { education } from '../content/education';
+import { skillCategories } from '../content/skills';
 import { resumeRequestUrl, site, socials } from '../content/site';
 
 /**
  * Résumé page. The résumé itself is not hosted on this site — visitors
- * email Kevin to request a copy.
+ * email Kevin to request a copy. The page carries the real inline
+ * résumé content instead: work history, education, and skills.
  */
 function Resume() {
   return (
     <>
       <Seo
         title="Résumé | Kevin Kwan"
-        description="Résumé of Kevin Kwan — Software Engineer II (conversational AI & IVR) at a major U.S. auto insurer, Georgia Tech B.S. Computer Science, summa cum laude. Available on request."
+        description="Résumé of Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO, Georgia Tech B.S. Computer Science, summa cum laude. Available on request."
         path="/resume"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            as="h1"
-            eyebrow="Résumé"
-            title={`${profile.name} — ${profile.role}`}
-            description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
-          />
-          <a
-            href={resumeRequestUrl}
-            className="hidden items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:inline-flex"
-          >
-            <EnvelopeIcon className="h-4 w-4" aria-hidden="true" />
-            Request résumé
-          </a>
-        </div>
+        <SectionHeading
+          as="h1"
+          eyebrow="Résumé"
+          title={`${profile.name} — ${profile.role}`}
+          description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
+        />
 
-        <div className="mt-8 hidden flex-wrap items-center gap-2 md:flex">
-          {coreSkills.slice(0, 10).map((skill) => (
-            <TechTag key={skill} label={skill} />
-          ))}
-          <span className="ml-2 flex items-center gap-3 text-sm">
+        {/* Snapshot card with the single request action. */}
+        <div className="mt-10 rounded-2xl border border-white/10 bg-surface p-6">
+          <p className="text-xl font-semibold tracking-tight text-zinc-50">
+            {profile.name}
+          </p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-zinc-400">
+            {profile.role} · {profile.specialty}
+          </p>
+          <p className="mt-2 text-sm text-zinc-400">
+            {profile.employer} · {profile.location}
+          </p>
+          <p className="mt-3 max-w-2xl leading-relaxed text-zinc-300">
+            {profile.tagline}
+          </p>
+
+          <div className="mt-5 flex items-center gap-3 text-sm">
             <a
               href={socials.github}
               target="_blank"
@@ -59,38 +64,6 @@ function Resume() {
               <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               LinkedIn
             </a>
-          </span>
-        </div>
-
-        {/* Snapshot card with the request action. */}
-        <div className="mt-10 rounded-2xl border border-white/10 bg-surface p-6">
-          <p className="text-xl font-semibold tracking-tight text-zinc-50">
-            {profile.name}
-          </p>
-          <p className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-zinc-400">
-            {profile.role} · {profile.specialty}
-          </p>
-          <p className="mt-2 text-sm text-zinc-400">
-            {profile.employer} · {profile.location}
-          </p>
-
-          <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-4">
-            {metrics.map((metric) => (
-              <div key={metric.label} className="flex flex-col">
-                <dt className="order-2 mt-1 text-xs text-zinc-400">
-                  {metric.label}
-                </dt>
-                <dd className="text-gradient order-1 font-mono text-2xl font-bold tracking-tight">
-                  {metric.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="mt-6 flex flex-wrap gap-1.5">
-            {coreSkills.slice(0, 8).map((skill) => (
-              <TechTag key={skill} label={skill} />
-            ))}
           </div>
 
           <div className="mt-7 flex flex-col gap-3">
@@ -113,6 +86,145 @@ function Resume() {
             </p>
           </div>
         </div>
+
+        {/* Work history */}
+        <section aria-labelledby="resume-experience" className="mt-14">
+          <h2
+            id="resume-experience"
+            className="text-2xl font-semibold tracking-tight text-zinc-50"
+          >
+            Experience
+          </h2>
+          <div className="mt-6 space-y-6">
+            {experience.map((entry) => (
+              <article
+                key={entry.id}
+                className="rounded-2xl border border-white/10 bg-surface p-6"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
+                    {entry.title}
+                  </h3>
+                  <p className="font-mono text-xs text-zinc-400">
+                    {entry.dateRange} · {entry.location}
+                  </p>
+                </div>
+                <p className="mt-1 text-sm font-medium text-violet-300">
+                  {entry.company}
+                </p>
+                <p className="mt-3 leading-relaxed text-zinc-400">
+                  {entry.summary}
+                </p>
+                {entry.sections && (
+                  <ul className="mt-4 space-y-2">
+                    {entry.sections.map((section) => (
+                      <li key={section.title} className="text-sm text-zinc-400">
+                        <span className="font-medium text-zinc-200">
+                          {section.title}:{' '}
+                        </span>
+                        {section.points[0]}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {entry.highlights && (
+                  <ul className="mt-4 space-y-2">
+                    {entry.highlights.slice(0, 3).map((point) => (
+                      <li
+                        key={point.slice(0, 48)}
+                        className="flex gap-3 text-sm leading-relaxed text-zinc-400"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-[0.5rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Education */}
+        <section aria-labelledby="resume-education" className="mt-14">
+          <h2
+            id="resume-education"
+            className="text-2xl font-semibold tracking-tight text-zinc-50"
+          >
+            Education
+          </h2>
+          <div className="mt-6 space-y-6">
+            {education.map((entry) => (
+              <article
+                key={entry.id}
+                className="rounded-2xl border border-white/10 bg-surface p-6"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
+                    {entry.school}
+                    {entry.unit && (
+                      <span className="font-normal text-zinc-400">
+                        {' '}
+                        · {entry.unit}
+                      </span>
+                    )}
+                  </h3>
+                  <p className="font-mono text-xs text-zinc-400">
+                    {entry.dateRange} · {entry.location}
+                  </p>
+                </div>
+                <p className="mt-1 text-sm font-medium text-violet-300">
+                  {entry.credential}
+                  {entry.gpa && (
+                    <span className="text-zinc-400">
+                      {' '}
+                      · GPA {entry.gpa}
+                      {entry.gpaNote ? ` ${entry.gpaNote}` : ''}
+                    </span>
+                  )}
+                </p>
+                {entry.details.map((detail) => (
+                  <p
+                    key={detail}
+                    className="mt-2 text-sm leading-relaxed text-zinc-400"
+                  >
+                    {detail}
+                  </p>
+                ))}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section aria-labelledby="resume-skills" className="mt-14">
+          <h2
+            id="resume-skills"
+            className="text-2xl font-semibold tracking-tight text-zinc-50"
+          >
+            Skills
+          </h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {skillCategories.map((category) => (
+              <div
+                key={category.id}
+                className="rounded-2xl border border-white/10 bg-surface p-5"
+              >
+                <h3 className="text-sm font-semibold text-zinc-100">
+                  {category.title}
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {category.skills.map((skill) => (
+                    <TechTag key={skill.name} label={skill.name} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

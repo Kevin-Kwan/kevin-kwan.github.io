@@ -2,11 +2,6 @@ export interface Metric {
   value: string;
   label: string;
   detail: string;
-  /** Numeric target for the count-up animation; display string stays `value`. */
-  countTo?: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
 }
 
 export interface ExpertiseArea {
@@ -21,12 +16,12 @@ export const profile = {
   name: 'Kevin Kwan',
   role: 'Software Engineer II',
   specialty: 'Conversational AI & IVR',
-  employer: 'a major U.S. auto insurer',
+  employer: 'GEICO',
   location: 'Atlanta, Georgia',
   tagline:
     'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls at scale.',
   heroIntro:
-    'Software Engineer II building production voice AI and cloud systems. At a major U.S. auto insurer, I co-build conversational agents that handle billing calls at scale — owning critical payment journeys, architecture improvements, and production reliability.',
+    'Software Engineer II owning critical payment journeys, architecture improvements, and production reliability for the billing voice agent and Amazon Connect IVRs.',
   interests: [
     'AI/ML',
     'Conversational AI',
@@ -40,20 +35,19 @@ export const profile = {
 } as const;
 
 /**
- * Qualitative proof points for the home metrics band. No employer
- * figures are published here — values are descriptive only, so none of
- * them carries a count-up target.
+ * Plain capability descriptors for the home band. These are words, not
+ * measurements — no employer figures are published here.
  */
 export const metrics: Metric[] = [
   {
-    value: 'High',
-    label: 'Containment',
-    detail: 'Billing conversations resolved without a live agent',
+    value: 'Voice AI',
+    label: 'Billing agent',
+    detail: 'Payments, rescheduling and AutoPay, English & Spanish',
   },
   {
-    value: 'Live',
-    label: 'Billing voice agent',
-    detail: 'Payments, rescheduling and AutoPay, English & Spanish',
+    value: 'IVR',
+    label: 'Amazon Connect',
+    detail: 'Billing and Proof of Coverage IVRs',
   },
   {
     value: 'End-to-end',
@@ -62,8 +56,8 @@ export const metrics: Metric[] = [
   },
   {
     value: 'Production',
-    label: 'IVR platforms',
-    detail: 'Amazon Connect billing and Proof of Coverage IVRs',
+    label: 'Cloud systems',
+    detail: 'Lambda, DynamoDB, Lex, Terraform',
   },
 ];
 
@@ -73,7 +67,7 @@ export const expertiseAreas: ExpertiseArea[] = [
     description:
       'AI voice agents and IVR systems that hold real conversations and resolve calls without an agent.',
     points: ['Amazon Connect', 'Amazon Lex', 'Sierra AI', 'Cyara testing'],
-    stat: 'Production billing voice agent · high containment',
+    stat: 'Production billing voice agent in English & Spanish',
   },
   {
     title: 'Cloud & AWS',

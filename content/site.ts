@@ -13,7 +13,7 @@ export const site = {
   siteUrl: 'https://kevin-kwan.github.io',
   defaultTitle: 'Kevin Kwan | Software Engineer II — Conversational AI & IVR',
   defaultDescription:
-    'Portfolio of Kevin Kwan, a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for a major U.S. auto insurer. Georgia Tech B.S. Computer Science, summa cum laude.',
+    'Portfolio of Kevin Kwan, a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science, summa cum laude.',
   ogImage: '/og.png',
   /** Public contact address shown on /contact — data, not a build secret. */
   contactEmail: 'kevinkwan@gatech.edu',

@@ -6,7 +6,7 @@ This is the source code for Kevin Kwan's personal portfolio website — a testam
 
 The portfolio includes the projects Kevin has worked on, demonstrating his ability to create **responsive designs**, **interactive user interfaces**, and **accessible web components**. Each project highlights different aspects of front and back-end development, providing a comprehensive view of his capabilities.
 
-Kevin is a Software Engineer II working on conversational AI / IVR (Amazon Connect, AWS, Sierra AI) for a major U.S. auto insurer, and a Georgia Tech B.S. Computer Science graduate (summa cum laude, 2024).
+Kevin is a Software Engineer II working on conversational AI / IVR (Amazon Connect, AWS, Sierra AI) for GEICO, and a Georgia Tech B.S. Computer Science graduate (summa cum laude, 2024).
 
 ## Live Demo
 
