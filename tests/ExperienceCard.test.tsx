@@ -1,10 +1,21 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ExperienceCard from '../components/ExperienceCard';
-import { experience } from '../content/experience';
+import { experience, type ExperienceEntry } from '../content/experience';
 
 const insurer = experience.find((entry) => entry.id === 'geico');
-const ncr = experience.find((entry) => entry.id === 'ncr-voyix');
+
+/** Minimal entry with no companyTagline, for the tagline-omission test. */
+const untaggedEntry: ExperienceEntry = {
+  id: 'untagged-example',
+  company: 'Example Company',
+  title: 'Software Engineer Intern',
+  dateRange: 'July 2019 – August 2019',
+  location: 'Atlanta, GA',
+  summary: 'Example summary.',
+  highlights: ['Example highlight.'],
+  links: [],
+};
 
 describe('ExperienceCard', () => {
   it('keeps the heading hierarchy: company h2, job title h3, workstreams h4', () => {
@@ -38,12 +49,11 @@ describe('ExperienceCard', () => {
   });
 
   it('omits the company tagline when an entry does not provide one', () => {
-    expect(ncr).toBeDefined();
-    expect(ncr!.companyTagline).toBeUndefined();
-    render(<ExperienceCard entry={ncr!} />);
+    expect(untaggedEntry.companyTagline).toBeUndefined();
+    render(<ExperienceCard entry={untaggedEntry} />);
 
     expect(
-      screen.getByRole('heading', { level: 2, name: 'NCR Corporation' })
+      screen.getByRole('heading', { level: 2, name: 'Example Company' })
     ).not.toBeNull();
   });
 });

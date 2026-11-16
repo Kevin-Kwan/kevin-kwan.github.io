@@ -9,7 +9,7 @@ function Experience() {
     <>
       <Seo
         title="Experience | Kevin Kwan"
-        description="Kevin Kwan's work experience: Software Engineer II (Conversational AI & IVR) at GEICO, Software Engineer Intern at Publicis Sapient, Georgia Tech EcoCAR (Electric Vehicle) Mobility Challenge, and NCR Corporation."
+        description="Kevin Kwan's work experience: Software Engineer II (Conversational AI & IVR) at GEICO, Software Engineer Intern at Publicis Sapient, and Georgia Tech EcoCAR (Electric Vehicle) Mobility Challenge."
         path="/experience"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
@@ -17,7 +17,7 @@ function Experience() {
           as="h1"
           eyebrow="Career"
           title="Work Experience"
-          description="Software engineering positions I've held, the companies I've worked for, the projects I worked on, and what I learned — with outcomes first."
+          description="Software engineering positions I've held, the companies I've worked for, the projects I worked on, and what I learned."
         />
         <div className="mt-12 space-y-6">
           {experience.map((entry, i) => (

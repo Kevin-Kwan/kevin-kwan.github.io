@@ -115,6 +115,30 @@ body {
 /* Tech marquee: pause behavior (hover, button, off-screen) is handled in
    the TechMarquee component via animation-play-state. */
 
+/* Tech marquee edge fade: the fade zones are fixed-width (180px), not
+   percentages, so they are always wider than the widest chip (~145px for
+   "Amazon Connect" with its icon) at every viewport width — a chip is
+   fully faded out before any part of it crosses the container edge, and
+   no chip is ever shown half-cut. A percentage fade narrows on small
+   screens until the fade is shorter than a chip, which is why the 20%
+   mask still showed cut chips. */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 180px,
+    #000 calc(100% - 180px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 180px,
+    #000 calc(100% - 180px),
+    transparent
+  );
+}
+
 /* Border beam: a light pulse that travels the card border (featured
    cards only). The ring is a conic gradient masked down to a ~1.5px
    border strip; the rotation animates a registered custom property, so

@@ -26,8 +26,6 @@ export const profile = {
     'AI/ML',
     'Conversational AI',
     'Game Development',
-    'Cybersecurity',
-    'Reverse Engineering',
     'Web & Application Development',
   ],
   closingLine:

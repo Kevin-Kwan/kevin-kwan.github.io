@@ -15,7 +15,10 @@ function Footer() {
             </p>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {profile.role} at {profile.employer} — conversational AI &amp;
-              IVR. Georgia Tech B.S. Computer Science, summa cum laude.
+              IVR.
+            </p>
+            <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
+              Georgia Tech B.S. Computer Science, summa cum laude.
             </p>
             <Waveform className="mt-5 h-6 w-44 opacity-70" />
           </div>

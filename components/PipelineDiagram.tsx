@@ -75,7 +75,7 @@ const NODES: PipelineNode[] = [
     Icon: ChatBubbleLeftRightIcon,
     metrics: [
       'Billing conversations at scale',
-      'Resolves most billing conversations without a live agent',
+      'Holds natural billing conversations in English and Spanish',
       'Informational answers across billing topics',
     ],
   },
