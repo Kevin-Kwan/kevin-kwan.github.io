@@ -229,6 +229,18 @@ export const projectGroups: ProjectGroup[] = [
         },
       },
       {
+        id: 'facial-recognition-matlab',
+        tier: 'production',
+        category: 'ai',
+        name: 'Facial Recognition with MATLAB',
+        blurb:
+          'MATLAB project from a 2019 internship: AlexNet trained for real-time facial recognition.',
+        description:
+          'A machine learning project that I worked on in Summer 2019 during my internship where I used MATLAB to train AlexNet to perform facial recognition in real-time to identify people. This was my first time using MATLAB.',
+        tech: ['MATLAB', 'AlexNet', 'Machine Learning'],
+        githubUrl: 'https://github.com/Kevin-Kwan/MATLAB-face-training',
+      },
+      {
         id: 'currency-converter',
         tier: 'archival',
         category: 'web',
