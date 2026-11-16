@@ -31,6 +31,8 @@ function OrgLogo({ logo, className = '' }: OrgLogoProps) {
       <img
         src={logo.src}
         alt={logo.alt}
+        width={56}
+        height={56}
         loading="lazy"
         className={`max-h-full max-w-full object-contain ${
           logo.imgClassName ?? 'p-2'
