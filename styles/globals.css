@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  --color-canvas: #09090b;
+  --color-surface: #101014;
+  --color-surface-raised: #17171c;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-accent: #8b5cf6;
+  --color-accent-2: #06b6d4;
+
+  --animate-wave: wave 1.6s ease-in-out infinite;
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-pipeline-x: pipeline-x 2.2s linear infinite;
+  --animate-pipeline-y: pipeline-y 2.2s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pipeline-x {
+    from {
+      transform: translateX(-110%);
+    }
+    to {
+      transform: translateX(320%);
+    }
+  }
+
+  @keyframes pipeline-y {
+    from {
+      transform: translateY(-110%);
+    }
+    to {
+      transform: translateY(320%);
+    }
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: scaleY(0.55);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  @apply bg-canvas text-zinc-100 font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Faint film-grain overlay for depth (decorative, non-interactive). */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Soft ambient accent glows behind the hero. */
+.ambient-glow {
+  background:
+    radial-gradient(
+      42rem 22rem at 15% -5%,
+      rgb(139 92 246 / 0.13),
+      transparent 65%
+    ),
+    radial-gradient(
+      38rem 20rem at 88% 0%,
+      rgb(6 182 212 / 0.1),
+      transparent 65%
+    ),
+    radial-gradient(
+      46rem 24rem at 50% 115%,
+      rgb(139 92 246 / 0.07),
+      transparent 65%
+    ),
+    radial-gradient(
+      30rem 16rem at 72% 108%,
+      rgb(6 182 212 / 0.05),
+      transparent 65%
+    );
+}
+
+/* Dot grid used as a quiet backdrop inside the bento expertise cells. */
+.dot-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(255 255 255 / 0.09) 1px,
+    transparent 0
+  );
+  background-size: 18px 18px;
+}
+
+/* Tech marquee: pause behavior (hover, button, off-screen) is handled in
+   the TechMarquee component via animation-play-state. */
+
+/* Border beam: a light pulse that travels the card border (featured
+   cards only). The ring is a conic gradient masked down to a ~1.5px
+   border strip; the rotation animates a registered custom property, so
+   browsers without @property support simply show a static faint segment.
+   The effect only runs on hover-capable fine pointers, and is fully off
+   under prefers-reduced-motion. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-rotate {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+.border-beam {
+  position: relative;
+}
+.border-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 245deg,
+    rgb(139 92 246 / 0.6) 305deg,
+    rgb(6 182 212 / 0.6) 338deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .border-beam::after {
+    opacity: 1;
+    animation: beam-rotate 7s linear infinite;
+  }
+}
+
+/* Gradient text for the name / key highlights. */
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(100deg, #c4b5fd 0%, #8b5cf6 45%, #06b6d4 100%);
+}
+
+/* Spotlight hover: --spot-x / --spot-y are set from React pointer handlers. */
+.spotlight {
+  position: relative;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgb(139 92 246 / 0.14),
+    transparent 65%
+  );
+}
+.spotlight:hover::before,
+.spotlight:focus-within::before {
+  opacity: 1;
+}
+
+/* Scroll-reveal is handled by the Reveal component (motion whileInView);
+   no CSS hides content, so pages stay fully visible without JavaScript. */
+
+/* Waveform bars (decorative voice-AI motif). */
+.wave-bar {
+  transform-origin: center;
+  animation: wave 1.6s ease-in-out infinite;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgb(139 92 246 / 0.45);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .wave-bar {
+    animation: none;
+  }
+  /* Decorative loops off entirely: pipeline pulses and the border beam
+     leave their static lines/borders behind. */
+  .animate-pipeline-x,
+  .animate-pipeline-y {
+    animation: none;
+    opacity: 0;
+  }
+  .border-beam::after {
+    animation: none;
+    opacity: 0;
+  }
+}
