@@ -79,11 +79,11 @@ export const experience: ExperienceEntry[] = [
     metricStrip: [
       {
         value: 'Voice AI',
-        label: 'billing agent in production, English & Spanish',
+        label: 'Billing agent in production, English & Spanish',
       },
       {
         value: 'End-to-end',
-        label: 'payment journeys, incl. Pause AutoPay',
+        label: 'Payment journeys, incl. Pause AutoPay',
       },
       {
         value: 'Amazon Connect',

@@ -84,7 +84,7 @@ export const projectGroups: ProjectGroup[] = [
         description:
           'This website — designed and built with TypeScript using Next.js (React) and Tailwind CSS, with all content managed as typed data.',
         tech: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS'],
-        githubUrl: 'https://github.com/Kevin-Kwan/Kevin-Kwan.github.io',
+        githubUrl: 'https://github.com/Kevin-Kwan/kevin-kwan.github.io',
         image: {
           src: '/projects/portfolio-website.webp',
           alt: 'Voice-waveform artwork for this portfolio website',
@@ -156,7 +156,7 @@ export const projectGroups: ProjectGroup[] = [
         note: 'Private client work — no public repo/demo.',
         description:
           'A full-stack dynamic careers portal website made with Next.js (React), Tailwind CSS, Cloud Firestore, and Firebase Storage for a business allowing for potential candidates to view open positions, learn about company benefits, and apply to jobs through an online form. This project was made for a client, thus, it will remain closed-source.',
-        tech: ['Next.js', 'React', 'Tailwind CSS', 'Firestore', 'Firebase'],
+        tech: ['Next.js', 'React', 'Tailwind CSS', 'Cloud Firestore', 'Firebase'],
       },
       {
         id: 'qc-testing',
@@ -224,7 +224,7 @@ export const projectGroups: ProjectGroup[] = [
         tech: ['Python', 'PyTorch', 'NumPy', 'OpenCV', 'ResNet50'],
         githubUrl: 'https://github.com/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/',
         demo: {
-          url: 'https://colab.research.google.com/github/Kevin-Kwan/pytorch_mpiigaze_demo/blob/master/demo.ipynb',
+          url: 'https://colab.research.google.com/github/Kevin-Kwan/fixed_pytorch_mpiigaze_demo/blob/master/demo.ipynb',
           label: 'Colab Demo',
         },
       },
