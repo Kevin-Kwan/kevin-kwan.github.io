@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { ArrowRightIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import SectionHeading from '../components/SectionHeading';
 import Reveal from '../components/Reveal';
@@ -20,7 +20,7 @@ import { experience } from '../content/experience';
 import { featuredProjects } from '../content/projects';
 import { pipelineCaseStudy } from '../content/pipeline';
 import { education } from '../content/education';
-import { resumeRequestUrl, site, socials } from '../content/site';
+import { site, socials } from '../content/site';
 
 const heroContainer: Variants = {
   hidden: {},
@@ -294,34 +294,17 @@ function Home() {
               </Link>
             </Magnetic>
             <Magnetic>
-              <a
-                href={resumeRequestUrl}
+              {/* Routes to the /resume request gate instead of a raw
+                  mailto:, which opens the OS mail client and fails
+                  silently on mobile browsers with no mail handler. */}
+              <Link
+                href="/resume"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.08]"
               >
                 <EnvelopeIcon className="h-4 w-4" aria-hidden="true" />
                 Request résumé
-              </a>
+              </Link>
             </Magnetic>
-            <div className="flex items-center gap-1.5">
-              <a
-                href={socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="rounded-lg border border-white/10 bg-white/[0.04] p-3 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
-              >
-                <FaGithub className="h-5 w-5" aria-hidden="true" />
-              </a>
-              <a
-                href={socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="rounded-lg border border-white/10 bg-white/[0.04] p-3 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
-              >
-                <FaLinkedin className="h-5 w-5" aria-hidden="true" />
-              </a>
-            </div>
           </HeroBlock>
 
           <HeroBlock as="div" active={heroActive}>

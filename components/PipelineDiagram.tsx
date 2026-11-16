@@ -192,7 +192,11 @@ function PipelineDiagram() {
           <div
             key={node.label}
             role="presentation"
-            className="flex flex-col items-center lg:flex-1 lg:flex-row"
+            // Full-width below lg so every stage button is the same width
+            // — a clean vertical stepper at 375px instead of buttons
+            // shrink-wrapped to their own label widths. At lg+ the row
+            // layout is unchanged (flex-1 wrappers, equal tabs).
+            className="flex w-full flex-col items-center lg:w-auto lg:flex-1 lg:flex-row"
           >
             <button
               type="button"
@@ -205,7 +209,7 @@ function PipelineDiagram() {
                 tabRefs.current[i] = el;
               }}
               onClick={() => setSelected(i)}
-              className={`flex w-full max-w-xs flex-col items-center rounded-xl border px-4 py-4 text-center transition-colors lg:w-auto lg:min-w-0 lg:flex-[2] lg:px-3 ${
+              className={`flex w-full flex-col items-center rounded-xl border px-4 py-4 text-center transition-colors lg:w-auto lg:min-w-0 lg:flex-[2] lg:px-3 ${
                 selected === i
                   ? 'border-cyan-300/50 bg-cyan-300/[0.08]'
                   : 'border-white/10 bg-white/[0.03] hover:border-white/25'

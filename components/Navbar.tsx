@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { navLinks, resumeRequestUrl, socials } from '../content/site';
+import { navLinks, socials } from '../content/site';
 import ScrollProgress from './ScrollProgress';
 
 function Navbar() {
@@ -142,12 +142,14 @@ function Navbar() {
               );
             })}
           </ul>
-          <a
-            href={resumeRequestUrl}
+          {/* Routes to the /resume request gate, not a raw mailto: —
+              see content/site.ts. */}
+          <Link
+            href="/resume"
             className="mt-3 block rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-base font-medium text-zinc-100"
           >
             Request Résumé
-          </a>
+          </Link>
           <div className="mt-2 flex items-center gap-2 px-1 pt-1">
             <a
               href={socials.github}

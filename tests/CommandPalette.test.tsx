@@ -127,6 +127,14 @@ describe('CommandPalette', () => {
     });
   });
 
+  it('routes the Request résumé action to the /resume gate, not a mailto:', () => {
+    render(<CommandPalette />);
+    openWithKeyboard();
+    fireEvent.click(screen.getByRole('option', { name: /Request résumé/ }));
+    expect(routerState.push).toHaveBeenCalledWith('/resume');
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
   it('copies the contact email to the clipboard', async () => {
     const writeText = vi.fn(() => Promise.resolve());
     Object.defineProperty(navigator, 'clipboard', {

@@ -16,4 +16,14 @@ describe('Footer', () => {
       `© ${new Date().getFullYear()} Kevin Kwan`
     );
   });
+
+  it('states the degree without repeating the honours claim', () => {
+    const { container } = render(<Footer />);
+    expect(container.textContent).toContain(
+      'Georgia Tech B.S. in Computer Science.'
+    );
+    // The honours claim stands alone on the Georgia Tech education
+    // card; the footer must not duplicate it.
+    expect(container.textContent).not.toContain('summa cum laude');
+  });
 });

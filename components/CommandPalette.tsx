@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { navLinks, resumeRequestUrl, site } from '../content/site';
+import { navLinks, site } from '../content/site';
 import {
   projectCategoryLabels,
   type ProjectCategory,
@@ -76,13 +76,11 @@ function CommandPalette() {
       {
         id: 'request-resume',
         label: 'Request résumé',
-        hint: site.contactEmail,
+        hint: 'Page',
         run: () => {
-          const link = document.createElement('a');
-          link.href = resumeRequestUrl;
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
+          // Route to the /resume request gate, not a raw mailto: —
+          // see content/site.ts.
+          void router.push('/resume');
         },
       },
       {

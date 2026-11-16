@@ -21,9 +21,12 @@ export const site = {
 } as const;
 
 /**
- * Single source of truth for the résumé request link, shared by the
- * résumé page, the navbar, and the home-page button. The résumé itself
- * is not hosted on this site — visitors email Kevin to request a copy.
+ * Single source of truth for the résumé request link, used ONLY by the
+ * /resume request-gate page. The résumé itself is not hosted on this
+ * site — visitors email Kevin to request a copy. Every other
+ * "Request résumé" entry point (home hero, navbar, command palette)
+ * links to /resume instead: a raw mailto: opens the OS mail client and
+ * fails silently on mobile browsers with no configured mail handler.
  */
 export const resumeRequestUrl =
   'mailto:kevinkwan@gatech.edu?subject=Resume%20request';

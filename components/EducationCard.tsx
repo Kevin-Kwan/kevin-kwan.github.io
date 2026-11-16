@@ -9,7 +9,7 @@ interface EducationCardProps {
 function EducationCard({ entry }: EducationCardProps) {
   return (
     <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-200 hover:border-white/20 sm:p-8">
-      <div className="flex items-start gap-4">
+      <div className="flex flex-wrap items-start gap-4">
         <OrgLogo logo={entry.logo} />
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-semibold tracking-tight text-zinc-50">
@@ -21,19 +21,13 @@ function EducationCard({ entry }: EducationCardProps) {
           <p className="mt-1 font-mono text-xs text-zinc-400">
             {entry.dateRange} · {entry.location}
           </p>
-          {/* On small screens the GPA sits inline under the date line so the
-              school name keeps the full text column; the side badge is sm+. */}
-          {entry.gpa && (
-            <p className="mt-2 font-mono text-xs text-zinc-400 sm:hidden">
-              <span className="uppercase tracking-widest">GPA</span>{' '}
-              <span className="text-sm font-semibold text-zinc-100">
-                {`${entry.gpa}${entry.gpaNote ? ` ${entry.gpaNote}` : ''}`}
-              </span>
-            </p>
-          )}
         </div>
+        {/* Single responsive GPA badge — one DOM node at every width, so
+            screen readers announce the GPA once. On small screens it
+            wraps to its own full-width row under the school name; from
+            sm up it sits at the right of the header row. */}
         {entry.gpa && (
-          <div className="hidden shrink-0 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-right sm:block">
+          <div className="w-full shrink-0 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 sm:w-auto sm:text-right">
             <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               GPA
             </p>
