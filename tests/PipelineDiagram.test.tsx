@@ -94,6 +94,21 @@ describe('PipelineDiagram', () => {
     ).not.toBeNull();
   });
 
+  it('mobile stepper: every stage button is full-width with no max-width cap', () => {
+    render(<PipelineDiagram />);
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs).toHaveLength(NODE_LABELS.length);
+    // Below lg the stages form a vertical stepper. Each button must
+    // span the full tablist width (no max-w-xs shrink-wrap) so labels
+    // like "Amazon Connect" and "AI Voice Agent" can never clip at
+    // 375px and the column reads as one even stepper, not ragged chips.
+    tabs.forEach((tab) => {
+      expect(tab.className).toContain('w-full');
+      expect(tab.className).not.toContain('max-w-xs');
+      expect(tab.parentElement?.className).toContain('w-full');
+    });
+  });
+
   it('uses vertical orientation and up/down keys in the stacked layout', () => {
     const originalMatchMedia = window.matchMedia;
     const verticalMatchMedia = (query: string): MediaQueryList => ({
