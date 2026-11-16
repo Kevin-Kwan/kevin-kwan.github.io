@@ -13,7 +13,7 @@ function Education() {
     <>
       <Seo
         title="Education | Kevin Kwan"
-        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA, summa cum laude) from the Georgia Institute of Technology, plus Gwinnett Technical College."
+        description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA, summa cum laude) from the Georgia Institute of Technology, plus Gwinnett Technical College and the Gwinnett School of Mathematics, Science, and Technology."
         path="/education"
       />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
@@ -21,7 +21,7 @@ function Education() {
           as="h1"
           eyebrow="Background"
           title="Education"
-          description="Degrees, certificates, and honors — a Georgia Tech B.S. in Computer Science and dual-enrollment coursework."
+          description="Degrees, certificates, and honors — a Georgia Tech B.S. in Computer Science, dual-enrollment coursework, and a STEM magnet high school."
         />
         <div className="mt-12 space-y-6">
           {education.map((entry, i) => (
@@ -56,8 +56,8 @@ function Education() {
           </ul>
         </section>
 
-        {/* Selected upper-level coursework, grouped by Georgia Tech CS
-            thread — the courses behind several projects on this site. */}
+        {/* Selected upper-level coursework — the courses behind several
+            projects on this site. */}
         <section aria-labelledby="education-coursework" className="mt-14">
           <h2
             id="education-coursework"
@@ -66,33 +66,20 @@ function Education() {
             Selected upper-level coursework
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-            Grouped by Georgia Tech CS thread — the courses behind several
-            of the projects on this site.
+            The courses behind several of the projects on this site.
           </p>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
-            {selectedCoursework.map((group) => (
-              <div
-                key={group.thread}
-                className="rounded-2xl border border-white/10 bg-surface p-6"
-              >
-                <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                  {group.thread}
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {group.courses.map((course) => (
-                    <li key={course.code} className="text-sm">
-                      <span className="font-mono text-xs text-zinc-400">
-                        {course.code}
-                      </span>
-                      <span className="mt-0.5 block font-medium text-zinc-100">
-                        {course.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <ul className="mt-6 space-y-3">
+            {selectedCoursework.map((course) => (
+              <li key={course.code} className="text-sm">
+                <span className="font-mono text-xs text-zinc-400">
+                  {course.code}
+                </span>
+                <span className="ml-3 font-medium text-zinc-100">
+                  {course.name}
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </div>
     </>

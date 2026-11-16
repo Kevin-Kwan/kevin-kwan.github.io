@@ -205,7 +205,7 @@ function PipelineDiagram() {
                 tabRefs.current[i] = el;
               }}
               onClick={() => setSelected(i)}
-              className={`flex w-full max-w-xs flex-col items-center rounded-xl border px-4 py-4 text-center transition-colors lg:w-auto lg:min-w-[7.5rem] lg:flex-1 ${
+              className={`flex w-full max-w-xs flex-col items-center rounded-xl border px-4 py-4 text-center transition-colors lg:w-auto lg:min-w-0 lg:flex-[2] lg:px-3 ${
                 selected === i
                   ? 'border-cyan-300/50 bg-cyan-300/[0.08]'
                   : 'border-white/10 bg-white/[0.03] hover:border-white/25'

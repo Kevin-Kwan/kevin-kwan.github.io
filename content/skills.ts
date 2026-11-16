@@ -135,12 +135,6 @@ export const skillTiers: SkillTier[] = [
         icon: 'terraform',
         href: 'https://www.terraform.io/',
       },
-      { name: 'Docker', icon: 'docker', href: 'https://www.docker.com/' },
-      {
-        name: 'CI/CD',
-        icon: 'cicd',
-        href: 'https://github.com/features/actions',
-      },
     ],
   },
   {
@@ -165,6 +159,7 @@ export const skillTiers: SkillTier[] = [
       },
       { name: 'Heroku', icon: 'heroku', href: 'https://heroku.com/' },
       { name: 'Fly.io', icon: 'flyio', href: 'https://www.fly.io/' },
+      { name: 'Docker', icon: 'docker', href: 'https://www.docker.com/' },
     ],
   },
   {
@@ -259,6 +254,11 @@ export const skillTiers: SkillTier[] = [
         name: 'Claude Code',
         icon: 'claudecode',
         href: 'https://claude.com/product/claude-code',
+      },
+      {
+        name: 'CI/CD',
+        icon: 'cicd',
+        href: 'https://github.com/features/actions',
       },
     ],
   },

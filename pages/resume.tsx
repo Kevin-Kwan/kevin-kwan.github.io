@@ -31,12 +31,17 @@ function Resume() {
           description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
         />
 
-        {/* At-a-glance summary — roles, education, top skills. The full
-            detail lives on /experience, /education, and /skills. */}
+        {/* At-a-glance summary — roles, education, top skills, and the
+            single request action. The full detail lives on /experience,
+            /education, and /skills. */}
         <div className="mt-10 rounded-2xl border border-white/10 bg-surface p-6">
           <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
             At a glance
           </h2>
+
+          <p className="mt-3 max-w-2xl leading-relaxed text-zinc-300">
+            {profile.tagline}
+          </p>
 
           <div className="mt-5 space-y-5">
             <div>
@@ -90,24 +95,8 @@ function Resume() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Snapshot card with the single request action. */}
-        <div className="mt-6 rounded-2xl border border-white/10 bg-surface p-6">
-          <p className="text-xl font-semibold tracking-tight text-zinc-50">
-            {profile.name}
-          </p>
-          <p className="mt-1 font-mono text-xs uppercase tracking-[0.18em] text-zinc-400">
-            {profile.role} · {profile.specialty}
-          </p>
-          <p className="mt-2 text-sm text-zinc-400">
-            {profile.employer} · {profile.location}
-          </p>
-          <p className="mt-3 max-w-2xl leading-relaxed text-zinc-300">
-            {profile.tagline}
-          </p>
-
-          <div className="mt-5 flex items-center gap-3 text-sm">
+          <div className="mt-6 flex items-center gap-3 text-sm">
             <a
               href={socials.github}
               target="_blank"

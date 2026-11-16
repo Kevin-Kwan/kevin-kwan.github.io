@@ -144,11 +144,11 @@ describe('Projects filter', () => {
 });
 
 describe('Projects tiers', () => {
-  it('assigns every project to exactly one tier — 15 production, 8 archival', () => {
-    expect(allProjects.length).toBe(23);
+  it('assigns every project to exactly one tier — 16 production, 8 archival', () => {
+    expect(allProjects.length).toBe(24);
     const production = allProjects.filter((p) => p.tier === 'production');
     const archival = allProjects.filter((p) => p.tier === 'archival');
-    expect(production.length).toBe(15);
+    expect(production.length).toBe(16);
     expect(archival.length).toBe(8);
     expect(production.length + archival.length).toBe(allProjects.length);
     // The featured cards are all production-tier work.
@@ -157,7 +157,7 @@ describe('Projects tiers', () => {
     ).toBe(true);
   });
 
-  it('renders the default view as Featured, then Core Applications & Systems, then Archival, covering all 23 projects once', () => {
+  it('renders the default view as Featured, then Core Applications & Systems, then Archival, covering all 24 projects once', () => {
     render(<Projects />);
     const headings = screen
       .getAllByRole('heading', { level: 2 })
@@ -171,8 +171,8 @@ describe('Projects tiers', () => {
     const cardTitles = screen
       .getAllByRole('heading', { level: 3 })
       .map((h) => h.textContent);
-    expect(cardTitles.length).toBe(23);
-    expect(new Set(cardTitles).size).toBe(23);
+    expect(cardTitles.length).toBe(24);
+    expect(new Set(cardTitles).size).toBe(24);
     for (const project of allProjects) {
       expect(cardTitles).toContain(project.name);
     }
@@ -202,6 +202,7 @@ describe('Projects tiers', () => {
     for (const name of [
       'PreMiD Presence Open-Source Contribution',
       'Company Careers Portal (Paid Client Project)',
+      'Facial Recognition with MATLAB',
     ]) {
       expect(productionSection!.textContent).toContain(name);
       expect(archivalSection!.textContent).not.toContain(name);
