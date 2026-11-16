@@ -257,32 +257,43 @@ function Projects() {
             )}
 
             {/* Archival & Academic Works — early learning work, coursework,
-                and coding-challenge solutions, kept here for the record */}
+                and coding-challenge solutions, kept here for the record.
+                Demoted on purpose: the heading is smaller and muted, and
+                the cards sit behind a disclosure toggle so the tier reads
+                as a record, not a headline. All 8 stay reachable. */}
             {archivalProjects.length > 0 && (
-              <section aria-labelledby="group-archival" className="mt-16">
+              <section aria-labelledby="group-archival" className="mt-12">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                   <h2
                     id="group-archival"
-                    className="text-2xl font-semibold tracking-tight text-zinc-50"
+                    className="text-xl font-semibold tracking-tight text-zinc-400"
                   >
                     {projectTierLabels.archival}
                   </h2>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-zinc-500">
                     Early learning work, coursework, and coding-challenge
                     solutions — kept here for the record.
                   </p>
                 </div>
-                <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {archivalProjects.map((project, i) => (
-                    <Reveal
-                      key={project.id}
-                      delay={(i % 3) * 60}
-                      className="h-full"
-                    >
-                      <ProjectCard project={project} variant="compact" />
-                    </Reveal>
-                  ))}
-                </div>
+                <details className="group mt-5">
+                  <summary className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-sm font-medium text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-100">
+                    <span className="group-open:hidden">
+                      Show {archivalProjects.length} archival projects
+                    </span>
+                    <span className="hidden group-open:inline">
+                      Hide archival projects
+                    </span>
+                  </summary>
+                  <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {archivalProjects.map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        variant="compact"
+                      />
+                    ))}
+                  </div>
+                </details>
               </section>
             )}
           </>
