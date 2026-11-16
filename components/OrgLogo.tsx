@@ -7,6 +7,12 @@ export interface OrgLogoSpec {
   tileClassName?: string;
   /** Per-logo padding tuning so wide/portrait marks sit evenly in the tile. */
   imgClassName?: string;
+  /**
+   * Wide horizontal lockups (e.g. Gwinnett Tech's wordmark, ~2.8:1) get a
+   * wider tile at the same height, so the mark stays legible instead of
+   * shrinking to a thin strip inside the square tile.
+   */
+  wide?: boolean;
 }
 
 interface OrgLogoProps {
@@ -23,9 +29,9 @@ interface OrgLogoProps {
 function OrgLogo({ logo, className = '' }: OrgLogoProps) {
   return (
     <div
-      className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 ${
-        logo.tileClassName ?? 'bg-white/95'
-      } ${className}`}
+      className={`flex h-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 ${
+        logo.wide ? 'w-28' : 'w-14'
+      } ${logo.tileClassName ?? 'bg-white/95'} ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- static export; plain img keeps local SVG/PNG logos unprocessed */}
       <img
