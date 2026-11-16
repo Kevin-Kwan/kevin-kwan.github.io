@@ -12,6 +12,12 @@ interface ExperienceCardProps {
   entry: ExperienceEntry;
   /** Overrides entry.highlights (home page passes the condensed set). */
   highlights?: string[];
+  /**
+   * Render the summary paragraph. The home card hides it: the hero
+   * already states the role, employer, and ownership, so the summary
+   * only repeats it before the bullets and pipeline.
+   */
+  showSummary?: boolean;
   /** Pointer-spotlight treatment — reserved for the featured home block. */
   spotlight?: boolean;
   /** Traveling border-beam treatment — reserved for the featured home block. */
@@ -51,6 +57,7 @@ function HighlightList({
 function ExperienceCard({
   entry,
   highlights,
+  showSummary = true,
   spotlight = false,
   beam = false,
   cta,
@@ -86,7 +93,9 @@ function ExperienceCard({
       <h3 className="mt-5 text-base font-semibold text-violet-300">
         {entry.title}
       </h3>
-      <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
+      {showSummary && (
+        <p className="mt-2 leading-relaxed text-zinc-300">{entry.summary}</p>
+      )}
 
       {useSections && entry.roles && (
         <ul className="mt-4 space-y-1.5">
