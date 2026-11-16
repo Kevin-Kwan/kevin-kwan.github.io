@@ -263,7 +263,7 @@ export const projectGroups: ProjectGroup[] = [
         blurb:
           'HackGT 8 concept site: a Webflow marketplace for students to mint and sell NFTs.',
         description:
-          'A conceptual front-end website using Webflow serving as an online marketplace for students to upload and create their own NFTs and sell them to others. Created during HackGT 8 2021 as a first-year for NCR\u2019s theme.',
+          'A conceptual front-end website using Webflow serving as an online marketplace for students to upload and create their own NFTs and sell them to others. Created during HackGT 8 2021 as a first-year.',
         tech: ['Webflow', 'Hackathon'],
         githubUrl: 'https://github.com/Kevin-Kwan/eduNFT/',
         demo: { url: 'https://edu-nft.vercel.app/', label: 'Demo' },
@@ -327,17 +327,6 @@ export const projectGroups: ProjectGroup[] = [
           url: 'https://github.com/Kevin-Kwan/Arkanoid/releases',
           label: 'Releases',
         },
-      },
-      {
-        id: 'facial-recognition-matlab',
-        category: 'ai',
-        name: 'Facial Recognition with MATLAB',
-        blurb:
-          'MATLAB project from a 2019 internship: AlexNet trained for real-time facial recognition.',
-        description:
-          'A machine learning project that I worked on in Summer 2019 during my internship where I used MATLAB to train AlexNet to perform facial recognition in real-time to identify people. This was my first time using MATLAB.',
-        tech: ['MATLAB', 'AlexNet', 'Machine Learning'],
-        githubUrl: 'https://github.com/Kevin-Kwan/MATLAB-face-training',
       },
       {
         id: 'triggering-insanity',
