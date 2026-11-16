@@ -6,13 +6,14 @@ import TechTag from '../components/TechTag';
 import { profile } from '../content/profile';
 import { experience } from '../content/experience';
 import { education } from '../content/education';
-import { skillTiers } from '../content/skills';
+import { coreSkills } from '../content/skills';
 import { resumeRequestUrl, site, socials } from '../content/site';
 
 /**
  * Résumé page. The résumé itself is not hosted on this site — visitors
- * email Kevin to request a copy. The page carries the real inline
- * résumé content instead: work history, education, and skills.
+ * email Kevin to request a copy. The page carries a compact summary
+ * (roles, education, top skills) above the request gate, not a full
+ * duplicate of the Experience, Education, and Skills pages.
  */
 function Resume() {
   return (
@@ -30,8 +31,69 @@ function Resume() {
           description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
         />
 
-        {/* Snapshot card with the single request action. */}
+        {/* At-a-glance summary — roles, education, top skills. The full
+            detail lives on /experience, /education, and /skills. */}
         <div className="mt-10 rounded-2xl border border-white/10 bg-surface p-6">
+          <h2 className="text-lg font-semibold tracking-tight text-zinc-50">
+            At a glance
+          </h2>
+
+          <div className="mt-5 space-y-5">
+            <div>
+              <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Experience
+              </h3>
+              <ul className="mt-3 space-y-2">
+                {experience.map((entry) => (
+                  <li key={entry.id} className="text-sm leading-relaxed">
+                    <span className="font-medium text-zinc-100">
+                      {entry.title}
+                    </span>
+                    <span className="text-zinc-400">
+                      {' '}
+                      · {entry.company} · {entry.dateRange}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Education
+              </h3>
+              <ul className="mt-3 space-y-2">
+                {education.map((entry) => (
+                  <li key={entry.id} className="text-sm leading-relaxed">
+                    <span className="font-medium text-zinc-100">
+                      {entry.school}
+                    </span>
+                    <span className="text-zinc-400">
+                      {' '}
+                      · {entry.credential}
+                      {entry.gpa ? ` · GPA ${entry.gpa}` : ''} ·{' '}
+                      {entry.dateRange}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                Top skills
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {coreSkills.map((skill) => (
+                  <TechTag key={skill} label={skill} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Snapshot card with the single request action. */}
+        <div className="mt-6 rounded-2xl border border-white/10 bg-surface p-6">
           <p className="text-xl font-semibold tracking-tight text-zinc-50">
             {profile.name}
           </p>
@@ -86,145 +148,6 @@ function Resume() {
             </p>
           </div>
         </div>
-
-        {/* Work history */}
-        <section aria-labelledby="resume-experience" className="mt-14">
-          <h2
-            id="resume-experience"
-            className="text-2xl font-semibold tracking-tight text-zinc-50"
-          >
-            Experience
-          </h2>
-          <div className="mt-6 space-y-6">
-            {experience.map((entry) => (
-              <article
-                key={entry.id}
-                className="rounded-2xl border border-white/10 bg-surface p-6"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
-                    {entry.title}
-                  </h3>
-                  <p className="font-mono text-xs text-zinc-400">
-                    {entry.dateRange} · {entry.location}
-                  </p>
-                </div>
-                <p className="mt-1 text-sm font-medium text-violet-300">
-                  {entry.company}
-                </p>
-                <p className="mt-3 leading-relaxed text-zinc-400">
-                  {entry.summary}
-                </p>
-                {entry.sections && (
-                  <ul className="mt-4 space-y-2">
-                    {entry.sections.map((section) => (
-                      <li key={section.title} className="text-sm text-zinc-400">
-                        <span className="font-medium text-zinc-200">
-                          {section.title}:{' '}
-                        </span>
-                        {section.points[0]}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {entry.highlights && (
-                  <ul className="mt-4 space-y-2">
-                    {entry.highlights.slice(0, 3).map((point) => (
-                      <li
-                        key={point.slice(0, 48)}
-                        className="flex gap-3 text-sm leading-relaxed text-zinc-400"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="mt-[0.5rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-violet-400 to-cyan-400"
-                        />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Education */}
-        <section aria-labelledby="resume-education" className="mt-14">
-          <h2
-            id="resume-education"
-            className="text-2xl font-semibold tracking-tight text-zinc-50"
-          >
-            Education
-          </h2>
-          <div className="mt-6 space-y-6">
-            {education.map((entry) => (
-              <article
-                key={entry.id}
-                className="rounded-2xl border border-white/10 bg-surface p-6"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="text-lg font-semibold tracking-tight text-zinc-50">
-                    {entry.school}
-                    {entry.unit && (
-                      <span className="font-normal text-zinc-400">
-                        {' '}
-                        · {entry.unit}
-                      </span>
-                    )}
-                  </h3>
-                  <p className="font-mono text-xs text-zinc-400">
-                    {entry.dateRange} · {entry.location}
-                  </p>
-                </div>
-                <p className="mt-1 text-sm font-medium text-violet-300">
-                  {entry.credential}
-                  {entry.gpa && (
-                    <span className="text-zinc-400">
-                      {' '}
-                      · GPA {entry.gpa}
-                      {entry.gpaNote ? ` ${entry.gpaNote}` : ''}
-                    </span>
-                  )}
-                </p>
-                {entry.details.map((detail) => (
-                  <p
-                    key={detail}
-                    className="mt-2 text-sm leading-relaxed text-zinc-400"
-                  >
-                    {detail}
-                  </p>
-                ))}
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section aria-labelledby="resume-skills" className="mt-14">
-          <h2
-            id="resume-skills"
-            className="text-2xl font-semibold tracking-tight text-zinc-50"
-          >
-            Skills
-          </h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {skillTiers.map((tier) => (
-              <div
-                key={tier.id}
-                className="rounded-2xl border border-white/10 bg-surface p-5"
-              >
-                <h3 className="text-sm font-semibold text-zinc-100">
-                  {tier.title}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {tier.skills.map((skill) => (
-                    <TechTag key={skill.name} label={skill.name} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
     </>
   );

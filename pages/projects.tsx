@@ -227,7 +227,7 @@ function Projects() {
               </div>
             </section>
 
-            {/* Production & Advanced Systems — the strong work beyond the
+            {/* Core Applications & Systems — the strong work beyond the
                 featured cards, as compact cards */}
             {productionProjects.length > 0 && (
               <section aria-labelledby="group-production" className="mt-16">
@@ -239,7 +239,7 @@ function Projects() {
                     {projectTierLabels.production}
                   </h2>
                   <p className="text-sm text-zinc-400">
-                    Production systems, client projects, and advanced builds.
+                    Core applications, client projects, and advanced builds.
                   </p>
                 </div>
                 <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
