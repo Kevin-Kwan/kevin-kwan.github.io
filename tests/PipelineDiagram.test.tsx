@@ -32,7 +32,7 @@ describe('PipelineDiagram', () => {
     render(<PipelineDiagram />);
     // Default panel: the voice agent's highlights.
     expect(
-      screen.getByText('Billing conversations at scale')
+      screen.getByText('Holds natural billing conversations in English and Spanish')
     ).not.toBeNull();
 
     fireEvent.click(screen.getByRole('tab', { name: /Lambda Tools/ }));
@@ -40,7 +40,7 @@ describe('PipelineDiagram', () => {
       screen.getByText('End-to-end payments')
     ).not.toBeNull();
     expect(
-      screen.queryByText('Billing conversations at scale')
+      screen.queryByText('Holds natural billing conversations in English and Spanish')
     ).toBeNull();
   });
 
@@ -67,7 +67,7 @@ describe('PipelineDiagram', () => {
 
     fireEvent.keyDown(tablist, { key: 'ArrowDown' });
     expect(
-      screen.getByText('Billing conversations at scale')
+      screen.getByText('Holds natural billing conversations in English and Spanish')
     ).not.toBeNull();
 
     fireEvent.keyDown(tablist, { key: 'ArrowRight' });
@@ -80,7 +80,7 @@ describe('PipelineDiagram', () => {
 
     fireEvent.keyDown(tablist, { key: 'ArrowLeft' });
     expect(
-      screen.getByText('Billing conversations at scale')
+      screen.getByText('Holds natural billing conversations in English and Spanish')
     ).not.toBeNull();
 
     fireEvent.keyDown(tablist, { key: 'End' });
@@ -90,7 +90,7 @@ describe('PipelineDiagram', () => {
 
     fireEvent.keyDown(tablist, { key: 'Home' });
     expect(
-      screen.getByText('Billing calls at scale')
+      screen.getByText('Billing calls, answered in-agent')
     ).not.toBeNull();
   });
 
@@ -119,7 +119,7 @@ describe('PipelineDiagram', () => {
 
       fireEvent.keyDown(tablist, { key: 'ArrowRight' });
       expect(
-        screen.getByText('Billing conversations at scale')
+        screen.getByText('Holds natural billing conversations in English and Spanish')
       ).not.toBeNull();
 
       fireEvent.keyDown(tablist, { key: 'ArrowDown' });
@@ -129,7 +129,7 @@ describe('PipelineDiagram', () => {
 
       fireEvent.keyDown(tablist, { key: 'ArrowUp' });
       expect(
-        screen.getByText('Billing conversations at scale')
+        screen.getByText('Holds natural billing conversations in English and Spanish')
       ).not.toBeNull();
     } finally {
       Object.defineProperty(window, 'matchMedia', {

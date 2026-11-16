@@ -20,6 +20,48 @@ export interface EducationEntry {
   links: EducationLink[];
 }
 
+/**
+ * Academic highlights for the /education page — all from Kevin's résumé
+ * (Zell Miller Scholarship, Dean's List, Faculty Honors) or already on
+ * the site (EcoCAR 1st place, 2022). Nothing invented.
+ */
+export const academicHighlights: string[] = [
+  'Zell Miller Scholarship',
+  'Dean\u2019s List',
+  'Faculty Honors',
+  'EcoCAR VIP program — 1st place, 2022 U.S. DOE EcoCAR Mobility Challenge',
+];
+
+export interface CourseworkGroup {
+  /** Georgia Tech CS thread the courses belong to. */
+  thread: string;
+  courses: { code: string; name: string }[];
+}
+
+/**
+ * Selected upper-level coursework, grouped by Georgia Tech CS thread.
+ * Every course is named in a project description on this site (Video
+ * Game Design in Dark Ascent, Database Systems in Drone Dispatch) and
+ * the thread mapping is the Georgia Tech catalog's: CS 4455 is a Media
+ * thread technology, CS 4400 a Systems & Architecture elective. The
+ * Intelligence thread has no course named anywhere on the site or the
+ * résumé, so it is left out rather than filled in.
+ */
+export const selectedCoursework: CourseworkGroup[] = [
+  {
+    thread: 'Media',
+    courses: [
+      { code: 'CS 4455 / CS 6457', name: 'Video Game Design' },
+    ],
+  },
+  {
+    thread: 'Systems',
+    courses: [
+      { code: 'CS 4400', name: 'Introduction to Database Systems' },
+    ],
+  },
+];
+
 export const education: EducationEntry[] = [
   {
     id: 'georgia-tech',

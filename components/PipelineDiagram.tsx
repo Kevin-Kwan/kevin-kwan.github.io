@@ -54,7 +54,7 @@ const NODES: PipelineNode[] = [
     sub: 'Customer call',
     Icon: PhoneIcon,
     metrics: [
-      'Billing calls at scale',
+      'Billing calls, answered in-agent',
       'English and Spanish',
       'Billing questions, payments, and rescheduling',
     ],
@@ -74,8 +74,8 @@ const NODES: PipelineNode[] = [
     sub: 'Intent & dialogue',
     Icon: ChatBubbleLeftRightIcon,
     metrics: [
-      'Billing conversations at scale',
       'Holds natural billing conversations in English and Spanish',
+      'Payments, rescheduling, and AutoPay',
       'Informational answers across billing topics',
     ],
   },
@@ -86,7 +86,7 @@ const NODES: PipelineNode[] = [
     metrics: [
       'End-to-end payments',
       'Rescheduling completed in-agent',
-      'AES encryption for customer and payment data',
+      'AES-encrypted customer and payment data',
     ],
   },
   {
@@ -215,7 +215,7 @@ function PipelineDiagram() {
                 className="h-6 w-6 text-cyan-300"
                 aria-hidden="true"
               />
-              <p className="mt-2.5 text-sm font-semibold text-zinc-50">
+              <p className="mt-2.5 whitespace-nowrap text-sm font-semibold text-zinc-50">
                 {node.label}
               </p>
               <p className="mt-1 text-xs leading-snug text-zinc-400">
@@ -263,7 +263,7 @@ function PipelineDiagram() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-300">
           {active.label}
         </p>
-        <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+        <ul className="mt-3 grid gap-2 lg:grid-cols-3">
           {active.metrics.map((metric) => (
             <li
               key={metric}
