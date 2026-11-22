@@ -7,7 +7,7 @@ export const profile = {
   tagline:
     'I build voice AI that answers the phone — conversational AI and IVR systems on Amazon Connect and AWS that resolve real customer calls.',
   heroIntro:
-    'Owning critical payment journeys, architecture improvements, and production reliability for the billing voice agent and Amazon Connect IVRs.',
+    'Owning critical payment journeys, architecture improvements, and production reliability for the billing voice agent and Amazon Connect IVRs — based in Atlanta, Georgia, and open to Atlanta and remote roles.',
   interests: [
     'AI/ML',
     'Conversational AI',

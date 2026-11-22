@@ -11,9 +11,9 @@ export interface SocialLink {
 export const site = {
   name: 'Kevin Kwan',
   siteUrl: 'https://kevin-kwan.github.io',
-  defaultTitle: 'Kevin Kwan | Software Engineer II — Conversational AI & IVR',
+  defaultTitle: 'Kevin Kwan | Conversational AI, Voice AI & IVR Engineer',
   defaultDescription:
-    'Portfolio of Kevin Kwan, a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science with Highest Honors.',
+    'Kevin Kwan is a Software Engineer II at GEICO in Atlanta, building conversational AI, voice agents, and Amazon Connect IVR systems on AWS. Georgia Tech CS with Highest Honors.',
   ogImage: '/og.png',
   /** Public contact address shown on /contact — data, not a build secret. */
   contactEmail: 'kevinkwan@gatech.edu',

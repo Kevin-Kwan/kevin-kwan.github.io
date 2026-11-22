@@ -107,16 +107,16 @@ function Contact() {
   return (
     <>
       <Seo
-        title="Contact | Kevin Kwan"
-        description="Get in touch with Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO. Send a message, email directly, or connect on LinkedIn and GitHub."
+        title="Contact Kevin Kwan | Conversational AI & IVR Engineer"
+        description="Contact Kevin Kwan, a GEICO Software Engineer II specializing in conversational AI, voice agents, Amazon Connect, and AWS. Reach out about engineering roles."
         path="/contact"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
           as="h1"
           eyebrow="Contact"
-          title="Feel Free to Contact Me!"
-          description="Questions, feedback, or a bug to report — send a message below and I'll get back to you."
+          title="Contact Kevin Kwan — Conversational AI & Software Engineer"
+          description="Hiring for a conversational AI, voice AI, Amazon Connect, or software engineering role — or just have a question? Send a message below and I'll get back to you."
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">

@@ -11,7 +11,7 @@ describe('Contact page', () => {
     render(<Contact />);
     expect(
       screen.getByText(
-        "Questions, feedback, or a bug to report — send a message below and I'll get back to you."
+        "Hiring for a conversational AI, voice AI, Amazon Connect, or software engineering role — or just have a question? Send a message below and I'll get back to you."
       )
     ).not.toBeNull();
     expect(screen.queryByText(/fill out the form below/)).toBeNull();

@@ -12,7 +12,7 @@ function Education() {
   return (
     <>
       <Seo
-        title="Education | Kevin Kwan"
+        title="Education — Georgia Tech Computer Science | Kevin Kwan"
         description="Kevin Kwan's education: B.S. Computer Science with Highest Honors (3.9 GPA) from the Georgia Institute of Technology, plus Gwinnett Technical College and the Gwinnett School of Mathematics, Science, and Technology."
         path="/education"
       />

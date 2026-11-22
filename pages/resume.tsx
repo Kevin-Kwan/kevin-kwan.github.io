@@ -20,8 +20,8 @@ function Resume() {
   return (
     <>
       <Seo
-        title="Résumé | Kevin Kwan"
-        description="Résumé of Kevin Kwan — Software Engineer II (conversational AI & IVR) at GEICO, Georgia Tech B.S. Computer Science with Highest Honors. Available on request."
+        title="Kevin Kwan Résumé | Software Engineer II & Voice AI"
+        description="Kevin Kwan's résumé: Software Engineer II in conversational AI and IVR at GEICO; Georgia Tech B.S. Computer Science with Highest Honors. Available on request."
         path="/resume"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
@@ -29,7 +29,7 @@ function Resume() {
           as="h1"
           eyebrow="Résumé"
           title={`${profile.name} — ${profile.role}`}
-          description={`${profile.specialty} at ${profile.employer} · ${profile.location}. Top skills and experience, in one page.`}
+          description={`I'm a Software Engineer II at GEICO with experience in conversational AI, Amazon Connect, IVR engineering, and AWS serverless development. Recruiters and hiring managers can review my experience and skills below or request my résumé directly.`}
         />
 
         {/* Request gate — first thing on the page, above the summary,

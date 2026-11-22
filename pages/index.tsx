@@ -187,15 +187,58 @@ function HeroContainer({ active, children }: HeroContainerProps) {
 
 const personJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Kevin Kwan',
-  jobTitle: 'Software Engineer II',
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Georgia Institute of Technology',
-  },
-  url: site.siteUrl,
-  sameAs: [socials.github, socials.linkedin],
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${site.siteUrl}/#person`,
+      name: 'Kevin Kwan',
+      url: `${site.siteUrl}/`,
+      image: `${site.siteUrl}${site.ogImage}`,
+      jobTitle: 'Software Engineer II — Conversational AI & IVR',
+      description:
+        'Software Engineer II at GEICO in Atlanta specializing in conversational AI, voice agents, Amazon Connect IVR engineering, and AWS serverless applications.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Atlanta',
+        addressRegion: 'GA',
+        addressCountry: 'US',
+      },
+      worksFor: {
+        '@type': 'Organization',
+        name: 'GEICO',
+        url: 'https://www.geico.com/',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Georgia Institute of Technology',
+        url: 'https://www.gatech.edu/',
+      },
+      knowsAbout: [
+        'Conversational AI',
+        'Voice AI',
+        'Interactive Voice Response (IVR)',
+        'Amazon Connect',
+        'Amazon Lex',
+        'Sierra AI',
+        'AWS Lambda',
+        'DynamoDB',
+        'Terraform',
+        'Java',
+        'Python',
+        'TypeScript',
+        'React',
+        'Next.js',
+      ],
+      sameAs: [socials.github, socials.linkedin],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.siteUrl}/#website`,
+      url: `${site.siteUrl}/`,
+      name: 'Kevin Kwan — Conversational AI & IVR Engineer',
+      publisher: { '@id': `${site.siteUrl}/#person` },
+    },
+  ],
 };
 
 function Home() {
@@ -211,8 +254,8 @@ function Home() {
   return (
     <>
       <Seo
-        title="Kevin Kwan | Software Engineer II — Conversational AI & IVR"
-        description="Kevin Kwan is a Software Engineer II building conversational AI and IVR systems on Amazon Connect and AWS for GEICO. Georgia Tech B.S. Computer Science with Highest Honors."
+        title="Kevin Kwan | Conversational AI, Voice AI & IVR Engineer"
+        description="Kevin Kwan is a Software Engineer II at GEICO in Atlanta, building conversational AI, voice agents, and Amazon Connect IVR systems on AWS. Georgia Tech CS with Highest Honors."
         path="/"
       />
       <Head>
@@ -377,7 +420,7 @@ function Home() {
             Let&apos;s build something that answers.
           </h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
-            {`${profile.closingLine} If you're hiring for conversational AI, voice, or full-stack roles — or just want to talk shop — my inbox is open.`}
+            {`${profile.closingLine} If you're hiring for conversational AI, voice AI, Amazon Connect, or software engineering roles in Atlanta or remote — or just want to talk shop — my inbox is open.`}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Magnetic>

@@ -8,16 +8,16 @@ function Skills() {
   return (
     <>
       <Seo
-        title="Skills | Kevin Kwan"
-        description="Kevin Kwan's technical skills: Java, Python, TypeScript, Amazon Connect, Amazon Lex, Sierra AI, AWS, Terraform, React, Next.js, and more — organized by category."
+        title="Amazon Connect, AWS & AI Engineering Skills | Kevin Kwan"
+        description="Kevin Kwan's technical skills span Amazon Connect, Amazon Lex, Sierra AI, AWS Lambda, DynamoDB, Terraform, Java, Python, TypeScript, React, and Next.js."
         path="/skills"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
           as="h1"
           eyebrow="Toolbox"
-          title="Skills"
-          description="A comprehensive and ever-growing list of the technologies I've worked with in my projects and professional work — organized into tiers, from the production languages and conversational AI stack I use every day to tools I've picked up along the way."
+          title="Technical Skills — Conversational AI, AWS & Software Engineering"
+          description="I work with Amazon Connect, Amazon Lex, and Sierra AI to build conversational customer-service experiences — IVR integrations, voice-agent workflows, AWS serverless tools, simulation-driven testing, and production reliability. The full list below is organized into tiers, from the stack I use every day to tools I've picked up along the way."
         />
 
         <div className="mt-12 space-y-12">

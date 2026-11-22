@@ -95,16 +95,16 @@ function Projects() {
   return (
     <>
       <Seo
-        title="Projects | Kevin Kwan"
-        description="Projects by Kevin Kwan: the CutieBot Discord bot, full-stack web apps, Unity games, machine-learning experiments, and open-source contributions."
+        title="Software Engineering & AI Projects | Kevin Kwan"
+        description="Explore Kevin Kwan's software engineering projects in AI, chatbots, full-stack development, React, Next.js, Python, and open-source applications."
         path="/projects"
       />
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading
           as="h1"
           eyebrow="Portfolio"
-          title="Projects"
-          description="Everything from a production Discord bot to Unity games, database systems, and hackathon builds — filter by category to explore them."
+          title="Software Engineering, AI & Full-Stack Projects"
+          description="Explore my work across AI applications, conversational chatbots, full-stack systems, open-source development, and interactive software. These projects complement my professional experience building production voice AI and Amazon Connect systems at GEICO."
         />
 
         {/* Category filter — 'All' keeps the grouped layout below; any other

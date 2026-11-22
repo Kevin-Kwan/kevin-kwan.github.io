@@ -66,7 +66,7 @@ export const skillTiers: SkillTier[] = [
   },
   {
     id: 'ai-agentic',
-    title: 'AI & Agentic Workflows',
+    title: 'Conversational AI, Voice Agents & Contact Center Systems',
     blurb: 'My specialty — the stack behind GEICO’s voice automation.',
     skills: [
       {

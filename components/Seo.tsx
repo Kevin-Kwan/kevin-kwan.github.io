@@ -25,10 +25,18 @@ function Seo({ title, description, path }: SeoProps) {
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image:alt"
+        content="Kevin Kwan — Software Engineer specializing in Conversational AI and Voice AI"
+      />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta
+        name="twitter:image:alt"
+        content="Kevin Kwan software engineering portfolio"
+      />
     </Head>
   );
 }
