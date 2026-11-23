@@ -20,7 +20,7 @@
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@heroicons/react": "^2.2.0",
-    "motion": "^14.12.0",
+    "motion": "^14.14.0",
     "next": "^16.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
